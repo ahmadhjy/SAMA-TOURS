@@ -1,0 +1,45 @@
+{% load static %}
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="{% url 'website:home' %}" class="logo logo-footer" aria-label="Sama Tours — Home">
+                    <img src="{% static 'media/logo.png' %}" alt="Sama Tours" class="logo-img" width="80" height="72" loading="lazy">
+                </a>
+                <p class="footer-tagline">Travel beyond your imagination, with Sama Tours!</p>
+                <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer">
+                    Chat on WhatsApp
+                </a>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'website:home' %}">Home</a></li>
+                    <li><a href="{% url 'website:about' %}">About</a></li>
+                    <li><a href="{% url 'website:packages' %}">Packages</a></li>
+                    <li><a href="{% url 'website:visa' %}">Visa Requirements</a></li>
+                    <li><a href="{% url 'website:contact' %}">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li>{{ SITE_ADDRESS }}</li>
+                    <li><a href="mailto:{{ SITE_EMAIL }}">{{ SITE_EMAIL }}</a></li>
+                    <li><a href="tel:+96125450473">{{ SITE_PHONE }}</a></li>
+                    <li><a href="{{ SITE_WHATSAPP_URL }}" target="_blank" rel="noopener">{{ SITE_WHATSAPP }}</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="{{ SITE_FACEBOOK }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+                    <a href="{{ SITE_INSTAGRAM }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} Sama Tours. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

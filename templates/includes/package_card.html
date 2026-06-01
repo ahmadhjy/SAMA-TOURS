@@ -1,0 +1,21 @@
+<article class="package-card package-card-tui">
+    <div class="package-card-image">
+        {% if package.image_url %}
+        <img src="{{ package.image_url }}" alt="{{ package.name }}" loading="lazy">
+        {% else %}
+        <div class="package-card-placeholder" aria-hidden="true"></div>
+        {% endif %}
+        <span class="package-price-badge">{{ package.price_display }}</span>
+        <span class="package-destination">{{ package.destination }}</span>
+    </div>
+    <div class="package-card-body">
+        <h3>{{ package.name }}</h3>
+        <div class="package-meta">
+            <span class="package-duration">{{ package.duration }}</span>
+        </div>
+        <p>{{ package.short_description }}</p>
+        <a href="{{ package.whatsapp_booking_url }}" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+            Book Now
+        </a>
+    </div>
+</article>

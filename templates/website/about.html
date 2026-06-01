@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-about">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+        <span class="section-label">About SAMA</span>
+        <h1>Explore the world with us, one adventure at a time.</h1>
+    </div>
+</section>
+
+<section class="section about-intro">
+    <div class="container narrow">
+        <h2>The Perfect Vacation Come True with Our Travel Agency</h2>
+        <p>We are a team of experienced travel experts who specialize in planning and organizing unforgettable travel experiences for our clients with a wide range of travel services, including flight bookings, hotel reservations, and more.</p>
+        <a href="{% url 'website:contact' %}" class="btn btn-primary">Get In Touch</a>
+    </div>
+</section>
+
+<section class="section about-services">
+    <div class="container">
+        <div class="section-header center">
+            <span class="section-label">Our Services</span>
+            <h2>Let us help you plan your next adventure</h2>
+            <p class="subheading">Perfect Vacation Come True</p>
+            <p>With our knowledge and expertise in the travel industry, we ensure that all aspects of your trip are tailored to your preferences and budget and make it an experience of a lifetime.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h3>Airline Tickets</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚢</div>
+                <h3>Ocean Cruises</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚌</div>
+                <h3>Means of Transport</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🗺️</div>
+                <h3>Travel Itineraries</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Travel Insurance</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👤</div>
+                <h3>Local Guide</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section cta-banner">
+    <div class="container cta-banner-inner">
+        <div>
+            <span class="section-label">Exclusive Travel Deals</span>
+            <h2>Book your dream vacation today!</h2>
+        </div>
+        <a href="{% url 'website:packages' %}" class="btn btn-primary btn-lg">Book Today</a>
+    </div>
+</section>
+
+{% include 'includes/testimonials.html' %}
+{% endblock %}

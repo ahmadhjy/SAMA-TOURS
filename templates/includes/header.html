@@ -1,0 +1,20 @@
+{% load static %}
+<header class="site-header" id="site-header">
+    <div class="container header-inner">
+        <a href="{% url 'website:home' %}" class="logo" aria-label="Sama Tours — Home">
+            <img src="{% static 'media/logo.png' %}" alt="Sama Tours" class="logo-img" width="80" height="72">
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="{% url 'website:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a></li>
+                <li><a href="{% url 'website:about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>About</a></li>
+                <li><a href="{% url 'website:packages' %}" {% if request.resolver_match.url_name == 'packages' %}class="active"{% endif %}>Packages</a></li>
+                <li><a href="{% url 'website:visa' %}" {% if request.resolver_match.url_name == 'visa' %}class="active"{% endif %}>Visa Requirements</a></li>
+                <li><a href="{% url 'website:contact' %}" class="nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
