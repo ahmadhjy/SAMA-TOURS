@@ -27,7 +27,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
 
 body {
     font-family: var(--font-body);
@@ -35,6 +38,13 @@ body {
     background: var(--color-bg);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+main {
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -46,6 +56,7 @@ ul { list-style: none; }
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    min-width: 0;
 }
 
 .narrow { max-width: 720px; }
@@ -164,6 +175,8 @@ h3 { font-size: 1.25rem; }
     gap: 1.5rem;
     height: var(--top-bar-height);
     flex-wrap: wrap;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .top-bar a { color: #fff; font-weight: 500; }
@@ -181,6 +194,8 @@ h3 { font-size: 1.25rem; }
     background: #fff;
     border-bottom: 1px solid var(--color-border);
     transition: box-shadow var(--transition);
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 .site-header.scrolled {
@@ -192,7 +207,11 @@ h3 { font-size: 1.25rem; }
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     height: var(--header-height);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .logo {
@@ -319,6 +338,8 @@ h3 { font-size: 1.25rem; }
     background-size: cover;
     background-position: center;
     animation: heroZoom 20s ease-in-out infinite alternate;
+    transform-origin: center center;
+    will-change: transform;
 }
 
 @keyframes heroZoom {
@@ -398,6 +419,8 @@ h3 { font-size: 1.25rem; }
 /* Sections */
 .section {
     padding: 5rem 0;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 .section:nth-child(even):not(.cta-banner):not(.cta-strip):not(.why-sama-section):not(.testimonials-section) {
@@ -656,17 +679,26 @@ h3 { font-size: 1.25rem; }
 .testimonials-section .section-header p { color: rgba(255,255,255,.75); }
 .testimonials-section .section-label { color: var(--color-accent); }
 
-.testimonial-slider { max-width: 800px; margin: 0 auto; }
+.testimonial-slider {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
 .testimonial-track {
     display: flex;
+    width: 100%;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .testimonial-slide {
-    min-width: 100%;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
     padding: 2rem;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .testimonial-quote {
@@ -1182,7 +1214,11 @@ h3 { font-size: 1.25rem; }
 .destinations-scroll {
     display: flex;
     gap: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -1231,9 +1267,14 @@ h3 { font-size: 1.25rem; }
 .packages-scroll {
     display: flex;
     gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .package-card-tui {
@@ -1595,6 +1636,9 @@ h3 { font-size: 1.25rem; }
         top: calc(var(--top-bar-height) + var(--header-height));
         left: 0;
         right: 0;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
         background: #fff;
         padding: 1rem;
         box-shadow: var(--shadow-md);
@@ -1602,6 +1646,7 @@ h3 { font-size: 1.25rem; }
         opacity: 0;
         visibility: hidden;
         transition: all var(--transition);
+        z-index: 999;
     }
 
     .main-nav.open {
@@ -1649,7 +1694,10 @@ h3 { font-size: 1.25rem; }
     .btn-filter-search { flex: 1; }
     .btn-filter-clear { flex: 0; justify-content: center; }
     .packages-grid-page { grid-template-columns: 1fr; }
-    .packages-scroll .package-card-tui { flex: 0 0 85vw; max-width: 320px; }
+    .packages-scroll .package-card-tui {
+        flex: 0 0 min(85vw, 300px);
+        max-width: min(85vw, 300px);
+    }
     .trust-bar-grid { grid-template-columns: 1fr; }
     .promo-grid { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; }
