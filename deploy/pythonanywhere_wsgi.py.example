@@ -1,0 +1,36 @@
+"""
+Paste into PythonAnywhere Web tab → WSGI configuration file.
+Account: Samatours2026 | Website only (ERP is separate at Sama-Acc)
+"""
+
+import os
+import sys
+
+PROJECT_HOME = "/home/Samatours2026/SAMA-TOURS"
+if PROJECT_HOME not in sys.path:
+    sys.path.insert(0, PROJECT_HOME)
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "config.settings.production"
+
+# --- Required: generate a NEW secret key (not the ERP key) ---
+os.environ["DJANGO_SECRET_KEY"] = "REPLACE_WITH_LONG_RANDOM_SECRET_KEY"
+
+# --- Your website web app hostname (second PA web app or custom domain) ---
+os.environ["DJANGO_ALLOWED_HOSTS"] = "YOUR-WEBSITE-HOST.pythonanywhere.com"
+os.environ["DJANGO_CSRF_TRUSTED_ORIGINS"] = "https://YOUR-WEBSITE-HOST.pythonanywhere.com"
+os.environ["DJANGO_DEBUG"] = "False"
+
+# --- Website PostgreSQL (NOT sama_acc / sama_app — create sama_website / sama_web) ---
+os.environ["DJANGO_DB_ENGINE"] = "postgresql"
+os.environ["DJANGO_DB_NAME"] = "sama_website"
+os.environ["DJANGO_DB_USER"] = "sama_web"
+os.environ["DJANGO_DB_PASSWORD"] = "REPLACE_WEBSITE_DB_PASSWORD"
+os.environ["DJANGO_DB_HOST"] = "Samatours2026-5298.postgres.pythonanywhere-services.com"
+os.environ["DJANGO_DB_PORT"] = "15298"
+
+# Optional: uploaded package/visa files
+# os.environ["MEDIA_ROOT"] = "/home/Samatours2026/SAMA-TOURS/media"
+
+from django.core.wsgi import get_wsgi_application
+
+application = get_wsgi_application()

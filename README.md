@@ -1,40 +1,35 @@
 # Sama Tours Website
 
-Modern travel agency website built with Django 5.
+Marketing website for Sama Tours Lebanon — Django templates, packages, visa PDFs, WhatsApp booking.
+
+**Production deploy:** [DEPLOY.md](DEPLOY.md) (PythonAnywhere account `Samatours2026`, separate from ERP).
 
 ## Local development
 
 ```powershell
 cd "C:\Users\ME\Desktop\Sama Tours"
 .\djangoenv\Scripts\Activate.ps1
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
 
-Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+Uses `config.settings.development` (SQLite) by default.
 
-## Adding packages (Admin)
+## Project layout
 
-1. Go to `/admin/` → **Travel packages** → **Add**
-2. **Name** — package title
-3. **Destination** — e.g. `Dubai, UAE`
-4. **Duration** — e.g. `5 Days / 4 Nights`
-5. **Starting price** — e.g. `899` (displays as "From $899", used for filtering)
-6. **Short description**
-7. **Featured image** — upload the main photo
-8. Save — **Book Now** opens WhatsApp automatically
+```
+config/settings/     base, development, production
+website/             models, views, admin
+deploy/              PythonAnywhere WSGI example
+templates/           HTML pages
+static/              CSS, JS, logo (committed)
+```
 
-## Package filters
+## Admin — add packages
 
-Homepage and `/packages/` support filtering by:
-- **Destination** — type or pick from suggestions
-- **Max price** — dropdown ranges
+`/admin/` → **Travel packages** → upload image, destination, duration, **starting price**, description. **Book Now** links to WhatsApp automatically.
 
-## Production deployment
+## GitHub
 
-See **[DEPLOYMENT.md](DEPLOYMENT.md)** for full step-by-step guide:
-- Push to GitHub
-- Deploy on PythonAnywhere with PostgreSQL
-- Static files, media uploads, environment variables
-
-Copy `.env.example` to `.env` for local production testing (never commit `.env`).
+https://github.com/ahmadhjy/SAMA-TOURS
