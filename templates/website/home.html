@@ -18,18 +18,14 @@
     <div class="container hero-layout">
         <div class="hero-content">
             <span class="hero-badge">Your journey starts here</span>
-            <h1 class="hero-title">Explore the World with Sama Tours</h1>
+            <h1 class="hero-title">
+                <span class="hero-title-main">Explore the World with Sama Tours</span>
+            </h1>
             <p class="hero-desc">Book packages, plan custom trips, and get visa support — all with experienced travel experts by your side.</p>
             <div class="hero-actions">
                 <a href="{% url 'website:packages' %}" class="btn btn-primary btn-lg">Book Your Trip</a>
                 <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">Get a Quote</a>
             </div>
-            <nav class="hero-nav-strip" aria-label="Quick links">
-                <a href="{% url 'website:packages' %}" class="hero-pill">Packages</a>
-                <a href="{% url 'website:visa' %}" class="hero-pill">Visa Info</a>
-                <a href="{{ SITE_WHATSAPP_URL }}" class="hero-pill" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                <a href="{% url 'website:contact' %}" class="hero-pill">Contact</a>
-            </nav>
         </div>
     </div>
 </section>
