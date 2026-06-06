@@ -35,9 +35,10 @@ if [[ ! -f "$VENV_DIR/bin/activate" ]]; then
     die "Virtualenv not found: $VENV_DIR"
 fi
 
-# Refuse to deploy if someone edited files directly on the server (avoids losing work).
+# Server should match GitHub. Drop local edits to tracked files (e.g. old manual CSS uploads).
 if ! git diff-index --quiet HEAD -- 2>/dev/null; then
-    die "Uncommitted local changes in $PROJECT_DIR. Stash or revert them before deploying."
+    log "Resetting local edits to tracked files (uploads in media/ are not affected)"
+    git reset --hard HEAD
 fi
 
 log "Loading production environment"
@@ -46,6 +47,13 @@ set -a
 source "$ENV_FILE"
 set +a
 export DJANGO_SETTINGS_MODULE=config.settings.production
+
+if [[ "$DJANGO_SECRET_KEY" == replace-with-your-secret-key* ]]; then
+    die "Edit deploy/production.env — set DJANGO_SECRET_KEY from your WSGI file"
+fi
+if [[ "$DJANGO_DB_PASSWORD" == replace-with-db-password* ]]; then
+    die "Edit deploy/production.env — set DJANGO_DB_PASSWORD from your WSGI file"
+fi
 
 log "Activating virtualenv: sama-website"
 # shellcheck disable=SC1091
@@ -76,7 +84,7 @@ if [[ -n "${PA_WSGI_FILE:-}" && -f "$PA_WSGI_FILE" ]]; then
     log "Reloading web app via WSGI touch"
     touch "$PA_WSGI_FILE"
 else
-    log "Deploy complete — reload manually: Web tab → Reload (your website app, not ERP)"
+    log "Reload manually: Web tab → your WEBSITE app → Reload (not the ERP app)"
 fi
 
-log "Done. Site: https://${DJANGO_ALLOWED_HOSTS%%*,}/"
+log "Done. Site: https://${DJANGO_ALLOWED_HOSTS%%,*}/"
