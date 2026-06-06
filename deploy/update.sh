@@ -41,11 +41,29 @@ if ! git diff-index --quiet HEAD -- 2>/dev/null; then
     git reset --hard HEAD
 fi
 
+load_env_file() {
+    local file="$1"
+    local line key val
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        line="${line//$'\r'/}"
+        line="${line#"${line%%[![:space:]]*}"}"
+        line="${line%"${line##*[![:space:]]}"}"
+        [[ -z "$line" || "$line" == \#* ]] && continue
+        if [[ "$line" =~ ^([A-Za-z_][A-Za-z0-9_]*)=(.*)$ ]]; then
+            key="${BASH_REMATCH[1]}"
+            val="${BASH_REMATCH[2]}"
+            if [[ "$val" =~ ^\'(.*)\'$ ]]; then
+                val="${BASH_REMATCH[1]}"
+            elif [[ "$val" =~ ^\"(.*)\"$ ]]; then
+                val="${BASH_REMATCH[1]}"
+            fi
+            export "$key=$val"
+        fi
+    done < "$file"
+}
+
 log "Loading production environment"
-set -a
-# shellcheck disable=SC1090
-source "$ENV_FILE"
-set +a
+load_env_file "$ENV_FILE"
 export DJANGO_SETTINGS_MODULE=config.settings.production
 
 if [[ "$DJANGO_SECRET_KEY" == replace-with-your-secret-key* ]]; then
