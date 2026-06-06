@@ -146,7 +146,29 @@ git commit -m "Your message"
 git push
 ```
 
-**On PythonAnywhere:**
+**On PythonAnywhere (recommended — one command):**
+
+One-time setup:
+
+```bash
+cd ~/SAMA-TOURS
+git pull   # get the deploy script if this is your first time
+cp deploy/production.env.example deploy/production.env
+nano deploy/production.env   # same values as your WSGI file
+chmod +x deploy/update.sh
+```
+
+Optional: add `PA_WSGI_FILE=...` to `deploy/production.env` (path from **Web** → WSGI file link) to auto-reload after each deploy.
+
+Every update:
+
+```bash
+cd ~/SAMA-TOURS && ./deploy/update.sh
+```
+
+The script will: pull code → install requirements → apply **pending migrations only** (safe; does not delete data) → collectstatic → reload (if `PA_WSGI_FILE` is set).
+
+**Manual alternative:**
 
 ```bash
 cd ~/SAMA-TOURS

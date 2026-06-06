@@ -20,6 +20,7 @@ local_settings.py
 # Environment & secrets
 .env
 .env.local
+deploy/production.env
 *.pem
 
 # IDE
