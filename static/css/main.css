@@ -231,6 +231,10 @@ h3 { font-size: 1.25rem; }
     filter: brightness(1.15);
 }
 
+.logo-footer .logo-img--white {
+    filter: none;
+}
+
 .main-nav ul {
     display: flex;
     align-items: center;
@@ -332,14 +336,21 @@ h3 { font-size: 1.25rem; }
     backdrop-filter: blur(8px);
 }
 
+.hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     animation: heroZoom 20s ease-in-out infinite alternate;
     transform-origin: center center;
-    will-change: transform;
 }
 
 @keyframes heroZoom {
@@ -360,6 +371,7 @@ h3 { font-size: 1.25rem; }
     max-width: 720px;
     padding: 4rem 0;
     color: #fff;
+    width: 100%;
 }
 
 .hero-title { color: #fff; margin-bottom: 1.25rem; }
@@ -1608,6 +1620,17 @@ h3 { font-size: 1.25rem; }
 
 .packages-page-section { background: var(--color-bg-alt); }
 
+.promo-section,
+.destinations-section,
+.packages-preview-section,
+.why-sama-section,
+.experiences-section,
+.adventure-section,
+.testimonials-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
+}
+
 /* Page hero offset for top bar */
 .page-hero {
     padding-top: calc(var(--top-bar-height) + var(--header-height) + 3rem);
@@ -1677,17 +1700,44 @@ h3 { font-size: 1.25rem; }
     .cta-banner-inner { flex-direction: column; text-align: center; }
 
     .section { padding: 3.5rem 0; }
-    .hero-actions { flex-direction: column; }
-    .hero-actions .btn { width: 100%; }
-    .hero-tui { min-height: auto; }
-    .hero-layout { padding-bottom: 3rem; max-width: 100%; }
-    .hero-nav-strip {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 0.25rem;
-        -webkit-overflow-scrolling: touch;
+
+    .hero-tui .container.hero-layout {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
-    .hero-pill { flex-shrink: 0; }
+
+    .hero-content { padding: 2rem 0 0; }
+
+    .hero-actions {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0.65rem;
+        margin-bottom: 0;
+    }
+
+    .hero-actions .btn {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+        padding: 0.7rem 0.85rem;
+        font-size: 0.85rem;
+        white-space: normal;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    .hero-nav-strip { display: none; }
+
+    .hero-tui { min-height: 75svh; }
+    .hero-layout { padding-top: 1.5rem; padding-bottom: 2.5rem; max-width: 100%; }
+
+    .hero-bg { animation: none; }
+
+    .hero-badge,
+    .hero-pill {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
     .package-filters { flex-direction: column; align-items: stretch; padding: 1.25rem; }
     .filter-field { min-width: 100%; }
     .filter-actions { width: 100%; }
@@ -1712,7 +1762,16 @@ h3 { font-size: 1.25rem; }
     .destinations-grid,
     .visa-grid,
     .services-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: 1.85rem; }
-    .hero-actions .btn-lg { padding: 0.85rem 1.25rem; font-size: 0.95rem; }
+    .hero-title { font-size: 1.75rem; line-height: 1.2; }
+    .hero-desc { font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .hero-tui .container.hero-layout {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
     .top-bar-whatsapp { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; }
+    html { scroll-behavior: auto; }
 }

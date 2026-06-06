@@ -3,9 +3,17 @@
 
 {% block title %}Home{% endblock %}
 
+{% block extra_head %}
+<link rel="preload" as="image" href="{% static 'media/hero-home-mobile.jpg' %}" media="(max-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="{% static 'media/hero-home.jpg' %}" media="(min-width: 769px)" fetchpriority="high">
+{% endblock %}
+
 {% block content %}
 <section class="hero hero-tui">
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80');"></div>
+    <picture class="hero-media" aria-hidden="true">
+        <source media="(max-width: 768px)" srcset="{% static 'media/hero-home-mobile.jpg' %}" width="800" height="600">
+        <img class="hero-bg" src="{% static 'media/hero-home.jpg' %}" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-overlay"></div>
     <div class="container hero-layout">
         <div class="hero-content">
@@ -39,7 +47,7 @@
         </div>
         <div class="promo-grid">
             <a href="{% url 'website:packages' %}" class="promo-card">
-                <img src="{% static 'media/promo-beach.jpg' %}" alt="Beach vacation deals" loading="lazy">
+                <img src="{% static 'media/promo-beach.jpg' %}" alt="Beach vacation deals" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
                     <span class="promo-tag">Popular</span>
                     <h3>Beach & Sun Escapes</h3>
@@ -48,7 +56,7 @@
                 </div>
             </a>
             <a href="{% url 'website:packages' %}" class="promo-card">
-                <img src="{% static 'media/promo-city.jpg' %}" alt="City break packages" loading="lazy">
+                <img src="{% static 'media/promo-city.jpg' %}" alt="City break packages" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
                     <span class="promo-tag">City breaks</span>
                     <h3>Europe & Beyond</h3>
@@ -57,7 +65,7 @@
                 </div>
             </a>
             <a href="{% url 'website:visa' %}" class="promo-card">
-                <img src="{% static 'media/promo-visa.jpg' %}" alt="Visa requirements" loading="lazy">
+                <img src="{% static 'media/promo-visa.jpg' %}" alt="Visa requirements" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
                     <span class="promo-tag">Visa services</span>
                     <h3>Visa Requirements</h3>
@@ -191,7 +199,7 @@
         </div>
         <div class="adventure-cards">
             <a href="{% url 'website:packages' %}" class="adventure-card adventure-card-link">
-                <div class="adventure-card-bg" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80');"></div>
+                <div class="adventure-card-bg" style="background-image: url('{% static 'media/adventure-group.jpg' %}');"></div>
                 <div class="adventure-card-content">
                     <h3>Organized Group Tour</h3>
                     <p>Join like-minded travelers on curated group journeys.</p>
@@ -199,7 +207,7 @@
                 </div>
             </a>
             <a href="{% url 'website:contact' %}" class="adventure-card adventure-card-link">
-                <div class="adventure-card-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80');"></div>
+                <div class="adventure-card-bg" style="background-image: url('{% static 'media/adventure-custom.jpg' %}');"></div>
                 <div class="adventure-card-content">
                     <h3>Single Customized Trip</h3>
                     <p>A fully personalized itinerary for your style and budget.</p>
