@@ -107,15 +107,10 @@
         </div>
         {% include 'includes/package_filters.html' %}
         {% if packages %}
-        <div class="{% if filters_active %}packages-grid packages-grid-page{% else %}packages-scroll{% endif %}">
+        <div class="packages-scroll">
             {% for package in packages %}
                 {% include 'includes/package_card.html' %}
             {% endfor %}
-        </div>
-        {% else %}
-        <div class="empty-state">
-            <p>No packages match your filters. Try a different destination or price range.</p>
-            <a href="{% url 'website:home' %}#packages" class="btn btn-outline btn-sm">Clear filters</a>
         </div>
         {% endif %}
     </div>

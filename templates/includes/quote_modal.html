@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+
 <style>
 #quote-modal {
     display: none;
@@ -20,7 +22,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 480px;
+    max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
     background: #fff;
@@ -62,8 +64,8 @@
     margin-bottom: 0.3rem;
     color: #1e293b;
 }
-#quote-modal input,
-#quote-modal select {
+#quote-modal select,
+#quote-modal input[type="text"] {
     width: 100%;
     padding: 0.65rem 0.85rem;
     border: 1px solid #e2e8f0;
@@ -72,19 +74,77 @@
     box-sizing: border-box;
     margin-bottom: 0.85rem;
     font-family: inherit;
+    background: #fff;
 }
 #quote-modal .quote-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
 }
-#quote-modal .quote-row-3 {
+#quote-modal .quote-row-2 > div { min-width: 0; }
+#quote-modal .quote-travelers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
 }
-#quote-modal .quote-row-2 > div,
-#quote-modal .quote-row-3 > div { min-width: 0; }
+#quote-modal .quote-counter label {
+    text-align: center;
+    margin-bottom: 0.4rem;
+    font-size: 0.78rem;
+}
+#quote-modal .quote-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+#quote-modal .quote-step-btn {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 42px;
+    border: none;
+    background: #f8fafc;
+    color: #1a3c6b;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+#quote-modal .quote-step-btn:hover { background: #eef4fb; }
+#quote-modal .quote-step-btn:active { background: #dbeafe; }
+#quote-modal .quote-stepper input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    border: none;
+    border-left: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-radius: 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem 0.25rem;
+    background: #fff;
+    -moz-appearance: textfield;
+}
+#quote-modal .quote-stepper input::-webkit-outer-spin-button,
+#quote-modal .quote-stepper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#quote-modal .flatpickr-input {
+    cursor: pointer;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+}
 #quote-modal .quote-submit {
     width: 100%;
     margin-top: 0.25rem;
@@ -101,9 +161,13 @@
 #quote-modal .quote-submit:hover { filter: brightness(1.05); }
 html.quote-modal-open,
 body.quote-modal-open { overflow: hidden !important; }
+.flatpickr-calendar { z-index: 100000 !important; font-family: inherit; }
 @media (max-width: 540px) {
-    #quote-modal .quote-row-2,
-    #quote-modal .quote-row-3 { grid-template-columns: 1fr; }
+    #quote-modal .quote-row-2 { grid-template-columns: 1fr; }
+    #quote-modal .quote-dialog { padding: 1.35rem 1rem; }
+    #quote-modal .quote-travelers { gap: 0.45rem; }
+    #quote-modal .quote-step-btn { flex: 0 0 36px; width: 36px; height: 40px; }
+    #quote-modal .quote-counter label { font-size: 0.72rem; }
 }
 </style>
 
@@ -135,21 +199,33 @@ body.quote-modal-open { overflow: hidden !important; }
                 </div>
             </div>
 
-            <label for="quote-date">Traveling date</label>
-            <input type="date" id="quote-date" name="travel_date" required>
+            <label for="quote-dates">Travel dates</label>
+            <input type="text" id="quote-dates" name="travel_dates" placeholder="Select departure and return" readonly required>
 
-            <div class="quote-row-3">
-                <div>
+            <div class="quote-travelers">
+                <div class="quote-counter">
                     <label for="quote-adults">Adults</label>
-                    <input type="number" id="quote-adults" name="adults" min="0" max="20" value="2" required>
+                    <div class="quote-stepper">
+                        <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-adults" aria-label="Fewer adults">−</button>
+                        <input type="number" id="quote-adults" name="adults" min="0" max="20" value="2" readonly tabindex="-1">
+                        <button type="button" class="quote-step-btn" data-step="1" data-target="quote-adults" aria-label="More adults">+</button>
+                    </div>
                 </div>
-                <div>
+                <div class="quote-counter">
                     <label for="quote-children">Children</label>
-                    <input type="number" id="quote-children" name="children" min="0" max="20" value="0">
+                    <div class="quote-stepper">
+                        <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-children" aria-label="Fewer children">−</button>
+                        <input type="number" id="quote-children" name="children" min="0" max="20" value="0" readonly tabindex="-1">
+                        <button type="button" class="quote-step-btn" data-step="1" data-target="quote-children" aria-label="More children">+</button>
+                    </div>
                 </div>
-                <div>
+                <div class="quote-counter">
                     <label for="quote-infants">Infants</label>
-                    <input type="number" id="quote-infants" name="infants" min="0" max="10" value="0">
+                    <div class="quote-stepper">
+                        <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-infants" aria-label="Fewer infants">−</button>
+                        <input type="number" id="quote-infants" name="infants" min="0" max="10" value="0" readonly tabindex="-1">
+                        <button type="button" class="quote-step-btn" data-step="1" data-target="quote-infants" aria-label="More infants">+</button>
+                    </div>
                 </div>
             </div>
 
@@ -158,18 +234,46 @@ body.quote-modal-open { overflow: hidden !important; }
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
 <script>
 (function () {
     var modal = document.getElementById('quote-modal');
     var form = document.getElementById('quote-form');
     var toSelect = document.getElementById('quote-to');
-    var dateInput = document.getElementById('quote-date');
+    var datesInput = document.getElementById('quote-dates');
     var waNum = document.body.getAttribute('data-whatsapp-number') || '96176832813';
+    var datePicker = null;
 
     if (!modal || !form) return;
 
-    if (dateInput) {
-        dateInput.min = new Date().toISOString().split('T')[0];
+    if (datesInput && window.flatpickr) {
+        datePicker = flatpickr(datesInput, {
+            mode: 'range',
+            minDate: 'today',
+            dateFormat: 'Y-m-d',
+            altInput: true,
+            altFormat: 'j M Y',
+            conjunction: ' – ',
+            showMonths: window.innerWidth < 540 ? 1 : 2,
+            disableMobile: false,
+        });
+    }
+
+    document.querySelectorAll('#quote-modal .quote-step-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var input = document.getElementById(btn.getAttribute('data-target'));
+            if (!input) return;
+            var step = parseInt(btn.getAttribute('data-step'), 10);
+            var min = parseInt(input.min, 10) || 0;
+            var max = parseInt(input.max, 10) || 20;
+            var val = (parseInt(input.value, 10) || 0) + step;
+            input.value = Math.max(min, Math.min(max, val));
+        });
+    });
+
+    function formatDate(iso) {
+        var d = new Date(iso + 'T12:00:00');
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     }
 
     function openModal(trigger) {
@@ -219,15 +323,24 @@ body.quote-modal-open { overflow: hidden !important; }
         e.preventDefault();
         var from = document.getElementById('quote-from').value;
         var to = toSelect.value;
-        var travelDate = dateInput.value;
         var adults = parseInt(document.getElementById('quote-adults').value, 10) || 0;
         var children = parseInt(document.getElementById('quote-children').value, 10) || 0;
         var infants = parseInt(document.getElementById('quote-infants').value, 10) || 0;
 
-        if (!from || !to || !travelDate) return;
+        var selected = datePicker ? datePicker.selectedDates : [];
+        if (!from || !to || selected.length < 1) {
+            alert('Please select your travel dates.');
+            return;
+        }
         if (adults + children + infants < 1) {
             alert('Please add at least one traveler.');
             return;
+        }
+
+        var dateFrom = formatDate(selected[0].toISOString().split('T')[0]);
+        var dateLine = dateFrom;
+        if (selected.length > 1) {
+            dateLine = dateFrom + ' – ' + formatDate(selected[1].toISOString().split('T')[0]);
         }
 
         var parts = [];
@@ -235,13 +348,10 @@ body.quote-modal-open { overflow: hidden !important; }
         if (children) parts.push(children + ' child' + (children !== 1 ? 'ren' : ''));
         if (infants) parts.push(infants + ' infant' + (infants !== 1 ? 's' : ''));
 
-        var d = new Date(travelDate + 'T12:00:00');
-        var formatted = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-
         var msg = 'Hello Sama Tours! I would like a travel quote.\n\n'
             + 'From: ' + from + '\n'
             + 'To: ' + to + '\n'
-            + 'Travel date: ' + formatted + '\n'
+            + 'Travel dates: ' + dateLine + '\n'
             + 'Travelers: ' + parts.join(', ') + '\n\n'
             + 'Thank you!';
 

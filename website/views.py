@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 
 from .models import TravelPackage, Destination, VisaRequirement, Testimonial
 from .package_filters import apply_package_filters, package_filter_context
@@ -19,14 +20,12 @@ def _filtered_packages(request, limit=None):
 
 
 def home(request):
-    filter_ctx = package_filter_context(request)
-    packages = _filtered_packages(request, limit=6 if not filter_ctx['filters_active'] else None)
-
     return render(request, 'website/home.html', {
-        'packages': packages,
+        'packages': TravelPackage.objects.filter(is_active=True)[:6],
         'destinations': Destination.objects.filter(is_active=True)[:8],
         'testimonials': _active_testimonials(),
-        **filter_ctx,
+        'filter_action': reverse('website:packages'),
+        **package_filter_context(request),
     })
 
 
