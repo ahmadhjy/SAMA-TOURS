@@ -3,22 +3,6 @@
 import django.db.models.deletion
 import website.models
 from django.db import migrations, models
-from django.utils.text import slugify
-
-
-def populate_slugs(apps, schema_editor):
-    TravelPackage = apps.get_model('website', 'TravelPackage')
-    for pkg in TravelPackage.objects.all():
-        if pkg.slug:
-            continue
-        base = slugify(pkg.name) or 'package'
-        slug = base
-        counter = 1
-        while TravelPackage.objects.filter(slug=slug).exclude(pk=pkg.pk).exists():
-            slug = f'{base}-{counter}'
-            counter += 1
-        pkg.slug = slug
-        pkg.save(update_fields=['slug'])
 
 
 class Migration(migrations.Migration):
@@ -28,44 +12,43 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='travelpackage',
-            name='full_description',
-            field=models.TextField(blank=True, help_text='Full description on the package detail page'),
-        ),
-        migrations.AddField(
-            model_name='travelpackage',
-            name='highlights',
-            field=models.TextField(blank=True, help_text='One highlight per line (shown on detail page)'),
-        ),
-        migrations.AddField(
-            model_name='travelpackage',
-            name='itinerary',
-            field=models.TextField(blank=True, help_text='One day per line, e.g. "Day 1: Arrival and hotel check-in"'),
-        ),
-        migrations.AddField(
-            model_name='travelpackage',
-            name='slug',
-            field=models.SlugField(blank=True, max_length=220),
-        ),
-        migrations.RunPython(populate_slugs, migrations.RunPython.noop),
-        migrations.AlterField(
-            model_name='travelpackage',
-            name='slug',
-            field=models.SlugField(blank=True, max_length=220, unique=True),
-        ),
-        migrations.CreateModel(
-            name='PackageImage',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, null=True, upload_to=website.models.package_gallery_path)),
-                ('external_image_url', models.URLField(blank=True, max_length=500)),
-                ('caption', models.CharField(blank=True, max_length=200)),
-                ('display_order', models.PositiveIntegerField(default=0)),
-                ('package', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='website.travelpackage')),
+        migrations.SeparateDatabaseAndState(
+            database_operations=[],
+            state_operations=[
+                migrations.AddField(
+                    model_name='travelpackage',
+                    name='full_description',
+                    field=models.TextField(blank=True, help_text='Full description on the package detail page'),
+                ),
+                migrations.AddField(
+                    model_name='travelpackage',
+                    name='highlights',
+                    field=models.TextField(blank=True, help_text='One highlight per line (shown on detail page)'),
+                ),
+                migrations.AddField(
+                    model_name='travelpackage',
+                    name='itinerary',
+                    field=models.TextField(blank=True, help_text='One day per line, e.g. "Day 1: Arrival and hotel check-in"'),
+                ),
+                migrations.AddField(
+                    model_name='travelpackage',
+                    name='slug',
+                    field=models.SlugField(blank=True, max_length=220, unique=True),
+                ),
+                migrations.CreateModel(
+                    name='PackageImage',
+                    fields=[
+                        ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                        ('image', models.ImageField(blank=True, null=True, upload_to=website.models.package_gallery_path)),
+                        ('external_image_url', models.URLField(blank=True, max_length=500)),
+                        ('caption', models.CharField(blank=True, max_length=200)),
+                        ('display_order', models.PositiveIntegerField(default=0)),
+                        ('package', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='website.travelpackage')),
+                    ],
+                    options={
+                        'ordering': ['display_order'],
+                    },
+                ),
             ],
-            options={
-                'ordering': ['display_order'],
-            },
         ),
     ]
