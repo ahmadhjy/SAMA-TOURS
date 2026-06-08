@@ -3,88 +3,135 @@
 {% block title %}{{ package.name }}{% endblock %}
 
 {% block content %}
-<section class="package-detail-hero">
-    <div class="package-detail-hero-bg" style="background-image: url('{{ package.image_url }}');"></div>
-    <div class="package-detail-hero-overlay"></div>
-    <div class="container package-detail-hero-content">
-        <a href="{% url 'website:packages' %}" class="package-back-link">← All packages</a>
-        <span class="package-detail-destination">{{ package.destination }}</span>
-        <h1>{{ package.name }}</h1>
-        <div class="package-detail-meta">
-            <span>{{ package.duration }}</span>
-            <span class="package-detail-price">{{ package.price_display }}</span>
-        </div>
-        <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">
-            Book on WhatsApp
-        </a>
-    </div>
-</section>
-
-<section class="section package-detail-section">
-    <div class="container package-detail-grid">
-        <div class="package-detail-main">
-            {% if gallery %}
-            <div class="package-gallery">
-                <h2 class="section-title-tui">Gallery</h2>
-                <div class="package-gallery-grid">
-                    {% for item in gallery %}
-                    <figure class="package-gallery-item">
-                        <img src="{{ item.url }}" alt="{{ item.caption|default:package.name }}" loading="lazy">
-                        {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
-                    </figure>
-                    {% endfor %}
+<section class="pkg-hero">
+    {% if package.image_url %}
+    <div class="pkg-hero-bg" style="background-image: url('{{ package.image_url }}');"></div>
+    {% endif %}
+    <div class="pkg-hero-overlay"></div>
+    <div class="container pkg-hero-inner">
+        <nav class="pkg-breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url 'website:home' %}">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="{% url 'website:packages' %}">Packages</a>
+            <span aria-hidden="true">/</span>
+            <span>{{ package.name }}</span>
+        </nav>
+        <div class="pkg-hero-bottom">
+            <div class="pkg-hero-text">
+                <span class="pkg-chip">{{ package.destination }}</span>
+                <h1>{{ package.name }}</h1>
+                <div class="pkg-meta-row">
+                    <span class="pkg-meta-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        {{ package.duration }}
+                    </span>
+                    <span class="pkg-meta-item pkg-meta-price">{{ package.price_display }}</span>
                 </div>
             </div>
-            {% endif %}
-
-            <div class="package-about">
-                <h2 class="section-title-tui">About this package</h2>
-                {% if package.full_description %}
-                <div class="package-prose">{{ package.full_description|linebreaks }}</div>
-                {% else %}
-                <div class="package-prose">{{ package.short_description|linebreaks }}</div>
-                {% endif %}
+            <div class="pkg-hero-actions">
+                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+                <button type="button" class="btn btn-outline-light btn-lg" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
             </div>
-
-            {% if package.itinerary_lines %}
-            <div class="package-itinerary">
-                <h2 class="section-title-tui">Itinerary</h2>
-                <ol class="itinerary-list">
-                    {% for day in package.itinerary_lines %}
-                    <li>{{ day }}</li>
-                    {% endfor %}
-                </ol>
-            </div>
-            {% endif %}
         </div>
-
-        <aside class="package-detail-sidebar">
-            <div class="package-sidebar-card">
-                <h3>Package summary</h3>
-                <ul class="package-summary-list">
-                    <li><strong>Destination</strong><span>{{ package.destination }}</span></li>
-                    <li><strong>Duration</strong><span>{{ package.duration }}</span></li>
-                    <li><strong>Price</strong><span>{{ package.price_display }}</span></li>
-                </ul>
-                {% if package.highlight_lines %}
-                <h4>Highlights</h4>
-                <ul class="package-highlights">
-                    {% for item in package.highlight_lines %}
-                    <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
-                    Book on WhatsApp
-                </a>
-                <button type="button" class="btn btn-outline btn-block" data-open-quote>Get a custom quote</button>
-            </div>
-        </aside>
     </div>
 </section>
 
+<section class="section pkg-body">
+    <div class="container">
+        {% if gallery|length > 1 %}
+        <div class="pkg-gallery">
+            <div class="pkg-gallery-main">
+                <img src="{{ gallery.0.url }}" alt="{{ gallery.0.caption|default:package.name }}" id="pkg-gallery-main-img">
+            </div>
+            <div class="pkg-gallery-thumbs">
+                {% for item in gallery %}
+                <button type="button" class="pkg-gallery-thumb{% if forloop.first %} active{% endif %}" data-gallery-src="{{ item.url }}" data-gallery-alt="{{ item.caption|default:package.name }}">
+                    <img src="{{ item.url }}" alt="{{ item.caption|default:package.name }}" loading="lazy">
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+        {% elif gallery %}
+        <div class="pkg-gallery-single">
+            <img src="{{ gallery.0.url }}" alt="{{ gallery.0.caption|default:package.name }}">
+        </div>
+        {% endif %}
+
+        <div class="pkg-layout">
+            <div class="pkg-main">
+                <article class="pkg-panel">
+                    <h2>About this package</h2>
+                    <div class="pkg-prose">
+                        {% if package.full_description %}
+                        {{ package.full_description|linebreaks }}
+                        {% else %}
+                        {{ package.short_description|linebreaks }}
+                        {% endif %}
+                    </div>
+                </article>
+
+                {% if package.itinerary_lines %}
+                <article class="pkg-panel">
+                    <h2>Day-by-day itinerary</h2>
+                    <ol class="pkg-itinerary">
+                        {% for day in package.itinerary_lines %}
+                        <li>
+                            <span class="pkg-day-num">{{ forloop.counter }}</span>
+                            <span class="pkg-day-text">{{ day }}</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </article>
+                {% endif %}
+            </div>
+
+            <aside class="pkg-sidebar">
+                <div class="pkg-booking-card">
+                    <p class="pkg-booking-price">{{ package.price_display }}</p>
+                    <p class="pkg-booking-sub">per person · starting price</p>
+
+                    <ul class="pkg-facts">
+                        <li>
+                            <span class="pkg-fact-label">Destination</span>
+                            <span class="pkg-fact-value">{{ package.destination }}</span>
+                        </li>
+                        <li>
+                            <span class="pkg-fact-label">Duration</span>
+                            <span class="pkg-fact-value">{{ package.duration }}</span>
+                        </li>
+                    </ul>
+
+                    {% if package.highlight_lines %}
+                    <div class="pkg-highlights-block">
+                        <h3>What&apos;s included</h3>
+                        <ul class="pkg-highlights">
+                            {% for item in package.highlight_lines %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
+                        Book on WhatsApp
+                    </a>
+                    <button type="button" class="btn btn-primary btn-block" data-open-quote data-quote-to="{{ package.destination }}">
+                        Get a custom quote
+                    </button>
+                    <p class="pkg-booking-note">Fast response on WhatsApp · personalized planning</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<div class="pkg-mobile-bar" aria-label="Quick booking">
+    <button type="button" class="btn btn-outline" data-open-quote data-quote-to="{{ package.destination }}">Get quote</button>
+    <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Book now</a>
+</div>
+
 {% if related_packages %}
-<section class="section section-compact packages-related-section">
+<section class="section pkg-related">
     <div class="container">
         <h2 class="section-title-tui">You may also like</h2>
         <div class="packages-grid packages-grid-page">
@@ -95,4 +142,19 @@
     </div>
 </section>
 {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('.pkg-gallery-thumb').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        var main = document.getElementById('pkg-gallery-main-img');
+        if (!main) return;
+        main.src = btn.dataset.gallerySrc;
+        main.alt = btn.dataset.galleryAlt || '';
+        document.querySelectorAll('.pkg-gallery-thumb').forEach(function (t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+    });
+});
+</script>
 {% endblock %}

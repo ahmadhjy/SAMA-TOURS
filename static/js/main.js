@@ -105,38 +105,50 @@
     // Quote request modal → WhatsApp
     const quoteModal = document.getElementById('quote-modal');
     const quoteForm = document.getElementById('quote-form');
+    const quoteToInput = document.getElementById('quote-to');
     const whatsappNumber = document.body.dataset.whatsappNumber || '96176832813';
 
-    function openQuoteModal() {
+    function openQuoteModal(trigger) {
         if (!quoteModal) return;
+        if (trigger && trigger.dataset.quoteTo && quoteToInput) {
+            quoteToInput.value = trigger.dataset.quoteTo;
+        }
         quoteModal.classList.add('open');
         quoteModal.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
-        const firstInput = quoteForm && quoteForm.querySelector('input:not([type="number"])');
-        if (firstInput) firstInput.focus();
+        const firstInput = quoteForm && quoteForm.querySelector('#quote-from');
+        if (firstInput) {
+            setTimeout(function () { firstInput.focus(); }, 50);
+        }
     }
 
     function closeQuoteModal() {
         if (!quoteModal) return;
         quoteModal.classList.remove('open');
         quoteModal.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('modal-open');
         document.body.classList.remove('modal-open');
     }
 
-    document.querySelectorAll('[data-open-quote]').forEach((btn) => {
-        btn.addEventListener('click', openQuoteModal);
+    document.addEventListener('click', function (e) {
+        const opener = e.target.closest('[data-open-quote]');
+        if (opener) {
+            e.preventDefault();
+            openQuoteModal(opener);
+            return;
+        }
+        if (e.target.closest('[data-close-quote]')) {
+            e.preventDefault();
+            closeQuoteModal();
+        }
     });
 
-    if (quoteModal) {
-        quoteModal.querySelectorAll('[data-close-quote]').forEach((el) => {
-            el.addEventListener('click', closeQuoteModal);
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && quoteModal.classList.contains('open')) {
-                closeQuoteModal();
-            }
-        });
-    }
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && quoteModal && quoteModal.classList.contains('open')) {
+            closeQuoteModal();
+        }
+    });
 
     const dateInput = document.getElementById('quote-date');
     if (dateInput) {
