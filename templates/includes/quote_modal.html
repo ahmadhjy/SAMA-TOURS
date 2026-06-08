@@ -1,53 +1,252 @@
-<div class="modal" id="quote-modal" aria-hidden="true" role="dialog" aria-labelledby="quote-modal-title">
-    <div class="modal-backdrop" data-close-quote></div>
-    <div class="modal-dialog">
-        <button type="button" class="modal-close" data-close-quote aria-label="Close">&times;</button>
-        <h2 id="quote-modal-title" class="modal-title">Get a Travel Quote</h2>
-        <p class="modal-subtitle">Fill in your trip details and we will open WhatsApp with your request ready to send.</p>
+<style>
+#quote-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+#quote-modal.is-open { display: flex !important; }
+#quote-modal .quote-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    z-index: 1;
+}
+#quote-modal .quote-dialog {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+}
+#quote-modal .quote-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    font-size: 1.35rem;
+    cursor: pointer;
+    line-height: 1;
+    color: #64748b;
+}
+#quote-modal h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.35rem;
+    color: #172a51;
+    padding-right: 2rem;
+}
+#quote-modal .quote-lead {
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+#quote-modal label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #1e293b;
+}
+#quote-modal input,
+#quote-modal select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    margin-bottom: 0.85rem;
+    font-family: inherit;
+}
+#quote-modal .quote-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+#quote-modal .quote-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+#quote-modal .quote-row-2 > div,
+#quote-modal .quote-row-3 > div { min-width: 0; }
+#quote-modal .quote-submit {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0.85rem 1rem;
+    border: none;
+    border-radius: 50px;
+    background: #25d366;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+#quote-modal .quote-submit:hover { filter: brightness(1.05); }
+html.quote-modal-open,
+body.quote-modal-open { overflow: hidden !important; }
+@media (max-width: 540px) {
+    #quote-modal .quote-row-2,
+    #quote-modal .quote-row-3 { grid-template-columns: 1fr; }
+}
+</style>
 
-        <form id="quote-form" class="quote-form" novalidate>
-            <div class="form-row form-row-2">
-                <div class="form-field">
+<div id="quote-modal" aria-hidden="true" role="dialog" aria-labelledby="quote-modal-title">
+    <div class="quote-backdrop" data-close-quote></div>
+    <div class="quote-dialog">
+        <button type="button" class="quote-close" data-close-quote aria-label="Close">&times;</button>
+        <h2 id="quote-modal-title">Get a Travel Quote</h2>
+        <p class="quote-lead">Fill in your trip details — we&apos;ll open WhatsApp with your request ready to send.</p>
+
+        <form id="quote-form">
+            <div class="quote-row-2">
+                <div>
                     <label for="quote-from">From</label>
-                    <input type="text" id="quote-from" name="from" list="country-list" value="Lebanon" required autocomplete="off" placeholder="Departure country">
+                    <select id="quote-from" name="from" required>
+                        {% for country in TRAVEL_COUNTRIES %}
+                        <option value="{{ country }}"{% if country == 'Lebanon' %} selected{% endif %}>{{ country }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="form-field">
+                <div>
                     <label for="quote-to">To</label>
-                    <input type="text" id="quote-to" name="to" list="country-list" required autocomplete="off" placeholder="Destination country">
+                    <select id="quote-to" name="to" required>
+                        <option value="" disabled selected>Select destination</option>
+                        {% for country in TRAVEL_COUNTRIES %}
+                        <option value="{{ country }}">{{ country }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
 
-            <datalist id="country-list">
-                {% for country in TRAVEL_COUNTRIES %}
-                <option value="{{ country }}"></option>
-                {% endfor %}
-            </datalist>
+            <label for="quote-date">Traveling date</label>
+            <input type="date" id="quote-date" name="travel_date" required>
 
-            <div class="form-field">
-                <label for="quote-date">Traveling date</label>
-                <input type="date" id="quote-date" name="travel_date" required>
-            </div>
-
-            <div class="form-row form-row-3">
-                <div class="form-field">
+            <div class="quote-row-3">
+                <div>
                     <label for="quote-adults">Adults</label>
                     <input type="number" id="quote-adults" name="adults" min="0" max="20" value="2" required>
                 </div>
-                <div class="form-field">
+                <div>
                     <label for="quote-children">Children</label>
                     <input type="number" id="quote-children" name="children" min="0" max="20" value="0">
                 </div>
-                <div class="form-field">
+                <div>
                     <label for="quote-infants">Infants</label>
                     <input type="number" id="quote-infants" name="infants" min="0" max="10" value="0">
                 </div>
             </div>
 
-            <p class="form-hint">At least one traveler (adult, child, or infant) is required.</p>
-
-            <button type="submit" class="btn btn-whatsapp btn-lg btn-block">
-                Send quote request on WhatsApp
-            </button>
+            <button type="submit" class="quote-submit">Send on WhatsApp</button>
         </form>
     </div>
 </div>
+
+<script>
+(function () {
+    var modal = document.getElementById('quote-modal');
+    var form = document.getElementById('quote-form');
+    var toSelect = document.getElementById('quote-to');
+    var dateInput = document.getElementById('quote-date');
+    var waNum = document.body.getAttribute('data-whatsapp-number') || '96176832813';
+
+    if (!modal || !form) return;
+
+    if (dateInput) {
+        dateInput.min = new Date().toISOString().split('T')[0];
+    }
+
+    function openModal(trigger) {
+        if (trigger && trigger.getAttribute('data-quote-to') && toSelect) {
+            var dest = trigger.getAttribute('data-quote-to');
+            var parts = dest.split(',');
+            var country = parts.length > 1 ? parts[parts.length - 1].trim() : dest.trim();
+            for (var i = 0; i < toSelect.options.length; i++) {
+                if (toSelect.options[i].value === country || toSelect.options[i].value === dest) {
+                    toSelect.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('quote-modal-open');
+        document.body.classList.add('quote-modal-open');
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('quote-modal-open');
+        document.body.classList.remove('quote-modal-open');
+    }
+
+    document.addEventListener('click', function (e) {
+        var opener = e.target.closest('[data-open-quote]');
+        if (opener) {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal(opener);
+            return;
+        }
+        if (e.target.closest('[data-close-quote]')) {
+            e.preventDefault();
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var from = document.getElementById('quote-from').value;
+        var to = toSelect.value;
+        var travelDate = dateInput.value;
+        var adults = parseInt(document.getElementById('quote-adults').value, 10) || 0;
+        var children = parseInt(document.getElementById('quote-children').value, 10) || 0;
+        var infants = parseInt(document.getElementById('quote-infants').value, 10) || 0;
+
+        if (!from || !to || !travelDate) return;
+        if (adults + children + infants < 1) {
+            alert('Please add at least one traveler.');
+            return;
+        }
+
+        var parts = [];
+        if (adults) parts.push(adults + ' adult' + (adults !== 1 ? 's' : ''));
+        if (children) parts.push(children + ' child' + (children !== 1 ? 'ren' : ''));
+        if (infants) parts.push(infants + ' infant' + (infants !== 1 ? 's' : ''));
+
+        var d = new Date(travelDate + 'T12:00:00');
+        var formatted = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+        var msg = 'Hello Sama Tours! I would like a travel quote.\n\n'
+            + 'From: ' + from + '\n'
+            + 'To: ' + to + '\n'
+            + 'Travel date: ' + formatted + '\n'
+            + 'Travelers: ' + parts.join(', ') + '\n\n'
+            + 'Thank you!';
+
+        window.open('https://wa.me/' + waNum + '?text=' + encodeURIComponent(msg), '_blank');
+        closeModal();
+    });
+})();
+</script>

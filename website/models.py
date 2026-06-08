@@ -1,4 +1,6 @@
 from decimal import Decimal
+import re
+
 from django.db import models
 from django.utils.text import slugify
 
@@ -86,6 +88,38 @@ class TravelPackage(models.Model):
 
     def itinerary_lines(self):
         return [line.strip() for line in self.itinerary.splitlines() if line.strip()]
+
+    def display_itinerary_lines(self):
+        """Return admin itinerary or sensible day-by-day defaults from duration."""
+        lines = self.itinerary_lines()
+        if lines:
+            return lines
+
+        match = re.search(r'(\d+)\s*Days?', self.duration or '', re.IGNORECASE)
+        day_count = int(match.group(1)) if match else 5
+        day_count = max(1, min(day_count, 14))
+
+        templates = [
+            'Arrival, airport transfer & hotel check-in',
+            'Guided city tour & iconic landmarks',
+            'Free day for shopping or optional excursions',
+            'Cultural experiences & local cuisine',
+            'Scenic day trip outside the city',
+            'Leisure day — beach, spa or relaxation',
+            'Adventure activity or nature excursion',
+            'Departure & transfer to the airport',
+        ]
+
+        result = []
+        for i in range(day_count):
+            if i == 0:
+                text = templates[0]
+            elif i == day_count - 1 and day_count > 1:
+                text = templates[-1]
+            else:
+                text = templates[min(i, len(templates) - 2)]
+            result.append(f'Day {i + 1}: {text}')
+        return result
 
     def highlight_lines(self):
         return [line.strip() for line in self.highlights.splitlines() if line.strip()]

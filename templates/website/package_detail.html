@@ -2,130 +2,272 @@
 
 {% block title %}{{ package.name }}{% endblock %}
 
+{% block extra_head %}
+<style>
+/* Package detail — inline so layout works even if main.css cache is stale */
+.pkg-page-hero {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    padding: calc(38px + 72px + 2rem) 0 2.5rem;
+    overflow: hidden;
+    background: #172a51;
+    box-sizing: border-box;
+}
+.pkg-page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+.pkg-page-hero__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,30,58,.3) 0%, rgba(13,30,58,.92) 100%);
+}
+.pkg-page-hero__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    color: #fff;
+}
+.pkg-page-hero__crumb {
+    font-size: 0.82rem;
+    margin-bottom: 1.25rem;
+    color: rgba(255,255,255,.8);
+}
+.pkg-page-hero__crumb a { color: #fff; text-decoration: none; }
+.pkg-page-hero__tag {
+    display: inline-block;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    background: rgba(255,255,255,.15);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 0.65rem;
+}
+.pkg-page-hero__inner h1 {
+    color: #fff;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.85rem;
+}
+.pkg-page-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+}
+.pkg-page-hero__price { font-weight: 700; color: #b8d4ef; font-size: 1.1rem; }
+.pkg-page-hero__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+.pkg-page-body {
+    width: 100%;
+    background: #f8fafc;
+    padding: 2.5rem 0 3rem;
+    box-sizing: border-box;
+}
+.pkg-page-body__inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+}
+.pkg-page-cover {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    aspect-ratio: 21/9;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.pkg-page-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pkg-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+    align-items: start;
+}
+.pkg-page-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.pkg-page-card h2 {
+    font-size: 1.2rem;
+    color: #172a51;
+    margin: 0 0 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.pkg-page-card p, .pkg-page-card li { color: #64748b; line-height: 1.65; }
+.pkg-page-itin { list-style: none; padding: 0; margin: 0; }
+.pkg-page-itin li {
+    display: flex;
+    gap: 0.85rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.pkg-page-itin li:last-child { border-bottom: none; }
+.pkg-page-itin__num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #1a3c6b;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pkg-page-side {
+    position: sticky;
+    top: 120px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.pkg-page-side__price {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #172a51;
+    margin: 0;
+}
+.pkg-page-side__sub { font-size: 0.8rem; color: #64748b; margin: 0.2rem 0 1rem; }
+.pkg-page-side .btn { width: 100%; margin-top: 0.5rem; text-align: center; box-sizing: border-box; }
+.pkg-page-side ul { list-style: none; padding: 0; margin: 0 0 1rem; font-size: 0.9rem; }
+.pkg-page-side li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    color: #64748b;
+}
+.pkg-page-side li span:last-child { font-weight: 600; color: #1e293b; }
+.pkg-page-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 800;
+    padding: 0.75rem 1rem;
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    gap: 0.5rem;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.08);
+}
+.pkg-page-bar .btn { flex: 1; text-align: center; }
+@media (max-width: 900px) {
+    .pkg-page-grid { grid-template-columns: 1fr; }
+    .pkg-page-side { position: static; }
+}
+@media (max-width: 768px) {
+    .pkg-page-bar { display: flex; }
+    .pkg-page-body { padding-bottom: 5rem; }
+    .whatsapp-float { bottom: 5rem !important; }
+    .pkg-page-cover { aspect-ratio: 16/10; }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<section class="pkg-hero">
+<section class="pkg-page-hero">
     {% if package.image_url %}
-    <div class="pkg-hero-bg" style="background-image: url('{{ package.image_url }}');"></div>
+    <div class="pkg-page-hero__bg" style="background-image: url('{{ package.image_url }}');"></div>
     {% endif %}
-    <div class="pkg-hero-overlay"></div>
-    <div class="container pkg-hero-inner">
-        <nav class="pkg-breadcrumb" aria-label="Breadcrumb">
-            <a href="{% url 'website:home' %}">Home</a>
-            <span aria-hidden="true">/</span>
-            <a href="{% url 'website:packages' %}">Packages</a>
-            <span aria-hidden="true">/</span>
-            <span>{{ package.name }}</span>
-        </nav>
-        <div class="pkg-hero-bottom">
-            <div class="pkg-hero-text">
-                <span class="pkg-chip">{{ package.destination }}</span>
-                <h1>{{ package.name }}</h1>
-                <div class="pkg-meta-row">
-                    <span class="pkg-meta-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        {{ package.duration }}
-                    </span>
-                    <span class="pkg-meta-item pkg-meta-price">{{ package.price_display }}</span>
-                </div>
-            </div>
-            <div class="pkg-hero-actions">
-                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
-                <button type="button" class="btn btn-outline-light btn-lg" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
-            </div>
+    <div class="pkg-page-hero__shade"></div>
+    <div class="pkg-page-hero__inner">
+        <div class="pkg-page-hero__crumb">
+            <a href="{% url 'website:home' %}">Home</a> /
+            <a href="{% url 'website:packages' %}">Packages</a> /
+            {{ package.name }}
+        </div>
+        <span class="pkg-page-hero__tag">{{ package.destination }}</span>
+        <h1>{{ package.name }}</h1>
+        <div class="pkg-page-hero__meta">
+            <span>{{ package.duration }}</span>
+            <span class="pkg-page-hero__price">{{ package.price_display }}</span>
+        </div>
+        <div class="pkg-page-hero__btns">
+            <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+            <button type="button" class="btn btn-outline-light btn-lg" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
         </div>
     </div>
 </section>
 
-<section class="section pkg-body">
-    <div class="container">
-        {% if gallery|length > 1 %}
-        <div class="pkg-gallery">
-            <div class="pkg-gallery-main">
-                <img src="{{ gallery.0.url }}" alt="{{ gallery.0.caption|default:package.name }}" id="pkg-gallery-main-img">
-            </div>
-            <div class="pkg-gallery-thumbs">
-                {% for item in gallery %}
-                <button type="button" class="pkg-gallery-thumb{% if forloop.first %} active{% endif %}" data-gallery-src="{{ item.url }}" data-gallery-alt="{{ item.caption|default:package.name }}">
-                    <img src="{{ item.url }}" alt="{{ item.caption|default:package.name }}" loading="lazy">
-                </button>
-                {% endfor %}
-            </div>
-        </div>
-        {% elif gallery %}
-        <div class="pkg-gallery-single">
-            <img src="{{ gallery.0.url }}" alt="{{ gallery.0.caption|default:package.name }}">
+<section class="pkg-page-body">
+    <div class="pkg-page-body__inner">
+        {% if package.image_url %}
+        <div class="pkg-page-cover">
+            <img src="{{ package.image_url }}" alt="{{ package.name }}">
         </div>
         {% endif %}
 
-        <div class="pkg-layout">
-            <div class="pkg-main">
-                <article class="pkg-panel">
+        <div class="pkg-page-grid">
+            <div>
+                <article class="pkg-page-card">
                     <h2>About this package</h2>
-                    <div class="pkg-prose">
-                        {% if package.full_description %}
-                        {{ package.full_description|linebreaks }}
-                        {% else %}
-                        {{ package.short_description|linebreaks }}
-                        {% endif %}
-                    </div>
+                    {% if package.full_description %}
+                    {{ package.full_description|linebreaks }}
+                    {% else %}
+                    {{ package.short_description|linebreaks }}
+                    {% endif %}
                 </article>
 
-                {% if package.itinerary_lines %}
-                <article class="pkg-panel">
+                <article class="pkg-page-card">
                     <h2>Day-by-day itinerary</h2>
-                    <ol class="pkg-itinerary">
-                        {% for day in package.itinerary_lines %}
+                    <ol class="pkg-page-itin">
+                        {% for day in package.display_itinerary_lines %}
                         <li>
-                            <span class="pkg-day-num">{{ forloop.counter }}</span>
-                            <span class="pkg-day-text">{{ day }}</span>
+                            <span class="pkg-page-itin__num">{{ forloop.counter }}</span>
+                            <span>{{ day }}</span>
                         </li>
                         {% endfor %}
                     </ol>
                 </article>
-                {% endif %}
             </div>
 
-            <aside class="pkg-sidebar">
-                <div class="pkg-booking-card">
-                    <p class="pkg-booking-price">{{ package.price_display }}</p>
-                    <p class="pkg-booking-sub">per person · starting price</p>
-
-                    <ul class="pkg-facts">
-                        <li>
-                            <span class="pkg-fact-label">Destination</span>
-                            <span class="pkg-fact-value">{{ package.destination }}</span>
-                        </li>
-                        <li>
-                            <span class="pkg-fact-label">Duration</span>
-                            <span class="pkg-fact-value">{{ package.duration }}</span>
-                        </li>
-                    </ul>
-
-                    {% if package.highlight_lines %}
-                    <div class="pkg-highlights-block">
-                        <h3>What&apos;s included</h3>
-                        <ul class="pkg-highlights">
-                            {% for item in package.highlight_lines %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-
-                    <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
-                        Book on WhatsApp
-                    </a>
-                    <button type="button" class="btn btn-primary btn-block" data-open-quote data-quote-to="{{ package.destination }}">
-                        Get a custom quote
-                    </button>
-                    <p class="pkg-booking-note">Fast response on WhatsApp · personalized planning</p>
+            <aside class="pkg-page-side">
+                <p class="pkg-page-side__price">{{ package.price_display }}</p>
+                <p class="pkg-page-side__sub">Starting price per person</p>
+                <ul>
+                    <li><span>Destination</span><span>{{ package.destination }}</span></li>
+                    <li><span>Duration</span><span>{{ package.duration }}</span></li>
+                </ul>
+                {% if package.highlight_lines %}
+                <div style="margin-bottom:1rem;font-size:0.88rem;color:#64748b;">
+                    {% for item in package.highlight_lines %}
+                    <p style="margin:0.35rem 0;">✓ {{ item }}</p>
+                    {% endfor %}
                 </div>
+                {% endif %}
+                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+                <button type="button" class="btn btn-primary" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
             </aside>
         </div>
     </div>
 </section>
 
-<div class="pkg-mobile-bar" aria-label="Quick booking">
+<div class="pkg-page-bar">
     <button type="button" class="btn btn-outline" data-open-quote data-quote-to="{{ package.destination }}">Get quote</button>
     <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Book now</a>
 </div>
@@ -135,26 +277,11 @@
     <div class="container">
         <h2 class="section-title-tui">You may also like</h2>
         <div class="packages-grid packages-grid-page">
-            {% for package in related_packages %}
-                {% include 'includes/package_card.html' %}
+            {% for related in related_packages %}
+                {% include 'includes/package_card.html' with package=related %}
             {% endfor %}
         </div>
     </div>
 </section>
 {% endif %}
-{% endblock %}
-
-{% block extra_js %}
-<script>
-document.querySelectorAll('.pkg-gallery-thumb').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        var main = document.getElementById('pkg-gallery-main-img');
-        if (!main) return;
-        main.src = btn.dataset.gallerySrc;
-        main.alt = btn.dataset.galleryAlt || '';
-        document.querySelectorAll('.pkg-gallery-thumb').forEach(function (t) { t.classList.remove('active'); });
-        btn.classList.add('active');
-    });
-});
-</script>
 {% endblock %}
