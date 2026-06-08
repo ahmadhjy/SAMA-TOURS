@@ -1,6 +1,8 @@
 from decimal import Decimal
 from django.db import models
-from urllib.parse import quote
+from django.utils.text import slugify
+
+from .whatsapp import package_booking_message, whatsapp_url
 
 
 def package_image_path(instance, filename):
@@ -8,8 +10,14 @@ def package_image_path(instance, filename):
     return f'package_images/{safe_name}_{filename}'
 
 
+def package_gallery_path(instance, filename):
+    pkg = instance.package.name.replace(' ', '_')[:30]
+    return f'package_gallery/{pkg}_{filename}'
+
+
 class TravelPackage(models.Model):
     name = models.CharField(max_length=200, help_text='Package title shown on the website')
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
     destination = models.CharField(max_length=120, help_text='Location, e.g. Dubai, UAE')
     duration = models.CharField(max_length=80, help_text='e.g. 7 Days / 6 Nights')
     starting_price = models.DecimalField(
@@ -18,6 +26,18 @@ class TravelPackage(models.Model):
         help_text='Starting price in USD (used for display and filtering)',
     )
     short_description = models.TextField(help_text='Short description on the package card')
+    full_description = models.TextField(
+        blank=True,
+        help_text='Full description on the package detail page',
+    )
+    itinerary = models.TextField(
+        blank=True,
+        help_text='One day per line, e.g. "Day 1: Arrival and hotel check-in"',
+    )
+    highlights = models.TextField(
+        blank=True,
+        help_text='One highlight per line (shown on detail page)',
+    )
     featured_image = models.ImageField(
         upload_to=package_image_path,
         blank=True,
@@ -40,6 +60,17 @@ class TravelPackage(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.name) or 'package'
+            slug = base
+            counter = 1
+            while TravelPackage.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{counter}'
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
     @property
     def image_url(self):
         if self.featured_image:
@@ -53,9 +84,51 @@ class TravelPackage(models.Model):
             return f'From ${int(amount):,}'
         return f'From ${amount:,.2f}'
 
+    def itinerary_lines(self):
+        return [line.strip() for line in self.itinerary.splitlines() if line.strip()]
+
+    def highlight_lines(self):
+        return [line.strip() for line in self.highlights.splitlines() if line.strip()]
+
+    def gallery_items(self):
+        items = []
+        for img in self.gallery_images.all():
+            url = img.image_url
+            if url:
+                items.append({'url': url, 'caption': img.caption})
+        if not items and self.image_url:
+            items.append({'url': self.image_url, 'caption': self.name})
+        return items
+
     def whatsapp_booking_url(self):
-        message = f"Hello, I'm interested in the package: {self.name}"
-        return f'https://wa.me/96176832813?text={quote(message)}'
+        message = package_booking_message(
+            self.name, self.destination, self.duration, self.price_display,
+        )
+        return whatsapp_url(message)
+
+
+class PackageImage(models.Model):
+    package = models.ForeignKey(
+        TravelPackage,
+        on_delete=models.CASCADE,
+        related_name='gallery_images',
+    )
+    image = models.ImageField(upload_to=package_gallery_path, blank=True, null=True)
+    external_image_url = models.URLField(max_length=500, blank=True)
+    caption = models.CharField(max_length=200, blank=True)
+    display_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['display_order']
+
+    def __str__(self):
+        return self.caption or f'Image for {self.package.name}'
+
+    @property
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return self.external_image_url or ''
 
 
 class Destination(models.Model):

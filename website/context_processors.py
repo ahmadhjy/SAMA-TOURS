@@ -1,5 +1,7 @@
 from urllib.parse import quote
 
+from .countries import TRAVEL_COUNTRIES
+
 
 def site_contact(request):
     whatsapp_number = '96176832813'
@@ -10,6 +12,7 @@ def site_contact(request):
         'SITE_PHONE_ALT': '+961 25 954 473',
         'SITE_WHATSAPP': '+961 76 832 813',
         'SITE_WHATSAPP_NUMBER': whatsapp_number,
+        'TRAVEL_COUNTRIES': TRAVEL_COUNTRIES,
         'SITE_ADDRESS': (
             'Sama Tours, Gallerie Semaan Crossroad, Hazmieh Highway, '
             'Hyundai Car Showroom Building, 1st Floor, Hazmieh'

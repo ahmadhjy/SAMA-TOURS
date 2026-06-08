@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
-<body>
+<body data-whatsapp-number="{{ SITE_WHATSAPP_NUMBER }}">
     {% include 'includes/top_bar.html' %}
     {% include 'includes/header.html' %}
     <main>{% block content %}{% endblock %}</main>
     {% include 'includes/footer.html' %}
     {% include 'includes/whatsapp_float.html' %}
+    {% include 'includes/quote_modal.html' %}
     <script src="{% static 'js/main.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
 </body>

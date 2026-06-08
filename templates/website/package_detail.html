@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ package.name }}{% endblock %}
+
+{% block content %}
+<section class="package-detail-hero">
+    <div class="package-detail-hero-bg" style="background-image: url('{{ package.image_url }}');"></div>
+    <div class="package-detail-hero-overlay"></div>
+    <div class="container package-detail-hero-content">
+        <a href="{% url 'website:packages' %}" class="package-back-link">← All packages</a>
+        <span class="package-detail-destination">{{ package.destination }}</span>
+        <h1>{{ package.name }}</h1>
+        <div class="package-detail-meta">
+            <span>{{ package.duration }}</span>
+            <span class="package-detail-price">{{ package.price_display }}</span>
+        </div>
+        <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">
+            Book on WhatsApp
+        </a>
+    </div>
+</section>
+
+<section class="section package-detail-section">
+    <div class="container package-detail-grid">
+        <div class="package-detail-main">
+            {% if gallery %}
+            <div class="package-gallery">
+                <h2 class="section-title-tui">Gallery</h2>
+                <div class="package-gallery-grid">
+                    {% for item in gallery %}
+                    <figure class="package-gallery-item">
+                        <img src="{{ item.url }}" alt="{{ item.caption|default:package.name }}" loading="lazy">
+                        {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+                    </figure>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="package-about">
+                <h2 class="section-title-tui">About this package</h2>
+                {% if package.full_description %}
+                <div class="package-prose">{{ package.full_description|linebreaks }}</div>
+                {% else %}
+                <div class="package-prose">{{ package.short_description|linebreaks }}</div>
+                {% endif %}
+            </div>
+
+            {% if package.itinerary_lines %}
+            <div class="package-itinerary">
+                <h2 class="section-title-tui">Itinerary</h2>
+                <ol class="itinerary-list">
+                    {% for day in package.itinerary_lines %}
+                    <li>{{ day }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            {% endif %}
+        </div>
+
+        <aside class="package-detail-sidebar">
+            <div class="package-sidebar-card">
+                <h3>Package summary</h3>
+                <ul class="package-summary-list">
+                    <li><strong>Destination</strong><span>{{ package.destination }}</span></li>
+                    <li><strong>Duration</strong><span>{{ package.duration }}</span></li>
+                    <li><strong>Price</strong><span>{{ package.price_display }}</span></li>
+                </ul>
+                {% if package.highlight_lines %}
+                <h4>Highlights</h4>
+                <ul class="package-highlights">
+                    {% for item in package.highlight_lines %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer">
+                    Book on WhatsApp
+                </a>
+                <button type="button" class="btn btn-outline btn-block" data-open-quote>Get a custom quote</button>
+            </div>
+        </aside>
+    </div>
+</section>
+
+{% if related_packages %}
+<section class="section section-compact packages-related-section">
+    <div class="container">
+        <h2 class="section-title-tui">You may also like</h2>
+        <div class="packages-grid packages-grid-page">
+            {% for package in related_packages %}
+                {% include 'includes/package_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

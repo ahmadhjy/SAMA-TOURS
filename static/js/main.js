@@ -101,4 +101,85 @@
     const style = document.createElement('style');
     style.textContent = '.package-card.visible, .destination-card.visible, .destination-card-tui.visible, .promo-card.visible, .highlight-card.visible, .service-card.visible, .visa-card-link.visible, .why-card.visible { opacity: 1 !important; transform: translateY(0) !important; }';
     document.head.appendChild(style);
+
+    // Quote request modal → WhatsApp
+    const quoteModal = document.getElementById('quote-modal');
+    const quoteForm = document.getElementById('quote-form');
+    const whatsappNumber = document.body.dataset.whatsappNumber || '96176832813';
+
+    function openQuoteModal() {
+        if (!quoteModal) return;
+        quoteModal.classList.add('open');
+        quoteModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        const firstInput = quoteForm && quoteForm.querySelector('input:not([type="number"])');
+        if (firstInput) firstInput.focus();
+    }
+
+    function closeQuoteModal() {
+        if (!quoteModal) return;
+        quoteModal.classList.remove('open');
+        quoteModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('[data-open-quote]').forEach((btn) => {
+        btn.addEventListener('click', openQuoteModal);
+    });
+
+    if (quoteModal) {
+        quoteModal.querySelectorAll('[data-close-quote]').forEach((el) => {
+            el.addEventListener('click', closeQuoteModal);
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && quoteModal.classList.contains('open')) {
+                closeQuoteModal();
+            }
+        });
+    }
+
+    const dateInput = document.getElementById('quote-date');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const from = document.getElementById('quote-from').value.trim();
+            const to = document.getElementById('quote-to').value.trim();
+            const travelDate = document.getElementById('quote-date').value;
+            const adults = parseInt(document.getElementById('quote-adults').value, 10) || 0;
+            const children = parseInt(document.getElementById('quote-children').value, 10) || 0;
+            const infants = parseInt(document.getElementById('quote-infants').value, 10) || 0;
+
+            if (!from || !to || !travelDate) return;
+            if (adults + children + infants < 1) {
+                alert('Please add at least one traveler.');
+                return;
+            }
+
+            const travelers = [];
+            if (adults) travelers.push(adults + ' adult' + (adults !== 1 ? 's' : ''));
+            if (children) travelers.push(children + ' child' + (children !== 1 ? 'ren' : ''));
+            if (infants) travelers.push(infants + ' infant' + (infants !== 1 ? 's' : ''));
+
+            const formattedDate = new Date(travelDate + 'T12:00:00').toLocaleDateString('en-GB', {
+                day: 'numeric', month: 'long', year: 'numeric',
+            });
+
+            const message =
+                'Hello Sama Tours! I would like a travel quote.\n\n' +
+                'From: ' + from + '\n' +
+                'To: ' + to + '\n' +
+                'Travel date: ' + formattedDate + '\n' +
+                'Travelers: ' + travelers.join(', ') + '\n\n' +
+                'Thank you!';
+
+            const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+            window.open(url, '_blank', 'noopener,noreferrer');
+            closeQuoteModal();
+        });
+    }
 })();

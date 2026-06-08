@@ -1,7 +1,14 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import TravelPackage, Destination, VisaRequirement, Testimonial
+from .models import TravelPackage, PackageImage, Destination, VisaRequirement, Testimonial
+
+
+class PackageImageInline(admin.TabularInline):
+    model = PackageImage
+    extra = 1
+    fields = ('image', 'external_image_url', 'caption', 'display_order')
+    ordering = ('display_order',)
 
 
 @admin.register(TravelPackage)
@@ -11,17 +18,27 @@ class TravelPackageAdmin(admin.ModelAdmin):
         'is_featured', 'is_active', 'display_order',
     )
     list_filter = ('is_featured', 'is_active', 'destination')
-    search_fields = ('name', 'destination')
+    search_fields = ('name', 'destination', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
     list_editable = ('is_featured', 'is_active', 'display_order')
     ordering = ('display_order', 'name')
+    inlines = [PackageImageInline]
     fieldsets = (
         ('Package details', {
-            'fields': ('name', 'destination', 'duration', 'starting_price', 'short_description'),
-            'description': 'Fill in the basics. Book Now on the website opens WhatsApp automatically.',
+            'fields': (
+                'name', 'slug', 'destination', 'duration', 'starting_price',
+                'short_description',
+            ),
         }),
-        ('Image', {
+        ('Detail page content', {
+            'fields': ('full_description', 'highlights', 'itinerary'),
+            'description': (
+                'Highlights and itinerary: one item per line. '
+                'Itinerary example: "Day 1: Arrival and hotel check-in".'
+            ),
+        }),
+        ('Main image', {
             'fields': ('featured_image', 'featured_image_url'),
-            'description': 'Upload the main image, or paste an image URL.',
         }),
         ('Visibility', {
             'fields': ('is_featured', 'is_active', 'display_order'),

@@ -1,0 +1,53 @@
+<div class="modal" id="quote-modal" aria-hidden="true" role="dialog" aria-labelledby="quote-modal-title">
+    <div class="modal-backdrop" data-close-quote></div>
+    <div class="modal-dialog">
+        <button type="button" class="modal-close" data-close-quote aria-label="Close">&times;</button>
+        <h2 id="quote-modal-title" class="modal-title">Get a Travel Quote</h2>
+        <p class="modal-subtitle">Fill in your trip details and we will open WhatsApp with your request ready to send.</p>
+
+        <form id="quote-form" class="quote-form" novalidate>
+            <div class="form-row form-row-2">
+                <div class="form-field">
+                    <label for="quote-from">From</label>
+                    <input type="text" id="quote-from" name="from" list="country-list" value="Lebanon" required autocomplete="off" placeholder="Departure country">
+                </div>
+                <div class="form-field">
+                    <label for="quote-to">To</label>
+                    <input type="text" id="quote-to" name="to" list="country-list" required autocomplete="off" placeholder="Destination country">
+                </div>
+            </div>
+
+            <datalist id="country-list">
+                {% for country in TRAVEL_COUNTRIES %}
+                <option value="{{ country }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <div class="form-field">
+                <label for="quote-date">Traveling date</label>
+                <input type="date" id="quote-date" name="travel_date" required>
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-field">
+                    <label for="quote-adults">Adults</label>
+                    <input type="number" id="quote-adults" name="adults" min="0" max="20" value="2" required>
+                </div>
+                <div class="form-field">
+                    <label for="quote-children">Children</label>
+                    <input type="number" id="quote-children" name="children" min="0" max="20" value="0">
+                </div>
+                <div class="form-field">
+                    <label for="quote-infants">Infants</label>
+                    <input type="number" id="quote-infants" name="infants" min="0" max="10" value="0">
+                </div>
+            </div>
+
+            <p class="form-hint">At least one traveler (adult, child, or infant) is required.</p>
+
+            <button type="submit" class="btn btn-whatsapp btn-lg btn-block">
+                Send quote request on WhatsApp
+            </button>
+        </form>
+    </div>
+</div>

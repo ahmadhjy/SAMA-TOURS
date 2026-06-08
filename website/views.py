@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import TravelPackage, Destination, VisaRequirement, Testimonial
 from .package_filters import apply_package_filters, package_filter_context
@@ -40,6 +40,23 @@ def packages(request):
     return render(request, 'website/packages.html', {
         'packages': _filtered_packages(request),
         **package_filter_context(request),
+    })
+
+
+def package_detail(request, slug):
+    package = get_object_or_404(TravelPackage, slug=slug, is_active=True)
+    related = (
+        TravelPackage.objects.filter(is_active=True)
+        .exclude(pk=package.pk)
+        .filter(destination=package.destination)[:3]
+    )
+    if related.count() < 2:
+        related = TravelPackage.objects.filter(is_active=True).exclude(pk=package.pk)[:3]
+
+    return render(request, 'website/package_detail.html', {
+        'package': package,
+        'gallery': package.gallery_items(),
+        'related_packages': related,
     })
 
 
