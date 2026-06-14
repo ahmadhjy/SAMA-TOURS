@@ -164,4 +164,6 @@ cd ~/SAMA-TOURS && ./deploy/update.sh
 ## Custom domain (optional)
 
 Point `www.samatourslb.com` to the **website** web app only.  
-Update `DJANGO_ALLOWED_HOSTS` and `DJANGO_CSRF_TRUSTED_ORIGINS` in WSGI, then Reload.
+Full checklist: **[deploy/CUSTOM_DOMAIN.md](deploy/CUSTOM_DOMAIN.md)**
+
+Update `DJANGO_ALLOWED_HOSTS` and `DJANGO_CSRF_TRUSTED_ORIGINS` in WSGI (and `deploy/production.env`), then Reload.
