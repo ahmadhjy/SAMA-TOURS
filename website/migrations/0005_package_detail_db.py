@@ -1,6 +1,6 @@
 """Idempotent database changes for package detail fields (runs before 0004 state)."""
 
-from django.db import migrations
+from django.db import migrations, models
 from django.utils.text import slugify
 
 
@@ -79,7 +79,20 @@ def apply_postgres(apps, schema_editor):
         ''')
 
 
+def _sqlite_text_field(name):
+    field = models.TextField(blank=True, default='')
+    field.set_attributes_from_name(name)
+    return field
+
+
+def _sqlite_slug_field():
+    field = models.SlugField(max_length=220, blank=True, default='')
+    field.set_attributes_from_name('slug')
+    return field
+
+
 def apply_sqlite(apps, schema_editor):
+    """0005 runs before 0004 state — define fields explicitly, not via historical model."""
     TravelPackage = apps.get_model('website', 'TravelPackage')
 
     with schema_editor.connection.cursor() as cursor:
@@ -87,25 +100,17 @@ def apply_sqlite(apps, schema_editor):
         columns = {row[1] for row in cursor.fetchall()}
 
     if 'full_description' not in columns:
-        schema_editor.add_field(
-            TravelPackage, TravelPackage._meta.get_field('full_description'),
-        )
+        schema_editor.add_field(TravelPackage, _sqlite_text_field('full_description'))
     if 'highlights' not in columns:
-        schema_editor.add_field(
-            TravelPackage, TravelPackage._meta.get_field('highlights'),
-        )
+        schema_editor.add_field(TravelPackage, _sqlite_text_field('highlights'))
     if 'itinerary' not in columns:
-        schema_editor.add_field(
-            TravelPackage, TravelPackage._meta.get_field('itinerary'),
-        )
+        schema_editor.add_field(TravelPackage, _sqlite_text_field('itinerary'))
     if 'slug' not in columns:
-        schema_editor.add_field(
-            TravelPackage, TravelPackage._meta.get_field('slug'),
-        )
+        schema_editor.add_field(TravelPackage, _sqlite_slug_field())
         populate_slugs(apps, schema_editor)
-        field = TravelPackage._meta.get_field('slug')
-        field.unique = True
-        schema_editor.alter_field(TravelPackage, field, field, strict=False)
+        slug_field = _sqlite_slug_field()
+        slug_field.unique = True
+        schema_editor.alter_field(TravelPackage, _sqlite_slug_field(), slug_field, strict=False)
     else:
         populate_slugs(apps, schema_editor)
 
