@@ -30,13 +30,13 @@
             <div class="footer-social">
                 <h4>{% trans 'Follow Us' %}</h4>
                 <div class="social-links">
-                    <a href="{{ SITE_FACEBOOK }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-                    <a href="{{ SITE_INSTAGRAM }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    <a href="{{ SITE_FACEBOOK }}" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Facebook' %}">{% trans 'Facebook' %}</a>
+                    <a href="{{ SITE_INSTAGRAM }}" target="_blank" rel="noopener noreferrer" aria-label="{% trans 'Instagram' %}">{% trans 'Instagram' %}</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; {% now "Y" %} Sama Tours. {% trans 'All rights reserved.' %}</p>
+            <p>&copy; {% now "Y" %} {% trans 'Sama Tours' %}. {% trans 'All rights reserved.' %}</p>
         </div>
     </div>
 </footer>

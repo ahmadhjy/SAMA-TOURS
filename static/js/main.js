@@ -51,7 +51,11 @@
 
         function goTo(index) {
             current = (index + slides.length) % slides.length;
-            track.style.transform = 'translateX(-' + current * 100 + '%)';
+            const dir = document.documentElement.getAttribute('dir');
+            const offsetPercent = current * 100;
+            // In RTL, flex 'row' layout is start/end dependent, so we invert the translate direction.
+            const translateX = (dir === 'rtl') ? offsetPercent : -offsetPercent;
+            track.style.transform = 'translateX(' + translateX + '%)';
             dots.forEach((d, i) => d.classList.toggle('active', i === current));
         }
 

@@ -63,6 +63,12 @@ msgstr "Suivez-nous"
 msgid "All rights reserved."
 msgstr "Tous droits réservés."
 
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Instagram"
+msgstr "Instagram"
+
 msgid "Why book with Sama Tours"
 msgstr "Pourquoi réserver avec Sama Tours"
 
@@ -81,11 +87,14 @@ msgstr "Devis rapides et réservation facile"
 msgid "Visa Services"
 msgstr "Services de visa"
 
+msgid "Visa services"
+msgstr "Services de visa"
+
 msgid "Requirements & documentation"
 msgstr "Exigences et documentation"
 
 msgid "Affordable Packages"
-msgstr "Forfaits abordables"
+msgstr "Forfaits voyage abordables"
 
 msgid "Dream vacations within budget"
 msgstr "Vacances de rêve dans votre budget"

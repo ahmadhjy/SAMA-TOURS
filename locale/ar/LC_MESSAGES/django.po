@@ -25,10 +25,10 @@ msgid "Packages"
 msgstr "الباقات"
 
 msgid "Visa Requirements"
-msgstr "متطلبات التأشيرة"
+msgstr "متطلبات التأشيرات"
 
 msgid "Contact Us"
-msgstr "اتصل بنا"
+msgstr "تواصل معنا"
 
 msgid "Contact"
 msgstr "اتصل"
@@ -43,7 +43,7 @@ msgid "Sama Tours — Home"
 msgstr "سما تورز — الرئيسية"
 
 msgid "Mon – Sun, 9:00 – 18:00"
-msgstr "الإثنين – الأحد، 9:00 – 18:00"
+msgstr "الإثنين – الأحد، 9:00 صباحًا – 6:00 مساءً"
 
 msgid "WhatsApp"
 msgstr "واتساب"
@@ -52,43 +52,52 @@ msgid "Travel beyond your imagination, with Sama Tours!"
 msgstr "سافر أبعد من خيالك مع سما تورز!"
 
 msgid "Chat on WhatsApp"
-msgstr "تواصل معنا عبر واتساب"
+msgstr "تحدث معنا عبر واتساب"
 
 msgid "Quick Links"
 msgstr "روابط سريعة"
 
 msgid "Follow Us"
-msgstr "تابعنا"
+msgstr "تابعونا"
 
 msgid "All rights reserved."
 msgstr "جميع الحقوق محفوظة."
+
+msgid "Facebook"
+msgstr "فيسبوك"
+
+msgid "Instagram"
+msgstr "إنستغرام"
 
 msgid "Why book with Sama Tours"
 msgstr "لماذا تحجز مع سما تورز"
 
 msgid "Expert Travel Agents"
-msgstr "خبراء سفر محترفون"
+msgstr "خبراء سفر"
 
 msgid "Personal planning for every trip"
-msgstr "تخطيط شخصي لكل رحلة"
+msgstr "تخطيط شخصي يناسب كل رحلة"
 
 msgid "Book via WhatsApp"
-msgstr "الحجز عبر واتساب"
+msgstr "حجز سريع عبر واتساب"
 
 msgid "Fast quotes & easy booking"
-msgstr "عروض أسعار سريعة وحجز سهل"
+msgstr "عروض أسعار سريعة وحجز بسهولة"
 
 msgid "Visa Services"
-msgstr "خدمات التأشيرة"
+msgstr "خدمات التأشيرات"
+
+msgid "Visa services"
+msgstr "خدمات التأشيرات"
 
 msgid "Requirements & documentation"
-msgstr "المتطلبات والوثائق"
+msgstr "إرشاد كامل حول المتطلبات والمستندات"
 
 msgid "Affordable Packages"
 msgstr "باقات بأسعار مناسبة"
 
 msgid "Dream vacations within budget"
-msgstr "عطلات أحلام ضمن ميزانيتك"
+msgstr "عطلات مميزة ضمن ميزانيتك"
 
 msgid "View details"
 msgstr "عرض التفاصيل"
@@ -139,17 +148,17 @@ msgid "Up to $10,000"
 msgstr "حتى 10,000$"
 
 msgid "Your journey starts here"
-msgstr "انطلق في رحلتك من هنا"
+msgstr "رحلتك تبدأ من هنا"
 
 msgid "Explore the World with Sama Tours"
-msgstr "سافر إلى العالم مع سما تورز"
+msgstr "اكتشف العالم مع سما تورز"
 
 msgid ""
 "Book packages, plan custom trips, and get visa support — all with "
 "experienced travel experts by your side."
 msgstr ""
-"احجز باقاتك، خطّط لرحلات مخصّصة، واستفد من خدمات التأشيرات مع فريق خبراء "
-"السفر لدينا."
+"احجز باقات سفر جاهزة، خطّط رحلتك الخاصة، واحصل على دعم كامل في معاملات "
+"التأشيرة — مع فريق سفر خبير يرافقك في كل خطوة."
 
 msgid "Book Your Trip"
 msgstr "احجز رحلتك"
@@ -158,89 +167,90 @@ msgid "Get a Quote"
 msgstr "اطلب عرض سعر"
 
 msgid "Travel deals & inspiration"
-msgstr "عروض سفر ملهمة"
+msgstr "عروض سفر وإلهام لرحلتك القادمة"
 
 msgid "Handpicked offers to help you plan your next getaway"
-msgstr "عروض منتقاة بعناية لتخطيط عطلتك القادمة"
+msgstr "اختيارات مميزة تساعدك على التخطيط لعطلتك المقبلة"
 
 msgid "View all packages"
 msgstr "عرض كل الباقات"
 
 msgid "Popular"
-msgstr "شائع"
+msgstr "الأكثر طلبًا"
 
 msgid "Beach & Sun Escapes"
-msgstr "عطلات الشاطئ والشمس"
+msgstr "عروض الشواطئ والعطلات"
 
 msgid "Caribbean, Maldives & more — relax by the sea"
-msgstr "الكاريبي، المالديف والمزيد — استمتع بإجازة على البحر"
+msgstr "الكاريبي، المالديف والمزيد — استرخِ على أجمل الشواطئ"
 
 msgid "Discover deals"
 msgstr "اكتشف العروض"
 
 msgid "City breaks"
-msgstr "عطلات المدينة"
+msgstr "رحلات المدن"
 
 msgid "Europe & Beyond"
-msgstr "أوروبا وما بعدها"
+msgstr "أوروبا وما حولها"
 
 msgid "Paris, Dubai, Istanbul & iconic destinations"
-msgstr "باريس، دبي، إسطنبول ووجهات أيقونية"
+msgstr "باريس، دبي، إسطنبول ووجهات عالمية لا تُنسى"
 
 msgid "Country guides & PDF documents in one place"
-msgstr "أدلة الدول وملفات PDF في مكان واحد"
+msgstr "إرشادات حسب الدولة وملفات PDF في مكان واحد"
 
 msgid "View documents"
 msgstr "عرض المستندات"
 
 msgid "We love travel — discover top destinations"
-msgstr "نحب السفر — اكتشف أبرز الوجهات"
+msgstr "نحب السفر — اكتشف أجمل الوجهات"
 
 msgid "From beaches to cities, find your perfect holiday spot"
-msgstr "من الشواطئ إلى المدن، اختر وجهة عطلتك المثالية"
+msgstr "من الشواطئ الهادئة إلى المدن النابضة بالحياة، اختر الوجهة التي تناسبك"
 
 msgid "Book now"
 msgstr "احجز الآن"
 
 msgid "Affordable travel packages"
-msgstr "باقات سفر بأسعار مناسبة"
+msgstr "باقات سفر بأسعار مدروسة"
 
 msgid "Everyone deserves their dream vacation — browse and book on WhatsApp"
-msgstr "الجميع يستحق عطلتهم المثالية — تصفح واحجز عبر واتساب"
+msgstr "لأن كل شخص يستحق إجازة الأحلام — تصفح الباقات واحجز عبر واتساب"
 
 msgid "All packages"
 msgstr "كل الباقات"
 
 msgid "The Sama Tours promise"
-msgstr "وعدنا لكم في سما تورز"
+msgstr "وعد سما تورز"
 
 msgid "Everything you need for a worry-free holiday — from one trusted team"
-msgstr "كل ما تحتاجه لعطلة مريحة وآمنة — مع فريق واحد تثق به"
+msgstr "كل ما تحتاجه لعطلة مريحة — مع فريق واحد تثق به"
 
 msgid "All in one place"
 msgstr "كل شيء في مكان واحد"
 
 msgid ""
 "Flights, hotels, itineraries, insurance & local guides — planned together."
-msgstr "طيران، فنادق، برامج، تأمين ومرشدون محليون — بخطة واحدة متكاملة."
+msgstr ""
+"رحلات الطيران، الفنادق، البرامج، التأمين والمرشدون المحليون — بتنسيق كامل."
 
 msgid "Expert advice"
-msgstr "استشارة متخصصة"
+msgstr "استشارة خبيرة"
 
 msgid "Knowledgeable agents tailor every trip to your budget and preferences."
-msgstr "خبراؤنا يصمّمون كل رحلة وفق ميزانيتك وتفضيلاتك."
+msgstr "فريقنا يساعدك على اختيار الرحلة الأنسب لميزانيتك واهتماماتك."
 
 msgid "Always reachable"
-msgstr "نحن دائماً معك"
+msgstr "دائمًا بالقرب منك"
 
 msgid "Quick responses on WhatsApp and phone whenever you need us."
-msgstr "ردود سريعة على واتساب والهاتف عندما تحتاجنا."
+msgstr "ردود سريعة عبر واتساب والهاتف متى احتجت إلينا."
 
 msgid "Worldwide destinations"
 msgstr "وجهات حول العالم"
 
 msgid "Beaches, cities, honeymoons & group tours across the globe."
-msgstr "شواطئ، مدن، شهر عسل وجولات جماعية حول العالم."
+msgstr "شواطئ، مدن، شهر عسل، ورحلات جماعية إلى مختلف الوجهات."
 
 msgid "Choose Your Trip"
 msgstr "اختر رحلتك"
@@ -263,49 +273,49 @@ msgid "Unforgettable experiences"
 msgstr "تجارب لا تُنسى"
 
 msgid "City Walks Tour"
-msgstr "جولة مشي في المدينة"
+msgstr "جولات داخل المدن"
 
 msgid "Discover iconic landmarks and hidden gems with expert local guides."
-msgstr "اكتشف المعالم الأيقونية والجواهر المخفية مع مرشدين محليين."
+msgstr "اكتشف المعالم الشهيرة والزوايا المخفية مع مرشدين محليين."
 
 msgid "Sunset Boat Cruise"
-msgstr "رحلة بحرية عند الغروب"
+msgstr "رحلة بحرية وقت الغروب"
 
 msgid "Relax on the water as the sun sets over breathtaking coastlines."
-msgstr "استرخِ على الماء بينما تغرب الشمس على سواحل خلابة."
+msgstr "استمتع بلحظات هادئة على البحر مع مشهد غروب ساحر."
 
 msgid "Cultural Experience"
 msgstr "تجربة ثقافية"
 
 msgid "Immerse yourself in authentic traditions, cuisine, and heritage."
-msgstr "انغمس في التقاليد الأصيلة والمطبخ والتراث."
+msgstr "تعرّف على التقاليد، المأكولات، والتراث المحلي عن قرب."
 
 msgid "Discover your next adventure"
 msgstr "اكتشف مغامرتك القادمة"
 
 msgid "Honeymoons, family holidays, or solo journeys — we've got you covered"
-msgstr "شهر عسل، عطلات عائلية أو رحلات فردية — نحن معك"
+msgstr "شهر عسل، عطلة عائلية، أو رحلة فردية — نحن هنا لنرتّبها لك"
 
 msgid "Organized Group Tour"
-msgstr "جولة جماعية منظمة"
+msgstr "رحلة جماعية منظمة"
 
 msgid "Join like-minded travelers on curated group journeys."
-msgstr "انضم إلى مسافرين متشابهين في الرحلات الجماعية المنظمة."
+msgstr "انضم إلى مسافرين يشاركونك نفس الشغف في رحلات مخططة بعناية."
 
 msgid "Learn more"
 msgstr "اعرف المزيد"
 
 msgid "Single Customized Trip"
-msgstr "رحلة مخصصة فردية"
+msgstr "رحلة خاصة حسب الطلب"
 
 msgid "A fully personalized itinerary for your style and budget."
-msgstr "برنامج مخصص بالكامل لأسلوبك وميزانيتك."
+msgstr "برنامج سفر مصمم بالكامل حسب ذوقك وميزانيتك."
 
 msgid "Get in touch"
 msgstr "تواصل معنا"
 
 msgid "Testimonials"
-msgstr "آراء العملاء"
+msgstr "آراء عملائنا"
 
 msgid "Unforgettable Travel Experiences"
 msgstr "تجارب سفر لا تُنسى"
@@ -315,8 +325,8 @@ msgid ""
 "maintaining excellent service. By listening to our customers' needs, we "
 "improve our offerings and provide an exceptional travel experience."
 msgstr ""
-"آراء عملائنا تساعدنا على تقديم خدمة أفضل وتجربة سفر استثنائية. نستمع "
-"لاحتياجاتكم ونطوّر عروضنا باستمرار."
+"آراء عملائنا هي أساس ثقتنا ونجاحنا. نستمع إلى احتياجاتهم لنطوّر خدماتنا "
+"ونقدّم تجربة سفر مريحة ومميزة في كل مرة."
 
 msgid "Previous testimonial"
 msgstr "الشهادة السابقة"
@@ -325,13 +335,13 @@ msgid "Next testimonial"
 msgstr "الشهادة التالية"
 
 msgid "Ready to book your dream vacation?"
-msgstr "مستعد لحجز عطلتك المثالية؟"
+msgstr "جاهز لحجز عطلة أحلامك؟"
 
 msgid "Contact our team for a detailed quotation — we're here to help."
 msgstr "تواصل مع فريقنا للحصول على عرض مفصل — نحن هنا لمساعدتك."
 
 msgid "WhatsApp Us"
-msgstr "راسلنا على واتساب"
+msgstr "راسلنا عبر واتساب"
 
 msgid "About SAMA"
 msgstr "عن سما"
@@ -567,7 +577,7 @@ msgid "infants"
 msgstr "رضع"
 
 msgid "From $%(amount)s"
-msgstr "من %(amount)s$"
+msgstr "ابتداءً من $%(amount)s"
 
 msgid "Hello, I'd like to inquire about Sama Tours services."
 msgstr "مرحباً، أود الاستفسار عن خدمات سما تورز."
@@ -632,7 +642,7 @@ msgid "City break packages"
 msgstr "باقات عطلات المدينة"
 
 msgid "Visa requirements"
-msgstr "متطلبات التأشيرة"
+msgstr "متطلبات التأشيرات"
 
 msgid "Scenic travel destination"
 msgstr "وجهة سفر خلابة"

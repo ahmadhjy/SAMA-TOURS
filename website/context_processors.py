@@ -36,15 +36,30 @@ def site_contact(request):
 
 def language_switcher(request):
     current = translation.get_language()
+    current_code = (current or '').split('-')[0]
     path = request.get_full_path()
-    flags = {'en': '🇬🇧', 'ar': '🇱🇧', 'fr': '🇫🇷'}
-    languages = []
-    for code, label in settings.LANGUAGES:
-        languages.append({
-            'code': code,
-            'label': label,
-            'flag': flags.get(code, code.upper()),
-            'url': translate_url(path, code),
-            'active': code == current,
-        })
+    # Requested order: FR / AR / EN (SVG icons — emoji flags don't render on Windows)
+    languages = [
+        {
+            'code': 'fr',
+            'label': 'FR',
+            'flag_icon': 'flags/fr.svg',
+            'url': translate_url(path, 'fr'),
+            'active': 'fr' == current_code,
+        },
+        {
+            'code': 'ar',
+            'label': 'AR',
+            'flag_icon': 'flags/lb.svg',
+            'url': translate_url(path, 'ar'),
+            'active': 'ar' == current_code,
+        },
+        {
+            'code': 'en',
+            'label': 'EN',
+            'flag_icon': 'flags/us.svg',
+            'url': translate_url(path, 'en'),
+            'active': 'en' == current_code,
+        },
+    ]
     return {'LANGUAGE_SWITCHER': languages, 'CURRENT_LANGUAGE': current}

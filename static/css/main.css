@@ -2377,9 +2377,10 @@ button.btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
     height: 2rem;
-    border-radius: 50%;
+    padding: 0 0.55rem;
+    border-radius: 999px;
+    gap: 0.1rem;
     text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
@@ -2390,9 +2391,23 @@ button.btn {
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
 }
 
-.lang-flag__emoji {
-    font-size: 1.2rem;
+.lang-flag__icon {
+    display: block;
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12);
+    flex-shrink: 0;
+}
+
+.lang-flag__label {
+    font-size: 0.8rem;
+    font-weight: 700;
     line-height: 1;
+    margin-inline-start: 0.35rem;
+    color: var(--color-primary-dark, #172a51);
+    letter-spacing: 0.02em;
 }
 
 .visually-hidden {
@@ -2434,6 +2449,13 @@ html[dir="rtl"] .hero-content {
 html[dir="rtl"] .hero-title-main,
 html[dir="rtl"] .hero-desc {
     text-align: start;
+}
+
+html[dir="rtl"] .hero-desc {
+    padding-left: 0;
+    padding-right: 1rem;
+    border-left: none;
+    border-right: 3px solid var(--color-primary-light);
 }
 
 html[dir="rtl"] .hero-actions {

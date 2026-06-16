@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7410 3900" role="img" aria-label="United States">
+  <rect width="7410" height="3900" fill="#b22234"/>
+  <path fill="#fff" d="M0,450h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0zm0,600h7410v300H0z"/>
+  <rect width="2964" height="2100" fill="#3c3b6e"/>
+  <g fill="#fff">
+    <circle cx="247" cy="210" r="90"/><circle cx="741" cy="210" r="90"/><circle cx="1235" cy="210" r="90"/><circle cx="1729" cy="210" r="90"/><circle cx="2223" cy="210" r="90"/><circle cx="2717" cy="210" r="90"/>
+    <circle cx="494" cy="420" r="90"/><circle cx="988" cy="420" r="90"/><circle cx="1482" cy="420" r="90"/><circle cx="1976" cy="420" r="90"/><circle cx="2470" cy="420" r="90"/>
+    <circle cx="247" cy="630" r="90"/><circle cx="741" cy="630" r="90"/><circle cx="1235" cy="630" r="90"/><circle cx="1729" cy="630" r="90"/><circle cx="2223" cy="630" r="90"/><circle cx="2717" cy="630" r="90"/>
+    <circle cx="494" cy="840" r="90"/><circle cx="988" cy="840" r="90"/><circle cx="1482" cy="840" r="90"/><circle cx="1976" cy="840" r="90"/><circle cx="2470" cy="840" r="90"/>
+    <circle cx="247" cy="1050" r="90"/><circle cx="741" cy="1050" r="90"/><circle cx="1235" cy="1050" r="90"/><circle cx="1729" cy="1050" r="90"/><circle cx="2223" cy="1050" r="90"/><circle cx="2717" cy="1050" r="90"/>
+    <circle cx="494" cy="1260" r="90"/><circle cx="988" cy="1260" r="90"/><circle cx="1482" cy="1260" r="90"/><circle cx="1976" cy="1260" r="90"/><circle cx="2470" cy="1260" r="90"/>
+    <circle cx="247" cy="1470" r="90"/><circle cx="741" cy="1470" r="90"/><circle cx="1235" cy="1470" r="90"/><circle cx="1729" cy="1470" r="90"/><circle cx="2223" cy="1470" r="90"/><circle cx="2717" cy="1470" r="90"/>
+    <circle cx="494" cy="1680" r="90"/><circle cx="988" cy="1680" r="90"/><circle cx="1482" cy="1680" r="90"/><circle cx="1976" cy="1680" r="90"/><circle cx="2470" cy="1680" r="90"/>
+  </g>
+</svg>

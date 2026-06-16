@@ -18,8 +18,8 @@
                 {% for lang in LANGUAGE_SWITCHER %}
                 {% if not lang.active %}
                 <a href="{{ lang.url }}" class="lang-flag" title="{{ lang.label }}" hreflang="{{ lang.code }}" lang="{{ lang.code }}">
-                    <span class="lang-flag__emoji" aria-hidden="true">{{ lang.flag }}</span>
-                    <span class="visually-hidden">{{ lang.label }}</span>
+                    <img src="{% static lang.flag_icon %}" alt="" class="lang-flag__icon" width="20" height="14" loading="lazy" decoding="async">
+                    <span class="lang-flag__label">{{ lang.label }}</span>
                 </a>
                 {% endif %}
                 {% endfor %}
