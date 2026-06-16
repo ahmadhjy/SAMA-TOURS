@@ -1,4 +1,4 @@
-"""Country presets for quote form destination fields."""
+"""Country presets for quote form destination fields and package country choices."""
 
 TRAVEL_COUNTRIES = [
     'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda',
@@ -33,3 +33,45 @@ TRAVEL_COUNTRIES = [
     'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City',
     'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe',
 ]
+
+COUNTRY_CHOICES = [(country, country) for country in TRAVEL_COUNTRIES]
+
+# Legacy free-text destination → (city, country)
+DESTINATION_ALIASES = {
+    'UAE': 'United Arab Emirates',
+    'USA': 'United States',
+    'UK': 'United Kingdom',
+    'Antigua & Barbuda': 'Antigua and Barbuda',
+    'Malaysia': 'Malaysia',
+    'France': 'France',
+    'Indonesia': 'Indonesia',
+    'Turkey': 'Turkey',
+}
+
+
+def parse_legacy_destination(destination: str) -> tuple[str, str]:
+    """Split old destination field into city and country."""
+    destination = (destination or '').strip()
+    if not destination:
+        return '', 'Lebanon'
+
+    if destination in TRAVEL_COUNTRIES:
+        return '', destination
+
+    if ',' in destination:
+        city, country_part = destination.rsplit(',', 1)
+        city = city.strip()
+        country_part = country_part.strip()
+        country = DESTINATION_ALIASES.get(country_part, country_part)
+        if country not in TRAVEL_COUNTRIES:
+            for name in TRAVEL_COUNTRIES:
+                if name.lower() == country.lower():
+                    country = name
+                    break
+        return city, country
+
+    mapped = DESTINATION_ALIASES.get(destination, destination)
+    if mapped in TRAVEL_COUNTRIES:
+        return '', mapped
+
+    return destination, 'Lebanon'

@@ -98,6 +98,12 @@ fi
 log "Collecting static files"
 python manage.py collectstatic --noinput
 
+if [[ -f "${PROJECT_DIR}/scripts/build_locales.py" ]]; then
+    log "Building translation files"
+    pip install polib -q
+    python "${PROJECT_DIR}/scripts/build_locales.py"
+fi
+
 if [[ -n "${PA_WSGI_FILE:-}" && -f "$PA_WSGI_FILE" ]]; then
     log "Reloading web app via WSGI touch"
     touch "$PA_WSGI_FILE"

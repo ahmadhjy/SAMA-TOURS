@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Visa Requirements{% endblock %}
+{% block title %}{% trans 'Visa Requirements' %}{% endblock %}
 
 {% block content %}
 <section class="page-hero">
     <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=1920&q=80');"></div>
     <div class="page-hero-overlay"></div>
     <div class="container page-hero-content">
-        <span class="section-label">Visa Services</span>
-        <h1>Visa Requirements</h1>
-        <p>Browse visa requirement documents by country. Click any card to view or download the PDF.</p>
+        <span class="section-label">{% trans 'Visa Services' %}</span>
+        <h1>{% trans 'Visa Requirements' %}</h1>
+        <p>{% trans 'Browse visa requirement documents by country. Click any card to view or download the PDF.' %}</p>
     </div>
 </section>
 
@@ -18,10 +19,10 @@
         {% if visa_requirements %}
         <div class="visa-grid">
             {% for visa in visa_requirements %}
-            <a href="{{ visa.pdf_url }}" class="visa-card visa-card-link" target="_blank" rel="noopener noreferrer" title="Open {{ visa.country_name }} visa requirements PDF">
+            <a href="{{ visa.pdf_url }}" class="visa-card visa-card-link" target="_blank" rel="noopener noreferrer" title="{% blocktrans with country=visa.country_name %}Open {{ country }} visa requirements PDF{% endblocktrans %}">
                 <div class="visa-card-image">
                     {% if visa.image_url %}
-                    <img src="{{ visa.image_url }}" alt="{{ visa.country_name }} visa requirements" loading="lazy">
+                    <img src="{{ visa.image_url }}" alt="{{ visa.country_name }}" loading="lazy">
                     {% else %}
                     <div class="visa-card-placeholder" aria-hidden="true">
                         <span class="visa-pdf-icon">PDF</span>
@@ -29,24 +30,24 @@
                     {% endif %}
                     <span class="visa-card-badge">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        View PDF
+                        {% trans 'View PDF' %}
                     </span>
                 </div>
                 <div class="visa-card-body">
                     <h3>{{ visa.country_name }}</h3>
-                    <span class="visa-card-action">Click to open document &rarr;</span>
+                    <span class="visa-card-action">{% trans 'Click to open document' %} &rarr;</span>
                 </div>
             </a>
             {% endfor %}
         </div>
         <div class="visa-help center">
-            <p>Need help with your visa application?</p>
-            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Ask us on WhatsApp</a>
+            <p>{% trans 'Need help with your visa application?' %}</p>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Ask us on WhatsApp' %}</a>
         </div>
         {% else %}
         <div class="empty-state">
-            <p>Visa documents are being added. Check back soon or contact us for current requirements.</p>
-            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            <p>{% trans 'Visa documents are being added. Check back soon or contact us for current requirements.' %}</p>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener">{% trans 'Chat on WhatsApp' %}</a>
         </div>
         {% endif %}
     </div>

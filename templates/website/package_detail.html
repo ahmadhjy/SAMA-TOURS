@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}{{ package.name }}{% endblock %}
 
@@ -197,19 +198,19 @@
     <div class="pkg-page-hero__shade"></div>
     <div class="pkg-page-hero__inner">
         <div class="pkg-page-hero__crumb">
-            <a href="{% url 'website:home' %}">Home</a> /
-            <a href="{% url 'website:packages' %}">Packages</a> /
+            <a href="{% url 'website:home' %}">{% trans 'Home' %}</a> /
+            <a href="{% url 'website:packages' %}">{% trans 'Packages' %}</a> /
             {{ package.name }}
         </div>
-        <span class="pkg-page-hero__tag">{{ package.destination }}</span>
+        <span class="pkg-page-hero__tag">{{ package.destination_display }}</span>
         <h1>{{ package.name }}</h1>
         <div class="pkg-page-hero__meta">
             <span>{{ package.duration }}</span>
             <span class="pkg-page-hero__price">{{ package.price_display }}</span>
         </div>
         <div class="pkg-page-hero__btns">
-            <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
-            <button type="button" class="btn btn-outline-light btn-lg" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
+            <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">{% trans 'Book on WhatsApp' %}</a>
+            <button type="button" class="btn btn-outline-light btn-lg" data-open-quote data-quote-to="{{ package.country }}">{% trans 'Get a custom quote' %}</button>
         </div>
     </div>
 </section>
@@ -225,7 +226,7 @@
         <div class="pkg-page-grid">
             <div>
                 <article class="pkg-page-card">
-                    <h2>About this package</h2>
+                    <h2>{% trans 'About this package' %}</h2>
                     {% if package.full_description %}
                     {{ package.full_description|linebreaks }}
                     {% else %}
@@ -234,7 +235,7 @@
                 </article>
 
                 <article class="pkg-page-card">
-                    <h2>Day-by-day itinerary</h2>
+                    <h2>{% trans 'Day-by-day itinerary' %}</h2>
                     <ol class="pkg-page-itin">
                         {% for day in package.display_itinerary_lines %}
                         <li>
@@ -248,10 +249,10 @@
 
             <aside class="pkg-page-side">
                 <p class="pkg-page-side__price">{{ package.price_display }}</p>
-                <p class="pkg-page-side__sub">Starting price per person</p>
+                <p class="pkg-page-side__sub">{% trans 'Starting price per person' %}</p>
                 <ul>
-                    <li><span>Destination</span><span>{{ package.destination }}</span></li>
-                    <li><span>Duration</span><span>{{ package.duration }}</span></li>
+                    <li><span>{% trans 'Destination' %}</span><span>{{ package.destination_display }}</span></li>
+                    <li><span>{% trans 'Duration' %}</span><span>{{ package.duration }}</span></li>
                 </ul>
                 {% if package.highlight_lines %}
                 <div style="margin-bottom:1rem;font-size:0.88rem;color:#64748b;">
@@ -260,22 +261,22 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
-                <button type="button" class="btn btn-primary" data-open-quote data-quote-to="{{ package.destination }}">Get a custom quote</button>
+                <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Book on WhatsApp' %}</a>
+                <button type="button" class="btn btn-primary" data-open-quote data-quote-to="{{ package.country }}">{% trans 'Get a custom quote' %}</button>
             </aside>
         </div>
     </div>
 </section>
 
 <div class="pkg-page-bar">
-    <button type="button" class="btn btn-outline" data-open-quote data-quote-to="{{ package.destination }}">Get quote</button>
-    <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Book now</a>
+    <button type="button" class="btn btn-outline" data-open-quote data-quote-to="{{ package.country }}">{% trans 'Get quote' %}</button>
+    <a href="{{ package.whatsapp_booking_url }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Book now' %}</a>
 </div>
 
 {% if related_packages %}
 <section class="section pkg-related">
     <div class="container">
-        <h2 class="section-title-tui">You may also like</h2>
+        <h2 class="section-title-tui">{% trans 'You may also like' %}</h2>
         <div class="packages-grid packages-grid-page">
             {% for related in related_packages %}
                 {% include 'includes/package_card.html' with package=related %}

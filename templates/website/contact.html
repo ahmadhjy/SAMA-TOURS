@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}{% trans 'Contact' %}{% endblock %}
 
 {% block content %}
 <section class="page-hero page-hero-short">
     <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80');"></div>
     <div class="page-hero-overlay"></div>
     <div class="container page-hero-content">
-        <h1>Contact Us</h1>
+        <h1>{% trans 'Contact Us' %}</h1>
     </div>
 </section>
 
@@ -19,24 +20,24 @@
                 <p class="contact-address">{{ SITE_ADDRESS }}</p>
             </div>
             <div class="contact-block">
-                <h3>Phone</h3>
+                <h3>{% trans 'Phone' %}</h3>
                 <p><a href="tel:+96125450473">{{ SITE_PHONE }}</a></p>
                 <p><a href="tel:+96125954473">{{ SITE_PHONE_ALT }}</a></p>
             </div>
             <div class="contact-block">
-                <h3>WhatsApp</h3>
+                <h3>{% trans 'WhatsApp' %}</h3>
                 <p><a href="{{ SITE_WHATSAPP_URL }}" target="_blank" rel="noopener">{{ SITE_WHATSAPP }}</a></p>
             </div>
             <div class="contact-block">
-                <h3>Office</h3>
+                <h3>{% trans 'Office' %}</h3>
                 <p><a href="tel:+96125450473">+96125450473</a></p>
             </div>
             <div class="contact-block contact-email-block">
-                <h3>Write for anything</h3>
-                <p>Write to this email for a detailed quotation and information.</p>
+                <h3>{% trans 'Write for anything' %}</h3>
+                <p>{% trans 'Write to this email for a detailed quotation and information.' %}</p>
                 <a href="mailto:{{ SITE_EMAIL }}" class="contact-email">{{ SITE_EMAIL }}</a>
             </div>
-            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Message on WhatsApp' %}</a>
         </div>
         <div class="contact-map">
             <iframe
@@ -47,7 +48,7 @@
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                title="Sama Tours office location">
+                title="{% trans 'Sama Tours office location' %}">
             </iframe>
         </div>
     </div>

@@ -45,9 +45,8 @@ def packages(request):
 def package_detail(request, slug):
     package = get_object_or_404(TravelPackage, slug=slug, is_active=True)
     related = (
-        TravelPackage.objects.filter(is_active=True)
-        .exclude(pk=package.pk)
-        .filter(destination=package.destination)[:3]
+        TravelPackage.objects.filter(is_active=True, country=package.country)
+        .exclude(pk=package.pk)[:3]
     )
     if related.count() < 2:
         related = TravelPackage.objects.filter(is_active=True).exclude(pk=package.pk)[:3]

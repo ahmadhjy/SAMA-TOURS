@@ -3,7 +3,9 @@ import re
 
 from django.db import models
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
+from .countries import COUNTRY_CHOICES
 from .whatsapp import package_booking_message, whatsapp_url
 
 
@@ -20,7 +22,16 @@ def package_gallery_path(instance, filename):
 class TravelPackage(models.Model):
     name = models.CharField(max_length=200, help_text='Package title shown on the website')
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    destination = models.CharField(max_length=120, help_text='Location, e.g. Dubai, UAE')
+    country = models.CharField(
+        max_length=120,
+        choices=COUNTRY_CHOICES,
+        help_text='Destination country',
+    )
+    city = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text='City or region (e.g. Dubai)',
+    )
     duration = models.CharField(max_length=80, help_text='e.g. 7 Days / 6 Nights')
     starting_price = models.DecimalField(
         max_digits=10,
@@ -64,7 +75,8 @@ class TravelPackage(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base = slugify(self.name) or 'package'
+            source_name = getattr(self, 'name_en', None) or self.name
+            base = slugify(source_name) or 'package'
             slug = base
             counter = 1
             while TravelPackage.objects.filter(slug=slug).exclude(pk=self.pk).exists():
@@ -72,6 +84,12 @@ class TravelPackage(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+    @property
+    def destination_display(self):
+        if self.city:
+            return f'{self.city}, {self.country}'
+        return self.country
 
     @property
     def image_url(self):
@@ -83,8 +101,8 @@ class TravelPackage(models.Model):
     def price_display(self):
         amount = self.starting_price
         if amount == amount.to_integral_value():
-            return f'From ${int(amount):,}'
-        return f'From ${amount:,.2f}'
+            return _('From $%(amount)s') % {'amount': f'{int(amount):,}'}
+        return _('From $%(amount)s') % {'amount': f'{amount:,.2f}'}
 
     def itinerary_lines(self):
         return [line.strip() for line in self.itinerary.splitlines() if line.strip()]
@@ -136,7 +154,7 @@ class TravelPackage(models.Model):
 
     def whatsapp_booking_url(self):
         message = package_booking_message(
-            self.name, self.destination, self.duration, self.price_display,
+            self.name, self.destination_display, self.duration, self.price_display,
         )
         return whatsapp_url(message)
 

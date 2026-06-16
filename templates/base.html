@@ -1,28 +1,43 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANG %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANG }}" dir="{% if LANG == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sama Tours — Premium travel agency in Lebanon. Explore the world with expert planning, affordable packages, and visa services.">
-    <title>{% block title %}Sama Tours{% endblock %} | Sama Tours Lebanon</title>
+    <meta name="description" content="{% trans 'Sama Tours — Premium travel agency in Lebanon. Explore the world with expert planning, affordable packages, and visa services.' %}">
+    <title>{% block title %}{% trans 'Sama Tours' %}{% endblock %} | {% trans 'Sama Tours Lebanon' %}</title>
     <link rel="icon" href="{% static 'media/logo.png' %}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20260508b">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=20260616">
     {% block extra_head %}{% endblock %}
 </head>
-<body data-whatsapp-number="{{ SITE_WHATSAPP_NUMBER }}">
+<body data-whatsapp-number="{{ SITE_WHATSAPP_NUMBER }}"
+      data-quote-alert-dates="{% trans 'Please select your travel dates.' %}"
+      data-quote-alert-travelers="{% trans 'Please add at least one traveler.' %}"
+      data-quote-wa-intro="{% trans 'Hello Sama Tours! I would like a travel quote.' %}"
+      data-quote-wa-from="{% trans 'From:' %}"
+      data-quote-wa-to="{% trans 'To:' %}"
+      data-quote-wa-dates="{% trans 'Travel dates:' %}"
+      data-quote-wa-travelers="{% trans 'Travelers:' %}"
+      data-quote-wa-thanks="{% trans 'Thank you!' %}"
+      data-quote-wa-adult="{% trans 'adult' %}"
+      data-quote-wa-adults="{% trans 'adults' %}"
+      data-quote-wa-child="{% trans 'child' %}"
+      data-quote-wa-children="{% trans 'children' %}"
+      data-quote-wa-infant="{% trans 'infant' %}"
+      data-quote-wa-infants="{% trans 'infants' %}">
     {% include 'includes/top_bar.html' %}
     {% include 'includes/header.html' %}
     <main>{% block content %}{% endblock %}</main>
     {% include 'includes/footer.html' %}
     {% include 'includes/whatsapp_float.html' %}
     {% include 'includes/quote_modal.html' %}
-    <script src="{% static 'js/main.js' %}?v=20260508" defer></script>
+    <script src="{% static 'js/main.js' %}?v=20260616" defer></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

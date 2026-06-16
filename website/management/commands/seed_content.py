@@ -12,62 +12,120 @@ class Command(BaseCommand):
 
         packages = [
             {
-                'name': 'Dubai Summer Package',
-                'destination': 'Dubai, UAE',
-                'duration': '5 Days / 4 Nights',
+                'name_en': 'Dubai Summer Package',
+                'country': 'United Arab Emirates',
+                'city': 'Dubai',
+                'duration_en': '5 Days / 4 Nights',
                 'starting_price': 899,
-                'short_description': 'Experience luxury shopping, desert safaris, and iconic skyline views in Dubai.',
+                'short_description_en': (
+                    'Experience luxury shopping, desert safaris, and iconic skyline views in Dubai.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
                 'display_order': 1,
             },
             {
-                'name': 'Kuala Lumpur Honeymoon',
-                'destination': 'Kuala Lumpur, Malaysia',
-                'duration': '7 Days / 6 Nights',
+                'name_en': 'Kuala Lumpur Honeymoon',
+                'country': 'Malaysia',
+                'city': 'Kuala Lumpur',
+                'duration_en': '7 Days / 6 Nights',
                 'starting_price': 1199,
-                'short_description': 'A romantic escape with city tours, cultural landmarks, and world-class dining.',
+                'short_description_en': (
+                    'A romantic escape with city tours, cultural landmarks, and world-class dining.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80',
                 'display_order': 2,
             },
             {
-                'name': 'Paris City Break',
-                'destination': 'Paris, France',
-                'duration': '4 Days / 3 Nights',
+                'name_en': 'Paris City Break',
+                'country': 'France',
+                'city': 'Paris',
+                'duration_en': '4 Days / 3 Nights',
                 'starting_price': 1050,
-                'short_description': 'Discover the City of Light with guided tours, museums, and charming cafés.',
+                'short_description_en': (
+                    'Discover the City of Light with guided tours, museums, and charming cafés.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80',
                 'display_order': 3,
             },
             {
-                'name': 'Bali Island Retreat',
-                'destination': 'Bali, Indonesia',
-                'duration': '8 Days / 7 Nights',
+                'name_en': 'Bali Island Retreat',
+                'country': 'Indonesia',
+                'city': 'Bali',
+                'duration_en': '8 Days / 7 Nights',
                 'starting_price': 1350,
-                'short_description': 'Relax on pristine beaches, explore temples, and enjoy Balinese hospitality.',
+                'short_description_en': (
+                    'Relax on pristine beaches, explore temples, and enjoy Balinese hospitality.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',
                 'display_order': 4,
             },
             {
-                'name': 'Istanbul Heritage Tour',
-                'destination': 'Istanbul, Turkey',
-                'duration': '6 Days / 5 Nights',
+                'name_en': 'Istanbul Heritage Tour',
+                'country': 'Turkey',
+                'city': 'Istanbul',
+                'duration_en': '6 Days / 5 Nights',
                 'starting_price': 780,
-                'short_description': 'Walk through history where East meets West with bazaars, mosques, and cuisine.',
+                'short_description_en': (
+                    'Walk through history where East meets West with bazaars, mosques, and cuisine.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80',
                 'display_order': 5,
             },
             {
-                'name': 'Caribbean Beach Escape',
-                'destination': 'Antigua & Barbuda',
-                'duration': '7 Days / 6 Nights',
+                'name_en': 'Caribbean Beach Escape',
+                'country': 'Antigua and Barbuda',
+                'city': '',
+                'duration_en': '7 Days / 6 Nights',
                 'starting_price': 1450,
-                'short_description': 'Turquoise waters, white-sand beaches, and unforgettable island relaxation.',
+                'short_description_en': (
+                    'Turquoise waters, white-sand beaches, and unforgettable island relaxation.'
+                ),
                 'featured_image_url': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
                 'display_order': 6,
             },
         ]
+        translations = {
+            'Dubai Summer Package': {
+                'name_ar': 'باقة دبي الصيفية', 'name_fr': 'Forfait été Dubaï',
+                'duration_ar': '5 أيام / 4 ليالٍ', 'duration_fr': '5 jours / 4 nuits',
+                'short_description_ar': 'استمتع بالتسوق الفاخر، رحلات السفاري الصحراوية، ومناظر أفق دبي الأيقونية.',
+                'short_description_fr': 'Profitez du shopping de luxe, des safaris dans le désert et des vues emblématiques sur la skyline de Dubaï.',
+            },
+            'Kuala Lumpur Honeymoon': {
+                'name_ar': 'شهر عسل كوالالمبور', 'name_fr': 'Lune de miel à Kuala Lumpur',
+                'duration_ar': '7 أيام / 6 ليالٍ', 'duration_fr': '7 jours / 6 nuits',
+                'short_description_ar': 'عطلة رومانسية مع جولات في المدينة، معالم ثقافية، ومطاعم عالمية المستوى.',
+                'short_description_fr': 'Une escapade romantique avec visites de la ville, sites culturels et gastronomie d\'exception.',
+            },
+            'Paris City Break': {
+                'name_ar': 'عطلة باريس القصيرة', 'name_fr': 'City break à Paris',
+                'duration_ar': '4 أيام / 3 ليالٍ', 'duration_fr': '4 jours / 3 nuits',
+                'short_description_ar': 'اكتشف مدينة النور مع جولات مرشدة، متاحف، ومقاهٍ ساحرة.',
+                'short_description_fr': 'Découvrez la Ville Lumière avec visites guidées, musées et cafés charmants.',
+            },
+            'Bali Island Retreat': {
+                'name_ar': 'استراحة جزيرة بالي', 'name_fr': 'Retraite à Bali',
+                'duration_ar': '8 أيام / 7 ليالٍ', 'duration_fr': '8 jours / 7 nuits',
+                'short_description_ar': 'استرخِ على الشواطئ الخلابة، واستكشف المعابد، واستمتع بكرم الضيافة البالي.',
+                'short_description_fr': 'Détendez-vous sur des plages préservées, explorez les temples et profitez de l\'hospitalité balinaise.',
+            },
+            'Istanbul Heritage Tour': {
+                'name_ar': 'جولة إسطنبول التراثية', 'name_fr': 'Circuit patrimoine Istanbul',
+                'duration_ar': '6 أيام / 5 ليالٍ', 'duration_fr': '6 jours / 5 nuits',
+                'short_description_ar': 'تمشَّ عبر التاريخ حيث يلتقي الشرق بالغرب مع الأسواق والمساجد والمطبخ.',
+                'short_description_fr': 'Parcourez l\'histoire là où l\'Orient rencontre l\'Occident : bazars, mosquées et gastronomie.',
+            },
+            'Caribbean Beach Escape': {
+                'name_ar': 'هروب إلى شواطئ الكاريبي', 'name_fr': 'Évasion plage des Caraïbes',
+                'duration_ar': '7 أيام / 6 ليالٍ', 'duration_fr': '7 jours / 6 nuits',
+                'short_description_ar': 'مياه فيروزية، شواطئ رملية بيضاء، واسترخاء لا يُنسى على الجزر.',
+                'short_description_fr': 'Eaux turquoise, plages de sable blanc et détente insulaire inoubliable.',
+            },
+        }
         for data in packages:
-            TravelPackage.objects.create(**data)
+            en_name = data.pop('name_en')
+            extra = translations.get(en_name, {})
+            TravelPackage.objects.create(name_en=en_name, **data, **extra)
 
         destinations = [
             ('Dubai', 'United Arab Emirates', 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80'),
@@ -84,7 +142,7 @@ class Command(BaseCommand):
                 name=name,
                 country=country,
                 featured_image=img,
-                description=f'Explore {name} with expertly curated itineraries from Sama Tours.',
+                description_en=f'Explore {name} with expertly curated itineraries from Sama Tours.',
                 display_order=i,
             )
 
@@ -100,7 +158,7 @@ class Command(BaseCommand):
         ]
         for i, (country, img) in enumerate(visas, 1):
             VisaRequirement.objects.create(
-                country_name=country,
+                country_name_en=country,
                 featured_image_url=img,
                 display_order=i,
             )
@@ -108,7 +166,7 @@ class Command(BaseCommand):
         testimonials = [
             {
                 'author_name': 'DODO HB',
-                'content': (
+                'content_en': (
                     'We had the most unforgettable honeymoon in Kuala Lumpur, all thanks to Sama Tours. '
                     'From the moment we reached out, their team was professional, attentive, and '
                     'incredibly helpful in planning every detail.'
@@ -117,7 +175,7 @@ class Command(BaseCommand):
             },
             {
                 'author_name': 'Mariam Haidar',
-                'content': (
+                'content_en': (
                     'Thank you, Sama Tours team, for your exceptional service! Your professionalism and '
                     'attention to detail made my experience seamless and enjoyable. Highly recommended.'
                 ),
@@ -125,7 +183,7 @@ class Command(BaseCommand):
             },
             {
                 'author_name': 'Nourhanne Aoun',
-                'content': (
+                'content_en': (
                     'The travel agents are so helpful. After doing a very long research, Sama Tours was '
                     'our perfect choice. They answered our hundred questions and they were super fast in '
                     'finding us the package that fits us most.'

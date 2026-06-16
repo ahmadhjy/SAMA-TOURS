@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
+{% load i18n static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}{% trans 'Home' %}{% endblock %}
 
 {% block extra_head %}
 <link rel="preload" as="image" href="{% static 'media/hero-home-mobile.jpg' %}" media="(max-width: 768px)" fetchpriority="high">
@@ -17,14 +16,14 @@
     <div class="hero-overlay"></div>
     <div class="container hero-layout">
         <div class="hero-content">
-            <span class="hero-badge">Your journey starts here</span>
+            <span class="hero-badge">{% trans 'Your journey starts here' %}</span>
             <h1 class="hero-title">
-                <span class="hero-title-main">Explore the World with Sama Tours</span>
+                <span class="hero-title-main">{% trans 'Explore the World with Sama Tours' %}</span>
             </h1>
-            <p class="hero-desc">Book packages, plan custom trips, and get visa support — all with experienced travel experts by your side.</p>
+            <p class="hero-desc">{% trans 'Book packages, plan custom trips, and get visa support — all with experienced travel experts by your side.' %}</p>
             <div class="hero-actions">
-                <a href="{% url 'website:packages' %}" class="btn btn-primary btn-lg">Book Your Trip</a>
-                <button type="button" class="btn btn-whatsapp btn-lg" data-open-quote>Get a Quote</button>
+                <a href="{% url 'website:packages' %}" class="btn btn-primary btn-lg">{% trans 'Book Your Trip' %}</a>
+                <button type="button" class="btn btn-whatsapp btn-lg" data-open-quote>{% trans 'Get a Quote' %}</button>
             </div>
         </div>
     </div>
@@ -36,37 +35,37 @@
     <div class="container">
         <div class="section-head-row">
             <div>
-                <h2 class="section-title-tui">Travel deals & inspiration</h2>
-                <p class="section-sub-tui">Handpicked offers to help you plan your next getaway</p>
+                <h2 class="section-title-tui">{% trans 'Travel deals & inspiration' %}</h2>
+                <p class="section-sub-tui">{% trans 'Handpicked offers to help you plan your next getaway' %}</p>
             </div>
-            <a href="{% url 'website:packages' %}" class="link-see-all">View all packages →</a>
+            <a href="{% url 'website:packages' %}" class="link-see-all">{% trans 'View all packages' %} →</a>
         </div>
         <div class="promo-grid">
             <a href="{% url 'website:packages' %}" class="promo-card">
-                <img src="{% static 'media/promo-beach.jpg' %}" alt="Beach vacation deals" width="640" height="400" loading="lazy" decoding="async">
+                <img src="{% static 'media/promo-beach.jpg' %}" alt="{% trans 'Beach vacation deals' %}" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
-                    <span class="promo-tag">Popular</span>
-                    <h3>Beach & Sun Escapes</h3>
-                    <p>Caribbean, Maldives & more — relax by the sea</p>
-                    <span class="promo-cta">Discover deals</span>
+                    <span class="promo-tag">{% trans 'Popular' %}</span>
+                    <h3>{% trans 'Beach & Sun Escapes' %}</h3>
+                    <p>{% trans 'Caribbean, Maldives & more — relax by the sea' %}</p>
+                    <span class="promo-cta">{% trans 'Discover deals' %}</span>
                 </div>
             </a>
             <a href="{% url 'website:packages' %}" class="promo-card">
-                <img src="{% static 'media/promo-city.jpg' %}" alt="City break packages" width="640" height="400" loading="lazy" decoding="async">
+                <img src="{% static 'media/promo-city.jpg' %}" alt="{% trans 'City break packages' %}" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
-                    <span class="promo-tag">City breaks</span>
-                    <h3>Europe & Beyond</h3>
-                    <p>Paris, Dubai, Istanbul & iconic destinations</p>
-                    <span class="promo-cta">Discover deals</span>
+                    <span class="promo-tag">{% trans 'City breaks' %}</span>
+                    <h3>{% trans 'Europe & Beyond' %}</h3>
+                    <p>{% trans 'Paris, Dubai, Istanbul & iconic destinations' %}</p>
+                    <span class="promo-cta">{% trans 'Discover deals' %}</span>
                 </div>
             </a>
             <a href="{% url 'website:visa' %}" class="promo-card">
-                <img src="{% static 'media/promo-visa.jpg' %}" alt="Visa requirements" width="640" height="400" loading="lazy" decoding="async">
+                <img src="{% static 'media/promo-visa.jpg' %}" alt="{% trans 'Visa requirements' %}" width="640" height="400" loading="lazy" decoding="async">
                 <div class="promo-card-body">
-                    <span class="promo-tag">Visa services</span>
-                    <h3>Visa Requirements</h3>
-                    <p>Country guides & PDF documents in one place</p>
-                    <span class="promo-cta">View documents</span>
+                    <span class="promo-tag">{% trans 'Visa services' %}</span>
+                    <h3>{% trans 'Visa Requirements' %}</h3>
+                    <p>{% trans 'Country guides & PDF documents in one place' %}</p>
+                    <span class="promo-cta">{% trans 'View documents' %}</span>
                 </div>
             </a>
         </div>
@@ -77,8 +76,8 @@
     <div class="container">
         <div class="section-head-row">
             <div>
-                <h2 class="section-title-tui">We love travel — discover top destinations</h2>
-                <p class="section-sub-tui">From beaches to cities, find your perfect holiday spot</p>
+                <h2 class="section-title-tui">{% trans 'We love travel — discover top destinations' %}</h2>
+                <p class="section-sub-tui">{% trans 'From beaches to cities, find your perfect holiday spot' %}</p>
             </div>
         </div>
         <div class="destinations-scroll">
@@ -88,7 +87,7 @@
                 <div class="destination-overlay">
                     <h3>{{ dest.name }}</h3>
                     <span>{{ dest.country }}</span>
-                    <span class="dest-book-btn">Book now</span>
+                    <span class="dest-book-btn">{% trans 'Book now' %}</span>
                 </div>
             </a>
             {% endfor %}
@@ -100,10 +99,10 @@
     <div class="container">
         <div class="section-head-row">
             <div>
-                <h2 class="section-title-tui">Affordable travel packages</h2>
-                <p class="section-sub-tui">Everyone deserves their dream vacation — browse and book on WhatsApp</p>
+                <h2 class="section-title-tui">{% trans 'Affordable travel packages' %}</h2>
+                <p class="section-sub-tui">{% trans 'Everyone deserves their dream vacation — browse and book on WhatsApp' %}</p>
             </div>
-            <a href="{% url 'website:packages' %}" class="link-see-all">All packages →</a>
+            <a href="{% url 'website:packages' %}" class="link-see-all">{% trans 'All packages' %} →</a>
         </div>
         {% include 'includes/package_filters.html' %}
         {% if packages %}
@@ -118,28 +117,28 @@
 
 <section class="section why-sama-section">
     <div class="container">
-        <h2 class="section-title-tui center">The Sama Tours promise</h2>
-        <p class="section-sub-tui center why-sub">Everything you need for a worry-free holiday — from one trusted team</p>
+        <h2 class="section-title-tui center">{% trans 'The Sama Tours promise' %}</h2>
+        <p class="section-sub-tui center why-sub">{% trans 'Everything you need for a worry-free holiday — from one trusted team' %}</p>
         <div class="why-grid">
             <div class="why-card">
                 <span class="why-icon">🤝</span>
-                <h3>All in one place</h3>
-                <p>Flights, hotels, itineraries, insurance & local guides — planned together.</p>
+                <h3>{% trans 'All in one place' %}</h3>
+                <p>{% trans 'Flights, hotels, itineraries, insurance & local guides — planned together.' %}</p>
             </div>
             <div class="why-card">
                 <span class="why-icon">👨‍💼</span>
-                <h3>Expert advice</h3>
-                <p>Knowledgeable agents tailor every trip to your budget and preferences.</p>
+                <h3>{% trans 'Expert advice' %}</h3>
+                <p>{% trans 'Knowledgeable agents tailor every trip to your budget and preferences.' %}</p>
             </div>
             <div class="why-card">
                 <span class="why-icon">📱</span>
-                <h3>Always reachable</h3>
-                <p>Quick responses on WhatsApp and phone whenever you need us.</p>
+                <h3>{% trans 'Always reachable' %}</h3>
+                <p>{% trans 'Quick responses on WhatsApp and phone whenever you need us.' %}</p>
             </div>
             <div class="why-card">
                 <span class="why-icon">🌍</span>
-                <h3>Worldwide destinations</h3>
-                <p>Beaches, cities, honeymoons & group tours across the globe.</p>
+                <h3>{% trans 'Worldwide destinations' %}</h3>
+                <p>{% trans 'Beaches, cities, honeymoons & group tours across the globe.' %}</p>
             </div>
         </div>
     </div>
@@ -148,35 +147,35 @@
 <section class="section vacation-section">
     <div class="container split-section">
         <div class="split-image">
-            <img src="{% static 'media/vacation-trip.jpg' %}" alt="Scenic travel destination — plan your vacation with Sama Tours" loading="lazy" width="900" height="600">
+            <img src="{% static 'media/vacation-trip.jpg' %}" alt="{% trans 'Scenic travel destination' %}" loading="lazy" width="900" height="600">
         </div>
         <div class="split-content">
-            <span class="section-label">Choose Your Trip</span>
-            <h2>Start Your Vacation Today</h2>
-            <p>Looking for your dream vacation destination but don't know where to start? With the help of experienced and knowledgeable travel agents, you can plan the trip of a lifetime with ease.</p>
-            <a href="{% url 'website:packages' %}" class="btn btn-primary">View Packages</a>
+            <span class="section-label">{% trans 'Choose Your Trip' %}</span>
+            <h2>{% trans 'Start Your Vacation Today' %}</h2>
+            <p>{% trans "Looking for your dream vacation destination but don't know where to start? With the help of experienced and knowledgeable travel agents, you can plan the trip of a lifetime with ease." %}</p>
+            <a href="{% url 'website:packages' %}" class="btn btn-primary">{% trans 'View Packages' %}</a>
         </div>
     </div>
 </section>
 
 <section class="section section-compact experiences-section">
     <div class="container">
-        <h2 class="section-title-tui center">Unforgettable experiences</h2>
+        <h2 class="section-title-tui center">{% trans 'Unforgettable experiences' %}</h2>
         <div class="highlights-grid highlights-tui">
             <div class="highlight-card">
                 <div class="highlight-icon">🚶</div>
-                <h3>City Walks Tour</h3>
-                <p>Discover iconic landmarks and hidden gems with expert local guides.</p>
+                <h3>{% trans 'City Walks Tour' %}</h3>
+                <p>{% trans 'Discover iconic landmarks and hidden gems with expert local guides.' %}</p>
             </div>
             <div class="highlight-card">
                 <div class="highlight-icon">🌅</div>
-                <h3>Sunset Boat Cruise</h3>
-                <p>Relax on the water as the sun sets over breathtaking coastlines.</p>
+                <h3>{% trans 'Sunset Boat Cruise' %}</h3>
+                <p>{% trans 'Relax on the water as the sun sets over breathtaking coastlines.' %}</p>
             </div>
             <div class="highlight-card">
                 <div class="highlight-icon">🏛️</div>
-                <h3>Cultural Experience</h3>
-                <p>Immerse yourself in authentic traditions, cuisine, and heritage.</p>
+                <h3>{% trans 'Cultural Experience' %}</h3>
+                <p>{% trans 'Immerse yourself in authentic traditions, cuisine, and heritage.' %}</p>
             </div>
         </div>
     </div>
@@ -185,24 +184,24 @@
 <section class="section adventure-section">
     <div class="container">
         <div class="section-header center">
-            <h2 class="section-title-tui">Discover your next adventure</h2>
-            <p class="section-sub-tui">Honeymoons, family holidays, or solo journeys — we've got you covered</p>
+            <h2 class="section-title-tui">{% trans 'Discover your next adventure' %}</h2>
+            <p class="section-sub-tui">{% trans "Honeymoons, family holidays, or solo journeys — we've got you covered" %}</p>
         </div>
         <div class="adventure-cards">
             <a href="{% url 'website:packages' %}" class="adventure-card adventure-card-link">
                 <div class="adventure-card-bg" style="background-image: url('{% static 'media/adventure-group.jpg' %}');"></div>
                 <div class="adventure-card-content">
-                    <h3>Organized Group Tour</h3>
-                    <p>Join like-minded travelers on curated group journeys.</p>
-                    <span class="adventure-cta">Learn more →</span>
+                    <h3>{% trans 'Organized Group Tour' %}</h3>
+                    <p>{% trans 'Join like-minded travelers on curated group journeys.' %}</p>
+                    <span class="adventure-cta">{% trans 'Learn more' %} →</span>
                 </div>
             </a>
             <a href="{% url 'website:contact' %}" class="adventure-card adventure-card-link">
                 <div class="adventure-card-bg" style="background-image: url('{% static 'media/adventure-custom.jpg' %}');"></div>
                 <div class="adventure-card-content">
-                    <h3>Single Customized Trip</h3>
-                    <p>A fully personalized itinerary for your style and budget.</p>
-                    <span class="adventure-cta">Get in touch →</span>
+                    <h3>{% trans 'Single Customized Trip' %}</h3>
+                    <p>{% trans 'A fully personalized itinerary for your style and budget.' %}</p>
+                    <span class="adventure-cta">{% trans 'Get in touch' %} →</span>
                 </div>
             </a>
         </div>
@@ -214,12 +213,12 @@
 <section class="section cta-strip">
     <div class="container cta-strip-inner">
         <div>
-            <h2>Ready to book your dream vacation?</h2>
-            <p>Contact our team for a detailed quotation — we're here to help.</p>
+            <h2>{% trans 'Ready to book your dream vacation?' %}</h2>
+            <p>{% trans "Contact our team for a detailed quotation — we're here to help." %}</p>
         </div>
         <div class="cta-strip-actions">
-            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
-            <a href="{% url 'website:contact' %}" class="btn btn-outline-light btn-lg">Contact Us</a>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener noreferrer">{% trans 'WhatsApp Us' %}</a>
+            <a href="{% url 'website:contact' %}" class="btn btn-outline-light btn-lg">{% trans 'Contact Us' %}</a>
         </div>
     </div>
 </section>

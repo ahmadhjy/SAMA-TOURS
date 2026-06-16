@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+{% load i18n %}
 
 <style>
 #quote-modal {
@@ -174,14 +175,14 @@ body.quote-modal-open { overflow: hidden !important; }
 <div id="quote-modal" aria-hidden="true" role="dialog" aria-labelledby="quote-modal-title">
     <div class="quote-backdrop" data-close-quote></div>
     <div class="quote-dialog">
-        <button type="button" class="quote-close" data-close-quote aria-label="Close">&times;</button>
-        <h2 id="quote-modal-title">Get a Travel Quote</h2>
-        <p class="quote-lead">Fill in your trip details — we&apos;ll open WhatsApp with your request ready to send.</p>
+        <button type="button" class="quote-close" data-close-quote aria-label="{% trans 'Close' %}">&times;</button>
+        <h2 id="quote-modal-title">{% trans 'Get a Travel Quote' %}</h2>
+        <p class="quote-lead">{% trans "Fill in your trip details — we'll open WhatsApp with your request ready to send." %}</p>
 
         <form id="quote-form">
             <div class="quote-row-2">
                 <div>
-                    <label for="quote-from">From</label>
+                    <label for="quote-from">{% trans 'From' %}</label>
                     <select id="quote-from" name="from" required>
                         {% for country in TRAVEL_COUNTRIES %}
                         <option value="{{ country }}"{% if country == 'Lebanon' %} selected{% endif %}>{{ country }}</option>
@@ -189,9 +190,9 @@ body.quote-modal-open { overflow: hidden !important; }
                     </select>
                 </div>
                 <div>
-                    <label for="quote-to">To</label>
+                    <label for="quote-to">{% trans 'To' %}</label>
                     <select id="quote-to" name="to" required>
-                        <option value="" disabled selected>Select destination</option>
+                        <option value="" disabled selected>{% trans 'Select destination' %}</option>
                         {% for country in TRAVEL_COUNTRIES %}
                         <option value="{{ country }}">{{ country }}</option>
                         {% endfor %}
@@ -199,12 +200,12 @@ body.quote-modal-open { overflow: hidden !important; }
                 </div>
             </div>
 
-            <label for="quote-dates">Travel dates</label>
-            <input type="text" id="quote-dates" name="travel_dates" placeholder="Select departure and return" readonly required>
+            <label for="quote-dates">{% trans 'Travel dates' %}</label>
+            <input type="text" id="quote-dates" name="travel_dates" placeholder="{% trans 'Select departure and return' %}" readonly required>
 
             <div class="quote-travelers">
                 <div class="quote-counter">
-                    <label for="quote-adults">Adults</label>
+                    <label for="quote-adults">{% trans 'Adults' %}</label>
                     <div class="quote-stepper">
                         <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-adults" aria-label="Fewer adults">−</button>
                         <input type="number" id="quote-adults" name="adults" min="0" max="20" value="2" readonly tabindex="-1">
@@ -212,7 +213,7 @@ body.quote-modal-open { overflow: hidden !important; }
                     </div>
                 </div>
                 <div class="quote-counter">
-                    <label for="quote-children">Children</label>
+                    <label for="quote-children">{% trans 'Children' %}</label>
                     <div class="quote-stepper">
                         <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-children" aria-label="Fewer children">−</button>
                         <input type="number" id="quote-children" name="children" min="0" max="20" value="0" readonly tabindex="-1">
@@ -220,7 +221,7 @@ body.quote-modal-open { overflow: hidden !important; }
                     </div>
                 </div>
                 <div class="quote-counter">
-                    <label for="quote-infants">Infants</label>
+                    <label for="quote-infants">{% trans 'Infants' %}</label>
                     <div class="quote-stepper">
                         <button type="button" class="quote-step-btn" data-step="-1" data-target="quote-infants" aria-label="Fewer infants">−</button>
                         <input type="number" id="quote-infants" name="infants" min="0" max="10" value="0" readonly tabindex="-1">
@@ -229,7 +230,7 @@ body.quote-modal-open { overflow: hidden !important; }
                 </div>
             </div>
 
-            <button type="submit" class="quote-submit">Send on WhatsApp</button>
+            <button type="submit" class="quote-submit">{% trans 'Send on WhatsApp' %}</button>
         </form>
     </div>
 </div>
@@ -329,11 +330,11 @@ body.quote-modal-open { overflow: hidden !important; }
 
         var selected = datePicker ? datePicker.selectedDates : [];
         if (!from || !to || selected.length < 1) {
-            alert('Please select your travel dates.');
+            alert(document.body.dataset.quoteAlertDates || 'Please select your travel dates.');
             return;
         }
         if (adults + children + infants < 1) {
-            alert('Please add at least one traveler.');
+            alert(document.body.dataset.quoteAlertTravelers || 'Please add at least one traveler.');
             return;
         }
 
@@ -343,17 +344,18 @@ body.quote-modal-open { overflow: hidden !important; }
             dateLine = dateFrom + ' – ' + formatDate(selected[1].toISOString().split('T')[0]);
         }
 
+        var ds = document.body.dataset;
         var parts = [];
-        if (adults) parts.push(adults + ' adult' + (adults !== 1 ? 's' : ''));
-        if (children) parts.push(children + ' child' + (children !== 1 ? 'ren' : ''));
-        if (infants) parts.push(infants + ' infant' + (infants !== 1 ? 's' : ''));
+        if (adults) parts.push(adults + ' ' + (adults !== 1 ? (ds.quoteWaAdults || 'adults') : (ds.quoteWaAdult || 'adult')));
+        if (children) parts.push(children + ' ' + (children !== 1 ? (ds.quoteWaChildren || 'children') : (ds.quoteWaChild || 'child')));
+        if (infants) parts.push(infants + ' ' + (infants !== 1 ? (ds.quoteWaInfants || 'infants') : (ds.quoteWaInfant || 'infant')));
 
-        var msg = 'Hello Sama Tours! I would like a travel quote.\n\n'
-            + 'From: ' + from + '\n'
-            + 'To: ' + to + '\n'
-            + 'Travel dates: ' + dateLine + '\n'
-            + 'Travelers: ' + parts.join(', ') + '\n\n'
-            + 'Thank you!';
+        var msg = (ds.quoteWaIntro || 'Hello Sama Tours! I would like a travel quote.') + '\n\n'
+            + (ds.quoteWaFrom || 'From:') + ' ' + from + '\n'
+            + (ds.quoteWaTo || 'To:') + ' ' + to + '\n'
+            + (ds.quoteWaDates || 'Travel dates:') + ' ' + dateLine + '\n'
+            + (ds.quoteWaTravelers || 'Travelers:') + ' ' + parts.join(', ') + '\n\n'
+            + (ds.quoteWaThanks || 'Thank you!');
 
         window.open('https://wa.me/' + waNum + '?text=' + encodeURIComponent(msg), '_blank');
         closeModal();

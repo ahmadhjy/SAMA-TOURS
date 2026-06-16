@@ -1,0 +1,667 @@
+#
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+
+msgid "%(counter)s package found"
+msgid_plural "%(counter)s packages found"
+msgstr[0] "%(counter)s forfait trouvé"
+msgstr[1] "%(counter)s forfaits trouvés"
+
+msgid "Sama Tours"
+msgstr "Sama Tours"
+
+msgid "Sama Tours Lebanon"
+msgstr "Sama Tours Liban"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "About"
+msgstr "À propos"
+
+msgid "Packages"
+msgstr "Forfaits"
+
+msgid "Visa Requirements"
+msgstr "Exigences de visa"
+
+msgid "Contact Us"
+msgstr "Contactez-nous"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+msgid "Sama Tours — Home"
+msgstr "Sama Tours — Accueil"
+
+msgid "Mon – Sun, 9:00 – 18:00"
+msgstr "Lun – Dim, 9h00 – 18h00"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Travel beyond your imagination, with Sama Tours!"
+msgstr "Voyagez au-delà de votre imagination avec Sama Tours !"
+
+msgid "Chat on WhatsApp"
+msgstr "Discuter sur WhatsApp"
+
+msgid "Quick Links"
+msgstr "Liens rapides"
+
+msgid "Follow Us"
+msgstr "Suivez-nous"
+
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+msgid "Why book with Sama Tours"
+msgstr "Pourquoi réserver avec Sama Tours"
+
+msgid "Expert Travel Agents"
+msgstr "Agents de voyage experts"
+
+msgid "Personal planning for every trip"
+msgstr "Planification personnalisée pour chaque voyage"
+
+msgid "Book via WhatsApp"
+msgstr "Réserver via WhatsApp"
+
+msgid "Fast quotes & easy booking"
+msgstr "Devis rapides et réservation facile"
+
+msgid "Visa Services"
+msgstr "Services de visa"
+
+msgid "Requirements & documentation"
+msgstr "Exigences et documentation"
+
+msgid "Affordable Packages"
+msgstr "Forfaits abordables"
+
+msgid "Dream vacations within budget"
+msgstr "Vacances de rêve dans votre budget"
+
+msgid "View details"
+msgstr "Voir les détails"
+
+msgid "Book Now"
+msgstr "Réserver"
+
+msgid "Find your perfect trip"
+msgstr "Trouvez votre voyage idéal"
+
+msgid "Filter by country and budget"
+msgstr "Filtrer par pays et budget"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "All countries"
+msgstr "Tous les pays"
+
+msgid "Budget"
+msgstr "Budget"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Any price"
+msgstr "Tout prix"
+
+msgid "Up to $500"
+msgstr "Jusqu'à 500 $"
+
+msgid "Up to $1,000"
+msgstr "Jusqu'à 1 000 $"
+
+msgid "Up to $1,500"
+msgstr "Jusqu'à 1 500 $"
+
+msgid "Up to $2,000"
+msgstr "Jusqu'à 2 000 $"
+
+msgid "Up to $5,000"
+msgstr "Jusqu'à 5 000 $"
+
+msgid "Up to $10,000"
+msgstr "Jusqu'à 10 000 $"
+
+msgid "Your journey starts here"
+msgstr "Votre voyage commence ici"
+
+msgid "Explore the World with Sama Tours"
+msgstr "Explorez le monde avec Sama Tours"
+
+msgid ""
+"Book packages, plan custom trips, and get visa support — all with "
+"experienced travel experts by your side."
+msgstr ""
+"Réservez des forfaits, planifiez des voyages sur mesure et obtenez un "
+"soutien visa — avec des experts à vos côtés."
+
+msgid "Book Your Trip"
+msgstr "Réservez votre voyage"
+
+msgid "Get a Quote"
+msgstr "Demander un devis"
+
+msgid "Travel deals & inspiration"
+msgstr "Offres et inspiration voyage"
+
+msgid "Handpicked offers to help you plan your next getaway"
+msgstr "Offres sélectionnées pour planifier votre prochaine escapade"
+
+msgid "View all packages"
+msgstr "Voir tous les forfaits"
+
+msgid "Popular"
+msgstr "Populaire"
+
+msgid "Beach & Sun Escapes"
+msgstr "Évasions plage et soleil"
+
+msgid "Caribbean, Maldives & more — relax by the sea"
+msgstr "Caraïbes, Maldives et plus — détente au bord de la mer"
+
+msgid "Discover deals"
+msgstr "Découvrir les offres"
+
+msgid "City breaks"
+msgstr "City breaks"
+
+msgid "Europe & Beyond"
+msgstr "Europe et au-delà"
+
+msgid "Paris, Dubai, Istanbul & iconic destinations"
+msgstr "Paris, Dubaï, Istanbul et destinations emblématiques"
+
+msgid "Country guides & PDF documents in one place"
+msgstr "Guides par pays et documents PDF en un seul endroit"
+
+msgid "View documents"
+msgstr "Voir les documents"
+
+msgid "We love travel — discover top destinations"
+msgstr "Nous aimons voyager — découvrez les meilleures destinations"
+
+msgid "From beaches to cities, find your perfect holiday spot"
+msgstr "Des plages aux villes, trouvez votre lieu de vacances idéal"
+
+msgid "Book now"
+msgstr "Réserver"
+
+msgid "Affordable travel packages"
+msgstr "Forfaits voyage abordables"
+
+msgid "Everyone deserves their dream vacation — browse and book on WhatsApp"
+msgstr ""
+"Chacun mérite ses vacances de rêve — parcourez et réservez sur WhatsApp"
+
+msgid "All packages"
+msgstr "Tous les forfaits"
+
+msgid "The Sama Tours promise"
+msgstr "La promesse Sama Tours"
+
+msgid "Everything you need for a worry-free holiday — from one trusted team"
+msgstr "Tout pour des vacances sans souci — une seule équipe de confiance"
+
+msgid "All in one place"
+msgstr "Tout en un seul endroit"
+
+msgid ""
+"Flights, hotels, itineraries, insurance & local guides — planned together."
+msgstr ""
+"Vols, hôtels, itinéraires, assurance et guides locaux — planifiés ensemble."
+
+msgid "Expert advice"
+msgstr "Conseils d'experts"
+
+msgid "Knowledgeable agents tailor every trip to your budget and preferences."
+msgstr ""
+"Des agents compétents adaptent chaque voyage à votre budget et vos "
+"préférences."
+
+msgid "Always reachable"
+msgstr "Toujours joignables"
+
+msgid "Quick responses on WhatsApp and phone whenever you need us."
+msgstr "Réponses rapides sur WhatsApp et téléphone quand vous en avez besoin."
+
+msgid "Worldwide destinations"
+msgstr "Destinations mondiales"
+
+msgid "Beaches, cities, honeymoons & group tours across the globe."
+msgstr ""
+"Plages, villes, lunes de miel et circuits groupés dans le monde entier."
+
+msgid "Choose Your Trip"
+msgstr "Choisissez votre voyage"
+
+msgid "Start Your Vacation Today"
+msgstr "Commencez vos vacances aujourd'hui"
+
+msgid ""
+"Looking for your dream vacation destination but don't know where to start? "
+"With the help of experienced and knowledgeable travel agents, you can plan "
+"the trip of a lifetime with ease."
+msgstr ""
+"Vous cherchez la destination de vos rêves sans savoir par où commencer ? "
+"Avec l'aide d'agents expérimentés, planifiez le voyage d'une vie en toute "
+"simplicité."
+
+msgid "View Packages"
+msgstr "Voir les forfaits"
+
+msgid "Unforgettable experiences"
+msgstr "Expériences inoubliables"
+
+msgid "City Walks Tour"
+msgstr "Visite à pied de la ville"
+
+msgid "Discover iconic landmarks and hidden gems with expert local guides."
+msgstr ""
+"Découvrez monuments emblématiques et trésors cachés avec des guides locaux."
+
+msgid "Sunset Boat Cruise"
+msgstr "Croisière au coucher du soleil"
+
+msgid "Relax on the water as the sun sets over breathtaking coastlines."
+msgstr ""
+"Détendez-vous sur l'eau alors que le soleil se couche sur des côtes "
+"magnifiques."
+
+msgid "Cultural Experience"
+msgstr "Expérience culturelle"
+
+msgid "Immerse yourself in authentic traditions, cuisine, and heritage."
+msgstr ""
+"Plongez dans les traditions authentiques, la cuisine et le patrimoine."
+
+msgid "Discover your next adventure"
+msgstr "Découvrez votre prochaine aventure"
+
+msgid "Honeymoons, family holidays, or solo journeys — we've got you covered"
+msgstr ""
+"Lunes de miel, vacances en famille ou voyages solo — nous vous accompagnons"
+
+msgid "Organized Group Tour"
+msgstr "Circuit groupe organisé"
+
+msgid "Join like-minded travelers on curated group journeys."
+msgstr ""
+"Rejoignez des voyageurs partageant les mêmes idées sur des circuits "
+"organisés."
+
+msgid "Learn more"
+msgstr "En savoir plus"
+
+msgid "Single Customized Trip"
+msgstr "Voyage personnalisé individuel"
+
+msgid "A fully personalized itinerary for your style and budget."
+msgstr "Un itinéraire entièrement personnalisé selon votre style et budget."
+
+msgid "Get in touch"
+msgstr "Nous contacter"
+
+msgid "Testimonials"
+msgstr "Témoignages"
+
+msgid "Unforgettable Travel Experiences"
+msgstr "Expériences de voyage inoubliables"
+
+msgid ""
+"Our customers' feedback is essential in building a great reputation and "
+"maintaining excellent service. By listening to our customers' needs, we "
+"improve our offerings and provide an exceptional travel experience."
+msgstr ""
+"Les retours de nos clients sont essentiels pour notre réputation et notre "
+"service. En écoutant leurs besoins, nous améliorons nos offres et offrons "
+"une expérience exceptionnelle."
+
+msgid "Previous testimonial"
+msgstr "Témoignage précédent"
+
+msgid "Next testimonial"
+msgstr "Témoignage suivant"
+
+msgid "Ready to book your dream vacation?"
+msgstr "Prêt à réserver vos vacances de rêve ?"
+
+msgid "Contact our team for a detailed quotation — we're here to help."
+msgstr ""
+"Contactez notre équipe pour un devis détaillé — nous sommes là pour vous "
+"aider."
+
+msgid "WhatsApp Us"
+msgstr "Écrivez-nous sur WhatsApp"
+
+msgid "About SAMA"
+msgstr "À propos de SAMA"
+
+msgid "Explore the world with us, one adventure at a time."
+msgstr "Explorez le monde avec nous, une aventure à la fois."
+
+msgid "The Perfect Vacation Come True with Our Travel Agency"
+msgstr "Des vacances parfaites avec notre agence de voyage"
+
+msgid ""
+"We are a team of experienced travel experts who specialize in planning and "
+"organizing unforgettable travel experiences for our clients with a wide "
+"range of travel services, including flight bookings, hotel reservations, and"
+" more."
+msgstr ""
+"Nous sommes une équipe d'experts en voyage spécialisés dans l'organisation "
+"d'expériences inoubliables : vols, hôtels et plus."
+
+msgid "Get In Touch"
+msgstr "Contactez-nous"
+
+msgid "Our Services"
+msgstr "Nos services"
+
+msgid "Let us help you plan your next adventure"
+msgstr "Laissez-nous planifier votre prochaine aventure"
+
+msgid "Perfect Vacation Come True"
+msgstr "Des vacances parfaites"
+
+msgid ""
+"With our knowledge and expertise in the travel industry, we ensure that all "
+"aspects of your trip are tailored to your preferences and budget and make it"
+" an experience of a lifetime."
+msgstr ""
+"Avec notre expertise, nous adaptons chaque aspect de votre voyage à vos "
+"préférences et budget."
+
+msgid "Airline Tickets"
+msgstr "Billets d'avion"
+
+msgid "Ocean Cruises"
+msgstr "Croisières"
+
+msgid "Means of Transport"
+msgstr "Moyens de transport"
+
+msgid "Travel Itineraries"
+msgstr "Itinéraires de voyage"
+
+msgid "Travel Insurance"
+msgstr "Assurance voyage"
+
+msgid "Local Guide"
+msgstr "Guide local"
+
+msgid "Exclusive Travel Deals"
+msgstr "Offres exclusives"
+
+msgid "Book your dream vacation today!"
+msgstr "Réservez vos vacances de rêve aujourd'hui !"
+
+msgid "Book Today"
+msgstr "Réserver aujourd'hui"
+
+msgid "Travel Packages"
+msgstr "Forfaits voyage"
+
+msgid "Affordable Travel Packages"
+msgstr "Forfaits voyage abordables"
+
+msgid ""
+"Everyone deserves to experience their dream vacation. Browse, filter, and "
+"book instantly via WhatsApp."
+msgstr ""
+"Chacun mérite ses vacances de rêve. Parcourez, filtrez et réservez "
+"instantanément via WhatsApp."
+
+msgid ""
+"No packages match your filters. Try a different country or price range."
+msgstr "Aucun forfait ne correspond. Essayez un autre pays ou budget."
+
+msgid "Clear filters"
+msgstr "Effacer les filtres"
+
+msgid "New packages are coming soon. Contact us for a custom quote."
+msgstr ""
+"De nouveaux forfaits arrivent bientôt. Contactez-nous pour un devis sur "
+"mesure."
+
+msgid ""
+"Browse visa requirement documents by country. Click any card to view or "
+"download the PDF."
+msgstr ""
+"Parcourez les documents visa par pays. Cliquez sur une carte pour ouvrir le "
+"PDF."
+
+msgid "View PDF"
+msgstr "Voir le PDF"
+
+msgid "Click to open document"
+msgstr "Cliquer pour ouvrir le document"
+
+msgid "Need help with your visa application?"
+msgstr "Besoin d'aide pour votre demande de visa ?"
+
+msgid "Ask us on WhatsApp"
+msgstr "Demandez-nous sur WhatsApp"
+
+msgid ""
+"Visa documents are being added. Check back soon or contact us for current "
+"requirements."
+msgstr ""
+"Les documents visa sont en cours d'ajout. Revenez bientôt ou contactez-nous."
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Office"
+msgstr "Bureau"
+
+msgid "Write for anything"
+msgstr "Écrivez pour toute demande"
+
+msgid "Write to this email for a detailed quotation and information."
+msgstr "Écrivez à cet e-mail pour un devis détaillé et des informations."
+
+msgid "Message on WhatsApp"
+msgstr "Message sur WhatsApp"
+
+msgid "Sama Tours office location"
+msgstr "Emplacement du bureau Sama Tours"
+
+msgid "About this package"
+msgstr "À propos de ce forfait"
+
+msgid "Day-by-day itinerary"
+msgstr "Itinéraire jour par jour"
+
+msgid "Starting price per person"
+msgstr "Prix de départ par personne"
+
+msgid "Destination"
+msgstr "Destination"
+
+msgid "Duration"
+msgstr "Durée"
+
+msgid "Book on WhatsApp"
+msgstr "Réserver sur WhatsApp"
+
+msgid "Get a custom quote"
+msgstr "Demander un devis personnalisé"
+
+msgid "Get quote"
+msgstr "Devis"
+
+msgid "You may also like"
+msgstr "Vous aimerez aussi"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Get a Travel Quote"
+msgstr "Demander un devis voyage"
+
+msgid ""
+"Fill in your trip details — we'll open WhatsApp with your request ready to "
+"send."
+msgstr ""
+"Remplissez les détails — nous ouvrirons WhatsApp avec votre demande prête à "
+"envoyer."
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "À"
+
+msgid "Select destination"
+msgstr "Choisir la destination"
+
+msgid "Travel dates"
+msgstr "Dates de voyage"
+
+msgid "Select departure and return"
+msgstr "Choisir départ et retour"
+
+msgid "Adults"
+msgstr "Adultes"
+
+msgid "Children"
+msgstr "Enfants"
+
+msgid "Infants"
+msgstr "Bébés"
+
+msgid "Send on WhatsApp"
+msgstr "Envoyer sur WhatsApp"
+
+msgid "Please select your travel dates."
+msgstr "Veuillez sélectionner vos dates de voyage."
+
+msgid "Please add at least one traveler."
+msgstr "Veuillez ajouter au moins un voyageur."
+
+msgid "Hello Sama Tours! I would like a travel quote."
+msgstr "Bonjour Sama Tours ! Je souhaite un devis voyage."
+
+msgid "From:"
+msgstr "De :"
+
+msgid "To:"
+msgstr "À :"
+
+msgid "Travel dates:"
+msgstr "Dates de voyage :"
+
+msgid "Travelers:"
+msgstr "Voyageurs :"
+
+msgid "Thank you!"
+msgstr "Merci !"
+
+msgid "adult"
+msgstr "adulte"
+
+msgid "adults"
+msgstr "adultes"
+
+msgid "child"
+msgstr "enfant"
+
+msgid "children"
+msgstr "enfants"
+
+msgid "infant"
+msgstr "bébé"
+
+msgid "infants"
+msgstr "bébés"
+
+msgid "From $%(amount)s"
+msgstr "À partir de %(amount)s $"
+
+msgid "Hello, I'd like to inquire about Sama Tours services."
+msgstr "Bonjour, je souhaite des informations sur les services Sama Tours."
+
+msgid ""
+"Sama Tours, Gallerie Semaan Crossroad, Hazmieh Highway, Hyundai Car Showroom"
+" Building, 1st Floor, Hazmieh"
+msgstr ""
+"Sama Tours, carrefour Galerie Semaan, autoroute Hazmieh, bâtiment Hyundai, "
+"1er étage, Hazmieh"
+
+msgid ""
+"Sama Tours — Premium travel agency in Lebanon. Explore the world with expert"
+" planning, affordable packages, and visa services."
+msgstr ""
+"Sama Tours — agence de voyage premium au Liban. Explorez le monde avec "
+"planification experte, forfaits abordables et services visa."
+
+msgid "Hello Sama Tours! I would like to book a package."
+msgstr "Bonjour Sama Tours ! Je souhaite réserver un forfait."
+
+msgid "Package: %(name)s"
+msgstr "Forfait : %(name)s"
+
+msgid "Destination: %(dest)s"
+msgstr "Destination : %(dest)s"
+
+msgid "Duration: %(duration)s"
+msgstr "Durée : %(duration)s"
+
+msgid "Price: %(price)s"
+msgstr "Prix : %(price)s"
+
+msgid "Please share availability and payment details. Thank you!"
+msgstr ""
+"Merci de partager les disponibilités et modalités de paiement. Merci !"
+
+msgid "Not specified"
+msgstr "Non précisé"
+
+msgid "%(count)s adult"
+msgstr "%(count)s adulte"
+
+msgid "%(count)s adults"
+msgstr "%(count)s adultes"
+
+msgid "%(count)s child"
+msgstr "%(count)s enfant"
+
+msgid "%(count)s children"
+msgstr "%(count)s enfants"
+
+msgid "%(count)s infant"
+msgstr "%(count)s bébé"
+
+msgid "%(count)s infants"
+msgstr "%(count)s bébés"
+
+msgid "Beach vacation deals"
+msgstr "Offres vacances plage"
+
+msgid "City break packages"
+msgstr "Forfaits city break"
+
+msgid "Visa requirements"
+msgstr "Exigences de visa"
+
+msgid "Scenic travel destination"
+msgstr "Destination de voyage pittoresque"
+
+msgid "Open %(country)s visa requirements PDF"
+msgstr "Ouvrir le PDF des exigences visa %(country)s"

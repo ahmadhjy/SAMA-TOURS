@@ -1,24 +1,25 @@
+{% load i18n %}
 <footer class="site-footer">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <p class="footer-tagline">Travel beyond your imagination, with Sama Tours!</p>
+                <p class="footer-tagline">{% trans 'Travel beyond your imagination, with Sama Tours!' %}</p>
                 <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer">
-                    Chat on WhatsApp
+                    {% trans 'Chat on WhatsApp' %}
                 </a>
             </div>
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>{% trans 'Quick Links' %}</h4>
                 <ul>
-                    <li><a href="{% url 'website:home' %}">Home</a></li>
-                    <li><a href="{% url 'website:about' %}">About</a></li>
-                    <li><a href="{% url 'website:packages' %}">Packages</a></li>
-                    <li><a href="{% url 'website:visa' %}">Visa Requirements</a></li>
-                    <li><a href="{% url 'website:contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'website:home' %}">{% trans 'Home' %}</a></li>
+                    <li><a href="{% url 'website:about' %}">{% trans 'About' %}</a></li>
+                    <li><a href="{% url 'website:packages' %}">{% trans 'Packages' %}</a></li>
+                    <li><a href="{% url 'website:visa' %}">{% trans 'Visa Requirements' %}</a></li>
+                    <li><a href="{% url 'website:contact' %}">{% trans 'Contact Us' %}</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>Contact</h4>
+                <h4>{% trans 'Contact' %}</h4>
                 <ul>
                     <li>{{ SITE_ADDRESS }}</li>
                     <li><a href="mailto:{{ SITE_EMAIL }}">{{ SITE_EMAIL }}</a></li>
@@ -27,7 +28,7 @@
                 </ul>
             </div>
             <div class="footer-social">
-                <h4>Follow Us</h4>
+                <h4>{% trans 'Follow Us' %}</h4>
                 <div class="social-links">
                     <a href="{{ SITE_FACEBOOK }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
                     <a href="{{ SITE_INSTAGRAM }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
@@ -35,7 +36,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; {% now "Y" %} Sama Tours. All rights reserved.</p>
+            <p>&copy; {% now "Y" %} Sama Tours. {% trans 'All rights reserved.' %}</p>
         </div>
     </div>
 </footer>

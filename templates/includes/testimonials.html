@@ -1,10 +1,11 @@
+{% load i18n %}
 {% if testimonials %}
 <section class="section testimonials-section" id="testimonials">
     <div class="container">
         <div class="section-header center">
-            <span class="section-label">Testimonials</span>
-            <h2>Unforgettable Travel Experiences</h2>
-            <p>Our customers' feedback is essential in building a great reputation and maintaining excellent service. By listening to our customers' needs, we improve our offerings and provide an exceptional travel experience.</p>
+            <span class="section-label">{% trans 'Testimonials' %}</span>
+            <h2>{% trans 'Unforgettable Travel Experiences' %}</h2>
+            <p>{% trans "Our customers' feedback is essential in building a great reputation and maintaining excellent service. By listening to our customers' needs, we improve our offerings and provide an exceptional travel experience." %}</p>
         </div>
         <div class="testimonial-slider" id="testimonial-slider">
             <div class="testimonial-track" id="testimonial-track">
@@ -18,9 +19,9 @@
                 {% endfor %}
             </div>
             <div class="testimonial-controls">
-                <button type="button" class="testimonial-btn prev" id="testimonial-prev" aria-label="Previous testimonial">&larr;</button>
+                <button type="button" class="testimonial-btn prev" id="testimonial-prev" aria-label="{% trans 'Previous testimonial' %}">&larr;</button>
                 <div class="testimonial-dots" id="testimonial-dots"></div>
-                <button type="button" class="testimonial-btn next" id="testimonial-next" aria-label="Next testimonial">&rarr;</button>
+                <button type="button" class="testimonial-btn next" id="testimonial-next" aria-label="{% trans 'Next testimonial' %}">&rarr;</button>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+{% load i18n %}
 <article class="package-card package-card-tui">
     <a href="{% url 'website:package_detail' package.slug %}" class="package-card-image-link">
         <div class="package-card-image">
@@ -7,7 +8,7 @@
             <div class="package-card-placeholder" aria-hidden="true"></div>
             {% endif %}
             <span class="package-price-badge">{{ package.price_display }}</span>
-            <span class="package-destination">{{ package.destination }}</span>
+            <span class="package-destination">{{ package.destination_display }}</span>
         </div>
     </a>
     <div class="package-card-body">
@@ -17,9 +18,9 @@
         </div>
         <p>{{ package.short_description }}</p>
         <div class="package-card-actions">
-            <a href="{% url 'website:package_detail' package.slug %}" class="btn btn-outline btn-sm">View details</a>
+            <a href="{% url 'website:package_detail' package.slug %}" class="btn btn-outline btn-sm">{% trans 'View details' %}</a>
             <a href="{{ package.whatsapp_booking_url }}" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
-                Book Now
+                {% trans 'Book Now' %}
             </a>
         </div>
     </div>

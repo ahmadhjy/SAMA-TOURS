@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from modeltranslation.admin import TranslationAdmin
 
 from .models import TravelPackage, PackageImage, Destination, VisaRequirement, Testimonial
 
@@ -12,13 +13,13 @@ class PackageImageInline(admin.TabularInline):
 
 
 @admin.register(TravelPackage)
-class TravelPackageAdmin(admin.ModelAdmin):
+class TravelPackageAdmin(TranslationAdmin):
     list_display = (
-        'name', 'destination', 'starting_price', 'image_preview',
+        'name', 'country', 'city', 'starting_price', 'image_preview',
         'is_featured', 'is_active', 'display_order',
     )
-    list_filter = ('is_featured', 'is_active', 'destination')
-    search_fields = ('name', 'destination', 'slug')
+    list_filter = ('is_featured', 'is_active', 'country')
+    search_fields = ('name', 'country', 'city', 'slug')
     prepopulated_fields = {'slug': ('name',)}
     list_editable = ('is_featured', 'is_active', 'display_order')
     ordering = ('display_order', 'name')
@@ -26,7 +27,7 @@ class TravelPackageAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Package details', {
             'fields': (
-                'name', 'slug', 'destination', 'duration', 'starting_price',
+                'name', 'slug', 'country', 'city', 'duration', 'starting_price',
                 'short_description',
             ),
         }),
@@ -54,14 +55,14 @@ class TravelPackageAdmin(admin.ModelAdmin):
 
 
 @admin.register(Destination)
-class DestinationAdmin(admin.ModelAdmin):
+class DestinationAdmin(TranslationAdmin):
     list_display = ('name', 'country', 'is_active', 'display_order')
     list_editable = ('is_active', 'display_order')
     search_fields = ('name', 'country')
 
 
 @admin.register(VisaRequirement)
-class VisaRequirementAdmin(admin.ModelAdmin):
+class VisaRequirementAdmin(TranslationAdmin):
     list_display = ('country_name', 'has_pdf_display', 'has_image_display', 'is_active', 'display_order')
     list_editable = ('is_active', 'display_order')
     list_filter = ('is_active',)
@@ -91,7 +92,7 @@ class VisaRequirementAdmin(admin.ModelAdmin):
 
 
 @admin.register(Testimonial)
-class TestimonialAdmin(admin.ModelAdmin):
+class TestimonialAdmin(TranslationAdmin):
     list_display = ('author_name', 'is_active', 'display_order')
     list_editable = ('is_active', 'display_order')
     search_fields = ('author_name', 'content')

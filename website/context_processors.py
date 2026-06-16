@@ -1,11 +1,16 @@
 from urllib.parse import quote
 
+from django.conf import settings
+from django.urls import translate_url
+from django.utils import translation
+from django.utils.translation import gettext as _
+
 from .countries import TRAVEL_COUNTRIES
 
 
 def site_contact(request):
     whatsapp_number = '96176832813'
-    general_message = "Hello, I'd like to inquire about Sama Tours services."
+    general_message = _("Hello, I'd like to inquire about Sama Tours services.")
     return {
         'SITE_EMAIL': 'info@samatourslb.com',
         'SITE_PHONE': '+961 25 450 473',
@@ -13,7 +18,7 @@ def site_contact(request):
         'SITE_WHATSAPP': '+961 76 832 813',
         'SITE_WHATSAPP_NUMBER': whatsapp_number,
         'TRAVEL_COUNTRIES': TRAVEL_COUNTRIES,
-        'SITE_ADDRESS': (
+        'SITE_ADDRESS': _(
             'Sama Tours, Gallerie Semaan Crossroad, Hazmieh Highway, '
             'Hyundai Car Showroom Building, 1st Floor, Hazmieh'
         ),
@@ -27,3 +32,17 @@ def site_contact(request):
             '!5e0!3m2!1sen!2slb!4v1781457127223!5m2!1sen!2slb'
         ),
     }
+
+
+def language_switcher(request):
+    current = translation.get_language()
+    path = request.get_full_path()
+    languages = []
+    for code, label in settings.LANGUAGES:
+        languages.append({
+            'code': code,
+            'label': label,
+            'url': translate_url(path, code),
+            'active': code == current,
+        })
+    return {'LANGUAGE_SWITCHER': languages, 'CURRENT_LANGUAGE': current}
