@@ -49,10 +49,10 @@ msgid "WhatsApp"
 msgstr "واتساب"
 
 msgid "Travel beyond your imagination, with Sama Tours!"
-msgstr "سافر إلى ما وراء خيالك مع سما تورز!"
+msgstr "سافر أبعد من خيالك مع سما تورز!"
 
 msgid "Chat on WhatsApp"
-msgstr "تحدث عبر واتساب"
+msgstr "تواصل معنا عبر واتساب"
 
 msgid "Quick Links"
 msgstr "روابط سريعة"
@@ -67,16 +67,16 @@ msgid "Why book with Sama Tours"
 msgstr "لماذا تحجز مع سما تورز"
 
 msgid "Expert Travel Agents"
-msgstr "وكلاء سفر خبراء"
+msgstr "خبراء سفر محترفون"
 
 msgid "Personal planning for every trip"
 msgstr "تخطيط شخصي لكل رحلة"
 
 msgid "Book via WhatsApp"
-msgstr "احجز عبر واتساب"
+msgstr "الحجز عبر واتساب"
 
 msgid "Fast quotes & easy booking"
-msgstr "عروض سريعة وحجز سهل"
+msgstr "عروض أسعار سريعة وحجز سهل"
 
 msgid "Visa Services"
 msgstr "خدمات التأشيرة"
@@ -97,7 +97,7 @@ msgid "Book Now"
 msgstr "احجز الآن"
 
 msgid "Find your perfect trip"
-msgstr "اعثر على رحلتك المثالية"
+msgstr "اختر الرحلة الأنسب لك"
 
 msgid "Filter by country and budget"
 msgstr "تصفية حسب الدولة والميزانية"
@@ -139,28 +139,29 @@ msgid "Up to $10,000"
 msgstr "حتى 10,000$"
 
 msgid "Your journey starts here"
-msgstr "رحلتك تبدأ هنا"
+msgstr "انطلق في رحلتك من هنا"
 
 msgid "Explore the World with Sama Tours"
-msgstr "استكشف العالم مع سما تورز"
+msgstr "سافر إلى العالم مع سما تورز"
 
 msgid ""
 "Book packages, plan custom trips, and get visa support — all with "
 "experienced travel experts by your side."
 msgstr ""
-"احجز الباقات، خطط رحلات مخصصة، واحصل على دعم التأشيرة — مع خبراء سفر بجانبك."
+"احجز باقاتك، خطّط لرحلات مخصّصة، واستفد من خدمات التأشيرات مع فريق خبراء "
+"السفر لدينا."
 
 msgid "Book Your Trip"
 msgstr "احجز رحلتك"
 
 msgid "Get a Quote"
-msgstr "احصل على عرض سعر"
+msgstr "اطلب عرض سعر"
 
 msgid "Travel deals & inspiration"
-msgstr "عروض سفر وإلهام"
+msgstr "عروض سفر ملهمة"
 
 msgid "Handpicked offers to help you plan your next getaway"
-msgstr "عروض مختارة لمساعدتك في التخطيط لعطلتك القادمة"
+msgstr "عروض منتقاة بعناية لتخطيط عطلتك القادمة"
 
 msgid "View all packages"
 msgstr "عرض كل الباقات"
@@ -169,10 +170,10 @@ msgid "Popular"
 msgstr "شائع"
 
 msgid "Beach & Sun Escapes"
-msgstr "هروب إلى الشاطئ والشمس"
+msgstr "عطلات الشاطئ والشمس"
 
 msgid "Caribbean, Maldives & more — relax by the sea"
-msgstr "الكاريبي، المالديف والمزيد — استرخِ بجانب البحر"
+msgstr "الكاريبي، المالديف والمزيد — استمتع بإجازة على البحر"
 
 msgid "Discover deals"
 msgstr "اكتشف العروض"
@@ -193,10 +194,10 @@ msgid "View documents"
 msgstr "عرض المستندات"
 
 msgid "We love travel — discover top destinations"
-msgstr "نحب السفر — اكتشف أفضل الوجهات"
+msgstr "نحب السفر — اكتشف أبرز الوجهات"
 
 msgid "From beaches to cities, find your perfect holiday spot"
-msgstr "من الشواطئ إلى المدن، اعثر على مكان عطلتك المثالي"
+msgstr "من الشواطئ إلى المدن، اختر وجهة عطلتك المثالية"
 
 msgid "Book now"
 msgstr "احجز الآن"
@@ -211,26 +212,26 @@ msgid "All packages"
 msgstr "كل الباقات"
 
 msgid "The Sama Tours promise"
-msgstr "وعد سما تورز"
+msgstr "وعدنا لكم في سما تورز"
 
 msgid "Everything you need for a worry-free holiday — from one trusted team"
-msgstr "كل ما تحتاجه لعطلة خالية من القلق — من فريق واحد موثوق"
+msgstr "كل ما تحتاجه لعطلة مريحة وآمنة — مع فريق واحد تثق به"
 
 msgid "All in one place"
 msgstr "كل شيء في مكان واحد"
 
 msgid ""
 "Flights, hotels, itineraries, insurance & local guides — planned together."
-msgstr "رحلات، فنادق، برامج، تأمين ومرشدون محليون — مخططون معاً."
+msgstr "طيران، فنادق، برامج، تأمين ومرشدون محليون — بخطة واحدة متكاملة."
 
 msgid "Expert advice"
-msgstr "نصائح الخبراء"
+msgstr "استشارة متخصصة"
 
 msgid "Knowledgeable agents tailor every trip to your budget and preferences."
-msgstr "وكلاء خبراء يخصصون كل رحلة لميزانيتك وتفضيلاتك."
+msgstr "خبراؤنا يصمّمون كل رحلة وفق ميزانيتك وتفضيلاتك."
 
 msgid "Always reachable"
-msgstr "دائماً في متناول اليد"
+msgstr "نحن دائماً معك"
 
 msgid "Quick responses on WhatsApp and phone whenever you need us."
 msgstr "ردود سريعة على واتساب والهاتف عندما تحتاجنا."
@@ -252,8 +253,8 @@ msgid ""
 "With the help of experienced and knowledgeable travel agents, you can plan "
 "the trip of a lifetime with ease."
 msgstr ""
-"تبحث عن وجهة عطلتك المثالية ولا تعرف من أين تبدأ؟ بمساعدة وكلاء سفر خبراء، "
-"يمكنك التخطيط لرحلة العمر بسهولة."
+"تبحث عن وجهة أحلامك ولا تعرف من أين تبدأ؟ مع خبراء سما تورز، يمكنك تخطيط "
+"رحلة العمر بكل سهولة."
 
 msgid "View Packages"
 msgstr "عرض الباقات"
@@ -314,8 +315,8 @@ msgid ""
 "maintaining excellent service. By listening to our customers' needs, we "
 "improve our offerings and provide an exceptional travel experience."
 msgstr ""
-"ملاحظات عملائنا أساسية لبناء سمعة رائعة وتقديم خدمة ممتازة. بالاستماع "
-"لاحتياجاتهم، نحسّن عروضنا ونقدم تجربة سفر استثنائية."
+"آراء عملائنا تساعدنا على تقديم خدمة أفضل وتجربة سفر استثنائية. نستمع "
+"لاحتياجاتكم ونطوّر عروضنا باستمرار."
 
 msgid "Previous testimonial"
 msgstr "الشهادة السابقة"

@@ -37,11 +37,13 @@ def site_contact(request):
 def language_switcher(request):
     current = translation.get_language()
     path = request.get_full_path()
+    flags = {'en': '🇬🇧', 'ar': '🇱🇧', 'fr': '🇫🇷'}
     languages = []
     for code, label in settings.LANGUAGES:
         languages.append({
             'code': code,
             'label': label,
+            'flag': flags.get(code, code.upper()),
             'url': translate_url(path, code),
             'active': code == current,
         })

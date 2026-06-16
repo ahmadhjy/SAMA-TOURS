@@ -4,9 +4,6 @@
         <a href="{% url 'website:home' %}" class="logo" aria-label="{% trans 'Sama Tours — Home' %}">
             <img src="{% static 'media/logo.png' %}" alt="Sama Tours" class="logo-img" width="80" height="72">
         </a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="{% trans 'Toggle navigation' %}" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
         <nav class="main-nav" id="main-nav">
             <ul>
                 <li><a href="{% url 'website:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>{% trans 'Home' %}</a></li>
@@ -15,11 +12,21 @@
                 <li><a href="{% url 'website:visa' %}" {% if request.resolver_match.url_name == 'visa' %}class="active"{% endif %}>{% trans 'Visa Requirements' %}</a></li>
                 <li><a href="{% url 'website:contact' %}" class="nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans 'Contact Us' %}</a></li>
             </ul>
-            <div class="lang-switcher" aria-label="{% trans 'Language' %}">
+        </nav>
+        <div class="header-end">
+            <div class="lang-switcher" role="navigation" aria-label="{% trans 'Language' %}">
                 {% for lang in LANGUAGE_SWITCHER %}
-                <a href="{{ lang.url }}" class="lang-switcher__link{% if lang.active %} is-active{% endif %}" hreflang="{{ lang.code }}" lang="{{ lang.code }}">{{ lang.code|upper }}</a>
+                {% if not lang.active %}
+                <a href="{{ lang.url }}" class="lang-flag" title="{{ lang.label }}" hreflang="{{ lang.code }}" lang="{{ lang.code }}">
+                    <span class="lang-flag__emoji" aria-hidden="true">{{ lang.flag }}</span>
+                    <span class="visually-hidden">{{ lang.label }}</span>
+                </a>
+                {% endif %}
                 {% endfor %}
             </div>
-        </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="{% trans 'Toggle navigation' %}" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </header>

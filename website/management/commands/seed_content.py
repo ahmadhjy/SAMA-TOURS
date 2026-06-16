@@ -171,6 +171,16 @@ class Command(BaseCommand):
                     'From the moment we reached out, their team was professional, attentive, and '
                     'incredibly helpful in planning every detail.'
                 ),
+                'content_ar': (
+                    'قضينا شهر عسل لا يُنسى في كوالالمبور بفضل سما تورز. '
+                    'منذ أول تواصل معنا، كان الفريق محترفاً ومهتماً بكل التفاصيل '
+                    'وساعدنا في ترتيب الرحلة بالكامل.'
+                ),
+                'content_fr': (
+                    'Nous avons passé une lune de miel inoubliable à Kuala Lumpur grâce à Sama Tours. '
+                    'Dès notre premier contact, l\'équipe a été professionnelle, attentive et '
+                    'très efficace pour organiser chaque détail.'
+                ),
                 'display_order': 1,
             },
             {
@@ -178,6 +188,15 @@ class Command(BaseCommand):
                 'content_en': (
                     'Thank you, Sama Tours team, for your exceptional service! Your professionalism and '
                     'attention to detail made my experience seamless and enjoyable. Highly recommended.'
+                ),
+                'content_ar': (
+                    'شكراً لفريق سما تورز على الخدمة المميّزة! '
+                    'الاحترافية والاهتمام بالتفاصيل جعلوا تجربتي سلسة وممتعة. أنصح بهم بقوة.'
+                ),
+                'content_fr': (
+                    'Merci à l\'équipe Sama Tours pour un service exceptionnel ! '
+                    'Leur professionnalisme et leur souci du détail ont rendu mon expérience fluide et agréable. '
+                    'Je recommande vivement.'
                 ),
                 'display_order': 2,
             },
@@ -187,6 +206,14 @@ class Command(BaseCommand):
                     'The travel agents are so helpful. After doing a very long research, Sama Tours was '
                     'our perfect choice. They answered our hundred questions and they were super fast in '
                     'finding us the package that fits us most.'
+                ),
+                'content_ar': (
+                    'فريق العمل متعاون جداً. بعد بحث طويل، اخترنا سما تورز وكان القرار الصحيح. '
+                    'أجابوا على كل استفساراتنا بسرعة ووفّروا لنا الباقة الأنسب.'
+                ),
+                'content_fr': (
+                    'Les conseillers sont très à l\'écoute. Après de longues recherches, '
+                    'Sama Tours a été le bon choix : réponses rapides et forfait parfaitement adapté à nos besoins.'
                 ),
                 'display_order': 3,
             },
