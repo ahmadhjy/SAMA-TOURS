@@ -497,6 +497,24 @@ msgstr "À propos de ce forfait"
 msgid "Day-by-day itinerary"
 msgstr "Itinéraire jour par jour"
 
+msgid "What's included"
+msgstr "Ce qui est inclus"
+
+msgid "Included"
+msgstr "Inclus"
+
+msgid "Excluded"
+msgstr "Non inclus"
+
+msgid "Available from"
+msgstr "Disponible du"
+
+msgid "Available to"
+msgstr "Disponible jusqu'au"
+
+msgid "View photo"
+msgstr "Voir la photo"
+
 msgid "Starting price per person"
 msgstr "Prix de départ par personne"
 
@@ -505,6 +523,9 @@ msgstr "Destination"
 
 msgid "Duration"
 msgstr "Durée"
+
+msgid "Available until must be on or after the start date."
+msgstr "La date de fin doit être égale ou postérieure à la date de début."
 
 msgid "Book on WhatsApp"
 msgstr "Réserver sur WhatsApp"
@@ -674,3 +695,904 @@ msgstr "Destination de voyage pittoresque"
 
 msgid "Open %(country)s visa requirements PDF"
 msgstr "Ouvrir le PDF des exigences visa %(country)s"
+
+msgid "eSIM"
+msgstr "eSIM"
+
+msgid "Travel eSIM"
+msgstr "eSIM voyage"
+
+msgid "Stay connected abroad"
+msgstr "Restez connecté à l'étranger"
+
+msgid ""
+"Instant mobile data abroad — choose a destination, enter your details, and "
+"get your QR code in seconds."
+msgstr ""
+"Données mobiles instantanées à l'étranger — choisissez une destination, vos "
+"coordonnées, et recevez votre QR en quelques secondes."
+
+msgid "Unable to load eSIM plans right now."
+msgstr "Impossible de charger les forfaits eSIM pour le moment."
+
+msgid "Contact us on WhatsApp"
+msgstr "Contactez-nous sur WhatsApp"
+
+msgid "All destinations"
+msgstr "Toutes les destinations"
+
+msgid "Buy eSIM"
+msgstr "Acheter eSIM"
+
+msgid ""
+"No eSIM plans found for this destination. Try another country or contact us."
+msgstr ""
+"Aucun forfait eSIM pour cette destination. Essayez un autre pays ou "
+"contactez-nous."
+
+msgid "Complete your purchase"
+msgstr "Finaliser votre achat"
+
+msgid "Live purchase — charged to Sama Tours eSIM wallet."
+msgstr "Achat en direct — débité du portefeuille eSIM Sama Tours."
+
+msgid "Activate eSIM"
+msgstr "Activer l'eSIM"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "WhatsApp number"
+msgstr "Numéro WhatsApp"
+
+msgid ""
+"I understand this is a live purchase charged to the Sama Tours eSIM wallet."
+msgstr ""
+"Je comprends qu'il s'agit d'un achat en direct débité du portefeuille eSIM "
+"Sama Tours."
+
+msgid "Please check the form and try again."
+msgstr "Veuillez vérifier le formulaire et réessayer."
+
+msgid "eSIM activated"
+msgstr "eSIM activée"
+
+msgid "Your eSIM is ready"
+msgstr "Votre eSIM est prête"
+
+msgid ""
+"Scan the QR code below on your phone to install your eSIM. Our eSIM provider"
+" may also email installation instructions to the address you entered."
+msgstr ""
+"Scannez le QR ci-dessous pour installer l'eSIM. Notre fournisseur peut aussi"
+" envoyer les instructions à votre e-mail."
+
+msgid "Reference"
+msgstr "Référence"
+
+msgid "Plan"
+msgstr "Forfait"
+
+msgid "Order ID"
+msgstr "N° de commande"
+
+msgid "eSIM QR code"
+msgstr "QR code eSIM"
+
+msgid "Manual code"
+msgstr "Code manuel"
+
+msgid ""
+"Your QR code is still being prepared. Refresh this page in a minute or "
+"contact us with your reference number."
+msgstr ""
+"Votre QR est en préparation. Actualisez dans une minute ou contactez-nous "
+"avec votre référence."
+
+msgid "Browse more eSIM plans"
+msgstr "Voir plus de forfaits eSIM"
+
+msgid "Need help? WhatsApp us"
+msgstr "Besoin d'aide ? WhatsApp"
+
+msgid "%(days)s days validity"
+msgstr "Validité %(days)s jours"
+
+msgid ""
+"No account needed. Our eSIM provider may email your QR code to the address "
+"below."
+msgstr ""
+"Aucun compte requis. Notre fournisseur eSIM peut envoyer le QR à l'adresse "
+"ci-dessous."
+
+msgid "Find your eSIM order"
+msgstr "Retrouver votre commande eSIM"
+
+msgid ""
+"Enter the email and reference from your purchase to view your QR code again."
+msgstr "Entrez l'e-mail et la référence de votre achat pour revoir votre QR."
+
+msgid "Order reference"
+msgstr "Référence de commande"
+
+msgid "View my order"
+msgstr "Voir ma commande"
+
+msgid ""
+"Your reference looks like SAM- followed by letters and numbers. It appears "
+"on your order confirmation screen."
+msgstr ""
+"Votre référence ressemble à SAM- suivi de lettres et chiffres. Elle figure "
+"sur l'écran de confirmation."
+
+msgid "Browse eSIM plans"
+msgstr "Parcourir les forfaits eSIM"
+
+msgid "Already purchased?"
+msgstr "Déjà acheté ?"
+
+msgid "Find your order"
+msgstr "Retrouver votre commande"
+
+msgid "Resend QR email"
+msgstr "Renvoyer l'e-mail QR"
+
+msgid "Sends installation instructions to"
+msgstr "Envoie les instructions à"
+
+msgid ""
+"No order found for that email and reference. Check your details or contact "
+"us."
+msgstr ""
+"Aucune commande pour cet e-mail et cette référence. Vérifiez vos "
+"informations ou contactez-nous."
+
+msgid ""
+"This order cannot receive an email yet. Try again shortly or contact us."
+msgstr ""
+"Cette commande ne peut pas encore recevoir d'e-mail. Réessayez ou contactez-"
+"nous."
+
+msgid "Email sent successfully. Check your inbox."
+msgstr "E-mail envoyé. Vérifiez votre boîte de réception."
+
+msgid "Search plans"
+msgstr "Rechercher des forfaits"
+
+msgid "All regions"
+msgstr "Toutes les régions"
+
+msgid "Region"
+msgstr "Région"
+
+msgid "Plan name"
+msgstr "Nom du forfait"
+
+msgid "Search by plan name…"
+msgstr "Rechercher par nom…"
+
+msgid "Advanced filters"
+msgstr "Filtres avancés"
+
+msgid "Plan type"
+msgstr "Type de forfait"
+
+msgid "Country plans"
+msgstr "Forfaits pays"
+
+msgid "Regional plans"
+msgstr "Forfaits régionaux"
+
+msgid "Global plans"
+msgstr "Forfaits mondiaux"
+
+msgid "Cruise plans"
+msgstr "Forfaits croisière"
+
+msgid "Sort by"
+msgstr "Trier par"
+
+msgid "Price: low to high"
+msgstr "Prix : croissant"
+
+msgid "Price: high to low"
+msgstr "Prix : décroissant"
+
+msgid "Data: low to high"
+msgstr "Données : croissant"
+
+msgid "Data: high to low"
+msgstr "Données : décroissant"
+
+msgid "Name: A–Z"
+msgstr "Nom : A–Z"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Any profile"
+msgstr "Tout profil"
+
+msgid "Standard eSIM"
+msgstr "eSIM standard"
+
+msgid "Global eSIM profile"
+msgstr "Profil eSIM global"
+
+msgid "Max price (USD)"
+msgstr "Prix max (USD)"
+
+msgid "Min price (USD)"
+msgstr "Prix min (USD)"
+
+msgid "Up to $2"
+msgstr "Jusqu'à 2 $"
+
+msgid "Up to $5"
+msgstr "Jusqu'à 5 $"
+
+msgid "Up to $10"
+msgstr "Jusqu'à 10 $"
+
+msgid "Up to $20"
+msgstr "Jusqu'à 20 $"
+
+msgid "Up to $50"
+msgstr "Jusqu'à 50 $"
+
+msgid "Max validity"
+msgstr "Validité max"
+
+msgid "Any duration"
+msgstr "Toute durée"
+
+msgid "Up to 7 days"
+msgstr "Jusqu'à 7 jours"
+
+msgid "Up to 15 days"
+msgstr "Jusqu'à 15 jours"
+
+msgid "Up to 30 days"
+msgstr "Jusqu'à 30 jours"
+
+msgid "Up to 90 days"
+msgstr "Jusqu'à 90 jours"
+
+msgid "Minimum data"
+msgstr "Données minimum"
+
+msgid "Any data"
+msgstr "Toutes données"
+
+msgid "At least 500 MB"
+msgstr "Au moins 500 Mo"
+
+msgid "At least 1 GB"
+msgstr "Au moins 1 Go"
+
+msgid "At least 3 GB"
+msgstr "Au moins 3 Go"
+
+msgid "At least 5 GB"
+msgstr "Au moins 5 Go"
+
+msgid "At least 10 GB"
+msgstr "Au moins 10 Go"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Unlimited data only"
+msgstr "Données illimitées uniquement"
+
+msgid "Calls & SMS included"
+msgstr "Appels et SMS inclus"
+
+msgid "Unlimited data"
+msgstr "Données illimitées"
+
+msgid "Calls & SMS"
+msgstr "Appels et SMS"
+
+msgid "plans shown"
+msgstr "forfaits affichés"
+
+msgid "in catalog"
+msgstr "dans le catalogue"
+
+msgid "plans in catalog — refine your filters"
+msgstr "forfaits dans le catalogue — affinez les filtres"
+
+msgid "Load more plans"
+msgstr "Charger plus de forfaits"
+
+msgid "Loading more plans…"
+msgstr "Chargement…"
+
+msgid "No eSIM plans match your search. Try different filters or contact us."
+msgstr ""
+"Aucun forfait eSIM ne correspond. Essayez d'autres filtres ou contactez-"
+"nous."
+
+msgid ""
+"Instant data plans for 190+ destinations — get your QR code in seconds."
+msgstr ""
+"Forfaits data instantanés pour 190+ destinations — QR en quelques secondes."
+
+msgid "Where are you traveling?"
+msgstr "Où voyagez-vous ?"
+
+msgid "Choose destination"
+msgstr "Choisir une destination"
+
+msgid "Find eSIM plans"
+msgstr "Trouver des forfaits eSIM"
+
+msgid "Advanced search"
+msgstr "Recherche avancée"
+
+msgid "Insurance"
+msgstr "Assurance"
+
+msgid "Travel insurance"
+msgstr "Assurance voyage"
+
+msgid "Travel with peace of mind"
+msgstr "Voyagez l'esprit tranquille"
+
+msgid ""
+"Get a quote for SIA travel insurance — medical cover, trip protection, and "
+"more."
+msgstr ""
+"Obtenez un devis SIA — couverture médicale, protection voyage et plus."
+
+msgid "Sandbox test environment"
+msgstr "Environnement sandbox"
+
+msgid ""
+"Policies issued here are for testing only. Live sales will open once online "
+"payment is connected."
+msgstr ""
+"Les polices émises ici sont des tests. Les ventes en ligne suivront avec la "
+"passerelle de paiement."
+
+msgid ""
+"You can browse plans below. Online purchase will be available when our "
+"payment gateway is live — contact us to buy today."
+msgstr ""
+"Parcourez les formules ci-dessous. L'achat en ligne sera disponible avec la "
+"passerelle de paiement."
+
+msgid "Get a quote"
+msgstr "Obtenir un devis"
+
+msgid "Country of residence"
+msgstr "Pays de résidence"
+
+msgid "Departure date"
+msgstr "Date de départ"
+
+msgid "Return date"
+msgstr "Date de retour"
+
+msgid "Number of travellers"
+msgstr "Nombre de voyageurs"
+
+msgid "Traveller 1 — date of birth"
+msgstr "Voyageur 1 — date de naissance"
+
+msgid "Traveller 2 — date of birth"
+msgstr "Voyageur 2 — date de naissance"
+
+msgid "Traveller 3 — date of birth"
+msgstr "Voyageur 3 — date de naissance"
+
+msgid "Traveller 4 — date of birth"
+msgstr "Voyageur 4 — date de naissance"
+
+msgid "Show insurance plans"
+msgstr "Voir les formules"
+
+msgid "Find your policy"
+msgstr "Retrouver votre police"
+
+msgid "Available plans"
+msgstr "Formules disponibles"
+
+msgid "With deductible"
+msgstr "Avec franchise"
+
+msgid "Buy policy"
+msgstr "Souscrire"
+
+msgid "Buy this plan"
+msgstr "Souscrire cette formule"
+
+msgid "Coming soon"
+msgstr "Bientôt"
+
+msgid "Loading plans…"
+msgstr "Chargement des formules…"
+
+msgid "Trip length"
+msgstr "Durée du voyage"
+
+msgid "Cover period"
+msgstr "Période de couverture"
+
+msgid "Premium"
+msgstr "Prime"
+
+msgid "Lower premium with deductible"
+msgstr "Prime réduite avec franchise"
+
+msgid "Total price"
+msgstr "Prix total"
+
+msgid "What’s included"
+msgstr "Ce qui est inclus"
+
+msgid "See all {{ count }} benefits in details"
+msgstr "Voir les {{ count }} avantages dans les détails"
+
+msgid "{{ days }} day trip"
+msgstr "Voyage de {{ days }} jours"
+
+msgid "{{ days }} day cover"
+msgstr "Couverture {{ days }} jours"
+
+msgid ""
+"Full terms, limits, and exclusions are provided in your policy PDF and "
+"general conditions at purchase."
+msgstr ""
+"Les conditions complètes, plafonds et exclusions figurent dans le PDF de la "
+"police et les conditions générales à l'achat."
+
+msgid "Comprehensive"
+msgstr "Complet"
+
+msgid "Essential"
+msgstr "Essentiel"
+
+msgid "Gold"
+msgstr "Or"
+
+msgid "Silver"
+msgstr "Argent"
+
+msgid "COVID-19"
+msgstr "COVID-19"
+
+msgid "Sport"
+msgstr "Sport"
+
+msgid "Comprehensive cover including COVID-19-related medical expenses."
+msgstr "Couverture complète incluant les frais médicaux liés au COVID-19."
+
+msgid "Higher limits and broader protection for international travel."
+msgstr ""
+"Plafonds plus élevés et protection élargie pour les voyages internationaux."
+
+msgid "Essential protection for budget-conscious travellers."
+msgstr "Protection essentielle pour les voyageurs soucieux de leur budget."
+
+msgid "Essential protection with COVID-19 medical cover."
+msgstr "Protection essentielle avec couverture médicale COVID-19."
+
+msgid ""
+"Comprehensive international travel protection without COVID-specific cover."
+msgstr ""
+"Protection voyage internationale complète sans couverture COVID spécifique."
+
+msgid "Basic cover with COVID-19 and sport activity protection."
+msgstr "Couverture basique avec COVID-19 et activités sportives."
+
+msgid "Advanced cover with sport and adventure activity protection."
+msgstr "Couverture avancée avec sport et activités d'aventure."
+
+msgid "Sport & adventure activity cover"
+msgstr "Couverture sport et activités d'aventure"
+
+msgid "Premium tier with enhanced medical limits."
+msgstr "Formule premium avec plafonds médicaux renforcés."
+
+msgid "Balanced cover for leisure and business trips."
+msgstr "Couverture équilibrée pour les voyages loisirs et affaires."
+
+msgid "Travel medical and assistance cover for your trip abroad."
+msgstr ""
+"Couverture médicale et assistance voyage pour votre séjour à l'étranger."
+
+msgid "Plan includes extended medical cover with COVID-19 protection."
+msgstr ""
+"La formule inclut une couverture médicale étendue avec protection COVID-19."
+
+msgid "Emergency medical & hospital expenses abroad"
+msgstr "Frais médicaux et hospitaliers d'urgence à l'étranger"
+
+msgid "COVID-19 medical cover (where applicable)"
+msgstr "Couverture médicale COVID-19 (le cas échéant)"
+
+msgid "Medical repatriation & emergency evacuation"
+msgstr "Rapatriement médical et évacuation d'urgence"
+
+msgid "Trip cancellation & interruption"
+msgstr "Annulation et interruption de voyage"
+
+msgid "Baggage loss or delay"
+msgstr "Perte ou retard de bagages"
+
+msgid "24/7 travel assistance hotline"
+msgstr "Assistance voyage 24h/24"
+
+msgid "Emergency medical & dental expenses abroad"
+msgstr "Frais médicaux et dentaires d'urgence à l'étranger"
+
+msgid "Medical repatriation & evacuation"
+msgstr "Rapatriement médical et évacuation"
+
+msgid "Trip delay & missed connection"
+msgstr "Retard de voyage et correspondance manquée"
+
+msgid "Personal liability cover"
+msgstr "Responsabilité civile"
+
+msgid "Emergency medical expenses abroad"
+msgstr "Frais médicaux d'urgence à l'étranger"
+
+msgid "Medical repatriation"
+msgstr "Rapatriement médical"
+
+msgid "Emergency dental (limited)"
+msgstr "Soins dentaires d'urgence (limités)"
+
+msgid "High-limit emergency medical cover"
+msgstr "Couverture médicale d'urgence à plafond élevé"
+
+msgid "Trip cancellation cover"
+msgstr "Couverture annulation de voyage"
+
+msgid "Baggage & personal effects"
+msgstr "Bagages et effets personnels"
+
+msgid "24/7 assistance"
+msgstr "Assistance 24h/24"
+
+msgid "Emergency medical expenses"
+msgstr "Frais médicaux d'urgence"
+
+msgid "Trip interruption"
+msgstr "Interruption de voyage"
+
+msgid "Emergency medical expenses while travelling"
+msgstr "Frais médicaux d'urgence en voyage"
+
+msgid "Medical repatriation assistance"
+msgstr "Assistance au rapatriement médical"
+
+msgid "24/7 travel assistance"
+msgstr "Assistance voyage 24h/24"
+
+msgid "Full benefits listed in your policy document (PDF)"
+msgstr "Tous les avantages figurent dans votre police (PDF)"
+
+msgid "COVID-19 related medical cover"
+msgstr "Couverture médicale liée au COVID-19"
+
+msgid "Travellers"
+msgstr "Voyageurs"
+
+msgid "%(count)s days"
+msgstr "%(count)s jours"
+
+msgid "%(count)s benefits included with this plan"
+msgstr "%(count)s avantages inclus dans cette formule"
+
+msgid "Lower premium with deductible: $%(price)s"
+msgstr "Prime réduite avec franchise : %(price)s $"
+
+msgid "Unable to load plans. Please try again."
+msgstr "Impossible de charger les formules. Veuillez réessayer."
+
+msgid ""
+"No insurance plans found for this trip. Try different dates or contact us."
+msgstr ""
+"Aucune formule pour ce voyage. Essayez d'autres dates ou contactez-nous."
+
+msgid "Complete your policy"
+msgstr "Finaliser la police"
+
+msgid "Issue policy"
+msgstr "Émettre la police"
+
+msgid "I understand this is a sandbox test policy (no payment)."
+msgstr "Je comprends qu'il s'agit d'un test sandbox (sans paiement)."
+
+msgid "I agree to proceed with travel insurance issuance."
+msgstr "J'accepte de procéder à la souscription."
+
+msgid "Policy issued"
+msgstr "Police émise"
+
+msgid "Your policy is ready"
+msgstr "Votre police est prête"
+
+msgid "This is a sandbox test policy for integration testing."
+msgstr "Police de test sandbox pour l'intégration."
+
+msgid "Policy number"
+msgstr "N° de police"
+
+msgid "Download policy PDF"
+msgstr "Télécharger le PDF"
+
+msgid "Email policy documents"
+msgstr "Envoyer la police par e-mail"
+
+msgid "Get another quote"
+msgstr "Nouveau devis"
+
+msgid "Find your travel insurance"
+msgstr "Retrouver votre assurance"
+
+msgid "Policy reference"
+msgstr "Référence police"
+
+msgid "View my policy"
+msgstr "Voir ma police"
+
+msgid "Get a new quote"
+msgstr "Nouveau devis"
+
+msgid "Retrieve your policy"
+msgstr "Récupérer votre police"
+
+msgid ""
+"Use the same email and reference from your purchase confirmation to view or "
+"download your policy PDF again."
+msgstr ""
+"Utilisez le même e-mail et la même référence que lors de l'achat pour revoir"
+" ou télécharger le PDF."
+
+msgid "Find your policy reference (SAM-INS-…)"
+msgstr "Trouvez votre référence (SAM-INS-…)"
+
+msgid "Enter the email you used when buying"
+msgstr "Saisissez l'e-mail utilisé lors de l'achat"
+
+msgid "View your policy and download the PDF"
+msgstr "Consultez votre police et téléchargez le PDF"
+
+msgid "Policy lookup"
+msgstr "Recherche de police"
+
+msgid "Both fields must match your purchase exactly."
+msgstr "Les deux champs doivent correspondre exactement à votre achat."
+
+msgid "Email used at purchase"
+msgstr "E-mail utilisé à l'achat"
+
+msgid "Where is my reference?"
+msgstr "Où trouver ma référence ?"
+
+msgid ""
+"Your reference looks like SAM-INS- followed by letters and numbers. It "
+"appears on your confirmation screen and in the email we sent after purchase."
+msgstr ""
+"Votre référence ressemble à SAM-INS- suivi de lettres et chiffres. Elle "
+"figure sur l'écran de confirmation et dans l'e-mail envoyé après l'achat."
+
+msgid "Enter contact and traveller details as shown on your passport."
+msgstr "Saisissez les coordonnées et les voyageurs comme sur le passeport."
+
+msgid "Selected plan"
+msgstr "Formule sélectionnée"
+
+msgid "Contact details"
+msgstr "Coordonnées"
+
+msgid "Traveller details"
+msgstr "Voyageurs"
+
+msgid "Names must match the passport used for travel."
+msgstr "Les noms doivent correspondre au passeport utilisé pour le voyage."
+
+msgid "Gender"
+msgstr "Genre"
+
+msgid "First name"
+msgstr "Prénom"
+
+msgid "Last name"
+msgstr "Nom"
+
+msgid "Passport number"
+msgstr "N° de passeport"
+
+msgid "Street, city, country"
+msgstr "Rue, ville, pays"
+
+msgid "Optional — refine plan results"
+msgstr "Optionnel — affiner les résultats"
+
+msgid "Plan tier"
+msgstr "Niveau de formule"
+
+msgid "COVID cover"
+msgstr "Couverture COVID"
+
+msgid "Sport cover"
+msgstr "Couverture sport"
+
+msgid "All tiers"
+msgstr "Tous les niveaux"
+
+msgid "Basic"
+msgstr "Basique"
+
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "All plans"
+msgstr "Toutes les formules"
+
+msgid "With COVID cover"
+msgstr "Avec couverture COVID"
+
+msgid "Without COVID cover"
+msgstr "Sans couverture COVID"
+
+msgid "With sport cover"
+msgstr "Avec couverture sport"
+
+msgid "Without sport cover"
+msgstr "Sans couverture sport"
+
+msgid "All currencies"
+msgstr "Toutes les devises"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "Max price"
+msgstr "Prix max"
+
+msgid "Min price"
+msgstr "Prix min"
+
+msgid "Up to 25"
+msgstr "Jusqu'à 25"
+
+msgid "Up to 50"
+msgstr "Jusqu'à 50"
+
+msgid "Up to 100"
+msgstr "Jusqu'à 100"
+
+msgid "Up to 200"
+msgstr "Jusqu'à 200"
+
+msgid "Up to 500"
+msgstr "Jusqu'à 500"
+
+msgid "Name: Z–A"
+msgstr "Nom : Z–A"
+
+msgid "Search plans…"
+msgstr "Rechercher…"
+
+msgid ""
+"Filters apply to plans returned by the insurer for your trip. Currency and "
+"prices are set by SIA/Swan — we do not convert exchange rates."
+msgstr ""
+"Les filtres s'appliquent aux formules de l'assureur. Devise et prix définis "
+"par SIA/Swan — pas de conversion."
+
+msgid "Showing %(shown)s of %(total)s plans"
+msgstr "%(shown)s formule(s) sur %(total)s"
+
+msgid "%(total)s plan(s) from insurer"
+msgstr "%(total)s formule(s) de l'assureur"
+
+msgid ""
+"SIA's Going range includes Basic, Advanced, Premium, COVID, and Sport "
+"variants — not every product is quoted for every trip. Below are the plans "
+"the insurer returned for your dates and destination. Ask us if you expect a "
+"product that is missing."
+msgstr ""
+"La gamme Going de SIA comprend Basique, Avancé, Premium, COVID et Sport — "
+"chaque produit n'est pas coté pour chaque voyage. Ci-dessous les formules "
+"retournées pour vos dates et destination. Contactez-nous si un produit "
+"attendu manque."
+
+msgid "SIA Going product line (reference)"
+msgstr "Gamme SIA Going (référence)"
+
+msgid "Going Advanced"
+msgstr "Going Advanced"
+
+msgid "Going Advanced Cov"
+msgstr "Going Advanced Cov"
+
+msgid "Going Advanced Plus Sport"
+msgstr "Going Advanced Plus Sport"
+
+msgid "Going Basic"
+msgstr "Going Basic"
+
+msgid "Going Basic Cov"
+msgstr "Going Basic Cov"
+
+msgid "Going Basic Cov plus sport"
+msgstr "Going Basic Cov plus sport"
+
+msgid "Going Premium"
+msgstr "Going Premium"
+
+msgid ""
+"No plans match your filters. Try clearing advanced filters or adjusting your"
+" search."
+msgstr ""
+"Aucune formule ne correspond. Effacez les filtres ou modifiez la recherche."
+
+msgid ""
+"SIA travel insurance — medical cover and trip protection for your next "
+"journey."
+msgstr ""
+"Assurance SIA — couverture médicale et protection pour votre prochain "
+"voyage."
+
+msgid "Departure"
+msgstr "Départ"
+
+msgid "Return"
+msgstr "Retour"
+
+msgid "Get insurance quote"
+msgstr "Devis assurance"
+
+msgid "Full quote form"
+msgstr "Formulaire complet"
+
+msgid "You will enter traveller details on the next page."
+msgstr "Vous saisirez les voyageurs à l'étape suivante."
+
+msgid "Select country"
+msgstr "Choisir un pays"
+
+msgid "Return date must be on or after departure date."
+msgstr "La date de retour doit être égale ou postérieure au départ."
+
+msgid "Departure date cannot be in the past."
+msgstr "La date de départ ne peut pas être dans le passé."
+
+msgid ""
+"Online purchase is not available yet. Payment integration is coming soon — "
+"contact us for assistance."
+msgstr ""
+"L'achat en ligne n'est pas encore disponible. Paiement bientôt — contactez-"
+"nous."
+
+msgid "Please confirm sandbox test mode."
+msgstr "Veuillez confirmer le mode sandbox."
+
+msgid ""
+"No policy found for that email and reference. Check your details or contact "
+"us."
+msgstr "Aucune police pour cet e-mail et cette référence."
+
+msgid "Policy documents sent. Check your inbox."
+msgstr "Documents envoyés. Vérifiez votre boîte mail."
+
+msgid "Please fix the following:"
+msgstr "Veuillez corriger ce qui suit :"
+
+msgid ""
+"%(count)s traveller(s) from %(residence)s to %(dest)s · %(from_d)s → "
+"%(till_d)s"
+msgstr ""
+"%(count)s voyageur(s) de %(residence)s vers %(dest)s · %(from_d)s → "
+"%(till_d)s"

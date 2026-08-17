@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'eSIM activated' %}{% endblock %}
+
+{% block content %}
+<section class="section esim-success-section">
+    <div class="container esim-success-inner">
+        <div class="esim-success-card">
+            <span class="section-label">{% trans 'Travel eSIM' %}</span>
+            <h1>{% trans 'Your eSIM is ready' %}</h1>
+            <p>{% trans 'Scan the QR code below on your phone to install your eSIM. Our eSIM provider may also email installation instructions to the address you entered.' %}</p>
+
+            <dl class="esim-order-summary">
+                <div><dt>{% trans 'Reference' %}</dt><dd>{{ order.order_reference }}</dd></div>
+                <div><dt>{% trans 'Plan' %}</dt><dd>{{ order.bundle_name|default:order.bundle_code }}</dd></div>
+                <div><dt>{% trans 'Email' %}</dt><dd>{{ order.customer_email }}</dd></div>
+                {% if order.monty_order_id %}
+                <div><dt>{% trans 'Order ID' %}</dt><dd>{{ order.monty_order_id }}</dd></div>
+                {% endif %}
+            </dl>
+
+            {% if order.activation_code %}
+            <div class="esim-qr-wrap">
+                <img src="{% url 'website:esim_qr' order.pk %}" alt="{% trans 'eSIM QR code' %}" width="240" height="240" class="esim-qr-image">
+            </div>
+            <p class="esim-manual-code">
+                <span>{% trans 'Manual code' %}:</span>
+                <code>{{ order.activation_code }}</code>
+            </p>
+            {% else %}
+            <div class="esim-alert esim-alert-warn">
+                <p>{% trans 'Your QR code is still being prepared. Refresh this page in a minute or contact us with your reference number.' %}</p>
+            </div>
+            {% endif %}
+
+            {% if order.monty_order_id %}
+            <form method="post" action="{% url 'website:esim_resend_email' order.pk %}" class="esim-resend-form">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline btn-sm">{% trans 'Resend QR email' %}</button>
+                <p class="esim-resend-note">{% trans 'Sends installation instructions to' %} {{ order.customer_email }}</p>
+            </form>
+            {% endif %}
+
+            <div class="esim-success-actions">
+                <a href="{% url 'website:esim' %}" class="btn btn-outline">{% trans 'Browse more eSIM plans' %}</a>
+                <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Need help? WhatsApp us' %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

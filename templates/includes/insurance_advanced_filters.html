@@ -1,0 +1,66 @@
+{% load i18n %}
+<details class="insurance-search-advanced" id="insurance-advanced-filters" {% if filters_active %}open{% endif %}>
+    <summary>{% trans 'Advanced filters' %} <span class="insurance-advanced-hint">{% trans 'Optional — refine plan results' %}</span></summary>
+    <div class="insurance-search-advanced-grid">
+        <div class="form-field">
+            <label for="ins-filter-q">{% trans 'Plan name' %}</label>
+            <input type="search" id="ins-filter-q" name="q" class="insurance-purchase-input"
+                   value="{{ plan_filters.q }}" maxlength="80"
+                   placeholder="{% trans 'Search plans…' %}">
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-tier">{% trans 'Plan tier' %}</label>
+            <select id="ins-filter-tier" name="tier" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in tier_options %}
+                <option value="{{ value }}" {% if plan_filters.tier == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-covid">{% trans 'COVID cover' %}</label>
+            <select id="ins-filter-covid" name="covid" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in covid_options %}
+                <option value="{{ value }}" {% if plan_filters.covid == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-sport">{% trans 'Sport cover' %}</label>
+            <select id="ins-filter-sport" name="sport" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in sport_options %}
+                <option value="{{ value }}" {% if plan_filters.sport == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-currency">{% trans 'Currency' %}</label>
+            <select id="ins-filter-currency" name="currency" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in currency_options %}
+                <option value="{{ value }}" {% if plan_filters.currency == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-sort">{% trans 'Sort by' %}</label>
+            <select id="ins-filter-sort" name="sort" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in sort_options %}
+                <option value="{{ value }}" {% if plan_filters.sort == value or not plan_filters.sort and value == 'price_asc' %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-max-price">{% trans 'Max price' %}</label>
+            <select id="ins-filter-max-price" name="max_price" class="insurance-plan-filter insurance-purchase-input">
+                {% for value, label in max_price_options %}
+                <option value="{{ value }}" {% if plan_filters.max_price == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="ins-filter-min-price">{% trans 'Min price' %}</label>
+            <input type="number" id="ins-filter-min-price" name="min_price" class="insurance-plan-filter insurance-purchase-input"
+                   min="0" step="0.01" value="{{ plan_filters.min_price }}" placeholder="0">
+        </div>
+    </div>
+    <p class="insurance-advanced-note">{% trans 'Filters apply to plans returned by the insurer for your trip. Currency and prices are set by SIA/Swan — we do not convert exchange rates.' %}</p>
+</details>

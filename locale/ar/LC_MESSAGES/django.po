@@ -424,7 +424,7 @@ msgid ""
 msgstr "لا توجد باقات تطابق التصفية. جرّب دولة أو ميزانية أخرى."
 
 msgid "Clear filters"
-msgstr "مسح التصفية"
+msgstr "مسح الفلاتر"
 
 msgid "New packages are coming soon. Contact us for a custom quote."
 msgstr "باقات جديدة قريباً. تواصل معنا لعرض مخصص."
@@ -475,6 +475,24 @@ msgstr "عن هذه الباقة"
 msgid "Day-by-day itinerary"
 msgstr "البرنامج يوماً بيوم"
 
+msgid "What's included"
+msgstr "ما الذي يشمله"
+
+msgid "Included"
+msgstr "مشمول"
+
+msgid "Excluded"
+msgstr "غير مشمول"
+
+msgid "Available from"
+msgstr "متاح من"
+
+msgid "Available to"
+msgstr "متاح حتى"
+
+msgid "View photo"
+msgstr "عرض الصورة"
+
 msgid "Starting price per person"
 msgstr "السعر الابتدائي للشخص"
 
@@ -483,6 +501,9 @@ msgstr "الوجهة"
 
 msgid "Duration"
 msgstr "المدة"
+
+msgid "Available until must be on or after the start date."
+msgstr "يجب أن يكون تاريخ النهاية في يوم البداية أو بعده."
 
 msgid "Book on WhatsApp"
 msgstr "احجز على واتساب"
@@ -649,3 +670,877 @@ msgstr "وجهة سفر خلابة"
 
 msgid "Open %(country)s visa requirements PDF"
 msgstr "فتح PDF متطلبات تأشيرة %(country)s"
+
+msgid "eSIM"
+msgstr "eSIM"
+
+msgid "Travel eSIM"
+msgstr "شريحة eSIM للسفر"
+
+msgid "Stay connected abroad"
+msgstr "ابقَ متصلاً أثناء السفر"
+
+msgid ""
+"Instant mobile data abroad — choose a destination, enter your details, and "
+"get your QR code in seconds."
+msgstr ""
+"بيانات جوال فورية في الخارج — اختر الوجهة، أدخل بياناتك، واحصل على رمز QR "
+"خلال ثوانٍ."
+
+msgid "Unable to load eSIM plans right now."
+msgstr "تعذّر تحميل باقات eSIM حالياً."
+
+msgid "Contact us on WhatsApp"
+msgstr "تواصل معنا على واتساب"
+
+msgid "All destinations"
+msgstr "جميع الوجهات"
+
+msgid "Buy eSIM"
+msgstr "شراء eSIM"
+
+msgid ""
+"No eSIM plans found for this destination. Try another country or contact us."
+msgstr "لا توجد باقات eSIM لهذه الوجهة. جرّب دولة أخرى أو تواصل معنا."
+
+msgid "Complete your purchase"
+msgstr "أكمل عملية الشراء"
+
+msgid "Live purchase — charged to Sama Tours eSIM wallet."
+msgstr "شراء مباشر — يُخصم من محفظة سما تورز لـ eSIM."
+
+msgid "Activate eSIM"
+msgstr "تفعيل eSIM"
+
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "WhatsApp number"
+msgstr "رقم واتساب"
+
+msgid ""
+"I understand this is a live purchase charged to the Sama Tours eSIM wallet."
+msgstr "أفهم أن هذا شراء مباشر يُخصم من محفظة سما تورز لـ eSIM."
+
+msgid "Please check the form and try again."
+msgstr "يرجى مراجعة النموذج والمحاولة مرة أخرى."
+
+msgid "eSIM activated"
+msgstr "تم تفعيل eSIM"
+
+msgid "Your eSIM is ready"
+msgstr "شريحتك الإلكترونية جاهزة"
+
+msgid ""
+"Scan the QR code below on your phone to install your eSIM. Our eSIM provider"
+" may also email installation instructions to the address you entered."
+msgstr ""
+"امسح رمز QR أدناه على هاتفك لتثبيت eSIM. قد يرسل مزود eSIM أيضاً تعليمات "
+"التثبيت إلى بريدك الإلكتروني."
+
+msgid "Reference"
+msgstr "المرجع"
+
+msgid "Plan"
+msgstr "الباقة"
+
+msgid "Order ID"
+msgstr "رقم الطلب"
+
+msgid "eSIM QR code"
+msgstr "رمز QR لـ eSIM"
+
+msgid "Manual code"
+msgstr "الرمز اليدوي"
+
+msgid ""
+"Your QR code is still being prepared. Refresh this page in a minute or "
+"contact us with your reference number."
+msgstr ""
+"رمز QR قيد التجهيز. حدّث الصفحة بعد دقيقة أو تواصل معنا مع رقم المرجع."
+
+msgid "Browse more eSIM plans"
+msgstr "تصفح المزيد من باقات eSIM"
+
+msgid "Need help? WhatsApp us"
+msgstr "تحتاج مساعدة؟ راسلنا على واتساب"
+
+msgid "%(days)s days validity"
+msgstr "صلاحية %(days)s يوماً"
+
+msgid ""
+"No account needed. Our eSIM provider may email your QR code to the address "
+"below."
+msgstr ""
+"لا حاجة لإنشاء حساب. قد يرسل مزود eSIM رمز QR إلى بريدك الإلكتروني أدناه."
+
+msgid "Find your eSIM order"
+msgstr "اعثر على طلب eSIM"
+
+msgid ""
+"Enter the email and reference from your purchase to view your QR code again."
+msgstr "أدخل البريد الإلكتروني والمرجع من عملية الشراء لعرض رمز QR مرة أخرى."
+
+msgid "Order reference"
+msgstr "مرجع الطلب"
+
+msgid "View my order"
+msgstr "عرض طلبي"
+
+msgid ""
+"Your reference looks like SAM- followed by letters and numbers. It appears "
+"on your order confirmation screen."
+msgstr "يبدو مرجعك مثل SAM- متبوعاً بأحرف وأرقام. يظهر في شاشة تأكيد الطلب."
+
+msgid "Browse eSIM plans"
+msgstr "تصفح باقات eSIM"
+
+msgid "Already purchased?"
+msgstr "اشتريت مسبقاً؟"
+
+msgid "Find your order"
+msgstr "اعثر على طلبك"
+
+msgid "Resend QR email"
+msgstr "إعادة إرسال بريد QR"
+
+msgid "Sends installation instructions to"
+msgstr "يرسل تعليمات التثبيت إلى"
+
+msgid ""
+"No order found for that email and reference. Check your details or contact "
+"us."
+msgstr "لم يُعثر على طلب بهذا البريد والمرجع. تحقق من البيانات أو تواصل معنا."
+
+msgid ""
+"This order cannot receive an email yet. Try again shortly or contact us."
+msgstr "لا يمكن إرسال بريد لهذا الطلب بعد. حاول لاحقاً أو تواصل معنا."
+
+msgid "Email sent successfully. Check your inbox."
+msgstr "تم إرسال البريد بنجاح. تحقق من صندوق الوارد."
+
+msgid "Search plans"
+msgstr "بحث عن الباقات"
+
+msgid "All regions"
+msgstr "جميع المناطق"
+
+msgid "Region"
+msgstr "المنطقة"
+
+msgid "Plan name"
+msgstr "اسم الباقة"
+
+msgid "Search by plan name…"
+msgstr "البحث باسم الباقة…"
+
+msgid "Advanced filters"
+msgstr "فلاتر متقدمة"
+
+msgid "Plan type"
+msgstr "نوع الباقة"
+
+msgid "Country plans"
+msgstr "باقات الدول"
+
+msgid "Regional plans"
+msgstr "باقات إقليمية"
+
+msgid "Global plans"
+msgstr "باقات عالمية"
+
+msgid "Cruise plans"
+msgstr "باقات الرحلات البحرية"
+
+msgid "Sort by"
+msgstr "ترتيب حسب"
+
+msgid "Price: low to high"
+msgstr "السعر: من الأقل للأعلى"
+
+msgid "Price: high to low"
+msgstr "السعر: من الأعلى للأقل"
+
+msgid "Data: low to high"
+msgstr "البيانات: من الأقل للأعلى"
+
+msgid "Data: high to low"
+msgstr "البيانات: من الأعلى للأقل"
+
+msgid "Name: A–Z"
+msgstr "الاسم: أ–ي"
+
+msgid "Profile"
+msgstr "الملف"
+
+msgid "Any profile"
+msgstr "أي ملف"
+
+msgid "Standard eSIM"
+msgstr "eSIM قياسي"
+
+msgid "Global eSIM profile"
+msgstr "ملف eSIM عالمي"
+
+msgid "Max price (USD)"
+msgstr "أقصى سعر (دولار)"
+
+msgid "Min price (USD)"
+msgstr "أدنى سعر (دولار)"
+
+msgid "Up to $2"
+msgstr "حتى 2$"
+
+msgid "Up to $5"
+msgstr "حتى 5$"
+
+msgid "Up to $10"
+msgstr "حتى 10$"
+
+msgid "Up to $20"
+msgstr "حتى 20$"
+
+msgid "Up to $50"
+msgstr "حتى 50$"
+
+msgid "Max validity"
+msgstr "أقصى مدة"
+
+msgid "Any duration"
+msgstr "أي مدة"
+
+msgid "Up to 7 days"
+msgstr "حتى 7 أيام"
+
+msgid "Up to 15 days"
+msgstr "حتى 15 يوماً"
+
+msgid "Up to 30 days"
+msgstr "حتى 30 يوماً"
+
+msgid "Up to 90 days"
+msgstr "حتى 90 يوماً"
+
+msgid "Minimum data"
+msgstr "الحد الأدنى للبيانات"
+
+msgid "Any data"
+msgstr "أي بيانات"
+
+msgid "At least 500 MB"
+msgstr "500 ميجابايت على الأقل"
+
+msgid "At least 1 GB"
+msgstr "1 جيجابايت على الأقل"
+
+msgid "At least 3 GB"
+msgstr "3 جيجابايت على الأقل"
+
+msgid "At least 5 GB"
+msgstr "5 جيجابايت على الأقل"
+
+msgid "At least 10 GB"
+msgstr "10 جيجابايت على الأقل"
+
+msgid "Options"
+msgstr "خيارات"
+
+msgid "Unlimited data only"
+msgstr "بيانات غير محدودة فقط"
+
+msgid "Calls & SMS included"
+msgstr "يشمل المكالمات والرسائل"
+
+msgid "Unlimited data"
+msgstr "بيانات غير محدودة"
+
+msgid "Calls & SMS"
+msgstr "مكالمات ورسائل"
+
+msgid "plans shown"
+msgstr "باقة معروضة"
+
+msgid "in catalog"
+msgstr "في الكتالوج"
+
+msgid "plans in catalog — refine your filters"
+msgstr "باقة في الكتالوج — عدّل الفلاتر"
+
+msgid "Load more plans"
+msgstr "تحميل المزيد من الباقات"
+
+msgid "Loading more plans…"
+msgstr "جاري تحميل المزيد…"
+
+msgid "No eSIM plans match your search. Try different filters or contact us."
+msgstr "لا توجد باقات eSIM تطابق بحثك. جرّب فلاتر أخرى أو تواصل معنا."
+
+msgid ""
+"Instant data plans for 190+ destinations — get your QR code in seconds."
+msgstr "باقات بيانات فورية لأكثر من 190 وجهة — احصل على رمز QR خلال ثوانٍ."
+
+msgid "Where are you traveling?"
+msgstr "إلى أين تسافر؟"
+
+msgid "Choose destination"
+msgstr "اختر الوجهة"
+
+msgid "Find eSIM plans"
+msgstr "ابحث عن باقات eSIM"
+
+msgid "Advanced search"
+msgstr "بحث متقدم"
+
+msgid "Insurance"
+msgstr "تأمين"
+
+msgid "Travel insurance"
+msgstr "تأمين السفر"
+
+msgid "Travel with peace of mind"
+msgstr "سافر وأنت مطمئن"
+
+msgid ""
+"Get a quote for SIA travel insurance — medical cover, trip protection, and "
+"more."
+msgstr "احصل على عرض لتأمين سفر SIA — تغطية طبية وحماية الرحلة والمزيد."
+
+msgid "Sandbox test environment"
+msgstr "بيئة اختبار تجريبية"
+
+msgid ""
+"Policies issued here are for testing only. Live sales will open once online "
+"payment is connected."
+msgstr ""
+"الوثائق الصادرة هنا للاختبار فقط. المبيعات المباشرة ستُفعّل عند ربط الدفع "
+"الإلكتروني."
+
+msgid ""
+"You can browse plans below. Online purchase will be available when our "
+"payment gateway is live — contact us to buy today."
+msgstr ""
+"يمكنك تصفح الباقات أدناه. الشراء الإلكتروني سيتوفر عند تفعيل بوابة الدفع — "
+"تواصل معنا للشراء اليوم."
+
+msgid "Get a quote"
+msgstr "احصل على عرض"
+
+msgid "Country of residence"
+msgstr "بلد الإقامة"
+
+msgid "Departure date"
+msgstr "تاريخ المغادرة"
+
+msgid "Return date"
+msgstr "تاريخ العودة"
+
+msgid "Number of travellers"
+msgstr "عدد المسافرين"
+
+msgid "Traveller 1 — date of birth"
+msgstr "المسافر 1 — تاريخ الميلاد"
+
+msgid "Traveller 2 — date of birth"
+msgstr "المسافر 2 — تاريخ الميلاد"
+
+msgid "Traveller 3 — date of birth"
+msgstr "المسافر 3 — تاريخ الميلاد"
+
+msgid "Traveller 4 — date of birth"
+msgstr "المسافر 4 — تاريخ الميلاد"
+
+msgid "Show insurance plans"
+msgstr "عرض باقات التأمين"
+
+msgid "Find your policy"
+msgstr "اعثر على وثيقتك"
+
+msgid "Available plans"
+msgstr "الباقات المتاحة"
+
+msgid "With deductible"
+msgstr "مع خصم اختياري"
+
+msgid "Buy policy"
+msgstr "شراء الوثيقة"
+
+msgid "Buy this plan"
+msgstr "شراء هذه الباقة"
+
+msgid "Coming soon"
+msgstr "قريباً"
+
+msgid "Loading plans…"
+msgstr "جاري تحميل الباقات…"
+
+msgid "Trip length"
+msgstr "مدة الرحلة"
+
+msgid "Cover period"
+msgstr "فترة التغطية"
+
+msgid "Premium"
+msgstr "القسط"
+
+msgid "Lower premium with deductible"
+msgstr "قسط أقل مع خصم اختياري"
+
+msgid "Total price"
+msgstr "السعر الإجمالي"
+
+msgid "What’s included"
+msgstr "ما الذي يشمله"
+
+msgid "See all {{ count }} benefits in details"
+msgstr "عرض كل الـ {{ count }} ميزات في التفاصيل"
+
+msgid "{{ days }} day trip"
+msgstr "رحلة {{ days }} يوم"
+
+msgid "{{ days }} day cover"
+msgstr "تغطية {{ days }} يوم"
+
+msgid ""
+"Full terms, limits, and exclusions are provided in your policy PDF and "
+"general conditions at purchase."
+msgstr ""
+"الشروط الكاملة والحدود والاستثناءات مذكورة في ملف PDF للوثيقة والشروط العامة"
+" عند الشراء."
+
+msgid "Comprehensive"
+msgstr "شامل"
+
+msgid "Essential"
+msgstr "أساسي"
+
+msgid "Gold"
+msgstr "ذهبي"
+
+msgid "Silver"
+msgstr "فضي"
+
+msgid "COVID-19"
+msgstr "كوفيد-19"
+
+msgid "Sport"
+msgstr "رياضة"
+
+msgid "Comprehensive cover including COVID-19-related medical expenses."
+msgstr "تغطية شاملة تشمل النفقات الطبية المتعلقة بكوفيد-19."
+
+msgid "Higher limits and broader protection for international travel."
+msgstr "حدود أعلى وحماية أوسع للسفر الدولي."
+
+msgid "Essential protection for budget-conscious travellers."
+msgstr "حماية أساسية للمسافرين الباحثين عن سعر مناسب."
+
+msgid "Essential protection with COVID-19 medical cover."
+msgstr "حماية أساسية مع تغطية طبية لكوفيد-19."
+
+msgid ""
+"Comprehensive international travel protection without COVID-specific cover."
+msgstr "حماية سفر دولية شاملة دون تغطية خاصة بكوفيد."
+
+msgid "Basic cover with COVID-19 and sport activity protection."
+msgstr "تغطية أساسية مع كوفيد-19 وحماية الأنشطة الرياضية."
+
+msgid "Advanced cover with sport and adventure activity protection."
+msgstr "تغطية متقدمة مع حماية الرياضة والأنشطة المغامرة."
+
+msgid "Sport & adventure activity cover"
+msgstr "تغطية الرياضة والأنشطة المغامرة"
+
+msgid "Premium tier with enhanced medical limits."
+msgstr "فئة مميزة بحدود طبية معززة."
+
+msgid "Balanced cover for leisure and business trips."
+msgstr "تغطية متوازنة لرحلات الترفيه والعمل."
+
+msgid "Travel medical and assistance cover for your trip abroad."
+msgstr "تغطية طبية ومساعدة سفر لرحلتك إلى الخارج."
+
+msgid "Plan includes extended medical cover with COVID-19 protection."
+msgstr "تشمل الباقة تغطية طبية موسعة مع حماية من كوفيد-19."
+
+msgid "Emergency medical & hospital expenses abroad"
+msgstr "نفقات طبية واستشفائية طارئة في الخارج"
+
+msgid "COVID-19 medical cover (where applicable)"
+msgstr "تغطية طبية لكوفيد-19 (حيث ينطبق)"
+
+msgid "Medical repatriation & emergency evacuation"
+msgstr "إعادة طبية وإخلاء طارئ"
+
+msgid "Trip cancellation & interruption"
+msgstr "إلغاء الرحلة ومقاطعتها"
+
+msgid "Baggage loss or delay"
+msgstr "فقدان الأمتعة أو تأخرها"
+
+msgid "24/7 travel assistance hotline"
+msgstr "خط مساعدة سفر على مدار الساعة"
+
+msgid "Emergency medical & dental expenses abroad"
+msgstr "نفقات طبية وأسنان طارئة في الخارج"
+
+msgid "Medical repatriation & evacuation"
+msgstr "إعادة طبية وإخلاء"
+
+msgid "Trip delay & missed connection"
+msgstr "تأخر الرحلة وفوات المواصلة"
+
+msgid "Personal liability cover"
+msgstr "تغطية المسؤولية المدنية"
+
+msgid "Emergency medical expenses abroad"
+msgstr "نفقات طبية طارئة في الخارج"
+
+msgid "Medical repatriation"
+msgstr "إعادة طبية"
+
+msgid "Emergency dental (limited)"
+msgstr "أسنان طارئة (محدود)"
+
+msgid "High-limit emergency medical cover"
+msgstr "تغطية طبية طارئة بحدود عالية"
+
+msgid "Trip cancellation cover"
+msgstr "تغطية إلغاء الرحلة"
+
+msgid "Baggage & personal effects"
+msgstr "الأمتعة والممتلكات الشخصية"
+
+msgid "24/7 assistance"
+msgstr "مساعدة على مدار الساعة"
+
+msgid "Emergency medical expenses"
+msgstr "نفقات طبية طارئة"
+
+msgid "Trip interruption"
+msgstr "مقاطعة الرحلة"
+
+msgid "Emergency medical expenses while travelling"
+msgstr "نفقات طبية طارئة أثناء السفر"
+
+msgid "Medical repatriation assistance"
+msgstr "مساعدة في الإعادة الطبية"
+
+msgid "24/7 travel assistance"
+msgstr "مساعدة سفر على مدار الساعة"
+
+msgid "Full benefits listed in your policy document (PDF)"
+msgstr "جميع المزايا مذكورة في وثيقة بوليصتك (PDF)"
+
+msgid "COVID-19 related medical cover"
+msgstr "تغطية طبية متعلقة بكوفيد-19"
+
+msgid "Travellers"
+msgstr "مسافرون"
+
+msgid "%(count)s days"
+msgstr "%(count)s يوماً"
+
+msgid "%(count)s benefits included with this plan"
+msgstr "%(count)s ميزات مشمولة في هذه الباقة"
+
+msgid "Lower premium with deductible: $%(price)s"
+msgstr "قسط أقل مع خصم اختياري: %(price)s$"
+
+msgid "Unable to load plans. Please try again."
+msgstr "تعذر تحميل الباقات. يرجى المحاولة مرة أخرى."
+
+msgid ""
+"No insurance plans found for this trip. Try different dates or contact us."
+msgstr "لا توجد باقات تأمين لهذه الرحلة. جرّب تواريخ أخرى أو تواصل معنا."
+
+msgid "Complete your policy"
+msgstr "أكمل الوثيقة"
+
+msgid "Issue policy"
+msgstr "إصدار الوثيقة"
+
+msgid "I understand this is a sandbox test policy (no payment)."
+msgstr "أفهم أن هذه وثيقة اختبار تجريبية (بدون دفع)."
+
+msgid "I agree to proceed with travel insurance issuance."
+msgstr "أوافق على المتابعة لإصدار تأمين السفر."
+
+msgid "Policy issued"
+msgstr "تم إصدار الوثيقة"
+
+msgid "Your policy is ready"
+msgstr "وثيقتك جاهزة"
+
+msgid "This is a sandbox test policy for integration testing."
+msgstr "هذه وثيقة اختبار تجريبية لاختبار التكامل."
+
+msgid "Policy number"
+msgstr "رقم الوثيقة"
+
+msgid "Download policy PDF"
+msgstr "تحميل PDF الوثيقة"
+
+msgid "Email policy documents"
+msgstr "إرسال الوثيقة بالبريد"
+
+msgid "Get another quote"
+msgstr "عرض جديد"
+
+msgid "Find your travel insurance"
+msgstr "اعثر على تأمين سفرك"
+
+msgid "Policy reference"
+msgstr "مرجع الوثيقة"
+
+msgid "View my policy"
+msgstr "عرض وثيقتي"
+
+msgid "Get a new quote"
+msgstr "عرض جديد"
+
+msgid "Retrieve your policy"
+msgstr "استرجع وثيقتك"
+
+msgid ""
+"Use the same email and reference from your purchase confirmation to view or "
+"download your policy PDF again."
+msgstr ""
+"استخدم نفس البريد والمرجع من تأكيد الشراء لعرض أو تحميل PDF الوثيقة مرة "
+"أخرى."
+
+msgid "Find your policy reference (SAM-INS-…)"
+msgstr "اعثر على مرجع وثيقتك (SAM-INS-…)"
+
+msgid "Enter the email you used when buying"
+msgstr "أدخل البريد الذي استخدمته عند الشراء"
+
+msgid "View your policy and download the PDF"
+msgstr "اعرض وثيقتك وحمّل PDF"
+
+msgid "Policy lookup"
+msgstr "البحث عن الوثيقة"
+
+msgid "Both fields must match your purchase exactly."
+msgstr "يجب أن يطابق الحقلان بيانات الشراء تماماً."
+
+msgid "Email used at purchase"
+msgstr "البريد المستخدم عند الشراء"
+
+msgid "Where is my reference?"
+msgstr "أين مرجعي؟"
+
+msgid ""
+"Your reference looks like SAM-INS- followed by letters and numbers. It "
+"appears on your confirmation screen and in the email we sent after purchase."
+msgstr ""
+"مرجعك يبدو كـ SAM-INS- متبوعاً بحروف وأرقام. يظهر في شاشة التأكيد وفي البريد"
+" بعد الشراء."
+
+msgid "Enter contact and traveller details as shown on your passport."
+msgstr "أدخل بيانات الاتصال والمسافر كما في جواز السفر."
+
+msgid "Selected plan"
+msgstr "الباقة المختارة"
+
+msgid "Contact details"
+msgstr "بيانات الاتصال"
+
+msgid "Traveller details"
+msgstr "بيانات المسافرين"
+
+msgid "Names must match the passport used for travel."
+msgstr "يجب أن تطابق الأسماء جواز السفر المستخدم للسفر."
+
+msgid "Gender"
+msgstr "الجنس"
+
+msgid "First name"
+msgstr "الاسم الأول"
+
+msgid "Last name"
+msgstr "اسم العائلة"
+
+msgid "Passport number"
+msgstr "رقم جواز السفر"
+
+msgid "Street, city, country"
+msgstr "الشارع، المدينة، البلد"
+
+msgid "Optional — refine plan results"
+msgstr "اختياري — تصفية النتائج"
+
+msgid "Plan tier"
+msgstr "فئة الباقة"
+
+msgid "COVID cover"
+msgstr "تغطية كوفيد"
+
+msgid "Sport cover"
+msgstr "تغطية رياضية"
+
+msgid "All tiers"
+msgstr "كل الفئات"
+
+msgid "Basic"
+msgstr "أساسي"
+
+msgid "Advanced"
+msgstr "متقدم"
+
+msgid "All plans"
+msgstr "كل الباقات"
+
+msgid "With COVID cover"
+msgstr "مع تغطية كوفيد"
+
+msgid "Without COVID cover"
+msgstr "بدون تغطية كوفيد"
+
+msgid "With sport cover"
+msgstr "مع تغطية رياضية"
+
+msgid "Without sport cover"
+msgstr "بدون تغطية رياضية"
+
+msgid "All currencies"
+msgstr "كل العملات"
+
+msgid "Currency"
+msgstr "العملة"
+
+msgid "Max price"
+msgstr "أقصى سعر"
+
+msgid "Min price"
+msgstr "أدنى سعر"
+
+msgid "Up to 25"
+msgstr "حتى 25"
+
+msgid "Up to 50"
+msgstr "حتى 50"
+
+msgid "Up to 100"
+msgstr "حتى 100"
+
+msgid "Up to 200"
+msgstr "حتى 200"
+
+msgid "Up to 500"
+msgstr "حتى 500"
+
+msgid "Name: Z–A"
+msgstr "الاسم: ي–أ"
+
+msgid "Search plans…"
+msgstr "ابحث في الباقات…"
+
+msgid ""
+"Filters apply to plans returned by the insurer for your trip. Currency and "
+"prices are set by SIA/Swan — we do not convert exchange rates."
+msgstr ""
+"تُطبَّق الفلاتر على الباقات التي يعيدها المؤمّن لرحلتك. العملة والأسعار من "
+"SIA/Swan — لا نحوّل أسعار الصرف."
+
+msgid "Showing %(shown)s of %(total)s plans"
+msgstr "عرض %(shown)s من %(total)s باقة"
+
+msgid "%(total)s plan(s) from insurer"
+msgstr "%(total)s باقة من المؤمّن"
+
+msgid ""
+"SIA's Going range includes Basic, Advanced, Premium, COVID, and Sport "
+"variants — not every product is quoted for every trip. Below are the plans "
+"the insurer returned for your dates and destination. Ask us if you expect a "
+"product that is missing."
+msgstr ""
+"تشمل مجموعة Going من SIA الأساسي والمتقدم والمميز وكوفيد والرياضة — لا "
+"يُسعَّر كل منتج لكل رحلة. أدناه الباقات التي أعادها المؤمّن لتواريخك ووجهتك."
+" تواصل معنا إذا كنت تتوقع منتجاً غير ظاهر."
+
+msgid "SIA Going product line (reference)"
+msgstr "خط منتجات SIA Going (مرجع)"
+
+msgid "Going Advanced"
+msgstr "Going Advanced"
+
+msgid "Going Advanced Cov"
+msgstr "Going Advanced Cov"
+
+msgid "Going Advanced Plus Sport"
+msgstr "Going Advanced Plus Sport"
+
+msgid "Going Basic"
+msgstr "Going Basic"
+
+msgid "Going Basic Cov"
+msgstr "Going Basic Cov"
+
+msgid "Going Basic Cov plus sport"
+msgstr "Going Basic Cov plus sport"
+
+msgid "Going Premium"
+msgstr "Going Premium"
+
+msgid ""
+"No plans match your filters. Try clearing advanced filters or adjusting your"
+" search."
+msgstr "لا توجد باقات تطابق الفلاتر. جرّب مسح الفلاتر أو تعديل البحث."
+
+msgid ""
+"SIA travel insurance — medical cover and trip protection for your next "
+"journey."
+msgstr "تأمين سفر SIA — تغطية طبية وحماية لرحلتك القادمة."
+
+msgid "Departure"
+msgstr "المغادرة"
+
+msgid "Return"
+msgstr "العودة"
+
+msgid "Get insurance quote"
+msgstr "عرض تأمين"
+
+msgid "Full quote form"
+msgstr "نموذج عرض كامل"
+
+msgid "You will enter traveller details on the next page."
+msgstr "ستدخل بيانات المسافرين في الصفحة التالية."
+
+msgid "Select country"
+msgstr "اختر الدولة"
+
+msgid "Return date must be on or after departure date."
+msgstr "تاريخ العودة يجب أن يكون بعد المغادرة أو في نفس اليوم."
+
+msgid "Departure date cannot be in the past."
+msgstr "لا يمكن أن يكون تاريخ المغادرة في الماضي."
+
+msgid ""
+"Online purchase is not available yet. Payment integration is coming soon — "
+"contact us for assistance."
+msgstr ""
+"الشراء الإلكتروني غير متاح بعد. ربط الدفع قريباً — تواصل معنا للمساعدة."
+
+msgid "Please confirm sandbox test mode."
+msgstr "يرجى تأكيد وضع الاختبار التجريبي."
+
+msgid ""
+"No policy found for that email and reference. Check your details or contact "
+"us."
+msgstr "لم تُعثر على وثيقة بهذا البريد والمرجع."
+
+msgid "Policy documents sent. Check your inbox."
+msgstr "تم إرسال الوثيقة. تحقق من بريدك."
+
+msgid "Please fix the following:"
+msgstr "يرجى تصحيح التالي:"
+
+msgid ""
+"%(count)s traveller(s) from %(residence)s to %(dest)s · %(from_d)s → "
+"%(till_d)s"
+msgstr ""
+"%(count)s مسافر من %(residence)s إلى %(dest)s · %(from_d)s → %(till_d)s"

@@ -34,6 +34,9 @@ os.environ["DJANGO_DB_PASSWORD"] = "REPLACE_WEBSITE_DB_PASSWORD"
 os.environ["DJANGO_DB_HOST"] = "Samatours2026-5298.postgres.pythonanywhere-services.com"
 os.environ["DJANGO_DB_PORT"] = "15298"
 
+# Monty eSIM credentials are loaded from deploy/production.env at startup
+# (see deploy/production.env.example). Do not commit real passwords to git.
+
 from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()

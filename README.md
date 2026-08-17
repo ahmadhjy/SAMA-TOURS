@@ -26,9 +26,11 @@ templates/           HTML pages
 static/              CSS, JS, logo (committed)
 ```
 
-## Admin — add packages
+## Admin — add packages & visas (EN / AR / FR)
 
-`/admin/` → **Travel packages** → upload image, destination, duration, **starting price**, description. **Book Now** links to WhatsApp automatically.
+Full step-by-step guide: **[CONTENT_ADMIN_GUIDE.md](CONTENT_ADMIN_GUIDE.md)**
+
+`/admin/` uses Jazzmin. Open **Travel packages** or **Visa requirements** and use the **English / العربية / Français** tabs for translated text.
 
 ## GitHub
 

@@ -1,0 +1,37 @@
+{% load i18n %}
+<div id="insurance-detail-modal" class="insurance-modal" aria-hidden="true" role="dialog" aria-labelledby="insurance-detail-title">
+    <div class="insurance-modal-backdrop" data-close-insurance-detail tabindex="-1"></div>
+    <div class="insurance-modal-dialog insurance-modal-dialog-wide">
+        <button type="button" class="insurance-modal-close" data-close-insurance-detail aria-label="{% trans 'Close' %}">&times;</button>
+
+        <div class="insurance-detail-header">
+            <span class="insurance-detail-badge" id="insurance-detail-badge" hidden></span>
+            <h2 id="insurance-detail-title"></h2>
+            <p class="insurance-detail-summary" id="insurance-detail-summary"></p>
+        </div>
+
+        <div class="insurance-detail-trip" id="insurance-detail-trip" hidden></div>
+
+        <div class="insurance-detail-price-box" id="insurance-detail-price-box" hidden>
+            <div class="insurance-detail-price-main">
+                <span class="insurance-detail-price-label">{% trans 'Total price' %}</span>
+                <span class="insurance-detail-price-value" id="insurance-detail-price-value"></span>
+            </div>
+            <p class="insurance-detail-price-alt" id="insurance-detail-price-alt" hidden></p>
+        </div>
+
+        <div class="insurance-detail-stats" id="insurance-detail-stats" hidden></div>
+
+        <div class="insurance-detail-section">
+            <h3 class="insurance-detail-section-title">{% trans 'What’s included' %}</h3>
+            <p class="insurance-detail-section-sub" id="insurance-detail-benefit-count" hidden></p>
+            <ul class="insurance-benefit-list insurance-detail-benefits" id="insurance-detail-benefits"></ul>
+        </div>
+
+        <p class="insurance-detail-note">{% trans 'Full terms, limits, and exclusions are provided in your policy PDF and general conditions at purchase.' %}</p>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block js-insurance-detail-buy" id="insurance-detail-buy">
+            {% trans 'Buy this plan' %}
+        </button>
+    </div>
+</div>

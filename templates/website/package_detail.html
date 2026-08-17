@@ -87,7 +87,59 @@
     padding: 0 1.5rem;
     box-sizing: border-box;
 }
-.pkg-page-cover {
+.pkg-gallery {
+    display: grid;
+    grid-template-columns: 1fr minmax(88px, 140px);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    border: 1px solid #e2e8f0;
+}
+.pkg-gallery-main {
+    aspect-ratio: 16 / 9;
+    min-height: 220px;
+    background: #172a51;
+}
+.pkg-gallery-main img,
+.pkg-gallery-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.pkg-gallery-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    overflow-y: auto;
+    max-height: min(520px, 56vw);
+    -webkit-overflow-scrolling: touch;
+}
+.pkg-gallery-thumb {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    opacity: 0.65;
+}
+.pkg-gallery-thumb.active,
+.pkg-gallery-thumb:hover { opacity: 1; border-color: #1a3c6b; }
+.pkg-gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.pkg-gallery-single {
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
@@ -95,10 +147,9 @@
     aspect-ratio: 21/9;
     box-shadow: 0 4px 20px rgba(0,0,0,.08);
 }
-.pkg-page-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pkg-page-grid {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr minmax(260px, 320px);
     gap: 1.5rem;
     align-items: start;
 }
@@ -116,6 +167,11 @@
     margin: 0 0 1rem;
     padding-bottom: 0.65rem;
     border-bottom: 1px solid #e2e8f0;
+}
+.pkg-page-card h3 {
+    font-size: 0.95rem;
+    color: #172a51;
+    margin: 0 0 0.65rem;
 }
 .pkg-page-card p, .pkg-page-card li { color: #64748b; line-height: 1.65; }
 .pkg-page-itin { list-style: none; padding: 0; margin: 0; }
@@ -139,6 +195,35 @@
     align-items: center;
     justify-content: center;
 }
+.pkg-page-inclexcl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.pkg-page-inclexcl--single { grid-template-columns: 1fr; }
+.pkg-inclexcl-list { list-style: none; padding: 0; margin: 0; }
+.pkg-inclexcl-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+.pkg-inclexcl-list li:last-child { border-bottom: none; }
+.pkg-inclexcl-icon {
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+}
+.pkg-inclexcl-icon--in { background: #dcfce7; color: #15803d; }
+.pkg-inclexcl-icon--out { background: #fee2e2; color: #dc2626; }
+.pkg-inclexcl-icon svg { width: 0.8rem; height: 0.8rem; display: block; }
 .pkg-page-side {
     position: sticky;
     top: 120px;
@@ -160,11 +245,16 @@
 .pkg-page-side li {
     display: flex;
     justify-content: space-between;
+    gap: 0.75rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid #f1f5f9;
     color: #64748b;
 }
-.pkg-page-side li span:last-child { font-weight: 600; color: #1e293b; }
+.pkg-page-side li span:last-child {
+    font-weight: 600;
+    color: #1e293b;
+    text-align: end;
+}
 .pkg-page-bar {
     display: none;
     position: fixed;
@@ -180,12 +270,27 @@
 @media (max-width: 900px) {
     .pkg-page-grid { grid-template-columns: 1fr; }
     .pkg-page-side { position: static; }
+    .pkg-gallery { grid-template-columns: 1fr; }
+    .pkg-gallery-thumbs {
+        flex-direction: row;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 0.5rem 0.65rem;
+    }
+    .pkg-gallery-thumb { width: 88px; flex-shrink: 0; }
+}
+@media (max-width: 700px) {
+    .pkg-page-inclexcl { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
     .pkg-page-bar { display: flex; }
     .pkg-page-body { padding-bottom: 5rem; }
     .whatsapp-float { bottom: 5rem !important; }
-    .pkg-page-cover { aspect-ratio: 16/10; }
+    .pkg-gallery-single,
+    .pkg-gallery-main { aspect-ratio: 16/10; min-height: 180px; }
+    .pkg-page-card { padding: 1.15rem; }
+    .pkg-page-hero { min-height: 300px; }
 }
 </style>
 {% endblock %}
@@ -217,9 +322,25 @@
 
 <section class="pkg-page-body">
     <div class="pkg-page-body__inner">
-        {% if package.image_url %}
-        <div class="pkg-page-cover">
-            <img src="{{ package.image_url }}" alt="{{ package.name }}">
+        {% if gallery|length > 1 %}
+        <div class="pkg-gallery" id="pkg-gallery">
+            <div class="pkg-gallery-main">
+                <img src="{{ gallery.0.url }}" alt="{{ gallery.0.caption|default:package.name }}" id="pkg-gallery-main-img">
+            </div>
+            <div class="pkg-gallery-thumbs" role="list">
+                {% for item in gallery %}
+                <button type="button"
+                        class="pkg-gallery-thumb{% if forloop.first %} active{% endif %}"
+                        data-full="{{ item.url }}"
+                        aria-label="{% trans 'View photo' %} {{ forloop.counter }}">
+                    <img src="{{ item.url }}" alt="{{ item.caption|default:package.name }}">
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+        {% elif gallery %}
+        <div class="pkg-gallery-single">
+            <img src="{{ gallery.0.url }}" alt="{{ package.name }}">
         </div>
         {% endif %}
 
@@ -245,6 +366,44 @@
                         {% endfor %}
                     </ol>
                 </article>
+
+                {% if package.included_lines or package.excluded_lines %}
+                <article class="pkg-page-card">
+                    <h2>{% trans "What's included" %}</h2>
+                    <div class="pkg-page-inclexcl{% if not package.included_lines or not package.excluded_lines %} pkg-page-inclexcl--single{% endif %}">
+                        {% if package.included_lines %}
+                        <div>
+                            <h3>{% trans 'Included' %}</h3>
+                            <ul class="pkg-inclexcl-list">
+                                {% for item in package.included_lines %}
+                                <li>
+                                    <span class="pkg-inclexcl-icon pkg-inclexcl-icon--in" aria-hidden="true">
+                                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+                                    </span>
+                                    <span>{{ item }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% if package.excluded_lines %}
+                        <div>
+                            <h3>{% trans 'Excluded' %}</h3>
+                            <ul class="pkg-inclexcl-list">
+                                {% for item in package.excluded_lines %}
+                                <li>
+                                    <span class="pkg-inclexcl-icon pkg-inclexcl-icon--out" aria-hidden="true">
+                                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                                    </span>
+                                    <span>{{ item }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endif %}
             </div>
 
             <aside class="pkg-page-side">
@@ -253,6 +412,12 @@
                 <ul>
                     <li><span>{% trans 'Destination' %}</span><span>{{ package.destination_display }}</span></li>
                     <li><span>{% trans 'Duration' %}</span><span>{{ package.duration }}</span></li>
+                    {% if package.available_from %}
+                    <li><span>{% trans 'Available from' %}</span><span>{{ package.available_from|date:"DATE_FORMAT" }}</span></li>
+                    {% endif %}
+                    {% if package.available_to %}
+                    <li><span>{% trans 'Available to' %}</span><span>{{ package.available_to|date:"DATE_FORMAT" }}</span></li>
+                    {% endif %}
                 </ul>
                 {% if package.highlight_lines %}
                 <div style="margin-bottom:1rem;font-size:0.88rem;color:#64748b;">

@@ -1,0 +1,40 @@
+{% load i18n %}
+<section class="section insurance-home-section">
+    <div class="container">
+        <div class="insurance-home-card">
+            <div class="insurance-home-copy">
+                <span class="section-label">{% trans 'Travel insurance' %}</span>
+                <h2 class="section-title-tui">{% trans 'Travel with peace of mind' %}</h2>
+                <p>{% trans 'SIA travel insurance — medical cover and trip protection for your next journey.' %}</p>
+            </div>
+            <form class="insurance-home-search" method="get" action="{% url 'website:insurance' %}">
+                <div class="insurance-home-search-row">
+                    <div class="insurance-home-search-field">
+                        <label for="home-ins-destination">{% trans 'Destination' %}</label>
+                        <select id="home-ins-destination" name="destination_country" required>
+                            <option value="">{% trans 'Choose destination' %}</option>
+                            {% for code, name in insurance_countries %}
+                            <option value="{{ code }}">{{ name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="insurance-home-search-field">
+                        <label for="home-ins-from">{% trans 'Departure' %}</label>
+                        <input type="date" id="home-ins-from" name="from_date" required>
+                    </div>
+                    <div class="insurance-home-search-field">
+                        <label for="home-ins-till">{% trans 'Return' %}</label>
+                        <input type="date" id="home-ins-till" name="till_date" required>
+                    </div>
+                </div>
+                <input type="hidden" name="residence_country" value="{{ default_residence }}">
+                <input type="hidden" name="traveller_count" value="1">
+                <div class="insurance-home-search-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">{% trans 'Get insurance quote' %}</button>
+                    <a href="{% url 'website:insurance' %}" class="btn btn-outline">{% trans 'Full quote form' %}</a>
+                </div>
+                <p class="insurance-home-hint">{% trans 'You will enter traveller details on the next page.' %}</p>
+            </form>
+        </div>
+    </div>
+</section>

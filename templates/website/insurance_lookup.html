@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Find your travel insurance' %}{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-short">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+        <span class="section-label">{% trans 'Travel insurance' %}</span>
+        <h1>{% trans 'Find your policy' %}</h1>
+        <p>{% trans 'Enter your email and reference to download your policy again.' %}</p>
+    </div>
+</section>
+
+<section class="section insurance-lookup-section">
+    <div class="container">
+        <div class="insurance-lookup-layout">
+            <aside class="insurance-lookup-aside" aria-labelledby="insurance-lookup-aside-title">
+                <div class="insurance-lookup-aside-icon" aria-hidden="true">🛡️</div>
+                <h2 id="insurance-lookup-aside-title">{% trans 'Retrieve your policy' %}</h2>
+                <p class="insurance-lookup-aside-lead">
+                    {% trans 'Use the same email and reference from your purchase confirmation to view or download your policy PDF again.' %}
+                </p>
+                <ol class="insurance-lookup-steps">
+                    <li>
+                        <span class="insurance-lookup-step-num">1</span>
+                        <span>{% trans 'Find your policy reference (SAM-INS-…)' %}</span>
+                    </li>
+                    <li>
+                        <span class="insurance-lookup-step-num">2</span>
+                        <span>{% trans 'Enter the email you used when buying' %}</span>
+                    </li>
+                    <li>
+                        <span class="insurance-lookup-step-num">3</span>
+                        <span>{% trans 'View your policy and download the PDF' %}</span>
+                    </li>
+                </ol>
+            </aside>
+
+            <div class="insurance-lookup-card">
+                <div class="insurance-lookup-card-head">
+                    <h2>{% trans 'Policy lookup' %}</h2>
+                    <p>{% trans 'Both fields must match your purchase exactly.' %}</p>
+                </div>
+
+                <form method="post" class="insurance-lookup-form" novalidate>
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                    <div class="insurance-alert insurance-alert-error insurance-lookup-form-error" role="alert">
+                        <ul class="insurance-form-errors">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <div class="insurance-lookup-fields">
+                        <div class="form-field insurance-lookup-field">
+                            <label for="id_order_reference">{{ form.order_reference.label }}</label>
+                            <div class="insurance-lookup-input-wrap">
+                                <span class="insurance-lookup-field-icon" aria-hidden="true">#</span>
+                                {{ form.order_reference }}
+                            </div>
+                        </div>
+                        <div class="form-field insurance-lookup-field">
+                            <label for="id_customer_email">{{ form.customer_email.label }}</label>
+                            <div class="insurance-lookup-input-wrap">
+                                <span class="insurance-lookup-field-icon" aria-hidden="true">@</span>
+                                {{ form.customer_email }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block insurance-lookup-submit">
+                        {% trans 'View my policy' %}
+                    </button>
+                </form>
+
+                <div class="insurance-lookup-help-box">
+                    <strong>{% trans 'Where is my reference?' %}</strong>
+                    <p>{% trans 'Your reference looks like SAM-INS- followed by letters and numbers. It appears on your confirmation screen and in the email we sent after purchase.' %}</p>
+                </div>
+
+                <div class="insurance-lookup-actions">
+                    <a href="{% url 'website:insurance' %}" class="btn btn-outline">{% trans 'Get a new quote' %}</a>
+                    <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Need help? WhatsApp us' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

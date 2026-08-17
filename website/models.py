@@ -1,6 +1,7 @@
 from decimal import Decimal
 import re
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -51,6 +52,24 @@ class TravelPackage(models.Model):
         blank=True,
         help_text='One highlight per line (shown on detail page)',
     )
+    included = models.TextField(
+        blank=True,
+        help_text='What is included — one item per line',
+    )
+    excluded = models.TextField(
+        blank=True,
+        help_text='What is not included — one item per line',
+    )
+    available_from = models.DateField(
+        blank=True,
+        null=True,
+        help_text='First date this package is available',
+    )
+    available_to = models.DateField(
+        blank=True,
+        null=True,
+        help_text='Last date this package is available',
+    )
     featured_image = models.ImageField(
         upload_to=package_image_path,
         blank=True,
@@ -84,6 +103,13 @@ class TravelPackage(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+    def clean(self):
+        super().clean()
+        if self.available_from and self.available_to and self.available_to < self.available_from:
+            raise ValidationError({
+                'available_to': _('Available until must be on or after the start date.'),
+            })
 
     @property
     def destination_display(self):
@@ -142,14 +168,23 @@ class TravelPackage(models.Model):
     def highlight_lines(self):
         return [line.strip() for line in self.highlights.splitlines() if line.strip()]
 
+    def included_lines(self):
+        return [line.strip() for line in (self.included or '').splitlines() if line.strip()]
+
+    def excluded_lines(self):
+        return [line.strip() for line in (self.excluded or '').splitlines() if line.strip()]
+
     def gallery_items(self):
         items = []
+        seen = set()
+        if self.image_url:
+            items.append({'url': self.image_url, 'caption': self.name})
+            seen.add(self.image_url)
         for img in self.gallery_images.all():
             url = img.image_url
-            if url:
-                items.append({'url': url, 'caption': img.caption})
-        if not items and self.image_url:
-            items.append({'url': self.image_url, 'caption': self.name})
+            if url and url not in seen:
+                items.append({'url': url, 'caption': img.caption or self.name})
+                seen.add(url)
         return items
 
     def whatsapp_booking_url(self):
@@ -263,3 +298,62 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.author_name
+
+
+class EsimOrder(models.Model):
+    """Monty eSIM purchase recorded from the website."""
+
+    order_reference = models.CharField(max_length=30, unique=True)
+    monty_order_id = models.CharField(max_length=24, blank=True, db_index=True)
+    bundle_code = models.CharField(max_length=220)
+    bundle_name = models.CharField(max_length=300, blank=True)
+    customer_name = models.CharField(max_length=120)
+    customer_email = models.EmailField()
+    customer_whatsapp = models.CharField(max_length=40, blank=True)
+    iccid = models.CharField(max_length=24, blank=True)
+    activation_code = models.TextField(blank=True)
+    price_usd = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    order_status = models.CharField(max_length=80, blank=True)
+    api_message = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'eSIM order'
+        verbose_name_plural = 'eSIM orders'
+
+    def __str__(self):
+        return f'{self.order_reference} — {self.customer_email}'
+
+    @property
+    def has_qr(self):
+        return bool(self.activation_code)
+
+
+class TravelInsuranceOrder(models.Model):
+    """Swan IMS travel insurance policy recorded from the website."""
+
+    order_reference = models.CharField(max_length=32, unique=True)
+    contract_code = models.CharField(max_length=40, blank=True, db_index=True)
+    plan_id = models.IntegerField(null=True, blank=True)
+    plan_name = models.CharField(max_length=200, blank=True)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    currency = models.CharField(max_length=8, default='USD')
+    residence_country = models.CharField(max_length=3, blank=True)
+    destination_country = models.CharField(max_length=3, blank=True)
+    from_date = models.DateField(null=True, blank=True)
+    till_date = models.DateField(null=True, blank=True)
+    customer_email = models.EmailField()
+    customer_phone = models.CharField(max_length=40, blank=True)
+    customer_address = models.CharField(max_length=300, blank=True)
+    travellers_json = models.JSONField(default=list, blank=True)
+    api_message = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Travel insurance order'
+        verbose_name_plural = 'Travel insurance orders'
+
+    def __str__(self):
+        return f'{self.order_reference} — {self.customer_email}'

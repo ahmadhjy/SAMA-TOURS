@@ -4,6 +4,12 @@ Used on PythonAnywhere (see deploy/pythonanywhere_wsgi.py.example).
 """
 
 import os
+from pathlib import Path
+
+from config.env_loader import load_env_file
+
+_BASE_DIR = Path(__file__).resolve().parent.parent.parent
+load_env_file(_BASE_DIR / 'deploy' / 'production.env')
 
 from .base import *  # noqa: F403
 from .base import _env  # noqa: F401
@@ -65,3 +71,9 @@ STORAGES = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+}

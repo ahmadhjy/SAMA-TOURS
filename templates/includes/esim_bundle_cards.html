@@ -1,0 +1,35 @@
+{% load i18n %}
+{% for bundle in bundles %}
+<article class="esim-card">
+    <div class="esim-card-head">
+        <h3>{{ bundle.display_name }}</h3>
+        {% if bundle.country_label %}
+        <p class="esim-card-country">{{ bundle.country_label }}</p>
+        {% endif %}
+    </div>
+    <ul class="esim-card-meta">
+        {% if bundle.data_label %}
+        <li>{{ bundle.data_label }}</li>
+        {% endif %}
+        {% if bundle.validity %}
+        <li>{% blocktrans with days=bundle.validity %}{{ days }} days validity{% endblocktrans %}</li>
+        {% endif %}
+        {% if bundle.unlimited %}
+        <li>{% trans 'Unlimited data' %}</li>
+        {% endif %}
+        {% if bundle.supports_calls_sms %}
+        <li>{% trans 'Calls & SMS' %}</li>
+        {% endif %}
+    </ul>
+    {% if bundle.price %}
+    <p class="esim-card-price">${{ bundle.price|floatformat:2 }}</p>
+    {% endif %}
+    <button type="button"
+            class="btn btn-primary btn-sm esim-card-cta js-esim-buy"
+            data-bundle-code="{{ bundle.bundle_code }}"
+            data-bundle-name="{{ bundle.display_name }}"
+            data-bundle-price="{{ bundle.price|default:'' }}">
+        {% trans 'Buy eSIM' %}
+    </button>
+</article>
+{% endfor %}

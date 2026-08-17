@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Policy issued' %}{% endblock %}
+
+{% block content %}
+<section class="section insurance-success-section">
+    <div class="container insurance-success-inner">
+        <div class="insurance-success-card">
+            <span class="section-label">{% trans 'Travel insurance' %}</span>
+            <h1>{% trans 'Your policy is ready' %}</h1>
+            {% if sandbox_mode %}
+            <p class="insurance-sandbox-note">{% trans 'This is a sandbox test policy for integration testing.' %}</p>
+            {% endif %}
+
+            <dl class="insurance-order-summary">
+                <div><dt>{% trans 'Reference' %}</dt><dd>{{ order.order_reference }}</dd></div>
+                {% if order.contract_code %}
+                <div><dt>{% trans 'Policy number' %}</dt><dd>{{ order.contract_code }}</dd></div>
+                {% endif %}
+                <div><dt>{% trans 'Plan' %}</dt><dd>{{ order.plan_name }}</dd></div>
+                <div><dt>{% trans 'Destination' %}</dt><dd>{{ destination_label }}</dd></div>
+                <div><dt>{% trans 'Travel dates' %}</dt><dd>{{ order.from_date }} → {{ order.till_date }}</dd></div>
+                <div><dt>{% trans 'Email' %}</dt><dd>{{ order.customer_email }}</dd></div>
+                {% if order.total_price %}
+                <div><dt>{% trans 'Premium' %}</dt><dd>{{ order.currency }} ${{ order.total_price|floatformat:2 }}</dd></div>
+                {% endif %}
+            </dl>
+
+            {% if order.contract_code %}
+            <div class="insurance-success-actions">
+                <a href="{% url 'website:insurance_pdf' order.pk %}" class="btn btn-primary" target="_blank" rel="noopener">{% trans 'Download policy PDF' %}</a>
+            </div>
+            <form method="post" action="{% url 'website:insurance_resend_email' order.pk %}" class="insurance-resend-form">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline btn-sm">{% trans 'Email policy documents' %}</button>
+            </form>
+            {% endif %}
+
+            <div class="insurance-success-actions">
+                <a href="{% url 'website:insurance' %}" class="btn btn-outline">{% trans 'Get another quote' %}</a>
+                <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Need help? WhatsApp us' %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

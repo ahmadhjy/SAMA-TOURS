@@ -2132,6 +2132,62 @@ button.btn {
     border: 1px solid var(--color-border);
 }
 
+.pkg-page-inclexcl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.pkg-page-inclexcl--single {
+    grid-template-columns: 1fr;
+}
+
+.pkg-inclexcl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pkg-inclexcl-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+.pkg-inclexcl-list li:last-child {
+    border-bottom: none;
+}
+
+.pkg-inclexcl-icon {
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+}
+
+.pkg-inclexcl-icon--in {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.pkg-inclexcl-icon--out {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.pkg-inclexcl-icon svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    display: block;
+}
+
 .pkg-layout {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -2312,6 +2368,10 @@ button.btn {
 }
 
 .pkg-mobile-bar .btn { flex: 1; }
+
+@media (max-width: 700px) {
+    .pkg-page-inclexcl { grid-template-columns: 1fr; }
+}
 
 @media (max-width: 900px) {
     .pkg-layout { grid-template-columns: 1fr; }
@@ -2497,5 +2557,1793 @@ html[dir="rtl"] #quote-modal h2 {
 
     .main-nav {
         margin-inline-start: 0;
+    }
+}
+
+/* Site flash messages — fixed below header so they stay visible after form submit */
+.site-messages {
+    position: fixed;
+    top: calc(var(--top-bar-height) + var(--header-height) + 0.5rem);
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    pointer-events: none;
+    animation: site-message-in 0.35s ease;
+}
+
+.site-messages-inner {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+@keyframes site-message-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.site-message {
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius);
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.45;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.site-message-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.site-message-success {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.site-message-warning {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.site-message-info,
+.site-message-debug {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+/* Travel eSIM */
+.esim-section {
+    padding-top: 2rem;
+}
+
+.esim-filters {
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-alt, #f8fafc);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.esim-filters label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.esim-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.esim-filter-row select {
+    min-width: min(100%, 280px);
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+.esim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.esim-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.esim-card h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.esim-card-country {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+}
+
+.esim-card-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.esim-card-meta li + li {
+    margin-top: 0.25rem;
+}
+
+.esim-card-price {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0;
+}
+
+.esim-card-cta {
+    margin-top: auto;
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* eSIM purchase modal */
+.esim-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.esim-modal.is-open {
+    display: flex;
+}
+
+.esim-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+.esim-modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 440px);
+    max-height: min(92vh, 720px);
+    overflow-y: auto;
+    padding: 1.75rem 1.5rem 1.5rem;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+    animation: modalIn 0.25s ease;
+}
+
+.esim-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    inset-inline-end: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.esim-modal-close:hover {
+    background: #e2e8f0;
+}
+
+.esim-modal-dialog h2 {
+    margin: 0 2rem 0.75rem 0;
+    font-size: 1.35rem;
+}
+
+.esim-modal-plan {
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+}
+
+.esim-modal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0 0 0.75rem;
+}
+
+.esim-email-note {
+    font-size: 0.88rem;
+    color: #64748b;
+    margin: 0 0 1rem;
+    line-height: 1.45;
+}
+
+html.esim-modal-open,
+body.esim-modal-open {
+    overflow: hidden;
+}
+
+.esim-purchase-form .btn-block {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.esim-purchase-panel {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border: 2px solid var(--color-primary-light);
+    border-radius: var(--radius-lg);
+    background: #f8fbff;
+}
+
+.esim-purchase-plan {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.esim-purchase-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.esim-live-note {
+    color: #b45309;
+    font-size: 0.9rem;
+    margin: 0.75rem 0 1.25rem;
+}
+
+.esim-purchase-form .form-field {
+    margin-bottom: 1rem;
+}
+
+.esim-purchase-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.esim-purchase-form input[type="text"],
+.esim-purchase-form input[type="email"] {
+    width: 100%;
+    max-width: 420px;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.form-field-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.form-field-checkbox input {
+    margin-top: 0.2rem;
+}
+
+.esim-alert {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.esim-alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.esim-alert-warn {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+}
+
+.esim-success-section {
+    padding: 3rem 0 4rem;
+}
+
+.esim-success-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.esim-success-card {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.esim-order-summary {
+    text-align: start;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--color-bg-alt, #f8fafc);
+    border-radius: var(--radius);
+}
+
+.esim-order-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+}
+
+.esim-order-summary dt {
+    font-weight: 600;
+    color: #64748b;
+}
+
+.esim-order-summary dd {
+    margin: 0;
+    text-align: end;
+}
+
+.esim-qr-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 1rem;
+}
+
+.esim-qr-image {
+    border: 8px solid #fff;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+    border-radius: var(--radius);
+}
+
+.esim-manual-code {
+    font-size: 0.85rem;
+    word-break: break-all;
+    color: #64748b;
+}
+
+.esim-manual-code code {
+    display: block;
+    margin-top: 0.35rem;
+    padding: 0.5rem;
+    background: #f1f5f9;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+}
+
+.esim-success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.esim-resend-form {
+    margin: 1.25rem 0 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.esim-resend-note {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.esim-lookup-link {
+    margin: -0.75rem 0 1.5rem;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.esim-lookup-link a {
+    font-weight: 600;
+}
+
+.esim-lookup-section {
+    padding: 2rem 0 4rem;
+}
+
+.esim-lookup-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.esim-lookup-card {
+    width: min(100%, 440px);
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.esim-lookup-help {
+    margin: 1.25rem 0 0;
+    font-size: 0.88rem;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+.esim-lookup-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* eSIM advanced search */
+.esim-advanced-search {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-alt, #f8fafc);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.esim-search-primary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.esim-search-field label,
+.esim-search-checkbox-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+}
+
+.esim-search-field select,
+.esim-search-field input[type="search"],
+.esim-search-field input[type="number"] {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: inherit;
+}
+
+.esim-search-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.esim-search-advanced {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.esim-search-advanced summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.esim-search-advanced-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.esim-search-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.esim-search-checkboxes .form-field-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.esim-results-summary {
+    margin: 0 0 1.25rem;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.esim-results-total {
+    color: #94a3b8;
+}
+
+.esim-load-more-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.esim-load-more-status {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Home eSIM promo */
+.esim-home-section {
+    padding: 2rem 0;
+    background: linear-gradient(180deg, #f0f7ff 0%, #fff 100%);
+}
+
+.esim-home-card {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.esim-home-copy p {
+    margin: 0.75rem 0 0;
+    color: #64748b;
+}
+
+.esim-home-search-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.esim-home-search-field select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    font-size: 1rem;
+}
+
+.esim-home-search-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .esim-search-primary {
+        grid-template-columns: 1fr;
+    }
+
+    .esim-home-card {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .esim-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Travel insurance */
+.insurance-section {
+    padding-top: 2rem;
+}
+
+.insurance-alert {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+}
+
+.insurance-alert-sandbox {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+}
+
+.insurance-alert-warn {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+}
+
+.insurance-alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.insurance-quote-form {
+    padding: 1.5rem;
+    background: var(--color-bg-alt, #f8fafc);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+}
+
+.insurance-quote-form h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+}
+
+.insurance-search-advanced {
+    margin: 1rem 0 1.25rem;
+    padding: 0.85rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+}
+
+.insurance-search-advanced summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #334155;
+    list-style: none;
+}
+
+.insurance-search-advanced summary::-webkit-details-marker {
+    display: none;
+}
+
+.insurance-advanced-hint {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-inline-start: 0.35rem;
+}
+
+.insurance-search-advanced-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.85rem;
+    margin-top: 1rem;
+}
+
+.insurance-advanced-note {
+    margin: 0.85rem 0 0;
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+.insurance-results-head {
+    margin-bottom: 0.75rem;
+}
+
+.insurance-results-count {
+    margin: 0.35rem 0 0;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.insurance-results-note {
+    margin: 0 0 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+}
+
+.insurance-catalog-ref {
+    margin: 0 0 1.25rem;
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+.insurance-catalog-ref summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #334155;
+    padding: 0.35rem 0;
+}
+
+.insurance-catalog-ref summary:hover {
+    color: var(--primary);
+}
+
+.insurance-catalog-list {
+    margin: 0.5rem 0 0;
+    padding-inline-start: 1.25rem;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+.insurance-filtered-empty {
+    margin-top: 1rem;
+}
+
+.insurance-card-currency-tag {
+    display: inline-block;
+    margin-inline-start: 0.35rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.insurance-quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.insurance-quote-grid select,
+.insurance-quote-grid input[type="date"],
+.insurance-quote-grid input[type="number"] {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+.insurance-lookup-link {
+    margin: 0 0 1.5rem;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.insurance-plans-title {
+    margin: 2rem 0 0.5rem;
+}
+
+.insurance-quote-summary {
+    color: #64748b;
+    margin-bottom: 1.25rem;
+}
+
+.insurance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.insurance-card {
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.insurance-card-badge {
+    align-self: flex-start;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary-dark);
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: 999px;
+}
+
+.insurance-card-head h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+}
+
+.insurance-card-summary {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+/* Shared decorated benefit lists (cards + detail modal) */
+.insurance-benefit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.insurance-benefit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    color: #334155;
+    line-height: 1.45;
+}
+
+.insurance-benefit-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.12rem;
+    border-radius: 50%;
+    background: #ecfdf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23059669'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2.5-2.5a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E") center / 0.7rem no-repeat;
+    border: 1px solid #a7f3d0;
+}
+
+.insurance-benefit-list-compact li {
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+}
+
+.insurance-benefit-list-compact li + li {
+    border-top: 1px solid #f1f5f9;
+}
+
+.insurance-benefit-text {
+    flex: 1;
+}
+
+.insurance-card-more {
+    margin: -0.25rem 0 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.insurance-card-benefits {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    padding: 0.35rem 0.75rem;
+}
+
+.insurance-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+}
+
+.insurance-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    border-radius: 999px;
+    border: 1px solid #e2e8f0;
+}
+
+.insurance-meta-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.insurance-card-price-block {
+    padding-top: 0.25rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.insurance-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+}
+
+.insurance-card-price-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    margin-bottom: 0.15rem;
+}
+
+.insurance-card-price-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.insurance-card-alt {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0.35rem 0 0;
+}
+
+.insurance-card-alt-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #059669;
+    background: #ecfdf5;
+    border-radius: 50%;
+}
+
+.insurance-results {
+    scroll-margin-top: 1.5rem;
+}
+
+.insurance-loading {
+    margin: 2rem 0;
+    text-align: center;
+    color: #64748b;
+}
+
+.insurance-modal-dialog-wide {
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.75rem 1.5rem;
+}
+
+.insurance-detail-header {
+    margin-bottom: 1rem;
+    padding-inline-end: 1.5rem;
+}
+
+.insurance-detail-badge {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary-dark);
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: 999px;
+}
+
+.insurance-detail-summary {
+    color: #64748b;
+    margin: 0.35rem 0 0;
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+.insurance-detail-trip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.insurance-detail-trip-route {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.insurance-detail-trip-dates {
+    color: #64748b;
+}
+
+.insurance-detail-trip-sep {
+    color: #cbd5e1;
+}
+
+.insurance-detail-price-box {
+    margin-bottom: 1rem;
+    padding: 1rem 1.15rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius-lg);
+}
+
+.insurance-detail-price-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.insurance-detail-price-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6366f1;
+}
+
+.insurance-detail-price-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    line-height: 1.1;
+}
+
+.insurance-detail-price-alt {
+    margin: 0.5rem 0 0;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #c7d2fe;
+    font-size: 0.88rem;
+    color: #475569;
+}
+
+.insurance-detail-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.insurance-detail-stat {
+    padding: 0.65rem 0.5rem;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+}
+
+.insurance-detail-stat-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.insurance-detail-stat-label {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+}
+
+.insurance-detail-section {
+    margin-bottom: 1rem;
+}
+
+.insurance-detail-section-title {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.insurance-detail-section-sub {
+    margin: 0 0 0.65rem;
+    font-size: 0.82rem;
+    color: #94a3b8;
+}
+
+.insurance-detail-benefits {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    padding: 0.35rem 0.85rem;
+}
+
+.insurance-detail-benefits li {
+    padding: 0.55rem 0;
+    font-size: 0.92rem;
+}
+
+.insurance-detail-benefits li + li {
+    border-top: 1px solid #f1f5f9;
+}
+
+.insurance-detail-note {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0 0 1.25rem;
+    line-height: 1.45;
+    padding: 0.75rem 0.85rem;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius);
+}
+
+.insurance-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+}
+
+.insurance-card-price {
+    margin: 0;
+}
+
+.insurance-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.insurance-modal.is-open {
+    display: flex;
+}
+
+.insurance-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.insurance-modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 520px);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 0;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+}
+
+.insurance-modal-dialog-purchase {
+    width: min(100%, 640px);
+}
+
+.insurance-purchase-header {
+    padding: 1.5rem 1.75rem 1.25rem;
+    padding-inline-end: 3rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.insurance-purchase-header h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.2rem;
+    color: #1e293b;
+}
+
+.insurance-purchase-header-note {
+    margin: 0 0 1rem;
+    font-size: 0.88rem;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+.insurance-purchase-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    background: #fff;
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius);
+}
+
+.insurance-purchase-summary-main,
+.insurance-purchase-summary-price-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.insurance-purchase-summary-price-wrap {
+    text-align: end;
+}
+
+.insurance-purchase-summary-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+}
+
+.insurance-purchase-summary-plan {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.insurance-purchase-summary-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+}
+
+.insurance-purchase-form {
+    padding: 0 1.75rem 1.75rem;
+}
+
+.insurance-purchase-section {
+    padding-top: 1.25rem;
+}
+
+.insurance-purchase-section-title {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #334155;
+}
+
+.insurance-purchase-section-note {
+    margin: -0.35rem 0 0.85rem;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.insurance-purchase-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.insurance-purchase-field-full {
+    grid-column: 1 / -1;
+}
+
+.insurance-purchase-field label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.insurance-purchase-input-wrap {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.insurance-purchase-input-wrap:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.insurance-purchase-input-wrap .insurance-purchase-input {
+    border: none;
+    box-shadow: none;
+    padding-inline-start: 0;
+}
+
+.insurance-purchase-field-icon {
+    flex-shrink: 0;
+    padding-inline: 0.75rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    user-select: none;
+}
+
+.insurance-purchase-input,
+.insurance-purchase-field textarea.insurance-purchase-input {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #fff;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.insurance-purchase-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.insurance-purchase-field textarea.insurance-purchase-input {
+    min-height: 4.5rem;
+    resize: vertical;
+}
+
+.insurance-traveller-card {
+    margin: 0 0 0.85rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    background: #f8fafc;
+}
+
+.insurance-traveller-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.insurance-traveller-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    background: #fff;
+    border: 1px solid #c7d2fe;
+    border-radius: 50%;
+}
+
+.insurance-traveller-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.insurance-purchase-section-confirm {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.insurance-purchase-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+    padding: 0.75rem 0.85rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: #475569;
+}
+
+.insurance-purchase-notice-sandbox {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+}
+
+.insurance-purchase-notice input[type="checkbox"] {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary);
+}
+
+.insurance-purchase-notice label {
+    cursor: pointer;
+}
+
+.insurance-purchase-submit {
+    margin-top: 0.25rem;
+}
+
+.insurance-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    inset-inline-end: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    cursor: pointer;
+}
+
+.insurance-traveller-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+/* legacy — traveller fieldsets now use .insurance-traveller-card */
+.insurance-traveller-fields {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+html.insurance-modal-open,
+body.insurance-modal-open {
+    overflow: hidden;
+}
+
+.insurance-success-section,
+.insurance-lookup-section {
+    padding: 3rem 0 4rem;
+    background: linear-gradient(180deg, #f8fafc 0%, #fff 45%);
+}
+
+.insurance-lookup-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 2rem;
+    align-items: start;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.insurance-lookup-aside {
+    padding: 1.5rem 0;
+}
+
+.insurance-lookup-aside-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius-lg);
+}
+
+.insurance-lookup-aside h2 {
+    margin: 0 0 0.65rem;
+    font-size: 1.35rem;
+    color: #1e293b;
+}
+
+.insurance-lookup-aside-lead {
+    margin: 0 0 1.25rem;
+    color: #64748b;
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+.insurance-lookup-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.insurance-lookup-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.45;
+}
+
+.insurance-lookup-step-num {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    background: #fff;
+    border: 1px solid #c7d2fe;
+    border-radius: 50%;
+}
+
+.insurance-success-inner,
+.insurance-lookup-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.insurance-success-card {
+    max-width: 520px;
+    width: 100%;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.insurance-lookup-card {
+    width: 100%;
+    padding: 0;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.insurance-lookup-card-head {
+    padding: 1.5rem 1.75rem 1.25rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.insurance-lookup-card-head h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+    color: #1e293b;
+}
+
+.insurance-lookup-card-head p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.insurance-lookup-form {
+    padding: 1.5rem 1.75rem 0;
+}
+
+.insurance-lookup-form-error {
+    margin-bottom: 1rem;
+}
+
+.insurance-lookup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.insurance-lookup-field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.insurance-lookup-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.insurance-lookup-input-wrap:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.insurance-lookup-field-icon {
+    flex-shrink: 0;
+    padding-inline: 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #94a3b8;
+    user-select: none;
+}
+
+.insurance-lookup-input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    padding: 0.75rem 0.85rem 0.75rem 0;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #1e293b;
+    outline: none;
+}
+
+.insurance-lookup-input::placeholder {
+    color: #94a3b8;
+}
+
+.insurance-lookup-submit {
+    margin-bottom: 0;
+}
+
+.insurance-lookup-help-box {
+    margin: 1.25rem 1.75rem 0;
+    padding: 0.85rem 1rem;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #78350f;
+}
+
+.insurance-lookup-help-box strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #92400e;
+}
+
+.insurance-lookup-help-box p {
+    margin: 0;
+}
+
+.insurance-lookup-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.insurance-lookup-actions .btn {
+    flex: 1 1 auto;
+    min-width: 9rem;
+    justify-content: center;
+}
+
+.insurance-order-summary {
+    text-align: start;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--color-bg-alt, #f8fafc);
+    border-radius: var(--radius);
+}
+
+.insurance-order-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+}
+
+.insurance-home-section {
+    padding: 2rem 0;
+    background: linear-gradient(180deg, #f5f3ff 0%, #fff 100%);
+}
+
+.insurance-home-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.insurance-home-search-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.insurance-home-search-field select,
+.insurance-home-search-field input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.insurance-home-search-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.insurance-home-hint {
+    margin: 0.75rem 0 0;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.insurance-form-errors {
+    margin: 0.5rem 0 0;
+    padding-inline-start: 1.25rem;
+}
+
+.insurance-form-errors li {
+    margin: 0.25rem 0;
+}
+
+@media (max-width: 768px) {
+    .insurance-home-card,
+    .insurance-home-search-row {
+        grid-template-columns: 1fr;
+    }
+
+    .insurance-detail-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .insurance-lookup-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .insurance-lookup-aside {
+        padding: 0;
+        text-align: center;
+    }
+
+    .insurance-lookup-aside-icon {
+        margin-inline: auto;
+    }
+
+    .insurance-lookup-steps {
+        text-align: start;
+        max-width: 320px;
+        margin-inline: auto;
+    }
+
+    .insurance-lookup-actions .btn {
+        flex: 1 1 100%;
+    }
+
+    .insurance-purchase-fields,
+    .insurance-traveller-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insurance-purchase-summary-price-wrap {
+        text-align: start;
     }
 }

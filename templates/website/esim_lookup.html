@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Find your eSIM order' %}{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-short">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f0cd772c0?w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+        <span class="section-label">{% trans 'Travel eSIM' %}</span>
+        <h1>{% trans 'Find your eSIM order' %}</h1>
+        <p>{% trans 'Enter the email and reference from your purchase to view your QR code again.' %}</p>
+    </div>
+</section>
+
+<section class="section esim-lookup-section">
+    <div class="container esim-lookup-inner">
+        <div class="esim-lookup-card">
+            <form method="post" class="esim-purchase-form esim-lookup-form">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="id_order_reference">{{ form.order_reference.label }}</label>
+                    {{ form.order_reference }}
+                </div>
+                <div class="form-field">
+                    <label for="id_customer_email">{{ form.customer_email.label }}</label>
+                    {{ form.customer_email }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans 'View my order' %}</button>
+            </form>
+            <p class="esim-lookup-help">
+                {% trans 'Your reference looks like SAM- followed by letters and numbers. It appears on your order confirmation screen.' %}
+            </p>
+            <div class="esim-lookup-actions">
+                <a href="{% url 'website:esim' %}" class="btn btn-outline">{% trans 'Browse eSIM plans' %}</a>
+                <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Need help? WhatsApp us' %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

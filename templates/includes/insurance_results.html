@@ -1,0 +1,75 @@
+{% load i18n %}
+{% if form_errors %}
+<div class="insurance-alert insurance-alert-error" role="alert">
+    <p><strong>{% trans 'Please fix the following:' %}</strong></p>
+    <ul class="insurance-form-errors">
+        {% for error in quote_form.non_field_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% for field in quote_form %}
+            {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% elif api_error %}
+<div class="insurance-alert insurance-alert-error" role="alert">
+    <p>{{ api_error }}</p>
+    <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer">{% trans 'Contact us on WhatsApp' %}</a>
+</div>
+{% elif total_plans %}
+<div class="insurance-results-head">
+    <div>
+        <h2 class="insurance-plans-title">{% trans 'Available plans' %}</h2>
+        {% if quote_data %}
+        <p class="insurance-quote-summary">
+            {% blocktrans with dest=quote_data.destination_label residence=quote_data.residence_label from_d=quote_data.from_date till_d=quote_data.till_date count=quote_data.traveller_count %}
+            {{ count }} traveller(s) from {{ residence }} to {{ dest }} · {{ from_d }} → {{ till_d }}
+            {% endblocktrans %}
+        </p>
+        {% endif %}
+        <p class="insurance-results-count" id="insurance-results-count">
+            {% if filters_active and offers|length != total_plans %}
+            {% blocktrans with shown=offers|length total=total_plans %}Showing {{ shown }} of {{ total }} plans{% endblocktrans %}
+            {% else %}
+            {% blocktrans with total=total_plans %}{{ total }} plan(s) from insurer{% endblocktrans %}
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+<p class="insurance-results-note">
+    {% trans "SIA's Going range includes Basic, Advanced, Premium, COVID, and Sport variants — not every product is quoted for every trip. Below are the plans the insurer returned for your dates and destination. Ask us if you expect a product that is missing." %}
+</p>
+
+<details class="insurance-catalog-ref">
+    <summary>{% trans 'SIA Going product line (reference)' %}</summary>
+    <ul class="insurance-catalog-list">
+        <li>{% trans 'Going Advanced' %}</li>
+        <li>{% trans 'Going Advanced Cov' %}</li>
+        <li>{% trans 'Going Advanced Plus Sport' %}</li>
+        <li>{% trans 'Going Basic' %}</li>
+        <li>{% trans 'Going Basic Cov' %}</li>
+        <li>{% trans 'Going Basic Cov plus sport' %}</li>
+        <li>{% trans 'Going Premium' %}</li>
+    </ul>
+</details>
+
+{% if not offers %}
+<div class="empty-state insurance-filtered-empty">
+    <p>{% trans 'No plans match your filters. Try clearing advanced filters or adjusting your search.' %}</p>
+    <button type="button" class="btn btn-outline btn-sm" id="insurance-clear-filters">{% trans 'Clear filters' %}</button>
+</div>
+{% else %}
+<div class="insurance-grid" id="insurance-plans-grid">
+    {% include 'includes/insurance_plan_cards.html' %}
+</div>
+{% endif %}
+
+{% elif quote_form.is_bound and quote_form.is_valid %}
+<div class="empty-state">
+    <p>{% trans 'No insurance plans found for this trip. Try different dates or contact us.' %}</p>
+    <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Ask us on WhatsApp' %}</a>
+</div>
+{% endif %}

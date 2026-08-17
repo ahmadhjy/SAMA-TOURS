@@ -32,6 +32,14 @@
 
 {% include 'includes/trust_bar.html' %}
 
+{% if esim_countries %}
+{% include 'includes/esim_home_search.html' %}
+{% endif %}
+
+{% if insurance_countries %}
+{% include 'includes/insurance_home_search.html' %}
+{% endif %}
+
 <section class="section section-compact promo-section">
     <div class="container">
         <div class="section-head-row">

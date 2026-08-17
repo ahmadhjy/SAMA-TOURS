@@ -1,0 +1,28 @@
+{% load i18n %}
+<section class="section esim-home-section">
+    <div class="container">
+        <div class="esim-home-card">
+            <div class="esim-home-copy">
+                <span class="section-label">{% trans 'Travel eSIM' %}</span>
+                <h2 class="section-title-tui">{% trans 'Stay connected abroad' %}</h2>
+                <p>{% trans 'Instant data plans for 190+ destinations — get your QR code in seconds.' %}</p>
+            </div>
+            <form class="esim-home-search" method="get" action="{% url 'website:esim' %}">
+                <div class="esim-home-search-field">
+                    <label for="home-esim-country">{% trans 'Where are you traveling?' %}</label>
+                    <select id="home-esim-country" name="country" required>
+                        <option value="">{% trans 'Choose destination' %}</option>
+                        {% for country in esim_countries %}
+                        <option value="{{ country.iso3_code }}">{{ country.country_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="hidden" name="sort" value="price_asc">
+                <div class="esim-home-search-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">{% trans 'Find eSIM plans' %}</button>
+                    <a href="{% url 'website:esim' %}" class="btn btn-outline">{% trans 'Advanced search' %}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

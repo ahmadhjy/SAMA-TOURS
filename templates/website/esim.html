@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Travel eSIM' %}{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-short">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f0cd772c0?w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+        <span class="section-label">{% trans 'Stay connected abroad' %}</span>
+        <h1>{% trans 'Travel eSIM' %}</h1>
+        <p>{% trans 'Instant mobile data abroad — choose a destination, enter your details, and get your QR code in seconds.' %}</p>
+    </div>
+</section>
+
+<section class="section esim-section">
+    <div class="container">
+        {% if api_error %}
+        <div class="esim-alert esim-alert-error" role="alert">
+            <p><strong>{% trans 'Unable to load eSIM plans right now.' %}</strong></p>
+            <p>{{ api_error }}</p>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer">{% trans 'Contact us on WhatsApp' %}</a>
+        </div>
+        {% else %}
+
+        {% include 'includes/esim_search_form.html' %}
+
+        <p class="esim-lookup-link">
+            {% trans 'Already purchased?' %}
+            <a href="{% url 'website:esim_lookup' %}">{% trans 'Find your order' %}</a>
+        </p>
+
+        {% if bundles or api_total %}
+        <p class="esim-results-summary" id="esim-results-summary">
+            {% if bundles %}
+            <strong>{{ bundles|length }}</strong> {% trans 'plans shown' %}
+            {% if api_total %}<span class="esim-results-total">· {% blocktrans with total=api_total %}{{ total }} in catalog{% endblocktrans %}</span>{% endif %}
+            {% elif api_total %}
+            {% blocktrans with total=api_total %}{{ total }} plans in catalog — refine your filters{% endblocktrans %}
+            {% endif %}
+        </p>
+        {% endif %}
+
+        {% if bundles %}
+        <div class="esim-grid" id="esim-results-grid">
+            {% include 'includes/esim_bundle_cards.html' %}
+        </div>
+
+        {% if has_more %}
+        <div class="esim-load-more-wrap">
+            <button type="button"
+                    class="btn btn-outline btn-lg"
+                    id="esim-load-more"
+                    data-load-url="{% url 'website:esim_load_more' %}"
+                    data-next-page="{{ next_page }}"
+                    data-query="{{ qparams.urlencode }}"
+                    data-loading-text="{% trans 'Loading more plans…' %}">
+                {% trans 'Load more plans' %}
+            </button>
+            <p class="esim-load-more-status" id="esim-load-more-status" hidden></p>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="empty-state">
+            <p>{% trans 'No eSIM plans match your search. Try different filters or contact us.' %}</p>
+            <a href="{{ SITE_WHATSAPP_URL }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">{% trans 'Ask us on WhatsApp' %}</a>
+        </div>
+        {% endif %}
+
+        {% include 'includes/esim_purchase_modal.html' %}
+
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/esim.js' %}?v=1" defer></script>
+{% endblock %}

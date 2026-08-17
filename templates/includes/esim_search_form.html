@@ -1,0 +1,108 @@
+{% load i18n %}
+<form class="esim-advanced-search" method="get" action="{% url 'website:esim' %}" id="esim-search-form">
+    <div class="esim-search-primary">
+        <div class="esim-search-field esim-search-field-grow">
+            <label for="esim-country">{% trans 'Destination' %}</label>
+            <select id="esim-country" name="country">
+                <option value="">{% trans 'All destinations' %}</option>
+                {% for country in countries %}
+                <option value="{{ country.iso3_code }}" {% if qparams.country == country.iso3_code %}selected{% endif %}>
+                    {{ country.country_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="esim-search-field esim-search-field-grow">
+            <label for="esim-region">{% trans 'Region' %}</label>
+            <select id="esim-region" name="region">
+                <option value="">{% trans 'All regions' %}</option>
+                {% for region in regions %}
+                <option value="{{ region.region_code }}" {% if qparams.region == region.region_code %}selected{% endif %}>
+                    {{ region.region_name|default:region.region_code }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="esim-search-field esim-search-field-grow">
+            <label for="esim-q">{% trans 'Plan name' %}</label>
+            <input type="search" id="esim-q" name="q" value="{{ qparams.q }}" maxlength="100"
+                   placeholder="{% trans 'Search by plan name…' %}">
+        </div>
+        <div class="esim-search-actions">
+            <button type="submit" class="btn btn-primary">{% trans 'Search plans' %}</button>
+            {% if filters_active %}
+            <a href="{% url 'website:esim' %}" class="btn btn-outline">{% trans 'Clear' %}</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <details class="esim-search-advanced" {% if filters_active %}open{% endif %}>
+        <summary>{% trans 'Advanced filters' %}</summary>
+        <div class="esim-search-advanced-grid">
+            <div class="esim-search-field">
+                <label for="esim-category">{% trans 'Plan type' %}</label>
+                <select id="esim-category" name="category">
+                    {% for value, label in category_options %}
+                    <option value="{{ value }}" {% if qparams.category == value or not qparams.category and value == 'country' %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-sort">{% trans 'Sort by' %}</label>
+                <select id="esim-sort" name="sort">
+                    {% for value, label in sort_options %}
+                    <option value="{{ value }}" {% if qparams.sort == value or not qparams.sort and value == 'price_asc' %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-profile">{% trans 'Profile' %}</label>
+                <select id="esim-profile" name="profile">
+                    {% for value, label in profile_options %}
+                    <option value="{{ value }}" {% if qparams.profile == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-max-price">{% trans 'Max price (USD)' %}</label>
+                <select id="esim-max-price" name="max_price">
+                    {% for value, label in price_max_options %}
+                    <option value="{{ value }}" {% if qparams.max_price == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-min-price">{% trans 'Min price (USD)' %}</label>
+                <input type="number" id="esim-min-price" name="min_price" min="0" step="0.01"
+                       value="{{ qparams.min_price }}" placeholder="0">
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-max-validity">{% trans 'Max validity' %}</label>
+                <select id="esim-max-validity" name="max_validity">
+                    {% for value, label in validity_options %}
+                    <option value="{{ value }}" {% if qparams.max_validity == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field">
+                <label for="esim-min-data">{% trans 'Minimum data' %}</label>
+                <select id="esim-min-data" name="min_data_gb">
+                    {% for value, label in data_options %}
+                    <option value="{{ value }}" {% if qparams.min_data_gb == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="esim-search-field esim-search-checkboxes">
+                <span class="esim-search-checkbox-label">{% trans 'Options' %}</span>
+                <label class="form-field-checkbox">
+                    <input type="checkbox" name="unlimited" value="1" {% if qparams.unlimited %}checked{% endif %}>
+                    <span>{% trans 'Unlimited data only' %}</span>
+                </label>
+                <label class="form-field-checkbox">
+                    <input type="checkbox" name="calls_sms" value="1" {% if qparams.calls_sms %}checked{% endif %}>
+                    <span>{% trans 'Calls & SMS included' %}</span>
+                </label>
+            </div>
+        </div>
+    </details>
+</form>

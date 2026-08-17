@@ -1,0 +1,118 @@
+{% load i18n %}
+<div id="esim-purchase-modal" class="esim-modal" aria-hidden="true" role="dialog" aria-labelledby="esim-modal-title">
+    <div class="esim-modal-backdrop" data-close-esim tabindex="-1"></div>
+    <div class="esim-modal-dialog">
+        <button type="button" class="esim-modal-close" data-close-esim aria-label="{% trans 'Close' %}">&times;</button>
+        <h2 id="esim-modal-title">{% trans 'Complete your purchase' %}</h2>
+        <p class="esim-modal-plan" id="esim-modal-plan-name" hidden></p>
+        <p class="esim-modal-price" id="esim-modal-plan-price" hidden></p>
+        <p class="esim-live-note">{% trans 'Live purchase — charged to Sama Tours eSIM wallet.' %}</p>
+        <p class="esim-email-note">{% trans 'No account needed. Our eSIM provider may email your QR code to the address below.' %}</p>
+
+        <form method="post" action="{% url 'website:esim_purchase' %}" class="esim-purchase-form" id="esim-purchase-form">
+            {% csrf_token %}
+            <input type="hidden" name="bundle_code" id="esim-field-bundle-code" value="">
+            <input type="hidden" name="bundle_name" id="esim-field-bundle-name" value="">
+            <input type="hidden" name="bundle_price" id="esim-field-bundle-price" value="">
+            <div class="form-field">
+                <label for="id_customer_name">{{ purchase_form.customer_name.label }}</label>
+                {{ purchase_form.customer_name }}
+            </div>
+            <div class="form-field">
+                <label for="id_customer_email">{{ purchase_form.customer_email.label }}</label>
+                {{ purchase_form.customer_email }}
+            </div>
+            <div class="form-field">
+                <label for="id_customer_whatsapp">{{ purchase_form.customer_whatsapp.label }}</label>
+                {{ purchase_form.customer_whatsapp }}
+            </div>
+            <div class="form-field form-field-checkbox">
+                {{ purchase_form.confirm_live }}
+                <label for="id_confirm_live">{{ purchase_form.confirm_live.label }}</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans 'Activate eSIM' %}</button>
+        </form>
+    </div>
+</div>
+
+<script>
+(function () {
+    var modal = document.getElementById('esim-purchase-modal');
+    var form = document.getElementById('esim-purchase-form');
+    if (!modal || !form) return;
+
+    var planNameEl = document.getElementById('esim-modal-plan-name');
+    var planPriceEl = document.getElementById('esim-modal-plan-price');
+    var bundleCodeEl = document.getElementById('esim-field-bundle-code');
+    var bundleNameEl = document.getElementById('esim-field-bundle-name');
+    var bundlePriceEl = document.getElementById('esim-field-bundle-price');
+    var autoBuy = '{{ auto_open_buy_code|default:""|escapejs }}';
+
+    function openModal(trigger) {
+        var code = trigger.getAttribute('data-bundle-code') || '';
+        var name = trigger.getAttribute('data-bundle-name') || '';
+        var price = trigger.getAttribute('data-bundle-price') || '';
+
+        bundleCodeEl.value = code;
+        bundleNameEl.value = name;
+        bundlePriceEl.value = price;
+
+        if (name) {
+            planNameEl.textContent = name;
+            planNameEl.hidden = false;
+        } else {
+            planNameEl.hidden = true;
+        }
+
+        if (price) {
+            planPriceEl.textContent = '$' + parseFloat(price).toFixed(2);
+            planPriceEl.hidden = false;
+        } else {
+            planPriceEl.hidden = true;
+        }
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('esim-modal-open');
+        document.body.classList.add('esim-modal-open');
+
+        var firstInput = form.querySelector('#id_customer_name');
+        if (firstInput) {
+            window.setTimeout(function () { firstInput.focus(); }, 100);
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('esim-modal-open');
+        document.body.classList.remove('esim-modal-open');
+    }
+
+    document.addEventListener('click', function (e) {
+        var opener = e.target.closest('.js-esim-buy');
+        if (opener) {
+            e.preventDefault();
+            openModal(opener);
+            return;
+        }
+        if (e.target.closest('[data-close-esim]')) {
+            e.preventDefault();
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
+    if (autoBuy) {
+        var autoBtn = document.querySelector('.js-esim-buy[data-bundle-code="' + autoBuy + '"]');
+        if (autoBtn) {
+            openModal(autoBtn);
+        }
+    }
+})();
+</script>

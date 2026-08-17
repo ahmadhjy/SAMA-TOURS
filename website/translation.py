@@ -11,6 +11,8 @@ class TravelPackageTranslationOptions(TranslationOptions):
         'full_description',
         'itinerary',
         'highlights',
+        'included',
+        'excluded',
     )
 
 

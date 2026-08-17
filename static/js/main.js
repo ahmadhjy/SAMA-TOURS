@@ -105,4 +105,40 @@
     const style = document.createElement('style');
     style.textContent = '.package-card.visible, .destination-card.visible, .destination-card-tui.visible, .promo-card.visible, .highlight-card.visible, .service-card.visible, .visa-card-link.visible, .why-card.visible { opacity: 1 !important; transform: translateY(0) !important; }';
     document.head.appendChild(style);
+
+    // Flash messages — scroll into view and auto-dismiss
+    const siteMessages = document.getElementById('site-messages');
+    if (siteMessages) {
+        siteMessages.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.setTimeout(function () {
+            siteMessages.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            siteMessages.style.opacity = '0';
+            siteMessages.style.transform = 'translateY(-0.5rem)';
+            window.setTimeout(function () {
+                siteMessages.remove();
+            }, 400);
+        }, 10000);
+    }
+
+    // Package gallery thumbnails
+    var gallery = document.getElementById('pkg-gallery');
+    if (gallery) {
+        var mainImg = document.getElementById('pkg-gallery-main-img');
+        var thumbs = gallery.querySelectorAll('.pkg-gallery-thumb');
+        thumbs.forEach(function (thumb) {
+            thumb.addEventListener('click', function () {
+                var url = thumb.getAttribute('data-full');
+                var thumbImg = thumb.querySelector('img');
+                if (mainImg && url) {
+                    mainImg.src = url;
+                    if (thumbImg && thumbImg.alt) {
+                        mainImg.alt = thumbImg.alt;
+                    }
+                }
+                thumbs.forEach(function (t) {
+                    t.classList.toggle('active', t === thumb);
+                });
+            });
+        });
+    }
 })();

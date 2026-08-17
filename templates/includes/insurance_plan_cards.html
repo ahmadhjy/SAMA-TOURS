@@ -1,0 +1,97 @@
+{% load i18n %}
+{% for offer in offers %}
+<article class="insurance-card"
+         data-tier="{{ offer.tier }}"
+         data-covid="{% if offer.has_covid %}yes{% else %}no{% endif %}"
+         data-sport="{% if offer.has_sport %}yes{% else %}no{% endif %}"
+         data-currency="{{ offer.currency }}"
+         data-price="{{ offer.total_price }}"
+         data-name="{{ offer.name|lower }}">
+    {% if offer.badge %}
+    <span class="insurance-card-badge">{{ offer.badge }}</span>
+    {% endif %}
+
+    <div class="insurance-card-head">
+        <h3>{{ offer.name }}</h3>
+        {% if offer.summary %}
+        <p class="insurance-card-summary">{{ offer.summary }}</p>
+        {% endif %}
+    </div>
+
+    {% if offer.benefits %}
+    <ul class="insurance-benefit-list insurance-benefit-list-compact insurance-card-benefits">
+        {% for benefit in offer.benefits|slice:":4" %}
+        <li><span class="insurance-benefit-text">{{ benefit }}</span></li>
+        {% endfor %}
+    </ul>
+    {% if offer.benefit_count > 4 %}
+    <p class="insurance-card-more">
+        {% blocktrans with count=offer.benefit_count %}See all {{ count }} benefits in details{% endblocktrans %}
+    </p>
+    {% endif %}
+    {% endif %}
+
+    <div class="insurance-card-meta">
+        {% if quote_data.trip_days %}
+        <div class="insurance-meta-chip">
+            <span class="insurance-meta-icon" aria-hidden="true">📅</span>
+            <span>{% blocktrans with days=quote_data.trip_days %}{{ days }} day trip{% endblocktrans %}</span>
+        </div>
+        {% endif %}
+        {% if offer.coverage_days %}
+        <div class="insurance-meta-chip">
+            <span class="insurance-meta-icon" aria-hidden="true">🛡️</span>
+            <span>{% blocktrans with days=offer.coverage_days %}{{ days }} day cover{% endblocktrans %}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="insurance-card-price-block">
+        <p class="insurance-card-price">
+            <span class="insurance-card-price-label">{% trans 'Total price' %}</span>
+            <span class="insurance-card-price-value">{{ offer.price_display }}</span>
+            <span class="insurance-card-currency-tag">{{ offer.currency }}</span>
+        </p>
+        {% if offer.has_deductible_option %}
+        <p class="insurance-card-alt">
+            <span class="insurance-card-alt-icon" aria-hidden="true">↓</span>
+            {% trans 'Lower premium with deductible' %}: {{ offer.deductible_price_display }}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="insurance-card-actions">
+        <button type="button"
+                class="btn btn-outline btn-sm js-insurance-details"
+                data-plan-name="{{ offer.name }}"
+                data-plan-full-name="{{ offer.full_name }}"
+                data-plan-badge="{{ offer.badge }}"
+                data-summary="{{ offer.summary }}"
+                data-benefits='{{ offer.benefits_json|escapejs }}'
+                data-benefit-count="{{ offer.benefit_count }}"
+                data-price="{{ offer.total_price }}"
+                data-currency="{{ offer.currency }}"
+                data-trip-days="{{ quote_data.trip_days|default:'' }}"
+                data-coverage-days="{{ offer.coverage_days|default:'' }}"
+                data-deductible-price="{{ offer.total_with_deductible|default:'' }}"
+                data-residence="{{ quote_data.residence_label|default:'' }}"
+                data-destination="{{ quote_data.destination_label|default:'' }}"
+                data-from-date="{{ quote_data.from_date|default:'' }}"
+                data-till-date="{{ quote_data.till_date|default:'' }}"
+                data-traveller-count="{{ quote_data.traveller_count|default:'' }}">
+            {% trans 'View details' %}
+        </button>
+        <button type="button"
+                class="btn btn-primary btn-sm js-insurance-buy"
+                data-plan-id="{{ offer.plan_id }}"
+                data-plan-name="{{ offer.name }}"
+                data-plan-price="{{ offer.total_price }}"
+                data-plan-currency="{{ offer.currency }}"
+                data-price-ids="{{ offer.price_ids_no_deductible|join:',' }}"
+                data-default-tier="{{ offer.default_tier }}"
+                {% if not checkout_enabled %}disabled title="{% trans 'Coming soon' %}"{% endif %}>
+            {% if checkout_enabled %}{% trans 'Buy policy' %}{% else %}{% trans 'Coming soon' %}{% endif %}
+        </button>
+    </div>
+</article>
+{% endfor %}

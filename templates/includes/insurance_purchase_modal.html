@@ -1,0 +1,263 @@
+{% load i18n %}
+<div id="insurance-purchase-modal" class="insurance-modal" aria-hidden="true" role="dialog" aria-labelledby="insurance-modal-title">
+    <div class="insurance-modal-backdrop" data-close-insurance tabindex="-1"></div>
+    <div class="insurance-modal-dialog insurance-modal-dialog-purchase">
+        <button type="button" class="insurance-modal-close" data-close-insurance aria-label="{% trans 'Close' %}">&times;</button>
+
+        <header class="insurance-purchase-header">
+            <h2 id="insurance-modal-title">{% trans 'Complete your policy' %}</h2>
+            <p class="insurance-purchase-header-note">{% trans 'Enter contact and traveller details as shown on your passport.' %}</p>
+            <div class="insurance-purchase-summary" id="insurance-purchase-summary" hidden>
+                <div class="insurance-purchase-summary-main">
+                    <span class="insurance-purchase-summary-label">{% trans 'Selected plan' %}</span>
+                    <span class="insurance-purchase-summary-plan" id="insurance-modal-plan-name"></span>
+                </div>
+                <div class="insurance-purchase-summary-price-wrap">
+                    <span class="insurance-purchase-summary-label">{% trans 'Total price' %}</span>
+                    <span class="insurance-purchase-summary-price" id="insurance-modal-plan-price"></span>
+                </div>
+            </div>
+        </header>
+
+        <form method="post" action="{% url 'website:insurance_purchase' %}" class="insurance-purchase-form" id="insurance-purchase-form">
+            {% csrf_token %}
+            {{ purchase_form.plan_id }}
+            {{ purchase_form.plan_name }}
+            {{ purchase_form.plan_price }}
+            {{ purchase_form.plan_currency }}
+            {{ purchase_form.quote_data }}
+            {{ purchase_form.price_ids }}
+
+            <section class="insurance-purchase-section">
+                <h3 class="insurance-purchase-section-title">{% trans 'Contact details' %}</h3>
+                <div class="insurance-purchase-fields">
+                    <div class="form-field insurance-purchase-field">
+                        <label for="id_email">{{ purchase_form.email.label }}</label>
+                        <div class="insurance-purchase-input-wrap">
+                            <span class="insurance-purchase-field-icon" aria-hidden="true">@</span>
+                            {{ purchase_form.email }}
+                        </div>
+                    </div>
+                    <div class="form-field insurance-purchase-field">
+                        <label for="id_phone">{{ purchase_form.phone.label }}</label>
+                        <div class="insurance-purchase-input-wrap">
+                            <span class="insurance-purchase-field-icon" aria-hidden="true">📞</span>
+                            {{ purchase_form.phone }}
+                        </div>
+                    </div>
+                    <div class="form-field insurance-purchase-field insurance-purchase-field-full">
+                        <label for="id_address">{{ purchase_form.address.label }}</label>
+                        {{ purchase_form.address }}
+                    </div>
+                </div>
+            </section>
+
+            <section class="insurance-purchase-section">
+                <h3 class="insurance-purchase-section-title">{% trans 'Traveller details' %}</h3>
+                <p class="insurance-purchase-section-note">{% trans 'Names must match the passport used for travel.' %}</p>
+
+                <fieldset class="insurance-traveller-card" id="insurance-traveller-1">
+                    <legend class="insurance-traveller-legend">
+                        <span class="insurance-traveller-num">1</span>
+                        {% trans 'Traveller 1' %}
+                    </legend>
+                    <div class="insurance-traveller-grid">
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_1_gender">{% trans 'Gender' %}</label>
+                            {{ purchase_form.traveller_1_gender }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_1_first_name">{{ purchase_form.traveller_1_first_name.label }}</label>
+                            {{ purchase_form.traveller_1_first_name }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_1_last_name">{{ purchase_form.traveller_1_last_name.label }}</label>
+                            {{ purchase_form.traveller_1_last_name }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_1_passport">{{ purchase_form.traveller_1_passport.label }}</label>
+                            {{ purchase_form.traveller_1_passport }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_1_passport_expiry">{{ purchase_form.traveller_1_passport_expiry.label }}</label>
+                            {{ purchase_form.traveller_1_passport_expiry }}
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="insurance-traveller-card" id="insurance-traveller-2" hidden>
+                    <legend class="insurance-traveller-legend">
+                        <span class="insurance-traveller-num">2</span>
+                        {% trans 'Traveller 2' %}
+                    </legend>
+                    <div class="insurance-traveller-grid">
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_2_gender">{% trans 'Gender' %}</label>
+                            {{ purchase_form.traveller_2_gender }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_2_first_name">{{ purchase_form.traveller_2_first_name.label }}</label>
+                            {{ purchase_form.traveller_2_first_name }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_2_last_name">{{ purchase_form.traveller_2_last_name.label }}</label>
+                            {{ purchase_form.traveller_2_last_name }}
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="insurance-traveller-card" id="insurance-traveller-3" hidden>
+                    <legend class="insurance-traveller-legend">
+                        <span class="insurance-traveller-num">3</span>
+                        {% trans 'Traveller 3' %}
+                    </legend>
+                    <div class="insurance-traveller-grid">
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_3_gender">{% trans 'Gender' %}</label>
+                            {{ purchase_form.traveller_3_gender }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_3_first_name">{{ purchase_form.traveller_3_first_name.label }}</label>
+                            {{ purchase_form.traveller_3_first_name }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_3_last_name">{{ purchase_form.traveller_3_last_name.label }}</label>
+                            {{ purchase_form.traveller_3_last_name }}
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="insurance-traveller-card" id="insurance-traveller-4" hidden>
+                    <legend class="insurance-traveller-legend">
+                        <span class="insurance-traveller-num">4</span>
+                        {% trans 'Traveller 4' %}
+                    </legend>
+                    <div class="insurance-traveller-grid">
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_4_gender">{% trans 'Gender' %}</label>
+                            {{ purchase_form.traveller_4_gender }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_4_first_name">{{ purchase_form.traveller_4_first_name.label }}</label>
+                            {{ purchase_form.traveller_4_first_name }}
+                        </div>
+                        <div class="form-field insurance-purchase-field">
+                            <label for="id_traveller_4_last_name">{{ purchase_form.traveller_4_last_name.label }}</label>
+                            {{ purchase_form.traveller_4_last_name }}
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <section class="insurance-purchase-section insurance-purchase-section-confirm">
+                {% if sandbox_mode %}
+                <div class="insurance-purchase-notice insurance-purchase-notice-sandbox">
+                    {{ purchase_form.confirm_sandbox }}
+                    <label for="id_confirm_sandbox">{{ purchase_form.confirm_sandbox.label }}</label>
+                </div>
+                {% endif %}
+                <div class="insurance-purchase-notice">
+                    {{ purchase_form.confirm_terms }}
+                    <label for="id_confirm_terms">{{ purchase_form.confirm_terms.label }}</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block insurance-purchase-submit">
+                    {% trans 'Issue policy' %}
+                </button>
+            </section>
+        </form>
+    </div>
+</div>
+
+<script>
+(function () {
+    var modal = document.getElementById('insurance-purchase-modal');
+    var form = document.getElementById('insurance-purchase-form');
+    if (!modal || !form) return;
+
+    var quoteDataEl = document.getElementById('id_quote_data');
+    var autoPlan = '{{ auto_open_plan_id|default:""|escapejs }}';
+    var summaryEl = document.getElementById('insurance-purchase-summary');
+
+    function showTravellerFields(count) {
+        for (var i = 1; i <= 4; i++) {
+            var block = document.getElementById('insurance-traveller-' + i);
+            if (block) block.hidden = i > count;
+        }
+    }
+
+    if (quoteDataEl && quoteDataEl.value) {
+        try {
+            var qd = JSON.parse(quoteDataEl.value);
+            showTravellerFields(qd.traveller_count || 1);
+        } catch (e) {}
+    }
+
+    function openModal(trigger) {
+        document.getElementById('id_plan_id').value = trigger.getAttribute('data-plan-id') || '';
+        document.getElementById('id_plan_name').value = trigger.getAttribute('data-plan-name') || '';
+        document.getElementById('id_plan_price').value = trigger.getAttribute('data-plan-price') || '';
+        document.getElementById('id_plan_currency').value = trigger.getAttribute('data-plan-currency') || 'USD';
+        document.getElementById('id_price_ids').value = trigger.getAttribute('data-price-ids') || '';
+
+        var nameEl = document.getElementById('insurance-modal-plan-name');
+        var priceEl = document.getElementById('insurance-modal-plan-price');
+        var planName = trigger.getAttribute('data-plan-name') || '';
+        var price = trigger.getAttribute('data-plan-price');
+        var currency = trigger.getAttribute('data-plan-currency') || 'USD';
+
+        if (nameEl) nameEl.textContent = planName;
+        if (priceEl) {
+            priceEl.textContent = price
+                ? (currency + ' ' + parseFloat(price).toFixed(2))
+                : '';
+        }
+        if (summaryEl) summaryEl.hidden = !(planName || price);
+
+        if (quoteDataEl && quoteDataEl.value) {
+            try {
+                var quote = JSON.parse(quoteDataEl.value);
+                showTravellerFields(quote.traveller_count || 1);
+            } catch (e) {}
+        }
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('insurance-modal-open');
+        document.body.classList.add('insurance-modal-open');
+
+        var firstInput = form.querySelector('#id_email');
+        if (firstInput) {
+            setTimeout(function () { firstInput.focus(); }, 100);
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('insurance-modal-open');
+        document.body.classList.remove('insurance-modal-open');
+    }
+
+    document.addEventListener('click', function (e) {
+        var opener = e.target.closest('.js-insurance-buy');
+        if (opener && !opener.disabled) {
+            e.preventDefault();
+            openModal(opener);
+            return;
+        }
+        if (e.target.closest('[data-close-insurance]')) {
+            e.preventDefault();
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    if (autoPlan) {
+        var autoBtn = document.querySelector('.js-insurance-buy[data-plan-id="' + autoPlan + '"]');
+        if (autoBtn) openModal(autoBtn);
+    }
+})();
+</script>

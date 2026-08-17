@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Travel insurance' %}{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-short">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+        <span class="section-label">{% trans 'Travel with peace of mind' %}</span>
+        <h1>{% trans 'Travel insurance' %}</h1>
+        <p>{% trans 'Get a quote for SIA travel insurance — medical cover, trip protection, and more.' %}</p>
+    </div>
+</section>
+
+<section class="section insurance-section">
+    <div class="container">
+        {% if sandbox_mode %}
+        <div class="insurance-alert insurance-alert-sandbox" role="status">
+            <strong>{% trans 'Sandbox test environment' %}</strong>
+            <p>{% trans 'Policies issued here are for testing only. Live sales will open once online payment is connected.' %}</p>
+        </div>
+        {% elif not checkout_enabled %}
+        <div class="insurance-alert insurance-alert-warn" role="status">
+            <p>{% trans 'You can browse plans below. Online purchase will be available when our payment gateway is live — contact us to buy today.' %}</p>
+        </div>
+        {% endif %}
+
+        <form class="insurance-quote-form"
+              method="get"
+              action="{% url 'website:insurance' %}"
+              id="insurance-quote-form"
+              data-quote-url="{% url 'website:insurance_quote' %}"
+              data-loading-text="{% trans 'Loading plans…' %}">
+            <h2>{% trans 'Get a quote' %}</h2>
+            <div class="insurance-quote-grid">
+                <div class="form-field">
+                    <label for="id_residence_country">{{ quote_form.residence_country.label }}</label>
+                    {{ quote_form.residence_country }}
+                </div>
+                <div class="form-field">
+                    <label for="id_destination_country">{{ quote_form.destination_country.label }}</label>
+                    {{ quote_form.destination_country }}
+                </div>
+                <div class="form-field">
+                    <label for="id_from_date">{{ quote_form.from_date.label }}</label>
+                    {{ quote_form.from_date }}
+                </div>
+                <div class="form-field">
+                    <label for="id_till_date">{{ quote_form.till_date.label }}</label>
+                    {{ quote_form.till_date }}
+                </div>
+                <div class="form-field">
+                    <label for="id_traveller_count">{{ quote_form.traveller_count.label }}</label>
+                    {{ quote_form.traveller_count }}
+                </div>
+                <div class="form-field traveller-dob" data-traveller="1">
+                    <label for="id_birth_date_1">{{ quote_form.birth_date_1.label }}</label>
+                    {{ quote_form.birth_date_1 }}
+                </div>
+                <div class="form-field traveller-dob" data-traveller="2">
+                    <label for="id_birth_date_2">{{ quote_form.birth_date_2.label }}</label>
+                    {{ quote_form.birth_date_2 }}
+                </div>
+                <div class="form-field traveller-dob" data-traveller="3">
+                    <label for="id_birth_date_3">{{ quote_form.birth_date_3.label }}</label>
+                    {{ quote_form.birth_date_3 }}
+                </div>
+                <div class="form-field traveller-dob" data-traveller="4">
+                    <label for="id_birth_date_4">{{ quote_form.birth_date_4.label }}</label>
+                    {{ quote_form.birth_date_4 }}
+                </div>
+            </div>
+
+            {% include 'includes/insurance_advanced_filters.html' %}
+
+            <button type="submit" class="btn btn-primary btn-lg" id="insurance-quote-submit">{% trans 'Show insurance plans' %}</button>
+        </form>
+
+        <p class="insurance-lookup-link">
+            {% trans 'Already purchased?' %}
+            <a href="{% url 'website:insurance_lookup' %}">{% trans 'Find your policy' %}</a>
+        </p>
+
+        <div id="insurance-results"
+             class="insurance-results"
+             tabindex="-1"
+             {% if scroll_to_results %}data-scroll-to="1"{% endif %}>
+            {% include 'includes/insurance_results.html' with form_errors=quote_form.errors %}
+        </div>
+
+        {% include 'includes/insurance_detail_modal.html' %}
+
+        {% if checkout_enabled and purchase_form %}
+        {% include 'includes/insurance_purchase_modal.html' %}
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+window.insuranceI18n = {
+    travellers: "{% filter escapejs %}{% trans 'Travellers' %}{% endfilter %}",
+    tripLength: "{% filter escapejs %}{% trans 'Trip length' %}{% endfilter %}",
+    coverPeriod: "{% filter escapejs %}{% trans 'Cover period' %}{% endfilter %}",
+    days: "{% filter escapejs %}{% trans '%(count)s days' %}{% endfilter %}",
+    benefitsIncluded: "{% filter escapejs %}{% trans '%(count)s benefits included with this plan' %}{% endfilter %}",
+    deductiblePrice: "{% filter escapejs %}{% trans 'Lower premium with deductible: $%(price)s' %}{% endfilter %}",
+    loadError: "{% filter escapejs %}{% trans 'Unable to load plans. Please try again.' %}{% endfilter %}"
+};
+</script>
+<script src="{% static 'js/insurance.js' %}?v=5" defer></script>
+{% endblock %}
