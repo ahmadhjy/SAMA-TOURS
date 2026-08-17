@@ -54,13 +54,16 @@ def _can_view_esim_order(request, order: EsimOrder) -> bool:
 
 def home(request):
     esim_countries = []
-    try:
-        esim_countries = sorted(
-            get_cached_countries(),
-            key=lambda item: (item.get('country_name') or '').lower(),
-        )
-    except MontyESIMError:
-        pass
+    insurance_countries = []
+    if request.user.is_authenticated and request.user.is_staff:
+        try:
+            esim_countries = sorted(
+                get_cached_countries(),
+                key=lambda item: (item.get('country_name') or '').lower(),
+            )
+        except MontyESIMError:
+            pass
+        insurance_countries = iso3_countries()
 
     return render(request, 'website/home.html', {
         'packages': TravelPackage.objects.filter(is_active=True)[:6],
@@ -68,7 +71,7 @@ def home(request):
         'testimonials': _active_testimonials(),
         'filter_action': reverse('website:packages'),
         'esim_countries': esim_countries,
-        'insurance_countries': iso3_countries(),
+        'insurance_countries': insurance_countries,
         'default_residence': settings.SWAN_IMS_DEFAULT_RESIDENCE,
         **package_filter_context(request),
     })

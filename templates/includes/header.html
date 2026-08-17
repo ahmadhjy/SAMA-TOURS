@@ -10,8 +10,10 @@
                 <li><a href="{% url 'website:about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>{% trans 'About' %}</a></li>
                 <li><a href="{% url 'website:packages' %}" {% if request.resolver_match.url_name == 'packages' %}class="active"{% endif %}>{% trans 'Packages' %}</a></li>
                 <li><a href="{% url 'website:visa' %}" {% if request.resolver_match.url_name == 'visa' %}class="active"{% endif %}>{% trans 'Visa Requirements' %}</a></li>
+                {% if user.is_staff %}
                 <li><a href="{% url 'website:esim' %}" {% if request.resolver_match.url_name == 'esim' or request.resolver_match.url_name == 'esim_success' %}class="active"{% endif %}>{% trans 'eSIM' %}</a></li>
                 <li><a href="{% url 'website:insurance' %}" {% if 'insurance' in request.resolver_match.url_name %}class="active"{% endif %}>{% trans 'Insurance' %}</a></li>
+                {% endif %}
                 <li><a href="{% url 'website:contact' %}" class="nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans 'Contact Us' %}</a></li>
             </ul>
         </nav>

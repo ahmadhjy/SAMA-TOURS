@@ -15,8 +15,10 @@
                     <li><a href="{% url 'website:about' %}">{% trans 'About' %}</a></li>
                     <li><a href="{% url 'website:packages' %}">{% trans 'Packages' %}</a></li>
                     <li><a href="{% url 'website:visa' %}">{% trans 'Visa Requirements' %}</a></li>
+                    {% if user.is_staff %}
                     <li><a href="{% url 'website:esim' %}">{% trans 'eSIM' %}</a></li>
                     <li><a href="{% url 'website:insurance' %}">{% trans 'Insurance' %}</a></li>
+                    {% endif %}
                     <li><a href="{% url 'website:contact' %}">{% trans 'Contact Us' %}</a></li>
                 </ul>
             </div>
