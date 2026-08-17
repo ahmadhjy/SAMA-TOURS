@@ -2,7 +2,6 @@ import io
 import uuid
 
 import qrcode
-from django.conf import settings
 from django.contrib import messages
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -13,11 +12,9 @@ from django.utils.translation import gettext as _
 from .esim_filters import esim_search_context, parse_esim_search, search_esim_bundles
 from .forms import EsimOrderLookupForm, EsimPurchaseForm
 from .models import EsimOrder, TravelPackage, Destination, VisaRequirement, Testimonial
-from .ims_countries import iso3_countries
 from .monty_esim import (
     MontyESIMError,
     assign_bundle,
-    get_cached_countries,
     get_order_activation_code,
     resend_order_email,
 )
@@ -53,26 +50,11 @@ def _can_view_esim_order(request, order: EsimOrder) -> bool:
 
 
 def home(request):
-    esim_countries = []
-    insurance_countries = []
-    if request.user.is_authenticated and request.user.is_staff:
-        try:
-            esim_countries = sorted(
-                get_cached_countries(),
-                key=lambda item: (item.get('country_name') or '').lower(),
-            )
-        except MontyESIMError:
-            pass
-        insurance_countries = iso3_countries()
-
     return render(request, 'website/home.html', {
         'packages': TravelPackage.objects.filter(is_active=True)[:6],
         'destinations': Destination.objects.filter(is_active=True)[:8],
         'testimonials': _active_testimonials(),
         'filter_action': reverse('website:packages'),
-        'esim_countries': esim_countries,
-        'insurance_countries': insurance_countries,
-        'default_residence': settings.SWAN_IMS_DEFAULT_RESIDENCE,
         **package_filter_context(request),
     })
 
