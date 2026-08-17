@@ -175,11 +175,10 @@ class TravelPackage(models.Model):
         return [line.strip() for line in (self.excluded or '').splitlines() if line.strip()]
 
     def gallery_items(self):
+        """Extra photos only — the featured image is used on cards and the page banner."""
+        featured = self.image_url
         items = []
-        seen = set()
-        if self.image_url:
-            items.append({'url': self.image_url, 'caption': self.name})
-            seen.add(self.image_url)
+        seen = {featured} if featured else set()
         for img in self.gallery_images.all():
             url = img.image_url
             if url and url not in seen:

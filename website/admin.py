@@ -59,7 +59,7 @@ class TravelPackageAdmin(TabbedTranslationAdmin):
         }),
         ('Main image', {
             'fields': ('featured_image', 'featured_image_url'),
-            'description': 'Main photo on cards and the gallery. Extra photos are added in Package images below.',
+            'description': 'Main photo on cards and the package banner. Extra photos go in Package images below — they are not mixed with this image.',
         }),
         ('Visibility', {
             'fields': ('is_featured', 'is_active', 'display_order'),

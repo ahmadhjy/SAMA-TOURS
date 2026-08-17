@@ -63,7 +63,7 @@ These are the same for EN, AR, and FR — fill them once:
 | **City** | Free text (e.g. `Dubai`) — shown as `Dubai, United Arab Emirates` |
 | **Starting price** | Number only in USD (e.g. `899`) — displays as “From $899” / “ابتداءً من $899” |
 | **Available from / Available to** | Date pickers — shown under package details on the public page. Leave blank if always available. |
-| **Featured image** | Main photo on cards and the first gallery image |
+| **Featured image** | Main photo on cards and the package page banner |
 | **Featured image URL** | Alternative if you are not uploading a file |
 | **Is featured** | Show on homepage |
 | **Is active** | Must be checked for the package to appear on the site |
@@ -73,10 +73,10 @@ These are the same for EN, AR, and FR — fill them once:
 
 Scroll to **Package images** at the bottom of the package form:
 
-- Upload extra photos or paste **External image URL** — these appear as thumbnails next to the main image
+- Upload extra photos or paste **External image URL** — these appear in the gallery on the package page
 - Set **Display order** (0, 1, 2…)
 - **Caption** is not translated — use English or leave blank
-- The featured image is always the first gallery photo; extra rows are additional photos
+- Do not re-upload the featured image here — it already shows on the card and banner
 
 ### Step-by-step: add a new package
 
