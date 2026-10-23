@@ -97,6 +97,18 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(_env('MEDIA_ROOT', 'DJANGO_MEDIA_ROOT', default=str(BASE_DIR / 'media')))
 
+# Flight match notifications. Credentials belong in deploy/production.env.
+EMAIL_BACKEND = _env('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = _env('EMAIL_HOST', default='')
+EMAIL_PORT = int(_env('EMAIL_PORT', default='587'))
+EMAIL_HOST_USER = _env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = _env('EMAIL_HOST_PASSWORD', default='')
+EMAIL_USE_TLS = _env('EMAIL_USE_TLS', default='True').lower() in ('true', '1', 'yes')
+EMAIL_USE_SSL = _env('EMAIL_USE_SSL', default='False').lower() in ('true', '1', 'yes')
+EMAIL_TIMEOUT = 15
+DEFAULT_FROM_EMAIL = _env('DEFAULT_FROM_EMAIL', default='info@samatourslb.com')
+FLIGHT_MATCH_TO_EMAIL = _env('FLIGHT_MATCH_TO_EMAIL', default='info@samatourslb.com')
+
 # Monty eSIM Reseller API (secrets in .env / deploy/production.env — never commit)
 MONTY_ESIM_API_BASE_URL = _env(
     'MONTY_ESIM_API_BASE_URL',

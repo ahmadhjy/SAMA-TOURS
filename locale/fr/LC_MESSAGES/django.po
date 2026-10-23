@@ -9,6 +9,140 @@ msgid_plural "%(counter)s packages found"
 msgstr[0] "%(counter)s forfait trouvé"
 msgstr[1] "%(counter)s forfaits trouvés"
 
+msgid "Sama Match"
+msgstr "Sama Match"
+
+msgid "Sama Match — flight offer review"
+msgstr "Sama Match — étude de votre offre de vol"
+
+msgid "Found a flight offer? Let us find your best match."
+msgstr "Vous avez trouvé un vol ? Laissez-nous chercher une meilleure option."
+
+msgid ""
+"Send us a screenshot of the offer you found. Our travel team will review the"
+" route, dates, fare and baggage, then contact you with a comparable option "
+"if available."
+msgstr ""
+"Envoyez-nous une capture de votre offre. Notre équipe vérifiera le trajet, "
+"les dates, le tarif et les bagages, puis vous proposera une option "
+"comparable si elle est disponible."
+
+msgid "Upload your offer"
+msgstr "Envoyez votre offre"
+
+msgid "We compare the details"
+msgstr "Nous comparons les détails"
+
+msgid "Get a personal reply"
+msgstr "Recevez une réponse personnalisée"
+
+msgid ""
+"Prices and availability can change. A matching or lower fare is not "
+"guaranteed; no booking is made when you submit this request."
+msgstr ""
+"Les tarifs et disponibilités peuvent changer. Un prix égal ou inférieur "
+"n’est pas garanti ; aucun vol n’est réservé lors de l’envoi."
+
+msgid "Request a flight match"
+msgstr "Demander une comparaison de vol"
+
+msgid "Share the offer with us"
+msgstr "Envoyez-nous votre offre"
+
+msgid ""
+"We only need a way to reach you and a clear screenshot. Passport upload is "
+"optional at this stage."
+msgstr ""
+"Il nous suffit d’un moyen de vous joindre et d’une capture lisible. Le "
+"passeport est facultatif à ce stade."
+
+msgid "Your full name"
+msgstr "Nom complet"
+
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+msgid "Phone or WhatsApp"
+msgstr "Téléphone ou WhatsApp"
+
+msgid "Enter at least one contact method."
+msgstr "Indiquez au moins une façon de vous contacter."
+
+msgid "Route or destination"
+msgstr "Trajet ou destination"
+
+msgid "Travel dates"
+msgstr "Dates de voyage"
+
+msgid "Price shown in the offer"
+msgstr "Prix indiqué sur l’offre"
+
+msgid "Currency (for example USD)"
+msgstr "Devise (par exemple USD)"
+
+msgid "Please enter the offer currency."
+msgstr "Veuillez indiquer la devise de l’offre."
+
+msgid "Passengers"
+msgstr "Nombre de voyageurs"
+
+msgid "Flight offer screenshot or PDF"
+msgstr "Capture ou PDF de l’offre de vol"
+
+msgid "JPG, PNG, WebP or PDF · max 8 MB"
+msgstr "JPG, PNG, WebP ou PDF · 8 Mo maximum"
+
+msgid "Passport copy (optional)"
+msgstr "Copie du passeport (facultatif)"
+
+msgid ""
+"Only send a passport if you want our team to have it ready for a possible "
+"booking. Uploaded documents are private."
+msgstr ""
+"N’envoyez votre passeport que si vous souhaitez le préparer pour une "
+"éventuelle réservation. Les documents restent privés."
+
+msgid "Anything else we should know?"
+msgstr "Autres précisions utiles ?"
+
+msgid ""
+"I agree to share these details with Sama Tours for this flight request."
+msgstr ""
+"J’accepte de transmettre ces informations à Sama Tours pour cette demande de"
+" vol."
+
+msgid "Send my flight request"
+msgstr "Envoyer ma demande de vol"
+
+msgid "Please enter an email address or phone number."
+msgstr "Veuillez indiquer une adresse e-mail ou un numéro de téléphone."
+
+msgid "Each file must be smaller than 8 MB."
+msgstr "Chaque fichier doit être inférieur à 8 Mo."
+
+msgid "Use a PDF, JPG, PNG or WebP file."
+msgstr "Utilisez un fichier PDF, JPG, PNG ou WebP."
+
+msgid ""
+"The request service is temporarily unavailable. Please contact us directly."
+msgstr ""
+"Ce service est temporairement indisponible. Veuillez nous contacter "
+"directement."
+
+msgid ""
+"Your request was saved, but email delivery failed. Please contact Sama Tours"
+" with your reference number: %(reference)s"
+msgstr ""
+"Votre demande a été enregistrée, mais l’e-mail n’a pas pu être envoyé. "
+"Contactez Sama Tours avec la référence : %(reference)s"
+
+msgid ""
+"Your flight request was received. Reference: %(reference)s. Our team will "
+"review it and contact you."
+msgstr ""
+"Votre demande de vol a été reçue. Référence : %(reference)s. Notre équipe "
+"l’examinera et vous contactera."
+
 msgid "Sama Tours"
 msgstr "Sama Tours"
 
@@ -560,9 +694,6 @@ msgstr "À"
 
 msgid "Select destination"
 msgstr "Choisir la destination"
-
-msgid "Travel dates"
-msgstr "Dates de voyage"
 
 msgid "Select departure and return"
 msgstr "Choisir départ et retour"

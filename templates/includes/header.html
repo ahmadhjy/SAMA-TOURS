@@ -10,6 +10,7 @@
                 <li><a href="{% url 'website:about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>{% trans 'About' %}</a></li>
                 <li><a href="{% url 'website:packages' %}" {% if request.resolver_match.url_name == 'packages' %}class="active"{% endif %}>{% trans 'Packages' %}</a></li>
                 <li><a href="{% url 'website:visa' %}" {% if request.resolver_match.url_name == 'visa' %}class="active"{% endif %}>{% trans 'Visa Requirements' %}</a></li>
+                <li><a href="{% url 'website:flight_match' %}" {% if request.resolver_match.url_name == 'flight_match' %}class="active"{% endif %}>{% trans 'Sama Match' %}</a></li>
                 <li><a href="{% url 'website:contact' %}" class="nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans 'Contact Us' %}</a></li>
             </ul>
         </nav>

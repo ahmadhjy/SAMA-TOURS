@@ -356,3 +356,36 @@ class TravelInsuranceOrder(models.Model):
 
     def __str__(self):
         return f'{self.order_reference} — {self.customer_email}'
+
+
+def flight_match_upload_path(instance, filename):
+    from pathlib import Path
+    from uuid import uuid4
+
+    return f'flight_match/{instance.reference}/{uuid4().hex}{Path(filename).suffix.lower()}'
+
+
+class FlightMatchRequest(models.Model):
+    from .private_storage import flight_match_storage
+
+    reference = models.CharField(max_length=24, unique=True, editable=False)
+    full_name = models.CharField(max_length=150)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=40, blank=True)
+    route = models.CharField(max_length=250, blank=True)
+    travel_dates = models.CharField(max_length=150, blank=True)
+    offered_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    offered_currency = models.CharField(max_length=8, blank=True)
+    passengers = models.PositiveSmallIntegerField(default=1)
+    notes = models.TextField(blank=True)
+    screenshot = models.FileField(upload_to=flight_match_upload_path, storage=flight_match_storage)
+    passport = models.FileField(upload_to=flight_match_upload_path, storage=flight_match_storage, blank=True)
+    notification_sent = models.BooleanField(default=False, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Flight match request'
+
+    def __str__(self):
+        return f'{self.reference} — {self.full_name}'

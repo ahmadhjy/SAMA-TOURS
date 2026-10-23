@@ -9,6 +9,134 @@ msgid_plural "%(counter)s packages found"
 msgstr[0] "%(counter)s باقة"
 msgstr[1] "%(counter)s باقات"
 
+msgid "Sama Match"
+msgstr "سما ماتش"
+
+msgid "Sama Match — flight offer review"
+msgstr "سما ماتش — مراجعة عرض طيران"
+
+msgid "Found a flight offer? Let us find your best match."
+msgstr "لقيت عرض طيران؟ خلّينا ندوّر لك على خيار أنسب."
+
+msgid ""
+"Send us a screenshot of the offer you found. Our travel team will review the"
+" route, dates, fare and baggage, then contact you with a comparable option "
+"if available."
+msgstr ""
+"أرسل لنا صورة العرض الذي وجدته. يراجع فريقنا خط الرحلة والمواعيد والسعر "
+"والأمتعة، ثم يتواصل معك بخيار مماثل إذا كان متاحًا."
+
+msgid "Upload your offer"
+msgstr "أرسل العرض"
+
+msgid "We compare the details"
+msgstr "نقارن التفاصيل"
+
+msgid "Get a personal reply"
+msgstr "نردّ عليك شخصيًا"
+
+msgid ""
+"Prices and availability can change. A matching or lower fare is not "
+"guaranteed; no booking is made when you submit this request."
+msgstr ""
+"الأسعار والتوافر قابلان للتغيير. لا يمكننا ضمان سعر مماثل أو أقل، وإرسال "
+"الطلب لا يعني إجراء حجز."
+
+msgid "Request a flight match"
+msgstr "اطلب مقارنة عرض طيران"
+
+msgid "Share the offer with us"
+msgstr "شاركنا العرض"
+
+msgid ""
+"We only need a way to reach you and a clear screenshot. Passport upload is "
+"optional at this stage."
+msgstr ""
+"يكفينا وسيلة للتواصل معك وصورة واضحة للعرض. إرسال جواز السفر اختياري في هذه "
+"المرحلة."
+
+msgid "Your full name"
+msgstr "الاسم الكامل"
+
+msgid "Email address"
+msgstr "البريد الإلكتروني"
+
+msgid "Phone or WhatsApp"
+msgstr "الهاتف أو واتساب"
+
+msgid "Enter at least one contact method."
+msgstr "أدخل البريد الإلكتروني أو رقم الهاتف على الأقل."
+
+msgid "Route or destination"
+msgstr "خط الرحلة أو الوجهة"
+
+msgid "Travel dates"
+msgstr "تواريخ السفر"
+
+msgid "Price shown in the offer"
+msgstr "السعر الظاهر في العرض"
+
+msgid "Currency (for example USD)"
+msgstr "العملة (مثل USD)"
+
+msgid "Please enter the offer currency."
+msgstr "يرجى إدخال عملة العرض."
+
+msgid "Passengers"
+msgstr "عدد المسافرين"
+
+msgid "Flight offer screenshot or PDF"
+msgstr "صورة عرض الطيران أو ملف PDF"
+
+msgid "JPG, PNG, WebP or PDF · max 8 MB"
+msgstr "JPG أو PNG أو WebP أو PDF · حتى 8 ميغابايت"
+
+msgid "Passport copy (optional)"
+msgstr "صورة جواز السفر (اختياري)"
+
+msgid ""
+"Only send a passport if you want our team to have it ready for a possible "
+"booking. Uploaded documents are private."
+msgstr ""
+"أرسل جواز السفر فقط إذا أردت أن يكون جاهزًا لدى فريقنا لحجز محتمل. الملفات "
+"المرفوعة خاصة."
+
+msgid "Anything else we should know?"
+msgstr "هل هناك تفاصيل إضافية؟"
+
+msgid ""
+"I agree to share these details with Sama Tours for this flight request."
+msgstr "أوافق على مشاركة هذه التفاصيل مع سما تورز للنظر في طلب الرحلة."
+
+msgid "Send my flight request"
+msgstr "أرسل طلب الرحلة"
+
+msgid "Please enter an email address or phone number."
+msgstr "يرجى إدخال بريد إلكتروني أو رقم هاتف."
+
+msgid "Each file must be smaller than 8 MB."
+msgstr "يجب ألا يتجاوز حجم كل ملف 8 ميغابايت."
+
+msgid "Use a PDF, JPG, PNG or WebP file."
+msgstr "استخدم ملف PDF أو JPG أو PNG أو WebP."
+
+msgid ""
+"The request service is temporarily unavailable. Please contact us directly."
+msgstr "خدمة الطلبات غير متاحة مؤقتًا. يرجى التواصل معنا مباشرة."
+
+msgid ""
+"Your request was saved, but email delivery failed. Please contact Sama Tours"
+" with your reference number: %(reference)s"
+msgstr ""
+"تم حفظ طلبك، لكن تعذّر إرسال الإشعار بالبريد. يرجى التواصل مع سما تورز وذكر "
+"رقم الطلب: %(reference)s"
+
+msgid ""
+"Your flight request was received. Reference: %(reference)s. Our team will "
+"review it and contact you."
+msgstr ""
+"وصل طلب رحلتك. رقم المتابعة: %(reference)s. سيراجعه فريقنا ويتواصل معك."
+
 msgid "Sama Tours"
 msgstr "سما تورز"
 
@@ -536,9 +664,6 @@ msgstr "إلى"
 
 msgid "Select destination"
 msgstr "اختر الوجهة"
-
-msgid "Travel dates"
-msgstr "تواريخ السفر"
 
 msgid "Select departure and return"
 msgstr "اختر المغادرة والعودة"

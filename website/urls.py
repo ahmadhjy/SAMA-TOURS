@@ -1,6 +1,7 @@
 from django.urls import path
 from . import insurance_views, views
 from .access import staff_required
+from .flight_match import flight_match, flight_match_file
 
 app_name = 'website'
 
@@ -10,6 +11,8 @@ urlpatterns = [
     path('packages/', views.packages, name='packages'),
     path('packages/<slug:slug>/', views.package_detail, name='package_detail'),
     path('visa-requirements/', views.visa_requirements, name='visa'),
+    path('sama-match/', flight_match, name='flight_match'),
+    path('sama-match/file/<int:pk>/<str:kind>/', flight_match_file, name='flight_match_file'),
     path('travel-insurance/', staff_required(insurance_views.insurance), name='insurance'),
     path('travel-insurance/quote/', staff_required(insurance_views.insurance_quote), name='insurance_quote'),
     path('travel-insurance/lookup/', staff_required(insurance_views.insurance_lookup), name='insurance_lookup'),

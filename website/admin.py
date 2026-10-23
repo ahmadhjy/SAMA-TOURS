@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.urls import reverse
 from modeltranslation.admin import TabbedTranslationAdmin
 
 from .models import (
     TravelPackage, PackageImage, Destination, VisaRequirement, Testimonial,
-    EsimOrder, TravelInsuranceOrder,
+    EsimOrder, TravelInsuranceOrder, FlightMatchRequest,
 )
 
 
@@ -170,3 +171,31 @@ class TravelInsuranceOrderAdmin(admin.ModelAdmin):
         'from_date', 'till_date', 'customer_email', 'customer_phone',
         'customer_address', 'travellers_json', 'api_message', 'created_at',
     )
+
+
+@admin.register(FlightMatchRequest)
+class FlightMatchRequestAdmin(admin.ModelAdmin):
+    list_display = ('reference', 'full_name', 'email', 'phone', 'route', 'notification_sent', 'created_at')
+    list_filter = ('notification_sent', 'created_at')
+    search_fields = ('reference', 'full_name', 'email', 'phone', 'route')
+    readonly_fields = (
+        'reference', 'full_name', 'email', 'phone', 'route', 'travel_dates', 'offered_price', 'offered_currency', 'passengers',
+        'notes', 'screenshot_link', 'passport_link', 'notification_sent', 'created_at',
+    )
+    fields = readonly_fields
+
+    def has_add_permission(self, request):
+        return False
+
+    @admin.display(description='Offer screenshot')
+    def screenshot_link(self, obj):
+        return self._document_link(obj, 'screenshot')
+
+    @admin.display(description='Passport')
+    def passport_link(self, obj):
+        return self._document_link(obj, 'passport')
+
+    def _document_link(self, obj, kind):
+        if not getattr(obj, kind):
+            return '—'
+        return format_html('<a href="{}">Download {}</a>', reverse('website:flight_match_file', args=[obj.pk, kind]), kind)
