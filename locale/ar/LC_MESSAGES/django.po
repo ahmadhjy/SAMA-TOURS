@@ -9,6 +9,193 @@ msgid_plural "%(counter)s packages found"
 msgstr[0] "%(counter)s باقة"
 msgstr[1] "%(counter)s باقات"
 
+msgid "Found a flight online?"
+msgstr "لقيت عرض طيران أونلاين؟"
+
+msgid "Send us the offer."
+msgstr "أرسل لنا العرض."
+
+msgid "We’ll find your match."
+msgstr "ونبحث لك عن الأنسب."
+
+msgid ""
+"Found a flight on a booking site or app? Share a screenshot showing the "
+"total price. Our travel team will compare the route, dates, baggage and "
+"fare, then get back to you with the best available option."
+msgstr ""
+"لقيت رحلة على موقع حجز أو تطبيق؟ أرسل صورة واضحة يظهر فيها السعر النهائي. "
+"يقارن فريقنا خط الرحلة والمواعيد والأمتعة والسعر، ثم يتواصل معك بأفضل خيار "
+"متاح."
+
+msgid "Why use Sama Match"
+msgstr "لماذا سما ماتش"
+
+msgid "Expert fare review"
+msgstr "مراجعة من خبراء السفر"
+
+msgid "A real travel agent checks the details"
+msgstr "خبير سفر يراجع تفاصيل العرض"
+
+msgid "Compare the full offer"
+msgstr "مقارنة شاملة للعرض"
+
+msgid "Fare, dates, stops and baggage"
+msgstr "السعر والمواعيد والتوقفات والأمتعة"
+
+msgid "Personal follow-up"
+msgstr "متابعة شخصية"
+
+msgid "We reply using your chosen contact"
+msgstr "نتواصل معك بالطريقة التي تختارها"
+
+msgid "A straightforward request"
+msgstr "طلب واضح وبسيط"
+
+msgid "No payment at this stage"
+msgstr "لا دفع في هذه المرحلة"
+
+msgid "No automatic booking"
+msgstr "لا حجز تلقائي"
+
+msgid "Private uploads"
+msgstr "ملفات خاصة وآمنة"
+
+msgid "Sama Match request"
+msgstr "طلب سما ماتش"
+
+msgid "Share your flight offer"
+msgstr "شاركنا عرض الطيران"
+
+msgid "Free to request"
+msgstr "الطلب مجاني"
+
+msgid ""
+"Upload the offer you found, then tell us how to reach you. You can also add "
+"your passport if you want it ready for a possible booking."
+msgstr ""
+"أرفق العرض الذي وجدته وأخبرنا كيف نتواصل معك. ويمكنك إضافة جواز السفر إذا "
+"أردت تجهيزه لحجز محتمل."
+
+msgid "Total price visible"
+msgstr "السعر النهائي واضح"
+
+msgid "Choose your offer file"
+msgstr "اختر ملف العرض"
+
+msgid "Passport copy"
+msgstr "صورة جواز السفر"
+
+msgid "Optional"
+msgstr "اختياري"
+
+msgid "Choose a passport file"
+msgstr "اختر ملف جواز السفر"
+
+msgid "Only if you want it ready for a possible booking"
+msgstr "فقط إذا أردت تجهيزه لحجز محتمل"
+
+msgid "Offer details"
+msgstr "تفاصيل العرض"
+
+msgid "Your contact details"
+msgstr "بيانات التواصل"
+
+msgid ""
+"Our team reviews each request personally. Sending this form does not reserve"
+" a seat or charge you."
+msgstr ""
+"يراجع فريقنا كل طلب شخصيًا. إرسال النموذج لا يحجز مقعدًا ولا يحمّلك أي مبلغ."
+
+msgid "How it works"
+msgstr "كيف تعمل الخدمة"
+
+msgid "Three simple steps to a better-informed booking"
+msgstr "ثلاث خطوات بسيطة قبل أن تختار رحلتك"
+
+msgid ""
+"From screenshot to a personal quote, our team handles the comparison for "
+"you."
+msgstr "من صورة العرض إلى الرد الشخصي، يتولى فريقنا المقارنة نيابةً عنك."
+
+msgid "Send a clear screenshot with the route, dates and final price."
+msgstr "أرسل صورة واضحة لخط الرحلة والمواعيد والسعر النهائي."
+
+msgid "We compare the trip"
+msgstr "نقارن الرحلة"
+
+msgid "We check available fares and what is included in each option."
+msgstr "نتحقق من الأسعار المتاحة وما يتضمنه كل خيار."
+
+msgid "You hear from us"
+msgstr "نتواصل معك"
+
+msgid "A Sama Tours agent contacts you to discuss the best available match."
+msgstr "يتواصل معك أحد خبراء سما تورز لمناقشة الخيار الأنسب المتاح."
+
+msgid "More than the headline fare"
+msgstr "أكثر من مجرد سعر"
+
+msgid "Make sure you compare the same trip."
+msgstr "تأكد أنك تقارن الرحلة نفسها."
+
+msgid ""
+"An online price can look attractive until you add baggage, a better "
+"connection or the right travel dates. We look at the complete offer before "
+"recommending an alternative."
+msgstr ""
+"قد يبدو السعر على الإنترنت مغريًا، لكن الأمتعة والتوقفات ومواعيد السفر قد "
+"تغيّر الصورة. نراجع العرض كاملًا قبل اقتراح بديل."
+
+msgid "Share your offer"
+msgstr "شاركنا العرض"
+
+msgid "Departure and arrival times"
+msgstr "أوقات المغادرة والوصول"
+
+msgid "Stopovers and total journey time"
+msgstr "التوقفات ومدة الرحلة الإجمالية"
+
+msgid "Checked and cabin baggage"
+msgstr "أمتعة الشحن والمقصورة"
+
+msgid "Final fare and booking conditions"
+msgstr "السعر النهائي وشروط الحجز"
+
+msgid "Good to know"
+msgstr "معلومات مفيدة"
+
+msgid "Questions before you send?"
+msgstr "عندك أسئلة قبل الإرسال؟"
+
+msgid "Do you guarantee the same or a lower price?"
+msgstr "هل تضمنون السعر نفسه أو أقل؟"
+
+msgid ""
+"No. Fares change and the exact ticket may not be available. We will compare "
+"the offer and tell you what we can find."
+msgstr ""
+"لا، الأسعار تتغيّر وقد لا تتوفر التذكرة نفسها. سنقارن العرض ونخبرك بالخيارات"
+" التي نجدها."
+
+msgid "Do I need to upload my passport now?"
+msgstr "هل يجب إرسال جواز السفر الآن؟"
+
+msgid ""
+"No. A clear screenshot and an email or phone number are enough to request a "
+"comparison. Passport upload is optional for a possible later booking."
+msgstr ""
+"لا. تكفي صورة واضحة للعرض مع بريد إلكتروني أو رقم هاتف لطلب المقارنة. إرسال "
+"الجواز اختياري لحجز محتمل لاحقًا."
+
+msgid "Is my seat reserved when I submit?"
+msgstr "هل يُحجز المقعد عند إرسال الطلب؟"
+
+msgid ""
+"No. This sends a request to our team. A booking is made only after you "
+"review and approve an offer with us."
+msgstr ""
+"لا. يُرسل الطلب إلى فريقنا فقط. يتم الحجز بعد مراجعتك للعرض وموافقتك عليه."
+
 msgid "Sama Match"
 msgstr "سما ماتش"
 

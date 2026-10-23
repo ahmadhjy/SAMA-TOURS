@@ -1,52 +1,47 @@
 {% extends 'base.html' %}
 {% load i18n static %}
-
 {% block title %}{% trans 'Sama Match — flight offer review' %}{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=1">{% endblock %}
-
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=2">{% endblock %}
 {% block content %}
-<section class="match-hero">
-  <div class="container match-hero-grid">
-    <div class="match-intro">
-      <span class="match-eyebrow">{% trans 'Sama Match' %}</span>
-      <h1>{% trans 'Found a flight offer? Let us find your best match.' %}</h1>
-      <p>{% trans 'Send us a screenshot of the offer you found. Our travel team will review the route, dates, fare and baggage, then contact you with a comparable option if available.' %}</p>
-      <div class="match-steps">
-        <div><strong>01</strong><span>{% trans 'Upload your offer' %}</span></div>
-        <div><strong>02</strong><span>{% trans 'We compare the details' %}</span></div>
-        <div><strong>03</strong><span>{% trans 'Get a personal reply' %}</span></div>
-      </div>
-      <p class="match-disclaimer">{% trans 'Prices and availability can change. A matching or lower fare is not guaranteed; no booking is made when you submit this request.' %}</p>
+<div class="sama-match">
+<section class="match-hero" aria-labelledby="match-title"><div class="container match-hero-grid">
+  <div class="match-intro">
+    <span class="match-pill"><span aria-hidden="true">✦</span> {% trans 'Found a flight online?' %}</span>
+    <h1 id="match-title">{% trans 'Send us the offer.' %}<br><span>{% trans 'We’ll find your match.' %}</span></h1>
+    <p class="match-lead">{% trans 'Found a flight on a booking site or app? Share a screenshot showing the total price. Our travel team will compare the route, dates, baggage and fare, then get back to you with the best available option.' %}</p>
+    <div class="match-feature-grid" aria-label="{% trans 'Why use Sama Match' %}">
+      <div class="match-feature"><span class="match-feature-icon match-feature-icon--blue" aria-hidden="true">✈</span><div><strong>{% trans 'Expert fare review' %}</strong><small>{% trans 'A real travel agent checks the details' %}</small></div></div>
+      <div class="match-feature"><span class="match-feature-icon match-feature-icon--gold" aria-hidden="true">◈</span><div><strong>{% trans 'Compare the full offer' %}</strong><small>{% trans 'Fare, dates, stops and baggage' %}</small></div></div>
+      <div class="match-feature"><span class="match-feature-icon match-feature-icon--green" aria-hidden="true">◷</span><div><strong>{% trans 'Personal follow-up' %}</strong><small>{% trans 'We reply using your chosen contact' %}</small></div></div>
     </div>
-    <div class="match-form-card" id="match-form">
-      <span class="match-form-kicker">{% trans 'Request a flight match' %}</span>
-      <h2>{% trans 'Share the offer with us' %}</h2>
-      <p>{% trans 'We only need a way to reach you and a clear screenshot. Passport upload is optional at this stage.' %}</p>
-      <form method="post" enctype="multipart/form-data" class="match-form">
-        {% csrf_token %}
-        {% if form.non_field_errors %}<div class="match-errors" role="alert">{{ form.non_field_errors }}</div>{% endif %}
-        <div class="match-field"><label for="{{ form.full_name.id_for_label }}">{% trans 'Your full name' %} *</label>{{ form.full_name }}{{ form.full_name.errors }}</div>
-        <div class="match-field-row">
-          <div class="match-field"><label for="{{ form.email.id_for_label }}">{% trans 'Email address' %}</label>{{ form.email }}{{ form.email.errors }}</div>
-          <div class="match-field"><label for="{{ form.phone.id_for_label }}">{% trans 'Phone or WhatsApp' %}</label>{{ form.phone }}{{ form.phone.errors }}</div>
-        </div>
-        <p class="match-hint">{% trans 'Enter at least one contact method.' %}</p>
-        <div class="match-field-row">
-          <div class="match-field"><label for="{{ form.route.id_for_label }}">{% trans 'Route or destination' %}</label>{{ form.route }}{{ form.route.errors }}</div>
-          <div class="match-field"><label for="{{ form.travel_dates.id_for_label }}">{% trans 'Travel dates' %}</label>{{ form.travel_dates }}{{ form.travel_dates.errors }}</div>
-        </div>
-        <div class="match-field-row">
-          <div class="match-field"><label for="{{ form.offered_price.id_for_label }}">{% trans 'Price shown in the offer' %}</label>{{ form.offered_price }}{{ form.offered_price.errors }}</div>
-          <div class="match-field"><label for="{{ form.offered_currency.id_for_label }}">{% trans 'Currency (for example USD)' %}</label>{{ form.offered_currency }}{{ form.offered_currency.errors }}</div>
-        </div>
-        <div class="match-field match-field-small"><label for="{{ form.passengers.id_for_label }}">{% trans 'Passengers' %}</label>{{ form.passengers }}{{ form.passengers.errors }}</div>
-        <div class="match-field"><label for="{{ form.screenshot.id_for_label }}">{% trans 'Flight offer screenshot or PDF' %} *</label>{{ form.screenshot }}<span class="match-hint">{% trans 'JPG, PNG, WebP or PDF · max 8 MB' %}</span>{{ form.screenshot.errors }}</div>
-        <div class="match-field"><label for="{{ form.passport.id_for_label }}">{% trans 'Passport copy (optional)' %}</label>{{ form.passport }}<span class="match-hint">{% trans 'Only send a passport if you want our team to have it ready for a possible booking. Uploaded documents are private.' %}</span>{{ form.passport.errors }}</div>
-        <div class="match-field"><label for="{{ form.notes.id_for_label }}">{% trans 'Anything else we should know?' %}</label>{{ form.notes }}{{ form.notes.errors }}</div>
-        <div class="match-consent"><label>{{ form.consent }}<span>{% trans 'I agree to share these details with Sama Tours for this flight request.' %}</span></label>{{ form.consent.errors }}</div>
-        <button class="btn btn-primary match-submit" type="submit">{% trans 'Send my flight request' %}</button>
-      </form>
-    </div>
+    <div class="match-trust-strip"><span class="match-trust-label">{% trans 'A straightforward request' %}</span><div><span>✓ {% trans 'No payment at this stage' %}</span><span>✓ {% trans 'No automatic booking' %}</span><span>✓ {% trans 'Private uploads' %}</span></div></div>
+    <p class="match-disclaimer">{% trans 'Prices and availability can change. A matching or lower fare is not guaranteed; no booking is made when you submit this request.' %}</p>
   </div>
-</section>
+  <div class="match-form-card" id="match-form">
+    <div class="match-form-heading"><div><span class="match-form-kicker">{% trans 'Sama Match request' %}</span><h2>{% trans 'Share your flight offer' %}</h2></div><span class="match-form-badge">{% trans 'Free to request' %}</span></div>
+    <p class="match-form-intro">{% trans 'Upload the offer you found, then tell us how to reach you. You can also add your passport if you want it ready for a possible booking.' %}</p>
+    <form method="post" enctype="multipart/form-data" class="match-form">
+      {% csrf_token %}
+      {% if form.non_field_errors %}<div class="match-errors" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="match-upload-group"><div class="match-label-line"><label for="{{ form.screenshot.id_for_label }}"><span>01</span> {% trans 'Flight screenshot or PDF' %} *</label><em>{% trans 'Total price visible' %}</em></div><div class="match-upload-zone"><span class="match-upload-icon" aria-hidden="true">⇧</span><div><strong>{% trans 'Choose your offer file' %}</strong><small>{% trans 'JPG, PNG, WebP or PDF · max 8 MB' %}</small></div>{{ form.screenshot }}</div>{{ form.screenshot.errors }}</div>
+      <div class="match-upload-group"><div class="match-label-line"><label for="{{ form.passport.id_for_label }}"><span>02</span> {% trans 'Passport copy' %}</label><em class="match-optional">{% trans 'Optional' %}</em></div><div class="match-upload-zone match-upload-zone--quiet"><span class="match-upload-icon" aria-hidden="true">▣</span><div><strong>{% trans 'Choose a passport file' %}</strong><small>{% trans 'Only if you want it ready for a possible booking' %}</small></div>{{ form.passport }}</div>{{ form.passport.errors }}</div>
+      <div class="match-form-divider"><span>{% trans 'Offer details' %}</span></div>
+      <div class="match-field-row"><div class="match-field"><label for="{{ form.offered_price.id_for_label }}">{% trans 'Price shown in the offer' %}</label>{{ form.offered_price }}{{ form.offered_price.errors }}</div><div class="match-field"><label for="{{ form.offered_currency.id_for_label }}">{% trans 'Currency (for example USD)' %}</label>{{ form.offered_currency }}{{ form.offered_currency.errors }}</div></div>
+      <div class="match-field-row"><div class="match-field"><label for="{{ form.route.id_for_label }}">{% trans 'Route or destination' %}</label>{{ form.route }}{{ form.route.errors }}</div><div class="match-field"><label for="{{ form.travel_dates.id_for_label }}">{% trans 'Travel dates' %}</label>{{ form.travel_dates }}{{ form.travel_dates.errors }}</div></div>
+      <div class="match-field match-field-small"><label for="{{ form.passengers.id_for_label }}">{% trans 'Passengers' %}</label>{{ form.passengers }}{{ form.passengers.errors }}</div>
+      <div class="match-form-divider"><span>{% trans 'Your contact details' %}</span></div>
+      <div class="match-field"><label for="{{ form.full_name.id_for_label }}">{% trans 'Your full name' %} *</label>{{ form.full_name }}{{ form.full_name.errors }}</div>
+      <div class="match-field-row"><div class="match-field"><label for="{{ form.email.id_for_label }}">{% trans 'Email address' %}</label>{{ form.email }}{{ form.email.errors }}</div><div class="match-field"><label for="{{ form.phone.id_for_label }}">{% trans 'Phone or WhatsApp' %}</label>{{ form.phone }}{{ form.phone.errors }}</div></div>
+      <p class="match-hint">{% trans 'Enter at least one contact method.' %}</p>
+      <div class="match-field"><label for="{{ form.notes.id_for_label }}">{% trans 'Anything else we should know?' %}</label>{{ form.notes }}{{ form.notes.errors }}</div>
+      <div class="match-consent"><label>{{ form.consent }}<span>{% trans 'I agree to share these details with Sama Tours for this flight request.' %}</span></label>{{ form.consent.errors }}</div>
+      <button class="match-submit" type="submit"><span aria-hidden="true">✈</span> {% trans 'Send my flight request' %} <span aria-hidden="true">→</span></button>
+      <p class="match-form-footnote">{% trans 'Our team reviews each request personally. Sending this form does not reserve a seat or charge you.' %}</p>
+    </form>
+  </div>
+</div></section>
+<section class="match-process" aria-labelledby="match-process-title"><div class="container"><div class="match-section-heading"><span>{% trans 'How it works' %}</span><h2 id="match-process-title">{% trans 'Three simple steps to a better-informed booking' %}</h2><p>{% trans 'From screenshot to a personal quote, our team handles the comparison for you.' %}</p></div><div class="match-process-grid"><article><span class="match-process-number">01</span><div class="match-process-icon" aria-hidden="true">⇧</div><h3>{% trans 'Upload the offer' %}</h3><p>{% trans 'Send a clear screenshot with the route, dates and final price.' %}</p></article><article><span class="match-process-number">02</span><div class="match-process-icon" aria-hidden="true">⇄</div><h3>{% trans 'We compare the trip' %}</h3><p>{% trans 'We check available fares and what is included in each option.' %}</p></article><article><span class="match-process-number">03</span><div class="match-process-icon" aria-hidden="true">✉</div><h3>{% trans 'You hear from us' %}</h3><p>{% trans 'A Sama Tours agent contacts you to discuss the best available match.' %}</p></article></div></div></section>
+<section class="match-compare" aria-labelledby="match-compare-title"><div class="container match-compare-grid"><div><span class="match-section-eyebrow">{% trans 'More than the headline fare' %}</span><h2 id="match-compare-title">{% trans 'Make sure you compare the same trip.' %}</h2><p>{% trans 'An online price can look attractive until you add baggage, a better connection or the right travel dates. We look at the complete offer before recommending an alternative.' %}</p><a href="#match-form" class="match-compare-link">{% trans 'Share your offer' %} <span aria-hidden="true">↗</span></a></div><div class="match-compare-card"><div><span aria-hidden="true">✓</span>{% trans 'Departure and arrival times' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Stopovers and total journey time' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Checked and cabin baggage' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Final fare and booking conditions' %}</div></div></div></section>
+<section class="match-faq" aria-labelledby="match-faq-title"><div class="container"><div class="match-section-heading"><span>{% trans 'Good to know' %}</span><h2 id="match-faq-title">{% trans 'Questions before you send?' %}</h2></div><div class="match-faq-list"><details><summary>{% trans 'Do you guarantee the same or a lower price?' %}</summary><p>{% trans 'No. Fares change and the exact ticket may not be available. We will compare the offer and tell you what we can find.' %}</p></details><details><summary>{% trans 'Do I need to upload my passport now?' %}</summary><p>{% trans 'No. A clear screenshot and an email or phone number are enough to request a comparison. Passport upload is optional for a possible later booking.' %}</p></details><details><summary>{% trans 'Is my seat reserved when I submit?' %}</summary><p>{% trans 'No. This sends a request to our team. A booking is made only after you review and approve an offer with us.' %}</p></details></div></div></section>
+</div>
 {% endblock %}

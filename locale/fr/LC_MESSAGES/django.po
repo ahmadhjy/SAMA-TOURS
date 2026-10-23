@@ -9,6 +9,203 @@ msgid_plural "%(counter)s packages found"
 msgstr[0] "%(counter)s forfait trouvé"
 msgstr[1] "%(counter)s forfaits trouvés"
 
+msgid "Found a flight online?"
+msgstr "Vous avez trouvé un vol en ligne ?"
+
+msgid "Send us the offer."
+msgstr "Envoyez-nous l’offre."
+
+msgid "We’ll find your match."
+msgstr "Nous chercherons l’option qui vous convient."
+
+msgid ""
+"Found a flight on a booking site or app? Share a screenshot showing the "
+"total price. Our travel team will compare the route, dates, baggage and "
+"fare, then get back to you with the best available option."
+msgstr ""
+"Vous avez repéré un vol sur un site ou une application ? Envoyez une capture"
+" indiquant le prix final. Notre équipe comparera le trajet, les dates, les "
+"bagages et le tarif, puis reviendra vers vous avec la meilleure option "
+"disponible."
+
+msgid "Why use Sama Match"
+msgstr "Pourquoi choisir Sama Match"
+
+msgid "Expert fare review"
+msgstr "Analyse du tarif par un expert"
+
+msgid "A real travel agent checks the details"
+msgstr "Un conseiller vérifie chaque détail"
+
+msgid "Compare the full offer"
+msgstr "Comparaison complète de l’offre"
+
+msgid "Fare, dates, stops and baggage"
+msgstr "Prix, dates, escales et bagages"
+
+msgid "Personal follow-up"
+msgstr "Suivi personnalisé"
+
+msgid "We reply using your chosen contact"
+msgstr "Nous vous répondons par le moyen choisi"
+
+msgid "A straightforward request"
+msgstr "Une demande simple et claire"
+
+msgid "No payment at this stage"
+msgstr "Aucun paiement à ce stade"
+
+msgid "No automatic booking"
+msgstr "Aucune réservation automatique"
+
+msgid "Private uploads"
+msgstr "Documents privés"
+
+msgid "Sama Match request"
+msgstr "Demande Sama Match"
+
+msgid "Share your flight offer"
+msgstr "Partagez votre offre de vol"
+
+msgid "Free to request"
+msgstr "Demande gratuite"
+
+msgid ""
+"Upload the offer you found, then tell us how to reach you. You can also add "
+"your passport if you want it ready for a possible booking."
+msgstr ""
+"Joignez l’offre trouvée et indiquez comment vous joindre. Vous pouvez aussi "
+"ajouter votre passeport pour une éventuelle réservation."
+
+msgid "Total price visible"
+msgstr "Prix total visible"
+
+msgid "Choose your offer file"
+msgstr "Choisir le fichier de l’offre"
+
+msgid "Passport copy"
+msgstr "Copie du passeport"
+
+msgid "Optional"
+msgstr "Facultatif"
+
+msgid "Choose a passport file"
+msgstr "Choisir le fichier du passeport"
+
+msgid "Only if you want it ready for a possible booking"
+msgstr "Seulement pour une éventuelle réservation"
+
+msgid "Offer details"
+msgstr "Détails de l’offre"
+
+msgid "Your contact details"
+msgstr "Vos coordonnées"
+
+msgid ""
+"Our team reviews each request personally. Sending this form does not reserve"
+" a seat or charge you."
+msgstr ""
+"Notre équipe examine chaque demande. Ce formulaire ne réserve aucun siège et"
+" n’entraîne aucun paiement."
+
+msgid "How it works"
+msgstr "Comment ça marche"
+
+msgid "Three simple steps to a better-informed booking"
+msgstr "Trois étapes simples pour choisir votre vol"
+
+msgid ""
+"From screenshot to a personal quote, our team handles the comparison for "
+"you."
+msgstr ""
+"De la capture à la réponse personnalisée, notre équipe compare les options "
+"pour vous."
+
+msgid "Send a clear screenshot with the route, dates and final price."
+msgstr "Envoyez une capture lisible du trajet, des dates et du prix final."
+
+msgid "We compare the trip"
+msgstr "Nous comparons le voyage"
+
+msgid "We check available fares and what is included in each option."
+msgstr ""
+"Nous vérifions les tarifs disponibles et ce que chaque option comprend."
+
+msgid "You hear from us"
+msgstr "Nous vous recontactons"
+
+msgid "A Sama Tours agent contacts you to discuss the best available match."
+msgstr ""
+"Un conseiller Sama Tours vous contacte pour discuter de la meilleure option "
+"disponible."
+
+msgid "More than the headline fare"
+msgstr "Au-delà du prix affiché"
+
+msgid "Make sure you compare the same trip."
+msgstr "Comparez vraiment le même voyage."
+
+msgid ""
+"An online price can look attractive until you add baggage, a better "
+"connection or the right travel dates. We look at the complete offer before "
+"recommending an alternative."
+msgstr ""
+"Un prix en ligne peut paraître intéressant avant l’ajout des bagages, d’une "
+"meilleure correspondance ou des bonnes dates. Nous étudions l’offre complète"
+" avant de proposer une alternative."
+
+msgid "Share your offer"
+msgstr "Envoyez votre offre"
+
+msgid "Departure and arrival times"
+msgstr "Horaires de départ et d’arrivée"
+
+msgid "Stopovers and total journey time"
+msgstr "Escales et durée totale du trajet"
+
+msgid "Checked and cabin baggage"
+msgstr "Bagages en soute et en cabine"
+
+msgid "Final fare and booking conditions"
+msgstr "Prix final et conditions de réservation"
+
+msgid "Good to know"
+msgstr "Bon à savoir"
+
+msgid "Questions before you send?"
+msgstr "Des questions avant l’envoi ?"
+
+msgid "Do you guarantee the same or a lower price?"
+msgstr "Garantissez-vous le même prix ou un prix inférieur ?"
+
+msgid ""
+"No. Fares change and the exact ticket may not be available. We will compare "
+"the offer and tell you what we can find."
+msgstr ""
+"Non. Les tarifs changent et le billet exact peut ne plus être disponible. "
+"Nous comparerons l’offre et vous indiquerons ce que nous trouvons."
+
+msgid "Do I need to upload my passport now?"
+msgstr "Dois-je envoyer mon passeport maintenant ?"
+
+msgid ""
+"No. A clear screenshot and an email or phone number are enough to request a "
+"comparison. Passport upload is optional for a possible later booking."
+msgstr ""
+"Non. Une capture lisible et une adresse e-mail ou un numéro de téléphone "
+"suffisent. Le passeport est facultatif pour une éventuelle réservation "
+"ultérieure."
+
+msgid "Is my seat reserved when I submit?"
+msgstr "Mon siège est-il réservé dès l’envoi ?"
+
+msgid ""
+"No. This sends a request to our team. A booking is made only after you "
+"review and approve an offer with us."
+msgstr ""
+"Non. Votre demande est transmise à notre équipe. La réservation ne se fait "
+"qu’après votre accord sur une offre."
+
 msgid "Sama Match"
 msgstr "Sama Match"
 
