@@ -32,10 +32,15 @@ class FlightMatchTests(TestCase):
         response = self.client.post(self.url, {
             'full_name': 'Ada Example', 'email': 'ada@example.com', 'phone': '',
             'passengers': 1, 'consent': 'on', 'screenshot': screenshot(),
+            'passport': screenshot(), 'price_confirmed': 'on',
+            'payment_preference': 'omt', 'offered_price': '540',
         })
         self.assertEqual(response.status_code, 302)
         match = FlightMatchRequest.objects.get()
         self.assertTrue(match.notification_sent)
+        self.assertEqual(match.offered_currency, 'USD')
+        self.assertIn('OMT Cash', match.notes)
+        self.assertTrue(match.passport)
         self.assertTrue(match.screenshot.storage.exists(match.screenshot.name))
         send_mail.assert_called_once()
         file_url = reverse('website:flight_match_file', args=[match.pk, 'screenshot'])
@@ -62,3 +67,37 @@ class FlightMatchTests(TestCase):
         })
         self.assertEqual(response.status_code, 200)
         self.assertFalse(FlightMatchRequest.objects.exists())
+
+    def test_passport_and_price_confirmation_are_required(self):
+        from .flight_match import FlightMatchForm
+        form = FlightMatchForm({
+            'full_name': 'Ada Example', 'email': 'ada@example.com',
+            'passengers': 1, 'consent': 'on', 'offered_price': '540',
+            'payment_preference': 'whish',
+        }, {'screenshot': screenshot()})
+        self.assertFalse(form.is_valid())
+        self.assertIn('passport', form.errors)
+        self.assertIn('price_confirmed', form.errors)
+
+    def test_phone_only_is_valid_and_unknown_payment_rejected(self):
+        from .flight_match import FlightMatchForm
+        data = {
+            'full_name': 'Ada Example', 'phone': '+96170000000',
+            'passengers': 2, 'consent': 'on', 'offered_price': '540.50',
+            'payment_preference': 'card_link', 'price_confirmed': 'on',
+        }
+        form = FlightMatchForm(data, {'screenshot': screenshot(), 'passport': screenshot()})
+        self.assertTrue(form.is_valid(), form.errors)
+        data['payment_preference'] = 'unsupported'
+        form = FlightMatchForm(data, {'screenshot': screenshot(), 'passport': screenshot()})
+        self.assertFalse(form.is_valid())
+        self.assertIn('payment_preference', form.errors)
+
+    def test_reference_sections_and_languages(self):
+        for lang, heading in [('en', 'Sama Match Request Form'), ('ar', 'نموذج طلب سما ماتش'), ('fr', 'Formulaire Sama Match')]:
+            response = self.client.get('/' + lang + '/sama-match/')
+            self.assertContains(response, heading)
+            for section in ['payments', 'comparison', 'how-it-works', 'faq']:
+                self.assertContains(response, 'id="' + section + '"')
+            self.assertNotContains(response, 'Passport upload is optional')
+            self.assertNotContains(response, 'cdn.tailwindcss.com')

@@ -1,47 +1,565 @@
 {% extends 'base.html' %}
 {% load i18n static %}
-{% block title %}{% trans 'Sama Match — flight offer review' %}{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=2">{% endblock %}
-{% block content %}
-<div class="sama-match">
-<section class="match-hero" aria-labelledby="match-title"><div class="container match-hero-grid">
-  <div class="match-intro">
-    <span class="match-pill"><span aria-hidden="true">✦</span> {% trans 'Found a flight online?' %}</span>
-    <h1 id="match-title">{% trans 'Send us the offer.' %}<br><span>{% trans 'We’ll find your match.' %}</span></h1>
-    <p class="match-lead">{% trans 'Found a flight on a booking site or app? Share a screenshot showing the total price. Our travel team will compare the route, dates, baggage and fare, then get back to you with the best available option.' %}</p>
-    <div class="match-feature-grid" aria-label="{% trans 'Why use Sama Match' %}">
-      <div class="match-feature"><span class="match-feature-icon match-feature-icon--blue" aria-hidden="true">✈</span><div><strong>{% trans 'Expert fare review' %}</strong><small>{% trans 'A real travel agent checks the details' %}</small></div></div>
-      <div class="match-feature"><span class="match-feature-icon match-feature-icon--gold" aria-hidden="true">◈</span><div><strong>{% trans 'Compare the full offer' %}</strong><small>{% trans 'Fare, dates, stops and baggage' %}</small></div></div>
-      <div class="match-feature"><span class="match-feature-icon match-feature-icon--green" aria-hidden="true">◷</span><div><strong>{% trans 'Personal follow-up' %}</strong><small>{% trans 'We reply using your chosen contact' %}</small></div></div>
-    </div>
-    <div class="match-trust-strip"><span class="match-trust-label">{% trans 'A straightforward request' %}</span><div><span>✓ {% trans 'No payment at this stage' %}</span><span>✓ {% trans 'No automatic booking' %}</span><span>✓ {% trans 'Private uploads' %}</span></div></div>
-    <p class="match-disclaimer">{% trans 'Prices and availability can change. A matching or lower fare is not guaranteed; no booking is made when you submit this request.' %}</p>
-  </div>
-  <div class="match-form-card" id="match-form">
-    <div class="match-form-heading"><div><span class="match-form-kicker">{% trans 'Sama Match request' %}</span><h2>{% trans 'Share your flight offer' %}</h2></div><span class="match-form-badge">{% trans 'Free to request' %}</span></div>
-    <p class="match-form-intro">{% trans 'Upload the offer you found, then tell us how to reach you. You can also add your passport if you want it ready for a possible booking.' %}</p>
-    <form method="post" enctype="multipart/form-data" class="match-form">
-      {% csrf_token %}
-      {% if form.non_field_errors %}<div class="match-errors" role="alert">{{ form.non_field_errors }}</div>{% endif %}
-      <div class="match-upload-group"><div class="match-label-line"><label for="{{ form.screenshot.id_for_label }}"><span>01</span> {% trans 'Flight screenshot or PDF' %} *</label><em>{% trans 'Total price visible' %}</em></div><div class="match-upload-zone"><span class="match-upload-icon" aria-hidden="true">⇧</span><div><strong>{% trans 'Choose your offer file' %}</strong><small>{% trans 'JPG, PNG, WebP or PDF · max 8 MB' %}</small></div>{{ form.screenshot }}</div>{{ form.screenshot.errors }}</div>
-      <div class="match-upload-group"><div class="match-label-line"><label for="{{ form.passport.id_for_label }}"><span>02</span> {% trans 'Passport copy' %}</label><em class="match-optional">{% trans 'Optional' %}</em></div><div class="match-upload-zone match-upload-zone--quiet"><span class="match-upload-icon" aria-hidden="true">▣</span><div><strong>{% trans 'Choose a passport file' %}</strong><small>{% trans 'Only if you want it ready for a possible booking' %}</small></div>{{ form.passport }}</div>{{ form.passport.errors }}</div>
-      <div class="match-form-divider"><span>{% trans 'Offer details' %}</span></div>
-      <div class="match-field-row"><div class="match-field"><label for="{{ form.offered_price.id_for_label }}">{% trans 'Price shown in the offer' %}</label>{{ form.offered_price }}{{ form.offered_price.errors }}</div><div class="match-field"><label for="{{ form.offered_currency.id_for_label }}">{% trans 'Currency (for example USD)' %}</label>{{ form.offered_currency }}{{ form.offered_currency.errors }}</div></div>
-      <div class="match-field-row"><div class="match-field"><label for="{{ form.route.id_for_label }}">{% trans 'Route or destination' %}</label>{{ form.route }}{{ form.route.errors }}</div><div class="match-field"><label for="{{ form.travel_dates.id_for_label }}">{% trans 'Travel dates' %}</label>{{ form.travel_dates }}{{ form.travel_dates.errors }}</div></div>
-      <div class="match-field match-field-small"><label for="{{ form.passengers.id_for_label }}">{% trans 'Passengers' %}</label>{{ form.passengers }}{{ form.passengers.errors }}</div>
-      <div class="match-form-divider"><span>{% trans 'Your contact details' %}</span></div>
-      <div class="match-field"><label for="{{ form.full_name.id_for_label }}">{% trans 'Your full name' %} *</label>{{ form.full_name }}{{ form.full_name.errors }}</div>
-      <div class="match-field-row"><div class="match-field"><label for="{{ form.email.id_for_label }}">{% trans 'Email address' %}</label>{{ form.email }}{{ form.email.errors }}</div><div class="match-field"><label for="{{ form.phone.id_for_label }}">{% trans 'Phone or WhatsApp' %}</label>{{ form.phone }}{{ form.phone.errors }}</div></div>
-      <p class="match-hint">{% trans 'Enter at least one contact method.' %}</p>
-      <div class="match-field"><label for="{{ form.notes.id_for_label }}">{% trans 'Anything else we should know?' %}</label>{{ form.notes }}{{ form.notes.errors }}</div>
-      <div class="match-consent"><label>{{ form.consent }}<span>{% trans 'I agree to share these details with Sama Tours for this flight request.' %}</span></label>{{ form.consent.errors }}</div>
-      <button class="match-submit" type="submit"><span aria-hidden="true">✈</span> {% trans 'Send my flight request' %} <span aria-hidden="true">→</span></button>
-      <p class="match-form-footnote">{% trans 'Our team reviews each request personally. Sending this form does not reserve a seat or charge you.' %}</p>
-    </form>
-  </div>
-</div></section>
-<section class="match-process" aria-labelledby="match-process-title"><div class="container"><div class="match-section-heading"><span>{% trans 'How it works' %}</span><h2 id="match-process-title">{% trans 'Three simple steps to a better-informed booking' %}</h2><p>{% trans 'From screenshot to a personal quote, our team handles the comparison for you.' %}</p></div><div class="match-process-grid"><article><span class="match-process-number">01</span><div class="match-process-icon" aria-hidden="true">⇧</div><h3>{% trans 'Upload the offer' %}</h3><p>{% trans 'Send a clear screenshot with the route, dates and final price.' %}</p></article><article><span class="match-process-number">02</span><div class="match-process-icon" aria-hidden="true">⇄</div><h3>{% trans 'We compare the trip' %}</h3><p>{% trans 'We check available fares and what is included in each option.' %}</p></article><article><span class="match-process-number">03</span><div class="match-process-icon" aria-hidden="true">✉</div><h3>{% trans 'You hear from us' %}</h3><p>{% trans 'A Sama Tours agent contacts you to discuss the best available match.' %}</p></article></div></div></section>
-<section class="match-compare" aria-labelledby="match-compare-title"><div class="container match-compare-grid"><div><span class="match-section-eyebrow">{% trans 'More than the headline fare' %}</span><h2 id="match-compare-title">{% trans 'Make sure you compare the same trip.' %}</h2><p>{% trans 'An online price can look attractive until you add baggage, a better connection or the right travel dates. We look at the complete offer before recommending an alternative.' %}</p><a href="#match-form" class="match-compare-link">{% trans 'Share your offer' %} <span aria-hidden="true">↗</span></a></div><div class="match-compare-card"><div><span aria-hidden="true">✓</span>{% trans 'Departure and arrival times' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Stopovers and total journey time' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Checked and cabin baggage' %}</div><div><span aria-hidden="true">✓</span>{% trans 'Final fare and booking conditions' %}</div></div></div></section>
-<section class="match-faq" aria-labelledby="match-faq-title"><div class="container"><div class="match-section-heading"><span>{% trans 'Good to know' %}</span><h2 id="match-faq-title">{% trans 'Questions before you send?' %}</h2></div><div class="match-faq-list"><details><summary>{% trans 'Do you guarantee the same or a lower price?' %}</summary><p>{% trans 'No. Fares change and the exact ticket may not be available. We will compare the offer and tell you what we can find.' %}</p></details><details><summary>{% trans 'Do I need to upload my passport now?' %}</summary><p>{% trans 'No. A clear screenshot and an email or phone number are enough to request a comparison. Passport upload is optional for a possible later booking.' %}</p></details><details><summary>{% trans 'Is my seat reserved when I submit?' %}</summary><p>{% trans 'No. This sends a request to our team. A booking is made only after you review and approve an offer with us.' %}</p></details></div></div></section>
-</div>
+{% block title %}Sama Match{% endblock %}
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/flight_match.utilities.css' %}?v=3">
 {% endblock %}
+{% block content %}<div id="sama-match-page" class="sama-match-reference">
+  <section class="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50">
+    <div class="absolute inset-0 opacity-25 pointer-events-none bg-[radial-gradient(#1E56A0_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Left Column: Copy & Value Proposition -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-goldLight border border-brand-gold/40 text-brand-navy text-xs font-extrabold shadow-sm">
+            <i class="fa-solid fa-bolt text-brand-gold"></i>
+            <span>{{ match_copy.heroPill|safe }}</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy tracking-tight leading-[1.18]">{{ match_copy.heroTitle|safe }}</h1>
+
+          <p class="text-base text-slate-600 leading-relaxed font-normal">{{ match_copy.heroDesc|safe }}</p>
+
+          <!-- Core Feature Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl bg-red-50 text-brand-whish flex items-center justify-center shrink-0 text-sm font-bold">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-800">{{ match_copy.feat1Title|safe }}</h4>
+                <p class="text-[11px] text-slate-500">{{ match_copy.feat1Sub|safe }}</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl bg-blue-50 text-brand-royal flex items-center justify-center shrink-0 text-sm font-bold">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-800">{{ match_copy.feat2Title|safe }}</h4>
+                <p class="text-[11px] text-slate-500">{{ match_copy.feat2Sub|safe }}</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 text-sm font-bold">
+                <i class="fa-solid fa-suitcase-rolling"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-800">{{ match_copy.feat3Title|safe }}</h4>
+                <p class="text-[11px] text-slate-500">{{ match_copy.feat3Sub|safe }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Official Partner Strip (Whish, OMT, Visa, Mastercard) -->
+          <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+            <span class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400 block mb-2">{{ match_copy.partnerLabel|safe }}</span>
+            <div class="flex items-center flex-wrap gap-4">
+              <!-- Whish Money Badge -->
+              <div class="flex items-center gap-1.5 px-3 py-1.5 bg-red-50 rounded-lg border border-red-200 text-brand-whish font-black text-xs">
+                <span class="w-4 h-4 rounded-full bg-brand-whish text-white flex items-center justify-center text-[10px]">W</span>
+                <span>Whish Money</span>
+              </div>
+
+              <!-- OMT Badge -->
+              <div class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 rounded-lg border border-amber-300 text-slate-900 font-black text-xs">
+                <span class="w-4 h-4 rounded bg-brand-omtYellow text-black flex items-center justify-center text-[9px] font-black">OMT</span>
+                <span>{{ match_copy.extra0 }}</span>
+              </div>
+
+              <!-- Visa / Mastercard Badge -->
+              <div class="flex items-center gap-2 px-3 py-1.5 bg-blue-50/60 rounded-lg border border-blue-200 text-brand-navy font-bold text-xs">
+                <i class="fa-brands fa-cc-visa text-blue-700 text-base"></i>
+                <i class="fa-brands fa-cc-mastercard text-amber-600 text-base"></i>
+                <span>{{ match_copy.extra1 }}</span>
+              </div>
+
+              <!-- Office Cash -->
+              <div class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-800 font-bold text-xs">
+                <i class="fa-solid fa-money-bill-wave text-emerald-600"></i>
+                <span>{{ match_copy.extra2 }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Sama Match Request Form -->
+        <div id="upload-section" class="lg:col-span-6">
+          <div class="glass-effect rounded-3xl shadow-2xl shadow-brand-navy/10 border border-slate-200 p-6 sm:p-8 relative">
+
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-royal bg-blue-50 px-2.5 py-1 rounded-md">{{ match_copy.formPill|safe }}</span>
+                <h3 class="text-xl font-black text-brand-navy mt-1">{{ match_copy.formTitle|safe }}</h3>
+              </div>
+              <div class="text-right">
+                <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>{{ match_copy.deskOnline|safe }}</span>
+                </span>
+              </div>
+            </div>
+
+            <form id="samaMatchForm" method="post" enctype="multipart/form-data" class="space-y-4">
+{% csrf_token %}
+{% if form.errors %}<div class="match-errors" role="alert">{% for field in form %}{% for error in field.errors %}<p>{{ field.label }}: {{ error }}</p>{% endfor %}{% endfor %}{{ form.non_field_errors }}</div>{% endif %}
+
+              <!-- SCREENSHOT UPLOAD: MUST SHOW PRICE (With Warning) -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <label class="block text-xs font-black uppercase tracking-wider text-slate-800" for="fileScreenshot">{{ match_copy.labelScreenshot|safe }}</label>
+                  <span class="text-[10px] bg-red-100 text-red-700 font-extrabold px-2 py-0.5 rounded-full flex items-center gap-1">{{ match_copy.priceRequiredTag|safe }}</span>
+                </div>
+
+                <div id="dropZoneScreenshot"  class="border-2 border-dashed border-slate-300 hover:border-brand-royal bg-slate-50/80 hover:bg-blue-50/30 rounded-2xl p-4 transition cursor-pointer text-center group">
+                  <input type="file" id="fileScreenshot" name="screenshot" accept="image/jpeg,image/png,image/webp,application/pdf" required class="match-file-input" onchange="handleFileSelected(this, 'previewScreenshot', 'emptyScreenshot', 'fileNameScreenshot')">
+
+                  <!-- Empty State -->
+                  <div id="emptyScreenshot" class="space-y-1.5 py-2">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-blue-100/70 text-brand-royal flex items-center justify-center text-lg group-hover:scale-105 transition">
+                      <i class="fa-solid fa-image"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-700">{{ match_copy.dropScreenshotPrompt|safe }}</p>
+                    <p class="text-[11px] text-amber-700 font-semibold bg-amber-50 rounded-lg py-1 px-2 inline-block">{{ match_copy.dropScreenshotHint|safe }}</p>
+                  </div>
+
+                  <!-- Uploaded State -->
+                  <div id="previewScreenshot" class="hidden items-center justify-between gap-3 bg-white p-2.5 rounded-xl border border-slate-200 text-left">
+                    <div class="flex items-center gap-2.5 truncate">
+                      <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-check text-xs"></i>
+                      </div>
+                      <div class="truncate">
+                        <p id="fileNameScreenshot" class="text-xs font-bold text-slate-800 truncate">screenshot.png</p>
+                        <p class="text-[10px] text-emerald-600 font-semibold">{{ match_copy.ssUploadedReady|safe }}</p>
+                      </div>
+                    </div>
+                    <button type="button" onclick="removeFile('fileScreenshot', 'previewScreenshot', 'emptyScreenshot');" class="relative z-10 text-slate-400 hover:text-red-500 p-1 text-xs" aria-label="{{ match_copy.removeFile }}">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MANDATORY PRICE CONFIRMATION CHECKBOX -->
+              <div class="bg-amber-50/80 border border-amber-200/80 rounded-xl p-3 flex items-start gap-2.5">
+                <input type="checkbox" id="confirmPriceInScreenshot" name="price_confirmed" {% if form.price_confirmed.value %}checked{% endif %} required class="mt-0.5 h-4 w-4 rounded border-amber-400 text-brand-royal focus:ring-brand-royal cursor-pointer">
+                <label for="confirmPriceInScreenshot" class="text-xs font-bold text-amber-950 cursor-pointer select-none leading-snug">{{ match_copy.checkboxConfirmPrice|safe }}</label>
+              </div>
+
+              <!-- PASSPORT UPLOAD: MUST (Mandatory for PNR) -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <label class="block text-xs font-black uppercase tracking-wider text-slate-800" for="filePassport">{{ match_copy.labelPassport|safe }}</label>
+                  <span class="text-[10px] bg-blue-100 text-brand-navy font-bold px-2 py-0.5 rounded-full">{{ match_copy.passportHoldTag|safe }}</span>
+                </div>
+
+                <div id="dropZonePassport"  class="border-2 border-dashed border-slate-300 hover:border-brand-royal bg-slate-50/80 hover:bg-blue-50/30 rounded-2xl p-4 transition cursor-pointer text-center group">
+                  <input type="file" id="filePassport" name="passport" accept="image/jpeg,image/png,image/webp,application/pdf" required class="match-file-input" onchange="handleFileSelected(this, 'previewPassport', 'emptyPassport', 'fileNamePassport')">
+
+                  <!-- Empty State -->
+                  <div id="emptyPassport" class="space-y-1.5 py-2">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-slate-200/80 text-brand-navy flex items-center justify-center text-lg group-hover:scale-105 transition">
+                      <i class="fa-solid fa-passport"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-700">{{ match_copy.dropPassportPrompt|safe }}</p>
+                    <p class="text-[10px] text-slate-500">{{ match_copy.dropPassportHint|safe }}</p>
+                  </div>
+
+                  <!-- Uploaded State -->
+                  <div id="previewPassport" class="hidden items-center justify-between gap-3 bg-white p-2.5 rounded-xl border border-slate-200 text-left">
+                    <div class="flex items-center gap-2.5 truncate">
+                      <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-id-card text-xs"></i>
+                      </div>
+                      <div class="truncate">
+                        <p id="fileNamePassport" class="text-xs font-bold text-slate-800 truncate">passport.pdf</p>
+                        <p class="text-[10px] text-emerald-600 font-semibold">{{ match_copy.passportReady|safe }}</p>
+                      </div>
+                    </div>
+                    <button type="button" onclick="removeFile('filePassport', 'previewPassport', 'emptyPassport');" class="relative z-10 text-slate-400 hover:text-red-500 p-1 text-xs" aria-label="{{ match_copy.removeFile }}">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price & Passenger Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1" for="inputTargetPrice">{{ match_copy.labelPriceSeen|safe }}</label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-xs font-black">$</span>
+                    <input type="number" id="inputTargetPrice" name="offered_price" min="0.01" step="0.01" value="{{ form.offered_price.value|default_if_none:'' }}" required placeholder="e.g. 540" class="w-full pl-7 pr-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-bold">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1" for="selectPaxCount">{{ match_copy.labelPax|safe }}</label>
+                  <select id="selectPaxCount" name="passengers" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-semibold">
+                    <option value="1" {% if form.passengers.value|stringformat:"s" == "1" %}selected{% endif %}>{{ match_copy.pax1 }}</option>
+                    <option value="2" {% if form.passengers.value|stringformat:"s" == "2" %}selected{% endif %}>{{ match_copy.pax2 }}</option>
+                    <option value="3" {% if form.passengers.value|stringformat:"s" == "3" %}selected{% endif %}>{{ match_copy.pax3 }}</option>
+                    <option value="4" {% if form.passengers.value|stringformat:"s" == "4" %}selected{% endif %}>{{ match_copy.pax4 }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Contact & Name -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1" for="inputFullName">{{ match_copy.labelFullName|safe }}</label>
+                  <input type="text" id="inputFullName" name="full_name" value="{{ form.full_name.value|default_if_none:'' }}" maxlength="150" autocomplete="name" required placeholder="e.g. CHARBEL HADDAD" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-bold uppercase">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1" for="inputWhatsApp">{{ match_copy.labelWhatsApp|safe }}</label>
+                  <div class="flex rounded-xl shadow-sm">
+                    <span class="inline-flex items-center px-2.5 rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 text-slate-700 text-xs font-bold">
+                      🇱🇧 +961
+                    </span>
+                    <input type="tel" id="inputWhatsApp" name="phone" value="{{ form.phone.value|default_if_none:'' }}" maxlength="40" autocomplete="tel" placeholder="70 123 456" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-r-xl focus:ring-2 focus:ring-brand-royal outline-none font-bold">
+                  </div>
+                </div>
+              </div>
+
+              <div><label for="inputEmail" class="block text-xs font-bold text-slate-700 mb-1">{{ match_copy.emailLabel }}</label><input id="inputEmail" name="email" type="email" autocomplete="email" value="{{ form.email.value|default_if_none:'' }}" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal outline-none"><p class="text-xs text-slate-500 mt-2">{{ match_copy.contactHint }}</p></div>
+<!-- Preferred Payment Selection -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5">{{ match_copy.labelPayPref|safe }}</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="cursor-pointer border-2 border-slate-200 rounded-xl p-2.5 flex flex-col items-center justify-center text-center hover:border-brand-whish bg-white transition has-[:checked]:border-brand-whish has-[:checked]:bg-red-50/50">
+                    <input type="radio" name="payment_preference" value="whish" {% if form.payment_preference.value == "whish" or not form.is_bound %}checked{% endif %} class="match-radio">
+                    <span class="w-6 h-6 rounded-full bg-brand-whish text-white font-black text-xs flex items-center justify-center mb-1">W</span>
+                    <span class="text-xs font-black text-slate-800">Whish Money</span>
+                    <span class="text-[9px] text-slate-400">{{ match_copy.extra3 }}</span>
+                  </label>
+
+                  <label class="cursor-pointer border-2 border-slate-200 rounded-xl p-2.5 flex flex-col items-center justify-center text-center hover:border-amber-400 bg-white transition has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                    <input type="radio" name="payment_preference" value="omt" {% if form.payment_preference.value == "omt" %}checked{% endif %} class="match-radio">
+                    <span class="w-6 h-6 rounded bg-brand-omtYellow text-black font-black text-[9px] flex items-center justify-center mb-1">OMT</span>
+                    <span class="text-xs font-black text-slate-800">{{ match_copy.extra4 }}</span>
+                    <span class="text-[9px] text-slate-400">{{ match_copy.extra5 }}</span>
+                  </label>
+
+                  <label class="cursor-pointer border-2 border-slate-200 rounded-xl p-2.5 flex flex-col items-center justify-center text-center hover:border-brand-royal bg-white transition has-[:checked]:border-brand-royal has-[:checked]:bg-blue-50/50">
+                    <input type="radio" name="payment_preference" value="card_link" {% if form.payment_preference.value == "card_link" %}checked{% endif %} class="match-radio">
+                    <i class="fa-solid fa-credit-card text-brand-royal text-base mb-1"></i>
+                    <span class="text-xs font-black text-slate-800">{{ match_copy.extra6 }}</span>
+                    <span class="text-[9px] text-slate-400">Visa / Mastercard</span>
+                  </label>
+                </div>
+              </div>
+
+              <label class="flex items-start gap-2 text-xs text-slate-600"><input type="checkbox" name="consent" required {% if form.consent.value %}checked{% endif %}> {% trans 'I agree to share these details with Sama Tours for this flight request.' %}</label>
+<!-- Submit Button -->
+              <button type="submit" class="w-full gold-gradient hover:opacity-95 text-brand-navy font-black text-sm py-4 px-4 rounded-xl shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 transform active:scale-[0.99] transition">
+                <i class="fa-solid fa-magnifying-glass-dollar text-base"></i>
+                <span>{{ match_copy.btnSubmit|safe }}</span>
+              </button>
+
+              <div class="flex items-center justify-center gap-2 text-[10px] text-slate-500 text-center">
+                <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                <span>{{ match_copy.securityNotice|safe }}</span>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="payments" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-black tracking-widest text-brand-royal uppercase">{{ match_copy.paySectionTag|safe }}</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mt-1">{{ match_copy.paySectionTitle|safe }}</h2>
+        <p class="text-sm text-slate-500 mt-2">{{ match_copy.paySectionDesc|safe }}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+        <!-- Whish Money Card -->
+        <div class="rounded-3xl border-2 border-red-200 bg-gradient-to-b from-red-50/50 to-white p-6 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-whish text-white text-[11px] font-black uppercase tracking-wider">
+                <span class="w-3.5 h-3.5 rounded-full bg-white text-brand-whish flex items-center justify-center text-[9px] font-black">W</span>
+                Whish Money
+              </span>
+              <span class="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">{{ match_copy.extra7 }}</span>
+            </div>
+
+            <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.whishTitle|safe }}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.whishDesc|safe }}</p>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-red-100 flex items-center justify-between text-[11px] text-red-900 font-bold">
+            <span>{{ match_copy.extra8 }}</span>
+            <span>{{ match_copy.extra9 }}</span>
+          </div>
+        </div>
+
+        <!-- OMT Lebanon Card -->
+        <div class="rounded-3xl border-2 border-amber-300 bg-gradient-to-b from-amber-50/40 to-white p-6 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-omtYellow text-black text-[11px] font-black uppercase tracking-wider">
+                <span class="font-black text-black">OMT</span>
+                Online Money Transfer
+              </span>
+              <span class="text-[10px] font-bold text-amber-900 bg-amber-200 px-2 py-0.5 rounded">{{ match_copy.extra10 }}</span>
+            </div>
+
+            <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.omtTitle|safe }}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.omtDesc|safe }}</p>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-amber-200 flex items-center justify-between text-[11px] text-amber-950 font-bold">
+            <span>{{ match_copy.extra11 }}</span>
+            <span>{{ match_copy.extra12 }}</span>
+          </div>
+        </div>
+
+        <!-- Visa / Mastercard Link -->
+        <div class="rounded-3xl border-2 border-blue-200 bg-gradient-to-b from-blue-50/30 to-white p-6 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy text-white text-[11px] font-black uppercase tracking-wider">
+                <i class="fa-solid fa-shield text-brand-gold text-xs"></i>
+                3D-Secure Link
+              </span>
+              <div class="flex items-center gap-1.5">
+                <i class="fa-brands fa-cc-visa text-blue-700 text-lg"></i>
+                <i class="fa-brands fa-cc-mastercard text-amber-600 text-lg"></i>
+              </div>
+            </div>
+
+            <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.cardTitle|safe }}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.cardDesc|safe }}</p>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-blue-100 flex items-center justify-between text-[11px] text-brand-navy font-bold">
+            <span>{{ match_copy.extra13 }}</span>
+            <span>{{ match_copy.extra14 }}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="comparison" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-black tracking-widest text-brand-royal uppercase">{{ match_copy.compTag|safe }}</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mt-1">{{ match_copy.compTitle|safe }}</h2>
+        <p class="text-sm text-slate-500 mt-2">{{ match_copy.compDesc|safe }}</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+        <!-- Foreign Aggregator Card -->
+        <div class="rounded-3xl border border-slate-300 bg-white p-6 sm:p-8 flex flex-col justify-between shadow-sm relative">
+          <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-max mb-4">{{ match_copy.compOtaBadge|safe }}</span>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-base">{{ match_copy.extra15 }}</h4>
+                <p class="text-xs text-slate-400">{{ match_copy.extra16 }}</p>
+              </div>
+              <div class="text-right">
+                <span class="text-2xl font-black text-slate-700">$510</span>
+                <p class="text-[10px] text-red-500 font-bold">{{ match_copy.compOtaInitial|safe }}</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-600">
+              <li class="flex items-start gap-2.5 text-red-600">
+                <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compOta1|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-red-600">
+                <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compOta2|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-red-600">
+                <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compOta3|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-red-600">
+                <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compOta4|safe }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs text-slate-500">
+            <span>{{ match_copy.compOtaFinalLabel|safe }}</span>
+            <strong class="text-slate-900 text-base block mt-0.5">$605+ USD</strong>
+          </div>
+        </div>
+
+        <!-- Sama Match Card -->
+        <div class="rounded-3xl border-2 border-brand-gold bg-gradient-to-b from-amber-50/30 to-white p-6 sm:p-8 flex flex-col justify-between shadow-xl shadow-amber-500/10 relative">
+          <span class="text-[10px] font-black uppercase tracking-wider text-brand-navy bg-brand-gold px-3.5 py-1 rounded-full w-max mb-4 shadow-sm">{{ match_copy.compSamaBadge|safe }}</span>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-amber-100 pb-3">
+              <div>
+                <h4 class="font-black text-brand-navy text-base">{{ match_copy.extra15 }}</h4>
+                <p class="text-xs text-brand-royal font-bold">{{ match_copy.extra17 }}</p>
+              </div>
+              <div class="text-right">
+                <span class="text-2xl sm:text-3xl font-black text-brand-navy">$485</span>
+                <p class="text-[10px] text-emerald-600 font-black">{{ match_copy.compSamaSave|safe }}</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-700">
+              <li class="flex items-start gap-2.5 text-emerald-700 font-medium">
+                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compSama1|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-emerald-700 font-medium">
+                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compSama2|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-emerald-700 font-medium">
+                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compSama3|safe }}</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-emerald-700 font-medium">
+                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 shrink-0 text-sm"></i>
+                <span>{{ match_copy.compSama4|safe }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-amber-200 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 block">{{ match_copy.compSamaFinalLabel|safe }}</span>
+              <strong class="text-brand-navy text-lg font-black">{{ match_copy.extra18 }}</strong>
+            </div>
+            <a href="#upload-section" class="bg-brand-navy hover:bg-slate-900 text-white font-bold text-xs py-2.5 px-4 rounded-xl transition">
+              <span>{{ match_copy.btnBeatDeal|safe }}</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="how-it-works" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-black tracking-widest text-brand-royal uppercase">{{ match_copy.stepsTag|safe }}</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mt-1">{{ match_copy.stepsTitle|safe }}</h2>
+        <p class="text-sm text-slate-500 mt-2">{{ match_copy.stepsDesc|safe }}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200 text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-blue-100 text-brand-royal text-2xl font-black flex items-center justify-center mb-4">
+            1
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.step1Title|safe }}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.step1Desc|safe }}</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200 text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-100 text-amber-800 text-2xl font-black flex items-center justify-center mb-4">
+            2
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.step2Title|safe }}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.step2Desc|safe }}</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200 text-center relative">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-100 text-emerald-800 text-2xl font-black flex items-center justify-center mb-4">
+            3
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-2">{{ match_copy.step3Title|safe }}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">{{ match_copy.step3Desc|safe }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="faq" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center mb-12">
+        <span class="text-xs font-black tracking-widest text-brand-royal uppercase">{{ match_copy.faqTag|safe }}</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy mt-1">{{ match_copy.faqTitle|safe }}</h2>
+      </div>
+
+      <div class="space-y-4">
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(1)" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-4">
+            <span>{{ match_copy.faqQ1|safe }}</span>
+            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-ans-1" class="hidden p-4 sm:p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
+            <span>{{ match_copy.faqA1|safe }}</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(2)" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-4">
+            <span>{{ match_copy.faqQ2|safe }}</span>
+            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-ans-2" class="hidden p-4 sm:p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
+            <span>{{ match_copy.faqA2|safe }}</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(3)" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-4">
+            <span>{{ match_copy.faqQ3|safe }}</span>
+            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-ans-3" class="hidden p-4 sm:p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
+            <span>{{ match_copy.faqA3|safe }}</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <button onclick="toggleFaq(4)" class="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-4">
+            <span>{{ match_copy.faqQ4|safe }}</span>
+            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-ans-4" class="hidden p-4 sm:p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
+            <span>{{ match_copy.faqA4|safe }}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+</div>{% endblock %}
+{% block extra_js %}<script src="{% static 'js/flight_match.js' %}?v=3" defer></script>{% endblock %}

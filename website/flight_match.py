@@ -1,4 +1,5 @@
 import logging
+from decimal import Decimal
 from pathlib import Path
 from uuid import uuid4
 
@@ -10,7 +11,8 @@ from django.core.mail import send_mail
 from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from django.utils.translation import gettext as _, gettext_lazy
+from django.utils.html import strip_tags
+from django.utils.translation import gettext as _, gettext_lazy, get_language
 
 from .models import FlightMatchRequest
 
@@ -19,6 +21,26 @@ logger = logging.getLogger(__name__)
 
 class FlightMatchForm(forms.ModelForm):
     consent = forms.BooleanField(label=gettext_lazy('I agree to share these details with Sama Tours for this flight request.'))
+    price_confirmed = forms.BooleanField(label=gettext_lazy('Total price visible'))
+    payment_preference = forms.ChoiceField(choices=(
+        ('whish', 'Whish Money'), ('omt', 'OMT Cash'), ('card_link', 'Card Link'),
+    ))
+    offered_price = forms.DecimalField(max_digits=10, decimal_places=2, min_value=Decimal('0.01'))
+    passengers = forms.IntegerField(min_value=1, max_value=20)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['passport'].required = True
+        from .flight_match_copy import COPY
+        copy = COPY.get(get_language(), COPY['en'])
+        for field, key in {
+            'full_name': 'labelFullName', 'phone': 'labelWhatsApp',
+            'email': 'emailLabel', 'passport': 'labelPassport',
+            'screenshot': 'labelScreenshot', 'offered_price': 'labelPriceSeen',
+            'passengers': 'labelPax', 'payment_preference': 'labelPayPref',
+            'price_confirmed': 'checkboxConfirmPrice',
+        }.items():
+            self.fields[field].label = strip_tags(copy[key]).rstrip(' *')
 
     class Meta:
         model = FlightMatchRequest
@@ -38,8 +60,7 @@ class FlightMatchForm(forms.ModelForm):
         data = super().clean()
         if not data.get('email') and not data.get('phone'):
             raise forms.ValidationError(_('Please enter an email address or phone number.'))
-        if data.get('offered_price') and not data.get('offered_currency'):
-            self.add_error('offered_currency', _('Please enter the offer currency.'))
+        data['offered_currency'] = 'USD'
         return data
 
     def _check_upload(self, field):
@@ -86,6 +107,10 @@ def flight_match(request):
         else:
             match = form.save(commit=False)
             match.reference = f'SM-{uuid4().hex[:10].upper()}'
+            match.notes = (
+                'Preferred payment: ' + dict(form.fields['payment_preference'].choices)[form.cleaned_data['payment_preference']]
+                + '\nTotal price visible in screenshot: confirmed'
+            )
             match.save()
             admin_url = request.build_absolute_uri(
                 reverse('admin:website_flightmatchrequest_change', args=[match.pk])
@@ -115,7 +140,10 @@ def flight_match(request):
             match.save(update_fields=['notification_sent'])
             messages.success(request, _('Your flight request was received. Reference: %(reference)s. Our team will review it and contact you.') % {'reference': match.reference})
             return redirect('website:flight_match')
-    return render(request, 'website/flight_match.html', {'form': form})
+    from .flight_match_copy import COPY
+    return render(request, 'website/flight_match.html', {
+        'form': form, 'match_copy': COPY.get(get_language(), COPY['en']),
+    })
 
 
 @staff_member_required
