@@ -1,6 +1,23 @@
 (function () {
     'use strict';
 
+    // Native disclosure stays usable without JavaScript.
+    const languagePicker = document.getElementById('language-picker');
+    if (languagePicker) {
+        document.addEventListener('click', (event) => {
+            if (!languagePicker.contains(event.target)) languagePicker.open = false;
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && languagePicker.open) {
+                languagePicker.open = false;
+                languagePicker.querySelector('summary').focus();
+            }
+        });
+        languagePicker.addEventListener('focusout', (event) => {
+            if (!languagePicker.contains(event.relatedTarget)) languagePicker.open = false;
+        });
+    }
+
     // Sticky header shadow
     const header = document.getElementById('site-header');
     if (header) {

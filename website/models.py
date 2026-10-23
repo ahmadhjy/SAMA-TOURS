@@ -369,7 +369,7 @@ class FlightMatchRequest(models.Model):
     from .private_storage import flight_match_storage
 
     reference = models.CharField(max_length=24, unique=True, editable=False)
-    full_name = models.CharField(max_length=150)
+    full_name = models.CharField(max_length=150, blank=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=40, blank=True)
     route = models.CharField(max_length=250, blank=True)
@@ -389,3 +389,20 @@ class FlightMatchRequest(models.Model):
 
     def __str__(self):
         return f'{self.reference} — {self.full_name}'
+
+
+def flight_match_attachment_path(instance, filename):
+    from pathlib import Path
+    from uuid import uuid4
+    return f'flight_match/{instance.request.reference}/{uuid4().hex}{Path(filename).suffix.lower()}'
+
+
+class FlightMatchAttachment(models.Model):
+    from .private_storage import flight_match_storage
+
+    request = models.ForeignKey(FlightMatchRequest, on_delete=models.CASCADE, related_name='attachments')
+    kind = models.CharField(max_length=10, choices=(('screenshot', 'Offer'), ('passport', 'Passport')))
+    document = models.FileField(upload_to=flight_match_attachment_path, storage=flight_match_storage)
+
+    def __str__(self):
+        return f'{self.request.reference} — {self.get_kind_display()}'

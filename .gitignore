@@ -22,6 +22,7 @@ local_settings.py
 .env
 .env.local
 deploy/production.env
+deploy/match-mail.env
 *.pem
 
 # IDE

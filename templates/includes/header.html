@@ -15,7 +15,15 @@
             </ul>
         </nav>
         <div class="header-end">
-            <div class="lang-switcher" role="navigation" aria-label="{% trans 'Language' %}">
+            <details class="lang-switcher" id="language-picker">
+                <summary class="lang-trigger" aria-label="{% trans 'Language' %}" title="{% trans 'Language' %}">
+                    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <ellipse cx="12" cy="12" rx="4" ry="9"></ellipse>
+                        <path d="M3 12h18"></path>
+                    </svg>
+                </summary>
+                <nav class="lang-menu" aria-label="{% trans 'Language' %}">
                 {% for lang in LANGUAGE_SWITCHER %}
                 {% if not lang.active %}
                 <a href="{{ lang.url }}" class="lang-flag" title="{{ lang.label }}" hreflang="{{ lang.code }}" lang="{{ lang.code }}">
@@ -24,7 +32,8 @@
                 </a>
                 {% endif %}
                 {% endfor %}
-            </div>
+                </nav>
+            </details>
             <button class="nav-toggle" id="nav-toggle" aria-label="{% trans 'Toggle navigation' %}" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>

@@ -4,8 +4,8 @@
 {% block extra_head %}
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=3">
-<link rel="stylesheet" href="{% static 'css/flight_match.utilities.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/flight_match.css' %}?v=4">
+<link rel="stylesheet" href="{% static 'css/flight_match.utilities.css' %}?v=4">
 {% endblock %}
 {% block content %}<div id="sama-match-page" class="sama-match-reference">
   <section class="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-200 bg-gradient-to-b from-slate-100 via-white to-slate-50">
@@ -111,7 +111,8 @@
 {% csrf_token %}
 {% if form.errors %}<div class="match-errors" role="alert">{% for field in form %}{% for error in field.errors %}<p>{{ field.label }}: {{ error }}</p>{% endfor %}{% endfor %}{{ form.non_field_errors }}</div>{% endif %}
 
-              <!-- SCREENSHOT UPLOAD: MUST SHOW PRICE (With Warning) -->
+              <p class="text-xs text-slate-500">{{ match_copy.uploadLimits }}</p>
+<!-- SCREENSHOT UPLOAD: MUST SHOW PRICE (With Warning) -->
               <div>
                 <div class="flex items-center justify-between mb-1.5">
                   <label class="block text-xs font-black uppercase tracking-wider text-slate-800" for="fileScreenshot">{{ match_copy.labelScreenshot|safe }}</label>
@@ -119,7 +120,7 @@
                 </div>
 
                 <div id="dropZoneScreenshot"  class="border-2 border-dashed border-slate-300 hover:border-brand-royal bg-slate-50/80 hover:bg-blue-50/30 rounded-2xl p-4 transition cursor-pointer text-center group">
-                  <input type="file" id="fileScreenshot" name="screenshot" accept="image/jpeg,image/png,image/webp,application/pdf" required class="match-file-input" onchange="handleFileSelected(this, 'previewScreenshot', 'emptyScreenshot', 'fileNameScreenshot')">
+                  <input type="file" id="fileScreenshot" name="screenshot" accept="image/jpeg,image/png,image/webp,application/pdf" multiple required class="match-file-input" onchange="handleFileSelected(this, 'previewScreenshot', 'emptyScreenshot', 'fileNameScreenshot')">
 
                   <!-- Empty State -->
                   <div id="emptyScreenshot" class="space-y-1.5 py-2">
@@ -162,7 +163,7 @@
                 </div>
 
                 <div id="dropZonePassport"  class="border-2 border-dashed border-slate-300 hover:border-brand-royal bg-slate-50/80 hover:bg-blue-50/30 rounded-2xl p-4 transition cursor-pointer text-center group">
-                  <input type="file" id="filePassport" name="passport" accept="image/jpeg,image/png,image/webp,application/pdf" required class="match-file-input" onchange="handleFileSelected(this, 'previewPassport', 'emptyPassport', 'fileNamePassport')">
+                  <input type="file" id="filePassport" name="passport" accept="image/jpeg,image/png,image/webp,application/pdf" multiple required class="match-file-input" onchange="handleFileSelected(this, 'previewPassport', 'emptyPassport', 'fileNamePassport')">
 
                   <!-- Empty State -->
                   <div id="emptyPassport" class="space-y-1.5 py-2">
@@ -191,16 +192,8 @@
                 </div>
               </div>
 
-              <!-- Price & Passenger Row -->
+              <!-- Passengers and contact details -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1" for="inputTargetPrice">{{ match_copy.labelPriceSeen|safe }}</label>
-                  <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-xs font-black">$</span>
-                    <input type="number" id="inputTargetPrice" name="offered_price" min="0.01" step="0.01" value="{{ form.offered_price.value|default_if_none:'' }}" required placeholder="e.g. 540" class="w-full pl-7 pr-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-bold">
-                  </div>
-                </div>
-
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1" for="selectPaxCount">{{ match_copy.labelPax|safe }}</label>
                   <select id="selectPaxCount" name="passengers" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-semibold">
@@ -210,27 +203,16 @@
                     <option value="4" {% if form.passengers.value|stringformat:"s" == "4" %}selected{% endif %}>{{ match_copy.pax4 }}</option>
                   </select>
                 </div>
-              </div>
-
-              <!-- Contact & Name -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1" for="inputFullName">{{ match_copy.labelFullName|safe }}</label>
-                  <input type="text" id="inputFullName" name="full_name" value="{{ form.full_name.value|default_if_none:'' }}" maxlength="150" autocomplete="name" required placeholder="e.g. CHARBEL HADDAD" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal focus:border-brand-royal outline-none font-bold uppercase">
-                </div>
-
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1" for="inputWhatsApp">{{ match_copy.labelWhatsApp|safe }}</label>
-                  <div class="flex rounded-xl shadow-sm">
-                    <span class="inline-flex items-center px-2.5 rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 text-slate-700 text-xs font-bold">
-                      🇱🇧 +961
-                    </span>
-                    <input type="tel" id="inputWhatsApp" name="phone" value="{{ form.phone.value|default_if_none:'' }}" maxlength="40" autocomplete="tel" placeholder="70 123 456" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-r-xl focus:ring-2 focus:ring-brand-royal outline-none font-bold">
-                  </div>
+                  <input type="tel" id="inputWhatsApp" name="phone" value="{{ form.phone.value|default_if_none:'' }}" maxlength="40" autocomplete="tel" placeholder="+961 70 123 456" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal outline-none font-bold">
                 </div>
               </div>
-
-              <div><label for="inputEmail" class="block text-xs font-bold text-slate-700 mb-1">{{ match_copy.emailLabel }}</label><input id="inputEmail" name="email" type="email" autocomplete="email" value="{{ form.email.value|default_if_none:'' }}" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal outline-none"><p class="text-xs text-slate-500 mt-2">{{ match_copy.contactHint }}</p></div>
+              <div>
+                <label for="inputEmail" class="block text-xs font-bold text-slate-700 mb-1">{{ match_copy.emailLabel }}</label>
+                <input id="inputEmail" name="email" type="email" autocomplete="email" value="{{ form.email.value|default_if_none:'' }}" class="w-full px-3 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-royal outline-none">
+                <p class="text-xs text-slate-500 mt-2">{{ match_copy.contactHint }}</p>
+              </div>
 <!-- Preferred Payment Selection -->
               <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1.5">{{ match_copy.labelPayPref|safe }}</label>
@@ -562,4 +544,4 @@
 
 
 </div>{% endblock %}
-{% block extra_js %}<script src="{% static 'js/flight_match.js' %}?v=3" defer></script>{% endblock %}
+{% block extra_js %}<script src="{% static 'js/flight_match.js' %}?v=4" defer></script>{% endblock %}

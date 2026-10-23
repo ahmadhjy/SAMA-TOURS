@@ -12,7 +12,7 @@ function handleFileSelected(input, previewId, emptyId, nameId) {
     const preview = document.getElementById(previewId);
     preview.classList.remove('hidden');
     preview.classList.add('flex');
-    document.getElementById(nameId).textContent = file.name;
+    document.getElementById(nameId).textContent = Array.from(input.files, item => item.name).join('\n');
 }
 function removeFile(inputId, previewId, emptyId) {
     document.getElementById(inputId).value = '';

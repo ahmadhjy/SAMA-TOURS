@@ -5,7 +5,7 @@ from modeltranslation.admin import TabbedTranslationAdmin
 
 from .models import (
     TravelPackage, PackageImage, Destination, VisaRequirement, Testimonial,
-    EsimOrder, TravelInsuranceOrder, FlightMatchRequest,
+    EsimOrder, TravelInsuranceOrder, FlightMatchRequest, FlightMatchAttachment,
 )
 
 
@@ -173,8 +173,24 @@ class TravelInsuranceOrderAdmin(admin.ModelAdmin):
     )
 
 
+class FlightMatchAttachmentInline(admin.TabularInline):
+    model = FlightMatchAttachment
+    fields = ('kind', 'download')
+    readonly_fields = fields
+    extra = 0
+    can_delete = False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    @admin.display(description='Private file')
+    def download(self, obj):
+        return format_html('<a href="{}">Download</a>', reverse('website:flight_match_attachment_file', args=[obj.pk]))
+
+
 @admin.register(FlightMatchRequest)
 class FlightMatchRequestAdmin(admin.ModelAdmin):
+    inlines = [FlightMatchAttachmentInline]
     list_display = ('reference', 'full_name', 'email', 'phone', 'route', 'notification_sent', 'created_at')
     list_filter = ('notification_sent', 'created_at')
     search_fields = ('reference', 'full_name', 'email', 'phone', 'route')

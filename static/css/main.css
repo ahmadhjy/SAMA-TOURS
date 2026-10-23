@@ -2411,6 +2411,19 @@ button.btn {
 }
 
 /* Header actions + language switcher */
+.hero-actions .btn-sama-match {
+    color: #0b1b3d;
+    background: linear-gradient(135deg, #e5ba42, #c49826);
+    border: 1px solid #d4af37;
+    box-shadow: 0 6px 22px rgba(212, 175, 55, .24);
+    gap: 10px;
+}
+.hero-actions .btn-sama-match:hover {
+    color: #fff;
+    background: #0b1b3d;
+    border-color: #d4af37;
+}
+.btn-sama-match svg { flex-shrink: 0; }
 .header-end {
     display: flex;
     align-items: center;
@@ -2423,32 +2436,57 @@ button.btn {
 }
 
 .lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
+    position: relative;
     flex-shrink: 0;
-    padding: 0.2rem;
-    background: var(--color-bg-alt, #f1f5f9);
-    border-radius: 999px;
-    border: 1px solid var(--color-border, #e2e8f0);
 }
+
+.lang-trigger {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+    color: var(--color-primary-dark, #172a51);
+    border-radius: 50%;
+    transition: background 0.15s ease;
+}
+.lang-trigger::-webkit-details-marker { display: none; }
+.lang-trigger::marker { content: ''; }
+.lang-trigger:hover, .lang-switcher[open] .lang-trigger { background: #f1f5f9; }
+.lang-trigger:focus-visible, .lang-menu a:focus-visible {
+    outline: 2px solid #1e56a0;
+    outline-offset: 3px;
+}
+.lang-menu {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + 8px);
+    width: 112px;
+    padding: 6px;
+    border: 1px solid #e8edf3;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    z-index: 20;
+}
+.lang-switcher:not([open]) .lang-menu { display: none; }
 
 .lang-flag {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 2rem;
-    padding: 0 0.55rem;
-    border-radius: 999px;
-    gap: 0.1rem;
+    justify-content: flex-start;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 8px;
+    gap: 8px;
     text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    transition: background 0.15s ease;
 }
 
 .lang-flag:hover {
-    transform: scale(1.08);
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+    background: #f1f5f9;
 }
 
 .lang-flag__icon {

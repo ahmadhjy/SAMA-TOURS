@@ -1,7 +1,7 @@
 from django.urls import path
 from . import insurance_views, views
 from .access import staff_required
-from .flight_match import flight_match, flight_match_file
+from .flight_match import flight_match, flight_match_file, flight_match_attachment_file
 
 app_name = 'website'
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('visa-requirements/', views.visa_requirements, name='visa'),
     path('sama-match/', flight_match, name='flight_match'),
     path('sama-match/file/<int:pk>/<str:kind>/', flight_match_file, name='flight_match_file'),
+    path('sama-match/attachment/<int:pk>/', flight_match_attachment_file, name='flight_match_attachment_file'),
     path('travel-insurance/', staff_required(insurance_views.insurance), name='insurance'),
     path('travel-insurance/quote/', staff_required(insurance_views.insurance_quote), name='insurance_quote'),
     path('travel-insurance/lookup/', staff_required(insurance_views.insurance_lookup), name='insurance_lookup'),

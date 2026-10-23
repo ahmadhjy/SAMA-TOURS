@@ -12,6 +12,8 @@ BASE = Path(__file__).resolve().parent.parent / 'locale'
 
 # msgid -> (ar, fr)
 MESSAGES = {
+    'Upload up to 5 files per section.': ('يمكنك إرفاق 5 ملفات كحد أقصى في كل قسم.', 'Vous pouvez joindre jusqu’à 5 fichiers par section.'),
+    'The combined size of all files must not exceed 15 MB.': ('يجب ألا يتجاوز الحجم الإجمالي لجميع الملفات 15 ميغابايت.', 'La taille totale des fichiers ne doit pas dépasser 15 Mo.'),
     'Found a flight online?': ('لقيت عرض طيران أونلاين؟', 'Vous avez trouvé un vol en ligne ?'),
     'Send us the offer.': ('أرسل لنا العرض.', 'Envoyez-nous l’offre.'),
     'We’ll find your match.': ('ونبحث لك عن الأنسب.', 'Nous chercherons l’option qui vous convient.'),

@@ -9,6 +9,12 @@ msgid_plural "%(counter)s packages found"
 msgstr[0] "%(counter)s forfait trouvé"
 msgstr[1] "%(counter)s forfaits trouvés"
 
+msgid "Upload up to 5 files per section."
+msgstr "Vous pouvez joindre jusqu’à 5 fichiers par section."
+
+msgid "The combined size of all files must not exceed 15 MB."
+msgstr "La taille totale des fichiers ne doit pas dépasser 15 Mo."
+
 msgid "Found a flight online?"
 msgstr "Vous avez trouvé un vol en ligne ?"
 

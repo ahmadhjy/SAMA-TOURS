@@ -7,6 +7,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+from config.env_loader import load_env_file
+load_env_file(BASE_DIR / 'deploy' / 'match-mail.env')
+
 
 def _env(*keys, default=None):
     """Read first set environment variable from keys."""
@@ -108,6 +111,14 @@ EMAIL_USE_SSL = _env('EMAIL_USE_SSL', default='False').lower() in ('true', '1', 
 EMAIL_TIMEOUT = 15
 DEFAULT_FROM_EMAIL = _env('DEFAULT_FROM_EMAIL', default='info@samatourslb.com')
 FLIGHT_MATCH_TO_EMAIL = _env('FLIGHT_MATCH_TO_EMAIL', default='info@samatourslb.com')
+FLIGHT_MATCH_SMTP_HOST = _env('FLIGHT_MATCH_SMTP_HOST', default=EMAIL_HOST)
+FLIGHT_MATCH_SMTP_PORT = int(_env('FLIGHT_MATCH_SMTP_PORT', default=str(EMAIL_PORT)))
+FLIGHT_MATCH_SMTP_USER = _env('FLIGHT_MATCH_SMTP_USER', default=EMAIL_HOST_USER)
+FLIGHT_MATCH_SMTP_PASSWORD = _env('FLIGHT_MATCH_SMTP_PASSWORD', default=EMAIL_HOST_PASSWORD)
+FLIGHT_MATCH_SMTP_TLS = _env('FLIGHT_MATCH_SMTP_TLS', default=str(EMAIL_USE_TLS)).lower() in ('true', '1', 'yes')
+FLIGHT_MATCH_SMTP_SSL = _env('FLIGHT_MATCH_SMTP_SSL', default=str(EMAIL_USE_SSL)).lower() in ('true', '1', 'yes')
+FLIGHT_MATCH_FROM_EMAIL = _env('FLIGHT_MATCH_FROM_EMAIL', default=DEFAULT_FROM_EMAIL)
+FLIGHT_MATCH_RECIPIENT = _env('FLIGHT_MATCH_RECIPIENT', default=FLIGHT_MATCH_TO_EMAIL)
 
 # Monty eSIM Reseller API (secrets in .env / deploy/production.env — never commit)
 MONTY_ESIM_API_BASE_URL = _env(
